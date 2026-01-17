@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { SiteConfig } from '@/lib/types';
 import { useCart } from '@/context/CartContext';
 import { sanitizeText, sanitizeUrl } from '@/lib/sanitize';
+import { ProductModal } from './ProductModal';
 
 interface ProductGridProps {
   config: SiteConfig['products'];
@@ -13,6 +15,7 @@ export function ProductGrid({ config }: ProductGridProps) {
   const { addItem } = useCart();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [addedId, setAddedId] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof config.items[0] | null>(null);
 
   const gridColumns = {
     'grid-2': 2,
@@ -33,6 +36,24 @@ export function ProductGrid({ config }: ProductGridProps) {
     setTimeout(() => setAddedId(null), 1500);
   };
 
+  const handleCardClick = (product: typeof config.items[0]) => {
+    if (config.imageClickable && product.productUrl) {
+      window.location.href = product.productUrl;
+    }
+  };
+
+  // Wrapper component for clickable cards
+  const CardWrapper = ({ product, children }: { product: typeof config.items[0]; children: React.ReactNode }) => {
+    if (config.imageClickable && product.productUrl) {
+      return (
+        <Link href={product.productUrl} style={{ textDecoration: 'none', color: 'inherit' }}>
+          {children}
+        </Link>
+      );
+    }
+    return <>{children}</>;
+  };
+
   return (
     <section id="products" style={{ padding: '80px 0', backgroundColor: '#fafafa' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -49,39 +70,42 @@ export function ProductGrid({ config }: ProductGridProps) {
           gap: '20px',
         }}>
           {config.items.map((product) => (
-            <div
-              key={product.id}
-              data-product-id={product.id}
-              style={{
-                cursor: 'pointer',
-                backgroundColor: 'white',
-                overflow: 'hidden',
-                border: '1px solid #e5e7eb',
-                transition: 'border-color 0.2s',
-                borderColor: hoveredId === product.id ? '#111' : '#e5e7eb',
-              }}
-              onMouseEnter={() => setHoveredId(product.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              {/* Product Image */}
-              <div style={{
-                aspectRatio: '1',
-                position: 'relative',
-                overflow: 'hidden',
-                backgroundColor: '#f5f5f5',
-              }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={sanitizeUrl(product.image)}
-                  alt={sanitizeText(product.name)}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.4s ease',
-                    transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
-                  }}
-                />
+            <CardWrapper key={product.id} product={product}>
+              <div
+                data-product-id={product.id}
+                onClick={() => handleCardClick(product)}
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor: 'white',
+                  overflow: 'hidden',
+                  border: '1px solid #e5e7eb',
+                  transition: 'border-color 0.2s',
+                  borderColor: hoveredId === product.id ? '#111' : '#e5e7eb',
+                }}
+                onMouseEnter={() => setHoveredId(product.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
+                {/* Product Image */}
+                <div style={{
+                  aspectRatio: '1',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  backgroundColor: '#f5f5f5',
+                }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={sanitizeUrl(product.image)}
+                    alt={sanitizeText(product.name)}
+                    data-clickable={config.imageClickable ? 'true' : 'false'}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.4s ease',
+                      transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
+                      cursor: config.imageClickable ? 'pointer' : 'default',
+                    }}
+                  />
 
                 {product.badge && (
                   <span style={{
@@ -132,7 +156,14 @@ export function ProductGrid({ config }: ProductGridProps) {
               </div>
 
               {/* Product Info */}
-              <div style={{ padding: '16px' }}>
+              <div
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setSelectedProduct(product);
+                }}
+                style={{ padding: '16px', cursor: 'pointer' }}
+              >
                 <h3 style={{ fontSize: '14px', fontWeight: 500, color: '#111', marginBottom: '4px' }}>
                   {sanitizeText(product.name)}
                 </h3>
@@ -140,7 +171,8 @@ export function ProductGrid({ config }: ProductGridProps) {
                   ${product.price.toFixed(2)}
                 </p>
               </div>
-            </div>
+              </div>
+            </CardWrapper>
           ))}
         </div>
 
@@ -179,6 +211,12 @@ export function ProductGrid({ config }: ProductGridProps) {
           </button>
         </div>
       </div>
+
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        onAddToCart={handleAddToCart}
+      />
     </section>
   );
 }

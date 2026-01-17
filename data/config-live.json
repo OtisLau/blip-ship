@@ -20,32 +20,41 @@
   "products": {
     "sectionTitle": "Featured Products",
     "layout": "grid-4",
+    "imageClickable": false,
     "items": [
       {
         "id": "prod_001",
         "name": "Classic Heavyweight Hoodie",
         "price": 89.00,
         "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
-        "badge": "Best Seller"
+        "badge": "Best Seller",
+        "description": "Our signature heavyweight hoodie features a relaxed fit with dropped shoulders and a cozy kangaroo pocket. Double-stitched seams ensure durability while the brushed fleece interior provides maximum comfort.",
+        "materials": "100% organic cotton, 400 GSM heavyweight fleece. Pre-shrunk and garment-dyed for a lived-in feel."
       },
       {
         "id": "prod_002",
         "name": "Essential Cotton Tee",
         "price": 35.00,
-        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80"
+        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+        "description": "The perfect everyday tee with a slightly oversized fit. Features a ribbed crew neck and reinforced shoulder seams for lasting comfort and shape retention.",
+        "materials": "100% premium cotton, 180 GSM. Enzyme-washed for softness."
       },
       {
         "id": "prod_003",
         "name": "Relaxed Fit Joggers",
         "price": 75.00,
         "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
-        "badge": "New"
+        "badge": "New",
+        "description": "Designed for all-day comfort, these joggers feature a tapered leg, elastic waistband with drawcord, and deep side pockets. Perfect for lounging or light activity.",
+        "materials": "80% cotton, 20% polyester French terry. Soft-brushed interior."
       },
       {
         "id": "prod_004",
         "name": "Oversized Crewneck",
         "price": 79.00,
-        "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80"
+        "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80",
+        "description": "A wardrobe staple with a modern oversized silhouette. Features a ribbed collar, cuffs, and hem with a relaxed drop-shoulder design for effortless style.",
+        "materials": "100% organic cotton, 350 GSM midweight fleece. Garment-washed."
       }
     ]
   },

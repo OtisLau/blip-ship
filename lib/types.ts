@@ -99,6 +99,9 @@ export interface SiteConfig {
       price: number;
       image: string;
       badge?: string;
+      productUrl?: string; // URL to navigate when image/card is clicked
+      description?: string; // Longer product description
+      materials?: string; // Materials/fabric information
     }>;
   };
 
