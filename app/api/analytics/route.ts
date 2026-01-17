@@ -15,7 +15,14 @@ export async function GET(request: NextRequest) {
     // Aggregate into metrics
     const analytics = aggregateEvents(events);
 
-    return NextResponse.json(analytics);
+    // Add cache headers for better performance (rule: server-cache-lru)
+    // s-maxage: CDN caches for 5 seconds
+    // stale-while-revalidate: serve stale while fetching fresh data for 10 seconds
+    return NextResponse.json(analytics, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=5, stale-while-revalidate=10',
+      },
+    });
   } catch (error) {
     console.error('Error fetching analytics:', error);
     return NextResponse.json(

@@ -1,13 +1,7 @@
-import { Header } from '@/components/store/Header';
-import { Hero } from '@/components/store/Hero';
-import { ProductGrid } from '@/components/store/ProductGrid';
-import { Testimonials } from '@/components/store/Testimonials';
-import { Footer } from '@/components/store/Footer';
-import { CartDrawer } from '@/components/store/CartDrawer';
-import { CartProvider } from '@/context/CartContext';
-import { EventTracker } from '@/components/tracking/EventTracker';
+import { StoreContent } from '@/components/store/StoreContent';
 import { getConfig } from '@/lib/db';
 
+// Server Component - fetches config on the server, passes to client
 export default async function Store({
   searchParams,
 }: {
@@ -24,26 +18,5 @@ export default async function Store({
     config = await getConfig('live');
   }
 
-  return (
-    <EventTracker>
-      <CartProvider>
-        <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
-          <Header />
-          <section data-section="hero">
-            <Hero config={config.hero} />
-          </section>
-          <section data-section="products">
-            <ProductGrid config={config.products} />
-          </section>
-          <section data-section="testimonials">
-            <Testimonials config={config.testimonials} />
-          </section>
-          <section data-section="footer">
-            <Footer config={config.footer} />
-          </section>
-          <CartDrawer />
-        </main>
-      </CartProvider>
-    </EventTracker>
-  );
+  return <StoreContent config={config} />;
 }
