@@ -1,0 +1,3783 @@
+[
+  {
+    "id": "evt_1768682438041_skfw86u",
+    "type": "page_view",
+    "timestamp": 1768682438041,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_90gr0me",
+    "type": "page_view",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_tuz25js",
+    "type": "click",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1501,
+    "y": 19,
+    "elementSelector": "button",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_9i4zc9v",
+    "type": "click",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1632,
+    "y": 189,
+    "elementSelector": "div",
+    "elementText": "Your cart is empty",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_agv56hc",
+    "type": "dead_click",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1632,
+    "y": 189,
+    "elementSelector": "div",
+    "elementText": "Your cart is empty",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_qyywo9b",
+    "type": "click",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1758,
+    "y": 43,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_ul828rg",
+    "type": "scroll_depth",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_v0pqppc",
+    "type": "scroll_depth",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_8ypmuda",
+    "type": "scroll_depth",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 75,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682441314_sevd1fk",
+    "type": "section_view",
+    "timestamp": 1768682441314,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682443235_rxvjfm1",
+    "type": "cta_click",
+    "timestamp": 1768682443235,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1095,
+    "y": 336,
+    "elementSelector": "div",
+    "elementText": "“The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682443235_309j6sf",
+    "type": "dead_click",
+    "timestamp": 1768682443235,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1095,
+    "y": 336,
+    "elementSelector": "div",
+    "elementText": "“The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682447912_p50facm",
+    "type": "click",
+    "timestamp": 1768682447912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 865,
+    "y": 902,
+    "elementSelector": "input",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682447912_op8iz4k",
+    "type": "section_view",
+    "timestamp": 1768682447912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682447912_wej031h",
+    "type": "section_view",
+    "timestamp": 1768682447912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682450194_y4zszb4",
+    "type": "click",
+    "timestamp": 1768682450194,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1151,
+    "y": 439,
+    "elementSelector": "h2",
+    "elementText": "Featured Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682450194_054qpbz",
+    "type": "dead_click",
+    "timestamp": 1768682450194,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1151,
+    "y": 439,
+    "elementSelector": "h2",
+    "elementText": "Featured Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682450194_gbfjdqo",
+    "type": "click",
+    "timestamp": 1768682450194,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 738,
+    "y": 802,
+    "elementSelector": "button",
+    "elementText": "✓ Added to Cart",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682451322_gcqr5df",
+    "type": "click",
+    "timestamp": 1768682451322,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1173,
+    "y": 283,
+    "elementSelector": "div",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682451322_bp7oog3",
+    "type": "dead_click",
+    "timestamp": 1768682451322,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1173,
+    "y": 283,
+    "elementSelector": "div",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682516765_am75lph",
+    "type": "page_view",
+    "timestamp": 1768682516765,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682516765_lwpklxd",
+    "type": "click",
+    "timestamp": 1768682516765,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1497,
+    "y": 43,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682517832_20s1uax",
+    "type": "click",
+    "timestamp": 1768682517832,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1773,
+    "y": 43,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682641462_txhal58",
+    "type": "page_view",
+    "timestamp": 1768682641462,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682641462_ei58xlp",
+    "type": "scroll_depth",
+    "timestamp": 1768682641462,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682641462_xrpdjas",
+    "type": "section_view",
+    "timestamp": 1768682641462,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682641462_b0qhfgf",
+    "type": "section_view",
+    "timestamp": 1768682641462,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_fk6az2w",
+    "type": "click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1489,
+    "y": 30,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_joi9adc",
+    "type": "click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1162,
+    "y": 634,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_8jxbafx",
+    "type": "dead_click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1162,
+    "y": 634,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_zg3hj42",
+    "type": "click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1088,
+    "y": 572,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_bwowz9x",
+    "type": "dead_click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1088,
+    "y": 572,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_6k29kdi",
+    "type": "click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1058,
+    "y": 641,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_nw4ezml",
+    "type": "dead_click",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1058,
+    "y": 641,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682646739_h6c48dm",
+    "type": "add_to_cart",
+    "timestamp": 1768682646739,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1056,
+    "y": 648,
+    "elementSelector": "button",
+    "elementText": "✓ Added to Cart",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682649997_fvmfj9q",
+    "type": "click",
+    "timestamp": 1768682649997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1726,
+    "y": 238,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682649997_socxcug",
+    "type": "click",
+    "timestamp": 1768682649997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1759,
+    "y": 38,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682651078_hslmnew",
+    "type": "add_to_cart",
+    "timestamp": 1768682651078,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1316,
+    "y": 683,
+    "elementSelector": "button",
+    "elementText": "✓ Added to Cart",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682652854_b08qyyf",
+    "type": "click",
+    "timestamp": 1768682652854,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1596,
+    "y": 236,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682652855_hebgvsu",
+    "type": "click",
+    "timestamp": 1768682652855,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1751,
+    "y": 49,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682745279_yv5q1vs",
+    "type": "scroll_depth",
+    "timestamp": 1768682745279,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682745279_d0uu6zd",
+    "type": "section_view",
+    "timestamp": 1768682745279,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682746254_xqgegib",
+    "type": "click",
+    "timestamp": 1768682746254,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1129,
+    "y": 596,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682746254_gs62ar1",
+    "type": "dead_click",
+    "timestamp": 1768682746254,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1129,
+    "y": 596,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682747481_s9wiho4",
+    "type": "page_view",
+    "timestamp": 1768682747481,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682747481_76btojb",
+    "type": "scroll_depth",
+    "timestamp": 1768682747481,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682747481_grgn2t2",
+    "type": "section_view",
+    "timestamp": 1768682747481,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682749386_e3fd2a2",
+    "type": "click",
+    "timestamp": 1768682749386,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 917,
+    "y": 605,
+    "elementSelector": "button",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682781470_gudi8pc",
+    "type": "scroll_depth",
+    "timestamp": 1768682781470,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682783454_fa1ting",
+    "type": "section_view",
+    "timestamp": 1768682783454,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682784505_b79j0oe",
+    "type": "cta_click",
+    "timestamp": 1768682784505,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 447,
+    "y": 425,
+    "elementSelector": "button.hero-cta",
+    "elementText": "Shop Collection",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682786018_jd4oxmy",
+    "type": "add_to_cart",
+    "timestamp": 1768682786018,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1028,
+    "y": 463,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682787351_ij8hkxs",
+    "type": "click",
+    "timestamp": 1768682787351,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1747,
+    "y": 49,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682789655_dsz6odp",
+    "type": "click",
+    "timestamp": 1768682789655,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 908,
+    "y": 658,
+    "elementSelector": "button",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682789655_d9lk72w",
+    "type": "section_view",
+    "timestamp": 1768682789655,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682789655_p5jtjfl",
+    "type": "scroll_depth",
+    "timestamp": 1768682789655,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 75,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682789655_gpnpjo4",
+    "type": "section_view",
+    "timestamp": 1768682789655,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682789655_qshjeyr",
+    "type": "scroll_depth",
+    "timestamp": 1768682789655,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 100,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_3m184if",
+    "type": "cta_click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 631,
+    "y": 573,
+    "elementSelector": "div",
+    "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_h0xbdl1",
+    "type": "dead_click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 631,
+    "y": 573,
+    "elementSelector": "div",
+    "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_xjp01tv",
+    "type": "click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 688,
+    "y": 477,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_239sag3",
+    "type": "dead_click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 688,
+    "y": 477,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_csgyh85",
+    "type": "click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_lquml8i",
+    "type": "dead_click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_n09qeli",
+    "type": "click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_r9w0r7q",
+    "type": "dead_click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_mhl8ijr",
+    "type": "click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682800600_s49b5ke",
+    "type": "dead_click",
+    "timestamp": 1768682800600,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_ljsw8uy",
+    "type": "click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_idq2761",
+    "type": "dead_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_go0nnk1",
+    "type": "click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_r4sl8y3",
+    "type": "dead_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_c9wjs76",
+    "type": "click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_cme70g8",
+    "type": "dead_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 824,
+    "y": 497,
+    "elementSelector": "h2",
+    "elementText": "What People Are Saying",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_0u4k61m",
+    "type": "cta_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 790,
+    "y": 537,
+    "elementSelector": "div",
+    "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_q2193y1",
+    "type": "dead_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 790,
+    "y": 537,
+    "elementSelector": "div",
+    "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_csdg89a",
+    "type": "cta_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 909,
+    "y": 597,
+    "elementSelector": "div",
+    "elementText": "“Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682802242_1b96lmf",
+    "type": "dead_click",
+    "timestamp": 1768682802242,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 909,
+    "y": 597,
+    "elementSelector": "div",
+    "elementText": "“Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682804297_73s5iw0",
+    "type": "page_view",
+    "timestamp": 1768682804297,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682804297_9vr3msa",
+    "type": "cta_click",
+    "timestamp": 1768682804297,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 871,
+    "y": 591,
+    "elementSelector": "div",
+    "elementText": "“Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682804297_v6eus52",
+    "type": "dead_click",
+    "timestamp": 1768682804297,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 871,
+    "y": 591,
+    "elementSelector": "div",
+    "elementText": "“Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_z1lc98l",
+    "type": "click",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 554,
+    "y": 268,
+    "elementSelector": "button",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_poex6f2",
+    "type": "scroll_depth",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_4cj1pqg",
+    "type": "scroll_depth",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_yp3tioh",
+    "type": "section_view",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_h6thpc7",
+    "type": "section_view",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_bhaawvm",
+    "type": "click",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 574,
+    "y": 391,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_kb4cz4k",
+    "type": "dead_click",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 574,
+    "y": 391,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682807258_8rzvu48",
+    "type": "add_to_cart",
+    "timestamp": 1768682807258,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 635,
+    "y": 484,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682808741_8zzz17t",
+    "type": "click",
+    "timestamp": 1768682808741,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 38,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682814516_v74dvj3",
+    "type": "click",
+    "timestamp": 1768682814516,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 611,
+    "y": 530,
+    "elementSelector": "div",
+    "elementText": "Relaxed Fit Joggers$75.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682814516_853avyn",
+    "type": "dead_click",
+    "timestamp": 1768682814516,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 611,
+    "y": 530,
+    "elementSelector": "div",
+    "elementText": "Relaxed Fit Joggers$75.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682814516_06zbxvj",
+    "type": "click",
+    "timestamp": 1768682814516,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 311,
+    "y": 515,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682814516_fqwr7n3",
+    "type": "dead_click",
+    "timestamp": 1768682814516,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 311,
+    "y": 515,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682814516_vkeyhh6",
+    "type": "add_to_cart",
+    "timestamp": 1768682814516,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 344,
+    "y": 494,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682816080_8laheh0",
+    "type": "click",
+    "timestamp": 1768682816080,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1003,
+    "y": 46,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682818996_m8ml7fd",
+    "type": "click",
+    "timestamp": 1768682818996,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 700,
+    "y": 37,
+    "elementSelector": "button",
+    "elementText": "Sale",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682818997_v66ajby",
+    "type": "click",
+    "timestamp": 1768682818997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 659,
+    "y": 28,
+    "elementSelector": "nav",
+    "elementText": "New ArrivalsMenWomenSale",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682818997_ixhkmea",
+    "type": "dead_click",
+    "timestamp": 1768682818997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 659,
+    "y": 28,
+    "elementSelector": "nav",
+    "elementText": "New ArrivalsMenWomenSale",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682818997_kwqlffb",
+    "type": "click",
+    "timestamp": 1768682818997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 632,
+    "y": 31,
+    "elementSelector": "button",
+    "elementText": "Women",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682818997_zfmaumh",
+    "type": "rage_click",
+    "timestamp": 1768682818997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 664,
+    "y": 32,
+    "elementSelector": "button",
+    "clickCount": 3,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682818997_k8eka50",
+    "type": "section_view",
+    "timestamp": 1768682818997,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682834850_uy5p0qs",
+    "type": "page_view",
+    "timestamp": 1768682834850,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682834850_6txwt8v",
+    "type": "click",
+    "timestamp": 1768682834850,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 815,
+    "y": 572,
+    "elementSelector": "div",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682834850_gsg7o9l",
+    "type": "dead_click",
+    "timestamp": 1768682834850,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 815,
+    "y": 572,
+    "elementSelector": "div",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682964637_qymskdn",
+    "type": "page_view",
+    "timestamp": 1768682964637,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682966311_1reh23j",
+    "type": "section_view",
+    "timestamp": 1768682966311,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682966311_zlvul2s",
+    "type": "click",
+    "timestamp": 1768682966311,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 604,
+    "y": 653,
+    "elementSelector": "h2",
+    "elementText": "Featured Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682966311_ioqugbp",
+    "type": "dead_click",
+    "timestamp": 1768682966311,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 604,
+    "y": 653,
+    "elementSelector": "h2",
+    "elementText": "Featured Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682967692_5qa5t5z",
+    "type": "page_view",
+    "timestamp": 1768682967692,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682970742_u1ewxua",
+    "type": "cta_click",
+    "timestamp": 1768682970743,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 189,
+    "y": 327,
+    "elementSelector": "button.hero-cta",
+    "elementText": "Shop Collection",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682970743_dxsre8e",
+    "type": "section_view",
+    "timestamp": 1768682970743,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682970743_l4ufmv4",
+    "type": "scroll_depth",
+    "timestamp": 1768682970743,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682970743_oppzasq",
+    "type": "add_to_cart",
+    "timestamp": 1768682970743,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 395,
+    "y": 430,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_ehihefc",
+    "type": "click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 866,
+    "y": 722,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Essential Cotton Tee$35.00−1+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_4i942cm",
+    "type": "dead_click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 866,
+    "y": 722,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Essential Cotton Tee$35.00−1+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_oad323t",
+    "type": "click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 866,
+    "y": 722,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Essential Cotton Tee$35.00−1+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_0vype58",
+    "type": "dead_click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 866,
+    "y": 722,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Essential Cotton Tee$35.00−1+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_7xthf06",
+    "type": "click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_204c5j4",
+    "type": "dead_click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_3qcc2x0",
+    "type": "click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_xqe91vf",
+    "type": "dead_click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_trt4f7s",
+    "type": "click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682971766_726ov9x",
+    "type": "dead_click",
+    "timestamp": 1768682971766,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682973163_s18stme",
+    "type": "click",
+    "timestamp": 1768682973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682973163_yrgegik",
+    "type": "dead_click",
+    "timestamp": 1768682973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682973163_c4pnqsk",
+    "type": "click",
+    "timestamp": 1768682973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682973163_midmog3",
+    "type": "dead_click",
+    "timestamp": 1768682973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682973163_6yb4ksj",
+    "type": "click",
+    "timestamp": 1768682973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682973163_rk6wll4",
+    "type": "dead_click",
+    "timestamp": 1768682973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 710,
+    "y": 195,
+    "elementSelector": "img.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682980942_3ehuoez",
+    "type": "click",
+    "timestamp": 1768682980942,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 520,
+    "y": 433,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682980942_wab72fv",
+    "type": "dead_click",
+    "timestamp": 1768682980942,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 520,
+    "y": 433,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682980942_jkcjujm",
+    "type": "add_to_cart",
+    "timestamp": 1768682980942,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 520,
+    "y": 433,
+    "elementSelector": "div",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd to",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682980942_l7us4pu",
+    "type": "dead_click",
+    "timestamp": 1768682980942,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 520,
+    "y": 433,
+    "elementSelector": "div",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd to",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682983429_4pvhbc5",
+    "type": "scroll_depth",
+    "timestamp": 1768682983429,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682983429_lzcjfkk",
+    "type": "section_view",
+    "timestamp": 1768682983429,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682983429_ym0fv1i",
+    "type": "scroll_depth",
+    "timestamp": 1768682983429,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 75,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682983429_sbgs6gd",
+    "type": "scroll_depth",
+    "timestamp": 1768682983429,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 100,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682983429_la3g66q",
+    "type": "section_view",
+    "timestamp": 1768682983429,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768682984563_iugy74r",
+    "type": "section_view",
+    "timestamp": 1768682984563,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683107398_5wr56yb",
+    "type": "page_view",
+    "timestamp": 1768683107398,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683112838_stb8v4g",
+    "type": "page_view",
+    "timestamp": 1768683112838,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683136349_txlxyee",
+    "type": "page_view",
+    "timestamp": 1768683136349,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683137503_ghna1s4",
+    "type": "scroll_depth",
+    "timestamp": 1768683137504,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683137504_smctbgo",
+    "type": "scroll_depth",
+    "timestamp": 1768683137504,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683137504_u1pevf1",
+    "type": "section_view",
+    "timestamp": 1768683137504,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683146994_y9or997",
+    "type": "scroll_depth",
+    "timestamp": 1768683146994,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 75,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683148211_k40pq60",
+    "type": "section_view",
+    "timestamp": 1768683148211,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683148211_ubtp2q6",
+    "type": "section_view",
+    "timestamp": 1768683148211,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683150069_ahm9qt2",
+    "type": "click",
+    "timestamp": 1768683150069,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 628,
+    "y": 629,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683150069_d5cfm98",
+    "type": "dead_click",
+    "timestamp": 1768683150069,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 628,
+    "y": 629,
+    "elementSelector": "img",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_66mn0oa",
+    "type": "click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_byf7pbv",
+    "type": "dead_click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_avfl1yr",
+    "type": "click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_5f3c891",
+    "type": "dead_click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_rcy5vv8",
+    "type": "click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_tytu5wl",
+    "type": "rage_click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "clickCount": 3,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_lkp8olt",
+    "type": "dead_click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_zrwk3er",
+    "type": "click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_m4x6ej0",
+    "type": "dead_click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683151924_hg3zm6l",
+    "type": "click",
+    "timestamp": 1768683151924,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683153170_xxim8e0",
+    "type": "dead_click",
+    "timestamp": 1768683153170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683153170_w5u78sd",
+    "type": "click",
+    "timestamp": 1768683153170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683153170_hgvxdke",
+    "type": "rage_click",
+    "timestamp": 1768683153170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "clickCount": 3,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683153170_po4lprx",
+    "type": "dead_click",
+    "timestamp": 1768683153170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683153170_e8k5sua",
+    "type": "click",
+    "timestamp": 1768683153170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683153170_83wots7",
+    "type": "dead_click",
+    "timestamp": 1768683153170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 726,
+    "y": 844,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683156392_wwazkk4",
+    "type": "add_to_cart",
+    "timestamp": 1768683156392,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 665,
+    "y": 682,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683163142_4pmdhox",
+    "type": "click",
+    "timestamp": 1768683163142,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 841,
+    "y": 203,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683163142_0v8fqjy",
+    "type": "click",
+    "timestamp": 1768683163142,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 841,
+    "y": 203,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683163142_q26eea8",
+    "type": "click",
+    "timestamp": 1768683163142,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 841,
+    "y": 203,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683163142_jaqzs52",
+    "type": "rage_click",
+    "timestamp": 1768683163142,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 841,
+    "y": 203,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "clickCount": 3,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683165461_n7y9i35",
+    "type": "click",
+    "timestamp": 1768683165461,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 840,
+    "y": 199,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683167955_yexw1on",
+    "type": "click",
+    "timestamp": 1768683167955,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 979,
+    "y": 208,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683169005_u5rrk0i",
+    "type": "click",
+    "timestamp": 1768683169005,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1008,
+    "y": 41,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683202018_msxizmy",
+    "type": "click",
+    "timestamp": 1768683202018,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 799,
+    "y": 594,
+    "elementSelector": "div",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683202018_0yrxt8l",
+    "type": "dead_click",
+    "timestamp": 1768683202018,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 799,
+    "y": 594,
+    "elementSelector": "div",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_cbm6md9",
+    "type": "add_to_cart",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 706,
+    "y": 618,
+    "elementSelector": "div",
+    "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_3yvub6b",
+    "type": "dead_click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 706,
+    "y": 618,
+    "elementSelector": "div",
+    "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_zs2ejga",
+    "type": "click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 597,
+    "y": 664,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_n6ip9j6",
+    "type": "click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 687,
+    "y": 539,
+    "elementSelector": "h3",
+    "elementText": "Relaxed Fit Joggers",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_qquoliz",
+    "type": "dead_click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 687,
+    "y": 539,
+    "elementSelector": "h3",
+    "elementText": "Relaxed Fit Joggers",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_qhyihi8",
+    "type": "add_to_cart",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 686,
+    "y": 481,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_w7rejga",
+    "type": "click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 850,
+    "y": 212,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_qnrbccv",
+    "type": "click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 850,
+    "y": 212,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_f9h093x",
+    "type": "click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 850,
+    "y": 212,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683208187_dbnjj36",
+    "type": "click",
+    "timestamp": 1768683208187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 850,
+    "y": 212,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209240_6yapyck",
+    "type": "click",
+    "timestamp": 1768683209240,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 850,
+    "y": 212,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_s99lzda",
+    "type": "click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_jbdsbrl",
+    "type": "dead_click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_c7mco6b",
+    "type": "click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_4ubrtui",
+    "type": "dead_click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_lmshqt3",
+    "type": "click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_22oeh2s",
+    "type": "dead_click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_vesendg",
+    "type": "click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_plwr9x2",
+    "type": "dead_click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209241_rgz3qcz",
+    "type": "click",
+    "timestamp": 1768683209241,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_l3lerr4",
+    "type": "dead_click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_gu4bhc1",
+    "type": "click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_mnatent",
+    "type": "dead_click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_o3e7owa",
+    "type": "click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_23x8qr3",
+    "type": "dead_click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_a6e0wn4",
+    "type": "click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_gvh9xvq",
+    "type": "dead_click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_gydnhbp",
+    "type": "click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_f8zgwvs",
+    "type": "dead_click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683209912_zh62hmx",
+    "type": "click",
+    "timestamp": 1768683209912,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_bwbqr2q",
+    "type": "dead_click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_rk87r2e",
+    "type": "click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_7p9hup2",
+    "type": "dead_click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_wp8dfyt",
+    "type": "click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_jephhg6",
+    "type": "dead_click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_k8u6xzs",
+    "type": "click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_lkxlnra",
+    "type": "rage_click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "clickCount": 13,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683211338_qy6dpxf",
+    "type": "dead_click",
+    "timestamp": 1768683211338,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 853,
+    "y": 312,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−6+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683216641_4fezt25",
+    "type": "click",
+    "timestamp": 1768683216641,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1013,
+    "y": 48,
+    "elementSelector": "path",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683322007_pmngiim",
+    "type": "page_view",
+    "timestamp": 1768683322007,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683341133_o0hp88y",
+    "type": "page_view",
+    "timestamp": 1768683341133,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683372958_8osm807",
+    "type": "page_view",
+    "timestamp": 1768683372958,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683384639_xu9nxde",
+    "type": "page_view",
+    "timestamp": 1768683384639,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683764170_m5y7clo",
+    "type": "page_view",
+    "timestamp": 1768683764170,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683771743_xhzgwfe",
+    "type": "page_view",
+    "timestamp": 1768683771743,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683806533_ukg7dg1",
+    "type": "page_view",
+    "timestamp": 1768683806533,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683820858_t38v9kc",
+    "type": "page_view",
+    "timestamp": 1768683820858,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683834404_utt6khs",
+    "type": "page_view",
+    "timestamp": 1768683834404,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683868271_eo8leol",
+    "type": "page_view",
+    "timestamp": 1768683868271,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683877059_xub849b",
+    "type": "page_view",
+    "timestamp": 1768683877059,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683915282_7mkv58h",
+    "type": "scroll_depth",
+    "timestamp": 1768683915282,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 25,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683915282_4s15mpd",
+    "type": "section_view",
+    "timestamp": 1768683915282,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683917323_r44bmqn",
+    "type": "right_click",
+    "timestamp": 1768683917323,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1292,
+    "y": 675,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1800,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683929814_axa8qxc",
+    "type": "click",
+    "timestamp": 1768683929814,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 846,
+    "y": 606,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683929814_er3x0q2",
+    "type": "dead_click",
+    "timestamp": 1768683929814,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 846,
+    "y": 606,
+    "elementSelector": "div",
+    "elementText": "View All Products",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683931604_javavq5",
+    "type": "scroll_depth",
+    "timestamp": 1768683931604,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 50,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683931604_lrd9jbq",
+    "type": "section_view",
+    "timestamp": 1768683931604,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683931604_vrrc8j7",
+    "type": "scroll_depth",
+    "timestamp": 1768683931604,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "scrollDepth": 75,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683933187_omh8lk0",
+    "type": "section_view",
+    "timestamp": 1768683933187,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683934501_oba9gbg",
+    "type": "scroll_reversal",
+    "timestamp": 1768683934501,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementText": "User reversed scroll direction 3 times",
+    "scrollDepth": 30,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683940975_onvinfs",
+    "type": "price_check",
+    "timestamp": 1768683940975,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 844,
+    "y": 813,
+    "elementSelector": "div",
+    "elementText": "Oversized Crewneck$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683940975_ve0ys7u",
+    "type": "dead_click",
+    "timestamp": 1768683940975,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 844,
+    "y": 813,
+    "elementSelector": "div",
+    "elementText": "Oversized Crewneck$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683942219_zjl284p",
+    "type": "hover_intent",
+    "timestamp": 1768683942219,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementSelector": "div",
+    "elementText": "Add to CartOversized Crewneck$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683947701_52lmiww",
+    "type": "add_to_cart",
+    "timestamp": 1768683947701,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 891,
+    "y": 707,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683947701_jxi0k33",
+    "type": "hover_intent",
+    "timestamp": 1768683947701,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementSelector": "div",
+    "elementText": "AddedOversized Crewneck$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683952863_xpt8mvh",
+    "type": "price_check",
+    "timestamp": 1768683952863,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1032,
+    "y": 886,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Subtotal$79.00CheckoutFree shipping on orders over $100",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683952863_nvpw7jj",
+    "type": "dead_click",
+    "timestamp": 1768683952863,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1032,
+    "y": 886,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Subtotal$79.00CheckoutFree shipping on orders over $100",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683952863_rnh310o",
+    "type": "text_selection",
+    "timestamp": 1768683952863,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementText": "$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683956093_1i98teb",
+    "type": "price_check",
+    "timestamp": 1768683956093,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 952,
+    "y": 889,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Subtotal$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683956094_xiah1jc",
+    "type": "dead_click",
+    "timestamp": 1768683956094,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 952,
+    "y": 889,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Subtotal$79.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683960540_bgspeto",
+    "type": "click",
+    "timestamp": 1768683960540,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 972,
+    "y": 202,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683962463_i1f007p",
+    "type": "click",
+    "timestamp": 1768683962463,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 391,
+    "y": 755,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683962463_9csc35z",
+    "type": "dead_click",
+    "timestamp": 1768683962463,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 391,
+    "y": 755,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683965701_yrldbr9",
+    "type": "scroll_reversal",
+    "timestamp": 1768683965701,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementText": "User reversed scroll direction 3 times",
+    "scrollDepth": 24,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683968976_oohgogo",
+    "type": "hover_intent",
+    "timestamp": 1768683968976,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementSelector": "div",
+    "elementText": "NewAdd to CartRelaxed Fit Joggers$75.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683973163_abstoxd",
+    "type": "add_to_cart",
+    "timestamp": 1768683973163,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 613,
+    "y": 636,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683977984_qi1a57m",
+    "type": "click",
+    "timestamp": 1768683977984,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 850,
+    "y": 211,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683979108_3ymb8o7",
+    "type": "hover_intent",
+    "timestamp": 1768683979108,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "+",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683981409_fv7vyly",
+    "type": "price_check",
+    "timestamp": 1768683981409,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1019,
+    "y": 884,
+    "elementSelector": "span.jsx-532d500bfc6d5d04",
+    "elementText": "$150.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683981409_lrx08bs",
+    "type": "dead_click",
+    "timestamp": 1768683981409,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1019,
+    "y": 884,
+    "elementSelector": "span.jsx-532d500bfc6d5d04",
+    "elementText": "$150.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683981409_6ek1b7a",
+    "type": "text_selection",
+    "timestamp": 1768683981409,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementText": "150.0",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683983633_ugryl1f",
+    "type": "price_check",
+    "timestamp": 1768683983633,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 983,
+    "y": 836,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−2+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683983633_atxm2fo",
+    "type": "dead_click",
+    "timestamp": 1768683983633,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 983,
+    "y": 836,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Relaxed Fit Joggers$75.00−2+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_gn9a4hd",
+    "type": "click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 216,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "−2+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_rjz6tzu",
+    "type": "dead_click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 216,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "−2+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_tw5mdvz",
+    "type": "click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 215,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "−2+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_tjtqfrz",
+    "type": "dead_click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 215,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "−2+Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_alydmtv",
+    "type": "click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 212,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "Remove",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_btg4r64",
+    "type": "rage_click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 214,
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "clickCount": 3,
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_3jczdbb",
+    "type": "cart_review",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 212,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Your cart is emptyAdd some items to get started",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_gbszhf6",
+    "type": "dead_click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 212,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Your cart is emptyAdd some items to get started",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_a0v5fyy",
+    "type": "double_click",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1001,
+    "y": 212,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementText": "Your cart is emptyAdd some items to get started",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683987700_cs7zkzw",
+    "type": "text_selection",
+    "timestamp": 1768683987700,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementText": "Your",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683993445_ai23abt",
+    "type": "hover_intent",
+    "timestamp": 1768683993445,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "elementText": "",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768683994886_axd1ls6",
+    "type": "click",
+    "timestamp": 1768683994886,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "x": 1006,
+    "y": 39,
+    "elementSelector": "svg",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768684000549_npxwj0j",
+    "type": "page_view",
+    "timestamp": 1768684000549,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  },
+  {
+    "id": "evt_1768684006143_91oep53",
+    "type": "hover_intent",
+    "timestamp": 1768684006143,
+    "sessionId": "sess_1768682438041_7thnl6ug8",
+    "elementSelector": "div",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    }
+  }
+]

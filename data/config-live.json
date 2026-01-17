@@ -1,0 +1,77 @@
+{
+  "id": "config_001",
+  "version": 1,
+  "status": "live",
+
+  "hero": {
+    "headline": "Elevate Your Everyday",
+    "subheadline": "Premium basics designed for comfort and style. Sustainably made, built to last.",
+    "backgroundColor": "#18181b",
+    "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
+    "cta": {
+      "text": "Shop Collection",
+      "color": "#3b82f6",
+      "textColor": "#ffffff",
+      "position": "inside-hero",
+      "size": "large"
+    }
+  },
+
+  "products": {
+    "sectionTitle": "Featured Products",
+    "layout": "grid-4",
+    "items": [
+      {
+        "id": "prod_001",
+        "name": "Classic Heavyweight Hoodie",
+        "price": 89.00,
+        "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
+        "badge": "Best Seller"
+      },
+      {
+        "id": "prod_002",
+        "name": "Essential Cotton Tee",
+        "price": 35.00,
+        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80"
+      },
+      {
+        "id": "prod_003",
+        "name": "Relaxed Fit Joggers",
+        "price": 75.00,
+        "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
+        "badge": "New"
+      },
+      {
+        "id": "prod_004",
+        "name": "Oversized Crewneck",
+        "price": 79.00,
+        "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80"
+      }
+    ]
+  },
+
+  "testimonials": {
+    "sectionTitle": "What People Are Saying",
+    "show": true,
+    "items": [
+      {
+        "quote": "The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel of these pieces.",
+        "author": "Alex T."
+      },
+      {
+        "quote": "Finally found my go-to brand. The fit is perfect and they actually last through hundreds of washes.",
+        "author": "Jordan M."
+      },
+      {
+        "quote": "Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+        "author": "Sam K."
+      }
+    ]
+  },
+
+  "footer": {
+    "backgroundColor": "#09090b",
+    "showNewsletter": true,
+    "newsletterHeadline": "Get 15% Off Your First Order"
+  }
+}

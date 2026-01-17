@@ -1,0 +1,829 @@
+'use client';
+
+import { useEffect, useRef, useCallback } from 'react';
+import { EventType, InferredBehavior } from '@/lib/types';
+
+interface PartialEvent {
+  type: EventType;
+  x?: number;
+  y?: number;
+  elementSelector?: string;
+  elementText?: string;
+  scrollDepth?: number;
+  clickCount?: number;
+  sectionId?: string;
+  productId?: string;
+  productName?: string;
+  productPrice?: number;
+  inferredBehavior?: InferredBehavior;
+  behaviorConfidence?: number;
+  behaviorContext?: string;
+}
+
+// Session behavior tracking for intent inference
+interface BehaviorState {
+  productsViewed: string[];
+  priceElementsClicked: number;
+  searchClicks: number;
+  cartOpens: number;
+  ctaClicks: number;
+  rageClicks: number;
+  deadClicks: number;
+  addToCartCount: number;
+  timeOnProducts: number;
+  lastProductViewTime: number;
+}
+
+// Generate a session ID that persists for the browser session
+function getSessionId(): string {
+  if (typeof window === 'undefined') return '';
+
+  let sessionId = sessionStorage.getItem('blip_session_id');
+  if (!sessionId) {
+    sessionId = `sess_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+    sessionStorage.setItem('blip_session_id', sessionId);
+  }
+  return sessionId;
+}
+
+// Get a CSS selector for an element
+function getSelector(el: HTMLElement): string {
+  if (el.id) return `#${el.id}`;
+
+  const classes = el.className;
+  if (typeof classes === 'string' && classes.trim()) {
+    const firstClass = classes.trim().split(/\s+/)[0];
+    return `${el.tagName.toLowerCase()}.${firstClass}`;
+  }
+
+  return el.tagName.toLowerCase();
+}
+
+// Check if element or its parent is interactive
+function isInteractive(el: HTMLElement): boolean {
+  const interactiveSelector = 'a, button, input, textarea, select, [onclick], [role="button"], [tabindex]';
+  return el.matches(interactiveSelector) || el.closest(interactiveSelector) !== null;
+}
+
+// Check if element is price-related
+function isPriceElement(el: HTMLElement): boolean {
+  const text = el.textContent || '';
+  return /\$[\d,.]+/.test(text) ||
+         el.closest('[data-price], .price, [class*="price"]') !== null;
+}
+
+// Check if element is search-related
+function isSearchElement(el: HTMLElement): boolean {
+  return el.matches('input[type="search"], [data-search], .search, [class*="search"]') ||
+         el.closest('input[type="search"], [data-search], .search, [class*="search"]') !== null;
+}
+
+// Check if element is cart-related
+function isCartElement(el: HTMLElement): boolean {
+  const text = (el.textContent || '').toLowerCase();
+  return text.includes('cart') ||
+         el.closest('[data-cart], .cart, [class*="cart"]') !== null;
+}
+
+// Check if element is navigation-related
+function isNavigationElement(el: HTMLElement): boolean {
+  return el.closest('nav, header, [role="navigation"], .nav, .navigation') !== null;
+}
+
+// Session behavior state
+const behaviorState: BehaviorState = {
+  productsViewed: [],
+  priceElementsClicked: 0,
+  searchClicks: 0,
+  cartOpens: 0,
+  ctaClicks: 0,
+  rageClicks: 0,
+  deadClicks: 0,
+  addToCartCount: 0,
+  timeOnProducts: 0,
+  lastProductViewTime: 0,
+};
+
+// Infer what the user is trying to do based on their behavior
+function inferBehavior(): { behavior: InferredBehavior; confidence: number; context: string } {
+  const {
+    productsViewed,
+    priceElementsClicked,
+    searchClicks,
+    cartOpens,
+    ctaClicks,
+    rageClicks,
+    deadClicks,
+    addToCartCount,
+  } = behaviorState;
+
+  // High frustration signals = confused
+  if (rageClicks >= 2 || deadClicks >= 3) {
+    return {
+      behavior: 'confused',
+      confidence: 0.8,
+      context: `User shows frustration: ${rageClicks} rage clicks, ${deadClicks} dead clicks`,
+    };
+  }
+
+  // Added to cart = ready to buy
+  if (addToCartCount > 0) {
+    return {
+      behavior: 'ready_to_buy',
+      confidence: 0.85,
+      context: `User added ${addToCartCount} item(s) to cart`,
+    };
+  }
+
+  // Opened cart multiple times without adding = abandoning or comparison shopping
+  if (cartOpens >= 2 && addToCartCount === 0) {
+    return {
+      behavior: 'abandoning',
+      confidence: 0.6,
+      context: `Opened cart ${cartOpens}x but hasn't added items`,
+    };
+  }
+
+  // Multiple products viewed = comparison shopping
+  if (productsViewed.length >= 3) {
+    return {
+      behavior: 'comparison_shopping',
+      confidence: 0.75,
+      context: `Compared ${productsViewed.length} products: ${productsViewed.slice(-3).join(', ')}`,
+    };
+  }
+
+  // Clicked on prices multiple times = price sensitive
+  if (priceElementsClicked >= 2) {
+    return {
+      behavior: 'price_sensitive',
+      confidence: 0.7,
+      context: `Checked prices ${priceElementsClicked} times`,
+    };
+  }
+
+  // Used search = hunting for something specific
+  if (searchClicks >= 1) {
+    return {
+      behavior: 'product_hunting',
+      confidence: 0.7,
+      context: 'User is searching for a specific product',
+    };
+  }
+
+  // CTA clicks without conversion = interested but hesitant
+  if (ctaClicks >= 1 && addToCartCount === 0) {
+    return {
+      behavior: 'browsing',
+      confidence: 0.6,
+      context: `Clicked ${ctaClicks} CTA(s) but hasn't added to cart`,
+    };
+  }
+
+  // Default: just browsing
+  return {
+    behavior: 'browsing',
+    confidence: 0.5,
+    context: 'User is casually browsing the store',
+  };
+}
+
+// Emoji indicators for different event types
+const eventEmojis: Record<string, string> = {
+  click: '👆',
+  cta_click: '🎯',
+  add_to_cart: '🛒',
+  product_view: '👀',
+  product_compare: '⚖️',
+  price_check: '💰',
+  search_intent: '🔍',
+  navigation_browse: '🧭',
+  cart_review: '🛍️',
+  rage_click: '😤',
+  dead_click: '❌',
+  scroll_depth: '📜',
+  section_view: '📍',
+  page_view: '📄',
+  bounce: '💨',
+  rapid_scroll: '⚡',
+  exit_intent: '🚪',
+  checkout_start: '💳',
+  purchase: '✅',
+  // New event types
+  hover_intent: '🎯',
+  text_selection: '📋',
+  text_copy: '📝',
+  tab_hidden: '👁️‍🗨️',
+  tab_visible: '👁️',
+  scroll_reversal: '🔄',
+  form_focus: '✏️',
+  form_blur: '📤',
+  image_click: '🖼️',
+  link_hover: '🔗',
+  keyboard_shortcut: '⌨️',
+  right_click: '🖱️',
+  double_click: '👆👆',
+};
+
+// Batch events before sending to reduce API calls
+const eventQueue: PartialEvent[] = [];
+let flushTimeout: NodeJS.Timeout | null = null;
+
+function queueEvent(event: PartialEvent) {
+  // Get current inferred behavior
+  const { behavior, confidence, context } = inferBehavior();
+
+  // Attach behavior inference to event
+  event.inferredBehavior = behavior;
+  event.behaviorConfidence = confidence;
+  event.behaviorContext = context;
+
+  // Get emoji for event type
+  const emoji = eventEmojis[event.type] || '📊';
+
+  // Build rich log output
+  const eventInfo: Record<string, unknown> = {
+    event: event.type,
+  };
+
+  if (event.productId || event.productName) {
+    eventInfo.product = event.productName || event.productId;
+  }
+  if (event.productPrice) {
+    eventInfo.price = `$${event.productPrice}`;
+  }
+  if (event.x !== undefined) {
+    eventInfo.position = `(${event.x}, ${event.y})`;
+  }
+  if (event.elementSelector) {
+    eventInfo.element = event.elementSelector;
+  }
+  if (event.elementText) {
+    eventInfo.text = event.elementText.slice(0, 40);
+  }
+  if (event.scrollDepth !== undefined) {
+    eventInfo.depth = `${event.scrollDepth}%`;
+  }
+  if (event.clickCount) {
+    eventInfo.clicks = event.clickCount;
+  }
+
+  // Log the event with inferred behavior
+  console.log(
+    `${emoji} [${event.type}]`,
+    eventInfo
+  );
+
+  // Log behavior inference on significant events
+  const significantEvents = ['cta_click', 'add_to_cart', 'product_view', 'rage_click', 'cart_review', 'search_intent'];
+  if (significantEvents.includes(event.type)) {
+    const behaviorEmojis: Record<InferredBehavior, string> = {
+      browsing: '🛒',
+      product_hunting: '🎯',
+      comparison_shopping: '⚖️',
+      ready_to_buy: '💳',
+      price_sensitive: '💰',
+      confused: '😕',
+      abandoning: '🚪',
+    };
+    console.log(
+      `   ${behaviorEmojis[behavior]} Inferred behavior: ${behavior} (${Math.round(confidence * 100)}% confident)`,
+      `\n   └─ ${context}`
+    );
+  }
+
+  eventQueue.push(event);
+
+  // Debounce: flush after 1 second of no new events, or immediately if we hit 10 events
+  if (flushTimeout) clearTimeout(flushTimeout);
+
+  if (eventQueue.length >= 10) {
+    flushEvents();
+  } else {
+    flushTimeout = setTimeout(flushEvents, 1000);
+  }
+}
+
+function flushEvents() {
+  if (eventQueue.length === 0) return;
+
+  const sessionId = getSessionId();
+  const events = eventQueue.splice(0, eventQueue.length).map(event => ({
+    id: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+    timestamp: Date.now(),
+    sessionId,
+    pageUrl: window.location.pathname,
+    viewport: {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    },
+    ...event,
+  }));
+
+  console.log(`📤 [Flush] Sending ${events.length} event(s) to server`, events.map(e => e.type));
+
+  // Use sendBeacon for reliability (works even if page is closing)
+  const success = navigator.sendBeacon('/api/events', JSON.stringify({ events }));
+
+  // Fallback to fetch if sendBeacon fails
+  if (!success) {
+    fetch('/api/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ events }),
+      keepalive: true,
+    }).catch(console.error);
+  }
+}
+
+export function EventTracker({ children }: { children: React.ReactNode }) {
+  // Track clicks for rage click detection
+  const clickBuffer = useRef<Array<{ time: number; x: number; y: number }>>([]);
+
+  // Track which scroll milestones we've already recorded
+  const scrollMilestones = useRef(new Set<number>());
+
+  // Track sections that have entered viewport
+  const viewedSections = useRef(new Set<string>());
+
+  // Track page entry time for bounce detection
+  const pageEntryTime = useRef<number>(Date.now());
+
+  // Track if user has interacted
+  const hasInteracted = useRef(false);
+
+  // Track last scroll position and time for rapid scroll detection
+  const lastScrollPosition = useRef(0);
+  const lastScrollTime = useRef(Date.now());
+  const rapidScrollCount = useRef(0);
+
+  // Track scroll direction for reversal detection
+  const lastScrollDirection = useRef<'up' | 'down' | null>(null);
+  const scrollReversalCount = useRef(0);
+
+  // Track hover for hover intent detection
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+  const hoveredElement = useRef<HTMLElement | null>(null);
+
+  // Send event helper
+  const sendEvent = useCallback((event: PartialEvent) => {
+    queueEvent(event);
+  }, []);
+
+  useEffect(() => {
+    // Track page view on mount
+    sendEvent({ type: 'page_view' });
+    pageEntryTime.current = Date.now();
+
+    // Click handler
+    const handleClick = (e: MouseEvent) => {
+      hasInteracted.current = true;
+      const target = e.target as HTMLElement;
+      const now = Date.now();
+
+      // Extract product info if clicking on/within a product
+      const productCard = target.closest('[data-product-id]');
+      const productId = productCard?.getAttribute('data-product-id') || undefined;
+      const productName = productCard?.querySelector('[data-product-name], .product-name, h3, h4')?.textContent?.trim();
+      const priceEl = productCard?.querySelector('[data-price], .price');
+      const productPrice = priceEl ? parseFloat(priceEl.textContent?.replace(/[^0-9.]/g, '') || '0') : undefined;
+
+      // Basic click event
+      const clickEvent: PartialEvent = {
+        type: 'click',
+        x: e.clientX,
+        y: e.clientY,
+        elementSelector: getSelector(target),
+        elementText: target.textContent?.slice(0, 100)?.trim() || undefined,
+        productId,
+        productName,
+        productPrice,
+      };
+
+      // === E-COMMERCE BEHAVIOR DETECTION ===
+
+      // Check if clicking on a product (product view behavior)
+      if (productCard && !target.closest('[data-add-to-cart], button')) {
+        clickEvent.type = 'product_view';
+        if (productId && !behaviorState.productsViewed.includes(productId)) {
+          behaviorState.productsViewed.push(productId);
+          // Check if comparison shopping (multiple products viewed quickly)
+          if (behaviorState.productsViewed.length >= 2) {
+            const timeSinceLastProduct = now - behaviorState.lastProductViewTime;
+            if (timeSinceLastProduct < 30000) { // Within 30 seconds
+              sendEvent({
+                type: 'product_compare',
+                productId,
+                productName,
+                productPrice,
+                elementText: `Comparing: ${behaviorState.productsViewed.slice(-2).join(' vs ')}`,
+              });
+            }
+          }
+          behaviorState.lastProductViewTime = now;
+        }
+      }
+
+      // Check if clicking on price element
+      if (isPriceElement(target)) {
+        clickEvent.type = 'price_check';
+        behaviorState.priceElementsClicked++;
+      }
+
+      // Check if search interaction
+      if (isSearchElement(target)) {
+        clickEvent.type = 'search_intent';
+        behaviorState.searchClicks++;
+      }
+
+      // Check if cart interaction
+      if (isCartElement(target) && !target.closest('[data-add-to-cart]')) {
+        clickEvent.type = 'cart_review';
+        behaviorState.cartOpens++;
+      }
+
+      // Check if navigation browsing
+      if (isNavigationElement(target) && clickEvent.type === 'click') {
+        clickEvent.type = 'navigation_browse';
+      }
+
+      // Check if it's a CTA click
+      const isCTA = target.closest('[data-cta], .cta, button[type="submit"]') !== null ||
+                    target.textContent?.toLowerCase().includes('shop') ||
+                    target.textContent?.toLowerCase().includes('buy') ||
+                    target.textContent?.toLowerCase().includes('add to cart');
+
+      if (isCTA && clickEvent.type === 'click') {
+        clickEvent.type = 'cta_click';
+        behaviorState.ctaClicks++;
+      }
+
+      // Check if it's an add to cart action
+      const isAddToCart = target.closest('[data-add-to-cart]') !== null ||
+                          target.textContent?.toLowerCase().includes('add to cart');
+
+      if (isAddToCart) {
+        clickEvent.type = 'add_to_cart';
+        clickEvent.productId = productId;
+        clickEvent.productName = productName;
+        clickEvent.productPrice = productPrice;
+        behaviorState.addToCartCount++;
+      }
+
+      sendEvent(clickEvent);
+
+      // Rage click detection: 3+ clicks in same area within 2 seconds
+      clickBuffer.current.push({ time: now, x: e.clientX, y: e.clientY });
+      clickBuffer.current = clickBuffer.current.filter(c => now - c.time < 2000);
+
+      // Check if clicks are clustered (within 50px of each other)
+      const recentClicks = clickBuffer.current;
+      if (recentClicks.length >= 3) {
+        const avgX = recentClicks.reduce((sum, c) => sum + c.x, 0) / recentClicks.length;
+        const avgY = recentClicks.reduce((sum, c) => sum + c.y, 0) / recentClicks.length;
+        const allClustered = recentClicks.every(c =>
+          Math.abs(c.x - avgX) < 50 && Math.abs(c.y - avgY) < 50
+        );
+
+        if (allClustered) {
+          behaviorState.rageClicks++;
+          sendEvent({
+            type: 'rage_click',
+            x: Math.round(avgX),
+            y: Math.round(avgY),
+            elementSelector: getSelector(target),
+            clickCount: recentClicks.length,
+          });
+          // Clear buffer after detecting rage click to avoid duplicate reports
+          clickBuffer.current = [];
+        }
+      }
+
+      // Dead click detection: click on non-interactive element
+      if (!isInteractive(target)) {
+        behaviorState.deadClicks++;
+        sendEvent({
+          type: 'dead_click',
+          x: e.clientX,
+          y: e.clientY,
+          elementSelector: getSelector(target),
+          elementText: target.textContent?.slice(0, 100)?.trim() || undefined,
+        });
+      }
+    };
+
+    // Scroll handler
+    const handleScroll = () => {
+      hasInteracted.current = true;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (docHeight <= 0) return;
+
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      // Track scroll milestones
+      [25, 50, 75, 100].forEach(milestone => {
+        if (scrollPercent >= milestone && !scrollMilestones.current.has(milestone)) {
+          scrollMilestones.current.add(milestone);
+          sendEvent({
+            type: 'scroll_depth',
+            scrollDepth: milestone,
+          });
+        }
+      });
+
+      // Rapid scroll detection: scrolling > 1000px in < 500ms multiple times
+      const now = Date.now();
+      const scrollDelta = Math.abs(scrollTop - lastScrollPosition.current);
+      const timeDelta = now - lastScrollTime.current;
+
+      if (timeDelta < 500 && scrollDelta > 1000) {
+        rapidScrollCount.current++;
+        if (rapidScrollCount.current >= 2) {
+          sendEvent({ type: 'rapid_scroll' });
+          rapidScrollCount.current = 0;
+        }
+      } else if (timeDelta > 1000) {
+        rapidScrollCount.current = 0;
+      }
+
+      // Scroll direction reversal detection (user scrolling up and down = confusion/searching)
+      const currentDirection = scrollTop > lastScrollPosition.current ? 'down' : 'up';
+      if (lastScrollDirection.current && currentDirection !== lastScrollDirection.current) {
+        scrollReversalCount.current++;
+        // Log after 3+ reversals in quick succession (indicates confusion)
+        if (scrollReversalCount.current >= 3) {
+          sendEvent({
+            type: 'scroll_reversal',
+            scrollDepth: scrollPercent,
+            elementText: `User reversed scroll direction ${scrollReversalCount.current} times`,
+          });
+          scrollReversalCount.current = 0;
+        }
+      }
+      lastScrollDirection.current = currentDirection;
+
+      // Reset reversal count after 2 seconds of no reversals
+      if (timeDelta > 2000) {
+        scrollReversalCount.current = 0;
+      }
+
+      lastScrollPosition.current = scrollTop;
+      lastScrollTime.current = now;
+
+      // Section view tracking using IntersectionObserver would be better,
+      // but for simplicity we'll check on scroll
+      const sections = document.querySelectorAll('[data-section]');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const sectionId = section.getAttribute('data-section');
+
+        if (sectionId &&
+            rect.top < window.innerHeight * 0.5 &&
+            rect.bottom > window.innerHeight * 0.5 &&
+            !viewedSections.current.has(sectionId)) {
+          viewedSections.current.add(sectionId);
+          sendEvent({
+            type: 'section_view',
+            sectionId,
+          });
+        }
+      });
+    };
+
+    // Bounce detection on page unload
+    const handleBeforeUnload = () => {
+      // Flush any remaining events
+      flushEvents();
+
+      const timeOnPage = Date.now() - pageEntryTime.current;
+
+      // If user spent < 10 seconds and didn't interact meaningfully, it's a bounce
+      if (timeOnPage < 10000 && !hasInteracted.current) {
+        // Use sendBeacon directly for unload
+        navigator.sendBeacon('/api/events', JSON.stringify({
+          events: [{
+            id: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+            type: 'bounce',
+            timestamp: Date.now(),
+            sessionId: getSessionId(),
+            pageUrl: window.location.pathname,
+            viewport: {
+              width: window.innerWidth,
+              height: window.innerHeight,
+            },
+          }],
+        }));
+      }
+    };
+
+    // === NEW EVENT HANDLERS ===
+
+    // Mouseover handler for hover intent detection
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const productCard = target.closest('[data-product-id]');
+      const interactiveEl = target.closest('a, button, [data-cta]');
+
+      // Clear previous hover timeout
+      if (hoverTimeout.current) {
+        clearTimeout(hoverTimeout.current);
+      }
+
+      // Track hover intent on products (hover for 1.5+ seconds = interest)
+      if (productCard || interactiveEl) {
+        hoveredElement.current = (productCard || interactiveEl) as HTMLElement;
+        hoverTimeout.current = setTimeout(() => {
+          if (hoveredElement.current) {
+            const productId = hoveredElement.current.getAttribute('data-product-id');
+            const productName = hoveredElement.current.querySelector('[data-product-name], .product-name, h3, h4')?.textContent?.trim();
+            sendEvent({
+              type: 'hover_intent',
+              elementSelector: getSelector(hoveredElement.current),
+              elementText: hoveredElement.current.textContent?.slice(0, 100)?.trim(),
+              productId: productId || undefined,
+              productName,
+            });
+          }
+        }, 1500);
+      }
+    };
+
+    // Mouseout handler to clear hover tracking
+    const handleMouseOut = () => {
+      if (hoverTimeout.current) {
+        clearTimeout(hoverTimeout.current);
+        hoverTimeout.current = null;
+      }
+      hoveredElement.current = null;
+    };
+
+    // Exit intent detection (mouse moving toward top of viewport)
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Only trigger if mouse leaves from the top (exit intent)
+      if (e.clientY <= 5 && e.clientX > 0 && e.clientX < window.innerWidth) {
+        sendEvent({
+          type: 'exit_intent',
+          y: e.clientY,
+        });
+      }
+    };
+
+    // Text selection handler (debounced)
+    let selectionTimeout: NodeJS.Timeout | null = null;
+    let lastSelection = '';
+    const handleSelectionChange = () => {
+      const selection = window.getSelection();
+      const selectedText = selection?.toString().trim();
+      if (selectedText && selectedText.length > 3 && selectedText.length < 200 && selectedText !== lastSelection) {
+        // Debounce selection events - only fire after 500ms of no changes
+        if (selectionTimeout) clearTimeout(selectionTimeout);
+        selectionTimeout = setTimeout(() => {
+          lastSelection = selectedText;
+          sendEvent({
+            type: 'text_selection',
+            elementText: selectedText.slice(0, 100),
+          });
+        }, 500);
+      }
+    };
+
+    // Copy handler
+    const handleCopy = () => {
+      const selection = window.getSelection();
+      const copiedText = selection?.toString().trim();
+      if (copiedText) {
+        sendEvent({
+          type: 'text_copy',
+          elementText: copiedText.slice(0, 100),
+        });
+      }
+    };
+
+    // Tab visibility change
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        sendEvent({ type: 'tab_hidden' });
+      } else {
+        sendEvent({ type: 'tab_visible' });
+      }
+    };
+
+    // Double click handler
+    const handleDoubleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      sendEvent({
+        type: 'double_click',
+        x: e.clientX,
+        y: e.clientY,
+        elementSelector: getSelector(target),
+        elementText: target.textContent?.slice(0, 100)?.trim(),
+      });
+    };
+
+    // Right click / context menu handler
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      sendEvent({
+        type: 'right_click',
+        x: e.clientX,
+        y: e.clientY,
+        elementSelector: getSelector(target),
+        elementText: target.textContent?.slice(0, 100)?.trim(),
+      });
+    };
+
+    // Form focus handler
+    const handleFocusIn = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches('input, textarea, select')) {
+        sendEvent({
+          type: 'form_focus',
+          elementSelector: getSelector(target),
+          elementText: (target as HTMLInputElement).placeholder || target.getAttribute('name') || undefined,
+        });
+      }
+    };
+
+    // Form blur handler
+    const handleFocusOut = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches('input, textarea, select')) {
+        const value = (target as HTMLInputElement).value;
+        sendEvent({
+          type: 'form_blur',
+          elementSelector: getSelector(target),
+          elementText: value ? `[filled: ${value.length} chars]` : '[empty]',
+        });
+      }
+    };
+
+    // Keyboard shortcut detection
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Detect common shortcuts
+      if (e.metaKey || e.ctrlKey) {
+        const shortcuts: Record<string, string> = {
+          'f': 'find',
+          'p': 'print',
+          's': 'save',
+          'c': 'copy',
+          'v': 'paste',
+          'a': 'select_all',
+        };
+        const action = shortcuts[e.key.toLowerCase()];
+        if (action) {
+          sendEvent({
+            type: 'keyboard_shortcut',
+            elementText: `${e.metaKey ? 'Cmd' : 'Ctrl'}+${e.key.toUpperCase()} (${action})`,
+          });
+        }
+      }
+    };
+
+    // Add event listeners
+    document.addEventListener('click', handleClick);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // New event listeners
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('selectionchange', handleSelectionChange);
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener('dblclick', handleDoubleClick);
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('focusin', handleFocusIn);
+    document.addEventListener('focusout', handleFocusOut);
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('click', handleClick);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+
+      // New event listeners cleanup
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('selectionchange', handleSelectionChange);
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener('dblclick', handleDoubleClick);
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('focusin', handleFocusIn);
+      document.removeEventListener('focusout', handleFocusOut);
+      document.removeEventListener('keydown', handleKeyDown);
+
+      if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+      if (selectionTimeout) clearTimeout(selectionTimeout);
+      if (flushTimeout) clearTimeout(flushTimeout);
+      flushEvents(); // Flush remaining events on unmount
+    };
+  }, [sendEvent]);
+
+  return <>{children}</>;
+}
