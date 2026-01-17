@@ -27,7 +27,7 @@ interface UseCTATrackingOptions {
 }
 
 interface UseCTATrackingReturn {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
   handleClick: () => void;
   isVisible: boolean;
   wasClicked: boolean;
@@ -41,9 +41,9 @@ export function useCTATracking({
   visibilityTimeout = CTA_VISIBILITY_TIMEOUT,
 }: UseCTATrackingOptions): UseCTATrackingReturn {
   const ref = useRef<HTMLElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const [ctaState, setCTAState] = useState<CTAState | undefined>();
+  const [ctaState, setCTAState] = useState<CTAState | undefined>(undefined);
 
   // Subscribe to state changes
   useEffect(() => {
