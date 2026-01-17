@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { SiteConfig, AnalyticsEvent, Suggestion } from './types';
+import { ProblemAnalysis } from './problemFinder';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -19,8 +20,14 @@ export async function saveConfig(mode: 'live' | 'preview', config: SiteConfig): 
 // Events
 export async function getEvents(): Promise<AnalyticsEvent[]> {
   const filePath = path.join(DATA_DIR, 'events.json');
-  const data = await fs.readFile(filePath, 'utf-8');
-  return JSON.parse(data);
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    if (!data.trim()) return [];
+    return JSON.parse(data);
+  } catch {
+    // Return empty array if file doesn't exist or is invalid
+    return [];
+  }
 }
 
 export async function saveEvents(events: AnalyticsEvent[]): Promise<void> {
@@ -31,7 +38,9 @@ export async function saveEvents(events: AnalyticsEvent[]): Promise<void> {
 export async function appendEvents(newEvents: AnalyticsEvent[]): Promise<void> {
   const existing = await getEvents();
   const combined = [...existing, ...newEvents];
-  await saveEvents(combined);
+  // Keep last 10000 events to avoid file growing too large
+  const trimmed = combined.slice(-10000);
+  await saveEvents(trimmed);
 }
 
 // Suggestions
@@ -63,4 +72,34 @@ export async function updateSuggestion(
   suggestions[index] = { ...suggestions[index], ...update };
   await saveSuggestions(suggestions);
   return suggestions[index];
+}
+
+// Problems
+export async function getProblems(): Promise<ProblemAnalysis[]> {
+  const filePath = path.join(DATA_DIR, 'problems.json');
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    // Return empty array if file doesn't exist
+    return [];
+  }
+}
+
+export async function saveProblems(problems: ProblemAnalysis[]): Promise<void> {
+  const filePath = path.join(DATA_DIR, 'problems.json');
+  await fs.writeFile(filePath, JSON.stringify(problems, null, 2));
+}
+
+export async function addProblemAnalysis(analysis: ProblemAnalysis): Promise<void> {
+  const existing = await getProblems();
+  existing.unshift(analysis); // Add newest first
+  // Keep last 50 analyses to avoid file growing too large
+  const trimmed = existing.slice(0, 50);
+  await saveProblems(trimmed);
+}
+
+export async function getLatestProblems(): Promise<ProblemAnalysis | null> {
+  const problems = await getProblems();
+  return problems.length > 0 ? problems[0] : null;
 }

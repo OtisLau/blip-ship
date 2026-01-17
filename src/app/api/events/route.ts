@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { appendEvents, getEvents } from '@/lib/db';
+import { appendEvents, getEvents, addProblemAnalysis } from '@/lib/db';
 import { AnalyticsEvent } from '@/lib/types';
+import { findProblems } from '@/lib/problemFinder';
+
+const ANALYSIS_THRESHOLD = 50; // Run analysis every N events
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,6 +46,18 @@ export async function POST(request: NextRequest) {
 
     // Append to events store
     await appendEvents(validatedEvents);
+
+    // Check if we should run analysis
+    const allEvents = await getEvents();
+    const shouldAnalyze = allEvents.length > 0 && allEvents.length % ANALYSIS_THRESHOLD === 0;
+
+    if (shouldAnalyze) {
+      // Run analysis in background (don't await the save)
+      const analysis = findProblems(allEvents);
+      addProblemAnalysis(analysis).catch(err =>
+        console.error('Failed to save problem analysis:', err)
+      );
+    }
 
     return NextResponse.json({
       success: true,

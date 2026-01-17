@@ -1,0 +1,210 @@
+[
+  {
+    "timestamp": 1768687724662,
+    "totalProblems": 5,
+    "criticalCount": 3,
+    "highCount": 1,
+    "mediumCount": 1,
+    "lowCount": 0,
+    "problems": [
+      {
+        "id": "prob_ux_friction_1768687724661_0",
+        "category": "ux_friction",
+        "severity": "critical",
+        "title": "Dead click hotspot on \"img\"",
+        "description": "Users are clicking on \"img\" expecting it to be interactive, but nothing happens. This creates frustration and confusion.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Dead clicks",
+            "value": 10
+          },
+          {
+            "type": "event",
+            "label": "Element",
+            "value": "img"
+          },
+          {
+            "type": "metric",
+            "label": "Sessions affected",
+            "value": "100.0%"
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Make \"img\" interactive (clickable) or change its styling to not appear clickable.",
+        "priority": 100
+      },
+      {
+        "id": "prob_ux_friction_1768687724661_2",
+        "category": "ux_friction",
+        "severity": "critical",
+        "title": "Rage clicking on \"img\"",
+        "description": "Users are rapidly clicking on \"img\" multiple times, indicating severe frustration. This element may be unresponsive or not working as expected.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Rage click incidents",
+            "value": 2
+          },
+          {
+            "type": "event",
+            "label": "Element",
+            "value": "img"
+          },
+          {
+            "type": "pattern",
+            "label": "Behavior",
+            "value": "Rapid repeated clicks (3+ in 2 seconds)"
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Investigate why \"img\" is frustrating users. Check if it's slow to respond, broken, or not behaving as expected.",
+        "priority": 100
+      },
+      {
+        "id": "prob_ux_friction_1768687724661_3",
+        "category": "ux_friction",
+        "severity": "critical",
+        "title": "Rage clicking on \"button\"",
+        "description": "Users are rapidly clicking on \"button\" multiple times, indicating severe frustration. This element may be unresponsive or not working as expected.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Rage click incidents",
+            "value": 2
+          },
+          {
+            "type": "event",
+            "label": "Element",
+            "value": "button"
+          },
+          {
+            "type": "pattern",
+            "label": "Behavior",
+            "value": "Rapid repeated clicks (3+ in 2 seconds)"
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Investigate why \"button\" is frustrating users. Check if it's slow to respond, broken, or not behaving as expected.",
+        "priority": 100
+      },
+      {
+        "id": "prob_ux_friction_1768687724661_1",
+        "category": "ux_friction",
+        "severity": "high",
+        "title": "Dead click hotspot on \"Oversized Crewneck\"",
+        "description": "Users are clicking on \"Oversized Crewneck\" expecting it to be interactive, but nothing happens. This creates frustration and confusion.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Dead clicks",
+            "value": 5
+          },
+          {
+            "type": "event",
+            "label": "Element",
+            "value": "h3"
+          },
+          {
+            "type": "metric",
+            "label": "Sessions affected",
+            "value": "100.0%"
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Make \"Oversized Crewneck\" interactive (clickable) or change its styling to not appear clickable.",
+        "priority": 90
+      },
+      {
+        "id": "prob_navigation_problem_1768687724662_1",
+        "category": "navigation_problem",
+        "severity": "medium",
+        "title": "Users scrolling back and forth",
+        "description": "100.0% of users repeatedly scroll up and down, indicating they're searching for something or are confused about page structure.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Sessions with scroll reversals",
+            "value": "100.0%"
+          },
+          {
+            "type": "event",
+            "label": "Scroll reversal events",
+            "value": 1
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Improve content organization, add a table of contents or quick navigation, and ensure information is easy to find.",
+        "priority": 80
+      }
+    ],
+    "summary": "Found 3 critical issues requiring immediate attention. 1 high-priority issue should be addressed soon. Total: 5 issues identified across 1 sessions."
+  },
+  {
+    "timestamp": 1768687585854,
+    "totalProblems": 2,
+    "criticalCount": 0,
+    "highCount": 1,
+    "mediumCount": 1,
+    "lowCount": 0,
+    "problems": [
+      {
+        "id": "prob_ux_friction_1768687585853_0",
+        "category": "ux_friction",
+        "severity": "high",
+        "title": "Dead click hotspot on \"img\"",
+        "description": "Users are clicking on \"img\" expecting it to be interactive, but nothing happens. This creates frustration and confusion.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Dead clicks",
+            "value": 6
+          },
+          {
+            "type": "event",
+            "label": "Element",
+            "value": "img"
+          },
+          {
+            "type": "metric",
+            "label": "Sessions affected",
+            "value": "100.0%"
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Make \"img\" interactive (clickable) or change its styling to not appear clickable.",
+        "priority": 90
+      },
+      {
+        "id": "prob_navigation_problem_1768687585854_1",
+        "category": "navigation_problem",
+        "severity": "medium",
+        "title": "Users scrolling back and forth",
+        "description": "100.0% of users repeatedly scroll up and down, indicating they're searching for something or are confused about page structure.",
+        "evidence": [
+          {
+            "type": "metric",
+            "label": "Sessions with scroll reversals",
+            "value": "100.0%"
+          },
+          {
+            "type": "event",
+            "label": "Scroll reversal events",
+            "value": 1
+          }
+        ],
+        "affectedSessions": 1,
+        "affectedSessionsPercent": 100,
+        "recommendation": "Improve content organization, add a table of contents or quick navigation, and ensure information is easy to find.",
+        "priority": 80
+      }
+    ],
+    "summary": "1 high-priority issue should be addressed soon. Total: 2 issues identified across 1 sessions."
+  }
+]
