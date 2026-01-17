@@ -6,6 +6,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import type { AnalyticsEvent } from '../types/events';
+import type { SiteConfig } from './types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const EVENTS_FILE = path.join(DATA_DIR, 'events.json');
@@ -96,4 +97,47 @@ export async function getUniqueSessions(): Promise<string[]> {
 export async function clearEvents(): Promise<void> {
   await ensureDataDir();
   await fs.writeFile(EVENTS_FILE, '[]');
+}
+
+/**
+ * Get site configuration for a given mode
+ */
+export async function getConfig(mode: 'live' | 'preview'): Promise<SiteConfig> {
+  // Validate mode to prevent path traversal
+  if (mode !== 'live' && mode !== 'preview') {
+    throw new Error('Invalid config mode. Must be "live" or "preview".');
+  }
+
+  const filePath = path.join(DATA_DIR, `config-${mode}.json`);
+
+  // Verify the resolved path is within DATA_DIR to prevent path traversal
+  const resolvedPath = path.resolve(filePath);
+  const resolvedDataDir = path.resolve(DATA_DIR);
+  if (!resolvedPath.startsWith(resolvedDataDir)) {
+    throw new Error('Path traversal detected');
+  }
+
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
+/**
+ * Save site configuration for a given mode
+ */
+export async function saveConfig(mode: 'live' | 'preview', config: SiteConfig): Promise<void> {
+  // Validate mode to prevent path traversal
+  if (mode !== 'live' && mode !== 'preview') {
+    throw new Error('Invalid config mode. Must be "live" or "preview".');
+  }
+
+  const filePath = path.join(DATA_DIR, `config-${mode}.json`);
+
+  // Verify the resolved path is within DATA_DIR to prevent path traversal
+  const resolvedPath = path.resolve(filePath);
+  const resolvedDataDir = path.resolve(DATA_DIR);
+  if (!resolvedPath.startsWith(resolvedDataDir)) {
+    throw new Error('Path traversal detected');
+  }
+
+  await fs.writeFile(filePath, JSON.stringify(config, null, 2));
 }
