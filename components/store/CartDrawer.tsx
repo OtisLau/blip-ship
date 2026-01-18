@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 
 export function CartDrawer() {
@@ -437,13 +438,12 @@ export function CartDrawer() {
                         border: '1px solid #e5e7eb',
                       }}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.name}
+                        width={80}
+                        height={100}
                         style={{
-                          width: '80px',
-                          height: '100px',
                           objectFit: 'cover',
                           flexShrink: 0,
                         }}

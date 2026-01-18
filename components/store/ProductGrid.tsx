@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { SiteConfig } from '@/lib/types';
 import { useCart } from '@/context/CartContext';
 import { sanitizeText, sanitizeUrl } from '@/lib/sanitize';
@@ -70,13 +71,12 @@ export function ProductGrid({ config }: ProductGridProps) {
                 overflow: 'hidden',
                 backgroundColor: '#f5f5f5',
               }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   style={{
-                    width: '100%',
-                    height: '100%',
                     objectFit: 'cover',
                     transition: 'transform 0.4s ease',
                     transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',

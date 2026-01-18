@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useMemo, useCallback, ReactNode } from 'react';
 
 interface CartItem {
   id: string;
@@ -29,7 +29,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const addItem = (item: Omit<CartItem, 'quantity'>) => {
+  // Memoized callbacks to prevent unnecessary re-renders (rule: rerender-functional-setstate)
+  const addItem = useCallback((item: Omit<CartItem, 'quantity'>) => {
     setItems((prev) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
@@ -40,47 +41,52 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return [...prev, { ...item, quantity: 1 }];
     });
     setIsOpen(true);
-  };
+  }, []);
 
-  const removeItem = (id: string) => {
+  const removeItem = useCallback((id: string) => {
     setItems((prev) => prev.filter((i) => i.id !== id));
-  };
+  }, []);
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = useCallback((id: string, quantity: number) => {
     if (quantity <= 0) {
-      removeItem(id);
+      setItems((prev) => prev.filter((i) => i.id !== id));
       return;
     }
     setItems((prev) =>
       prev.map((i) => (i.id === id ? { ...i, quantity } : i))
     );
-  };
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setItems([]);
-  };
+  }, []);
 
-  const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(false);
+  const openCart = useCallback(() => setIsOpen(true), []);
+  const closeCart = useCallback(() => setIsOpen(false), []);
 
+  // Derived state computed during render (no useMemo needed for simple calculations)
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const totalPrice = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
+  // Memoize context value to prevent re-renders of all consumers (rule: rerender-memo)
+  const value = useMemo(
+    () => ({
+      items,
+      isOpen,
+      addItem,
+      removeItem,
+      updateQuantity,
+      clearCart,
+      openCart,
+      closeCart,
+      totalItems,
+      totalPrice,
+    }),
+    [items, isOpen, addItem, removeItem, updateQuantity, clearCart, openCart, closeCart, totalItems, totalPrice]
+  );
+
   return (
-    <CartContext.Provider
-      value={{
-        items,
-        isOpen,
-        addItem,
-        removeItem,
-        updateQuantity,
-        clearCart,
-        openCart,
-        closeCart,
-        totalItems,
-        totalPrice,
-      }}
-    >
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );
