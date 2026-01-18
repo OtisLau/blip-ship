@@ -443,6 +443,11 @@ ${mapping.expectedImpact}
         summary: mapping.summary,
         expectedImpact: mapping.expectedImpact,
         changesCount: mapping.elementChanges.length,
+        changes: mapping.elementChanges.map(c => ({
+          field: c.property,
+          oldValue: c.oldValue,
+          newValue: c.newValue,
+        })),
       },
       result: {
         branch: branchName,
