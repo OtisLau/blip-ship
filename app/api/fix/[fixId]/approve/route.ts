@@ -37,17 +37,21 @@ export async function POST(
 
     // Attempt to merge the PR (use suggestion.id as that's how PRs are keyed)
     const suggestionId = fix.suggestion.id;
-    const mergeResult = await mergePullRequest(suggestionId);
+    const prInfo = getPRInfo(suggestionId);
 
-    if (!mergeResult.success) {
-      return NextResponse.json(
-        { success: false, error: mergeResult.message },
-        { status: 500 }
-      );
+    // If there's a PR to merge, merge it
+    if (prInfo) {
+      const mergeResult = await mergePullRequest(suggestionId);
+
+      if (!mergeResult.success) {
+        return NextResponse.json(
+          { success: false, error: mergeResult.message },
+          { status: 500 }
+        );
+      }
     }
 
-    // Update fix status
-    const prInfo = getPRInfo(suggestionId);
+    // Update fix status (works even if no PR was created - for skipPR mode)
     const updatedFix = await updateFixStatus(fixId, 'merged', prInfo);
 
     return NextResponse.json({

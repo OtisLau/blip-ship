@@ -4,16 +4,16 @@
  * For POC testing - returns the HTML email content
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { getSentEmail } from '@/lib/email-service';
+import { NextRequest, NextResponse } from 'next/server'
+import { getSentEmail } from '@/lib/email-service'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ fixId: string }> }
 ) {
-  const { fixId } = await params;
+  const { fixId } = await params
 
-  const email = getSentEmail(fixId);
+  const email = getSentEmail(fixId)
 
   if (!email) {
     return new NextResponse(
@@ -32,7 +32,7 @@ export async function GET(
         status: 404,
         headers: { 'Content-Type': 'text/html' },
       }
-    );
+    )
   }
 
   // Generate the email HTML
@@ -96,14 +96,18 @@ export async function GET(
 
       <div class="changes">
         <h3 style="margin-top: 0;">Proposed Changes</h3>
-        ${email.suggestion.changes.map((change) => `
+        ${email.suggestion.changes
+          .map(
+            change => `
           <div class="change-item">
             <strong>${change.field}</strong><br/>
             <span style="color: #EF4444; text-decoration: line-through;">${JSON.stringify(change.oldValue)}</span>
             <span style="color: #6B7280;">→</span>
             <span style="color: #10B981;">${JSON.stringify(change.newValue)}</span>
           </div>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
 
       <p><strong>Rationale:</strong> ${email.suggestion.recommendation.rationale}</p>
@@ -128,9 +132,9 @@ export async function GET(
   </div>
 </body>
 </html>
-  `.trim();
+  `.trim()
 
   return new NextResponse(html, {
     headers: { 'Content-Type': 'text/html' },
-  });
+  })
 }
