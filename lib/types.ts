@@ -75,6 +75,8 @@ export interface SiteConfig {
   id: string;
   version: number;
   status: 'live' | 'preview';
+  ownerEmail?: string;
+  storeName?: string;
 
   hero: {
     headline: string;

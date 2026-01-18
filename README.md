@@ -275,12 +275,93 @@ Rejects a suggestion.
 
 ---
 
-## Contributing
+## Documentation
+
+### For Developers & Future Claude Sessions
+
+See [CLAUDE.md](./CLAUDE.md) for comprehensive technical documentation including:
+- Complete CRO Fix Flow architecture
+- Component reference with code examples
+- Environment configuration guide
+- Troubleshooting and debugging tips
+- Production readiness checklist
+
+### For Contributors
 
 1. Create a feature branch
 2. Make your changes
 3. Run `/pre-push-validator` before pushing
 4. Create a PR with `/enhance-pr`
+
+---
+
+## Roadblocks & Solutions
+
+### Gmail Email Clipping (102KB Limit)
+
+**Problem:** When sending fix approval emails with embedded base64 screenshots, Gmail clips the email with "[Message clipped]" at the bottom. This hides critical content including the approve/deny buttons.
+
+**Root Cause:** Gmail clips emails larger than 102KB. Our base64-embedded PNG screenshots were ~250KB each, pushing total email size to ~500KB.
+
+**Solution:** Host screenshots on Cloudinary instead of embedding as base64. The email now contains `<img src="https://res.cloudinary.com/...">` URLs instead of `<img src="data:image/png;base64,...">`.
+
+**Implementation:**
+1. Added `lib/cloudinary-service.ts` - uploads PNG buffers to Cloudinary
+2. Updated `lib/screenshot-service.ts` - added `captureAndUploadScreenshots()` function
+3. Updated `lib/email-service.ts` - tries Cloudinary first, falls back to embedded
+
+**Required Environment Variables:**
+```
+CLOUDINARY_CLOUD_NAME=your-cloud-name
+CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
+```
+
+Get credentials from [Cloudinary Console](https://cloudinary.com/console).
+
+**Fallback Behavior:**
+- If Cloudinary is configured: Uses hosted URLs (~5KB email)
+- If not configured: Falls back to embedded base64 (may clip)
+- If Playwright unavailable: Shows links instead of images
+
+---
+
+## Open Questions / Design Decisions
+
+Tracking unresolved design questions and places where we got stuck.
+
+### 1. How do we track buttons on a webpage accurately?
+
+**Current approach:** Manual `ctaId` prop passed to `useCTATracking` hook.
+
+```tsx
+const { ref, handleClick } = useCTATracking({ ctaId: 'add-to-cart-btn' });
+```
+
+**Problem:** Requires developer to manually assign unique IDs to every button. Not scalable for:
+- Dynamically generated buttons (e.g., product lists)
+- Third-party components
+- Existing sites without instrumentation
+
+**Possible solutions:**
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **Manual ctaId** (current) | Explicit, predictable | Doesn't scale, requires code changes |
+| **CSS selector indexing** | Works on any page | Fragile if DOM changes |
+| **XPath generation** | More stable than CSS | Verbose, still breaks on restructure |
+| **Content hash** | `hash(text + position + styles)` | Handles duplicates poorly |
+| **Visual fingerprinting** | Position + size + color hash | Expensive, needs recalc on resize |
+| **data-* attributes** | Clean, explicit | Still requires instrumentation |
+| **Auto-index by parent** | `section[0]/button[2]` | Breaks if order changes |
+
+**Questions to resolve:**
+- Do we need to track buttons on sites we don't control?
+- How do we handle buttons that appear/disappear dynamically?
+- Should we persist button identity across page reloads?
+- How do we correlate the same button across different pages?
+
+**Decision (2026-01-17):** For hackathon demo, use manual `ctaId` on the controlled demo store. Revisit with robust auto-indexing strategy when expanding to live dynamic sites.
 
 ---
 

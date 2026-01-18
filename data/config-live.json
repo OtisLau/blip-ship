@@ -2,6 +2,8 @@
   "id": "config_001",
   "version": 1,
   "status": "live",
+  "ownerEmail": "lucianlavric2005@gmail.com",
+  "storeName": "Blip Ship Store",
 
   "hero": {
     "headline": "Elevate Your Everyday",
