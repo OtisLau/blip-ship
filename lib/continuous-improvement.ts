@@ -9,7 +9,7 @@
  * 5. LEARN: Update rules based on what works
  */
 
-import { AnalyticsEvent } from '@/types/events';
+import { AnalyticsEvent } from '@/types';
 import { IdentityState, UserIdentity, computeUserIdentity, BehavioralVector } from './behavioral-vector';
 import { getUIRecommendations, classifyUserIdentity, isIdentityClassifierConfigured } from './identity-classifier';
 import { mapRecommendationsToChanges, IdentityFixMapping } from './identity-to-fix-mapper';

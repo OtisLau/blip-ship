@@ -7,7 +7,7 @@
  */
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import type { AnalyticsEvent } from '@/types/events';
+import type { AnalyticsEvent } from '@/types';
 import {
   BehavioralVector,
   IdentityState,

@@ -7,7 +7,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { appendEvents, readEvents } from '../../../lib/db';
-import type { AnalyticsEvent } from '../../../types/events';
+import type { AnalyticsEvent } from '@/types';
 
 // Config for auto-detection trigger
 const AUTO_FIX_THRESHOLD = 50; // Trigger demo-fix after this many events

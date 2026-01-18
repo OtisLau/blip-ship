@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import type { Suggestion } from '@/lib/types';
+import type { Suggestion } from '@/types';
 import type { MinimalFix } from '@/lib/fix-agent';
 import type { PRInfo } from '@/lib/git-service';
 
@@ -69,6 +69,16 @@ export function FixApprovalContent({
   // Handle initial action from URL
   useEffect(() => {
     if (initialAction && fixData && !actionResult) {
+      // If already merged/rejected, just show the status without calling API
+      if (fixData.status === 'merged') {
+        setActionResult({ success: true, message: 'Fix was already shipped!' });
+        return;
+      }
+      if (fixData.status === 'rejected') {
+        setActionResult({ success: true, message: 'Fix was already rejected.' });
+        return;
+      }
+
       if (initialAction === 'approve') {
         handleApprove();
       } else if (initialAction === 'reject') {
@@ -86,7 +96,10 @@ export function FixApprovalContent({
       const result = await res.json();
 
       if (result.success) {
-        setActionResult({ success: true, message: 'Fix shipped successfully!' });
+        const message = result.alreadyMerged
+          ? 'Fix was already shipped!'
+          : 'Fix shipped successfully!';
+        setActionResult({ success: true, message });
         setFixData((prev) => (prev ? { ...prev, status: 'merged' } : null));
       } else {
         setActionResult({ success: false, message: result.error || 'Ship failed' });
@@ -110,7 +123,10 @@ export function FixApprovalContent({
       const result = await res.json();
 
       if (result.success) {
-        setActionResult({ success: true, message: 'Changes rejected.' });
+        const message = result.alreadyRejected
+          ? 'Fix was already rejected.'
+          : 'Changes rejected.';
+        setActionResult({ success: true, message });
         setFixData((prev) => (prev ? { ...prev, status: 'rejected' } : null));
       } else {
         setActionResult({ success: false, message: result.error || 'Rejection failed' });

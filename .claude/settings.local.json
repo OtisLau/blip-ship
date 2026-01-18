@@ -23,7 +23,17 @@
       "Bash(git commit:*)",
       "Bash(pnpm lint:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm exec next lint:*)"
+      "Bash(pnpm exec next lint:*)",
+      "Bash(gh pr list:*)",
+      "Bash(git pull:*)",
+      "Bash(git diff:*)",
+      "Bash(git restore:*)",
+      "Bash(node -e:*)",
+      "Bash(git stash:*)",
+      "Bash(npm run build:*)",
+      "Bash(git config:*)",
+      "Bash(echo:*)",
+      "Bash(gh pr close:*)"
     ]
   }
 }

@@ -17,7 +17,7 @@ import { buildFixApprovalEmail, sendFixApprovalEmail, isSendGridConfigured } fro
 import { createFixPR } from '@/lib/git-service';
 import { saveFix } from '@/lib/fix-store';
 import { getConfig } from '@/lib/db';
-import type { Suggestion } from '@/lib/types';
+import type { Suggestion } from '@/types';
 
 export async function POST(request: NextRequest) {
   const startTime = Date.now();

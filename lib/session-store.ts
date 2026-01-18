@@ -8,7 +8,7 @@
  * - floatingTools/selectedTools -> visibleCTAs/clickedCTAs
  */
 
-import type { CTAState, SessionState, SessionActions } from '../types/events';
+import type { CTAState, SessionState, SessionActions } from '@/types';
 import { generateSessionId } from './tracker';
 
 // Session constants (adapted from 0-1's useToolSpawner.ts)

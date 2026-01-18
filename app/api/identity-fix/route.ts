@@ -25,10 +25,10 @@ import {
   describeMapping,
   IdentityFixMapping,
 } from '@/lib/identity-to-fix-mapper';
-import { sendFixApprovalEmail, isSendGridConfigured, generateScreenshots } from '@/lib/email-service';
+import { sendFixApprovalEmail, isSendGridConfigured } from '@/lib/email-service';
 import { saveFix } from '@/lib/fix-store';
-import type { AnalyticsEvent } from '@/types/events';
-import type { Suggestion, SiteConfig } from '@/lib/types';
+import type { AnalyticsEvent } from '@/types';
+import type { Suggestion, SiteConfig } from '@/types';
 
 const execAsync = promisify(exec);
 
@@ -198,30 +198,18 @@ export async function POST(request: NextRequest) {
     // 7. Create branch and commit
     log('Creating fix branch...');
     const originalBranch = await gitCommand('rev-parse --abbrev-ref HEAD');
-    const timestamp = Date.now().toString(36); // Base36 timestamp for uniqueness
+    const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const uniqueSuffix = Math.random().toString(36).slice(2, 6);
     const shortId = identity.state.slice(0, 8);
-    const branchName = `fix/identity-${shortId}-${timestamp}`;
+    const branchName = `fix/identity-${shortId}-${timestamp}-${uniqueSuffix}`;
 
     await gitCommand('fetch origin main');
 
-    // Clean up any existing local branch with similar name pattern
+    // Delete branch if it exists (from failed previous run)
     try {
-      const existingBranches = await gitCommand('branch --list "fix/identity-*"');
-      const branchesToDelete = existingBranches
-        .split('\n')
-        .map(b => b.trim().replace('* ', ''))
-        .filter(b => b && b !== originalBranch);
-
-      for (const branch of branchesToDelete) {
-        try {
-          await gitCommand(`branch -D ${branch}`);
-          log(`Cleaned up old branch: ${branch}`);
-        } catch {
-          // Branch might be in use or already deleted
-        }
-      }
+      await gitCommand(`branch -D ${branchName}`);
     } catch {
-      // No existing branches to clean up
+      // Branch doesn't exist, that's fine
     }
 
     await gitCommand(`checkout -b ${branchName} origin/main`);
@@ -233,6 +221,22 @@ export async function POST(request: NextRequest) {
 
     // Stage and commit
     await gitCommand('add data/config-live.json');
+
+    // Check if there are actually changes to commit
+    // git diff --cached --quiet exits with 1 if there are changes, 0 if no changes
+    let hasChanges = false;
+    try {
+      await gitCommand('diff --cached --quiet');
+      // If it succeeds (exit 0), there are no changes
+      hasChanges = false;
+    } catch {
+      // If it fails (exit 1), there are changes
+      hasChanges = true;
+    }
+
+    if (!hasChanges) {
+      log('Warning: No changes detected in config file, creating empty commit');
+    }
 
     const commitMessage = `fix(identity): ${mapping.summary}
 
@@ -252,8 +256,16 @@ Co-Authored-By: CRO Agent <cro-agent@blip.ship>`;
 
     const tmpFile = path.join(process.cwd(), '.git', 'COMMIT_MSG_TMP');
     await fs.writeFile(tmpFile, commitMessage);
-    await gitCommand(`commit -F "${tmpFile}"`);
-    await fs.unlink(tmpFile);
+
+    try {
+      await gitCommand(`commit -F "${tmpFile}"`);
+    } catch (commitError) {
+      // If commit fails (no changes), allow empty commit
+      log('Regular commit failed, trying with --allow-empty');
+      await gitCommand(`commit --allow-empty -F "${tmpFile}"`);
+    }
+
+    await fs.unlink(tmpFile).catch(() => {}); // Ignore cleanup errors
     log('Committed changes');
 
     // Push branch
@@ -318,107 +330,9 @@ ${mapping.expectedImpact}
     await saveConfig('live', originalConfig);
     log('Restored original config on main branch');
 
-    // 8. Send approval email with screenshots
-    const ownerEmail = originalConfig.ownerEmail;
+    // 8. Send approval email
+    const ownerEmail = config.ownerEmail;
     let emailSent = false;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const fixId = `identity_${identity.state}_${Date.now()}`;
-
-    const suggestionAdapter: Suggestion = {
-      id: fixId,
-      createdAt: Date.now(),
-      status: 'pending',
-      analysis: {
-        summary: `User identified as "${identity.state}" with ${(identity.confidence * 100).toFixed(0)}% confidence`,
-        insights: [identity.reasoning],
-        dataPoints: [{
-          metric: 'Confidence',
-          value: identity.confidence,
-          interpretation: `${(identity.confidence * 100).toFixed(0)}% confident in this user identity`,
-        }],
-      },
-      recommendation: {
-        summary: mapping.summary,
-        rationale: mapping.rationale,
-        expectedImpact: mapping.expectedImpact,
-      },
-      changes: mapping.elementChanges.map(c => ({
-        field: c.property,
-        oldValue: c.oldValue,
-        newValue: c.newValue,
-        reason: c.reason,
-      })),
-      previewConfig: config,
-    };
-
-    const fixAdapter = {
-      id: `identityfix_${Date.now()}`,
-      suggestionId: fixId,
-      createdAt: Date.now(),
-      status: 'pending' as const,
-      configChanges: mapping.elementChanges.map(c => ({
-        path: c.property,
-        oldValue: c.oldValue,
-        newValue: c.newValue,
-      })),
-      affectedFiles: [{
-        path: 'data/config-live.json',
-        changeType: 'modify' as const,
-        diff: generateConfigDiff(originalConfig, config),
-      }],
-      metadata: {
-        estimatedImpact: mapping.expectedImpact,
-        rollbackPlan: `Revert branch ${branchName}`,
-        testingNotes: `Test with simulated ${identity.state} user behavior`,
-      },
-    };
-
-    // Save fix to store so approval page can find it
-    const storedPrNumber = prNumber || undefined;
-
-    const prInfo = {
-      id: `pr_${Date.now()}`,
-      number: storedPrNumber,
-      branchName,
-      title: `Identity Fix: Optimize for ${identity.state} users`,
-      description: mapping.summary,
-      status: 'open' as const,
-      url: prUrl || undefined,
-      fixId: fixAdapter.id,
-      suggestionId: fixId,
-      createdAt: Date.now(),
-    };
-    await saveFix(suggestionAdapter, fixAdapter, prInfo);
-    log(`Saved fix to store with ID: ${fixId}`);
-
-    // Generate screenshots by temporarily saving preview config
-    let screenshots = {
-      currentScreenshotUrl: `${baseUrl}/store`,
-      proposedScreenshotUrl: `${baseUrl}/store?mode=preview`,
-      isEmbedded: false,
-    };
-
-    try {
-      log('Generating before/after screenshots...');
-      // Save the modified config as preview so screenshots can capture it
-      await saveConfig('preview', config);
-      log('Saved preview config for screenshots');
-
-      // Capture screenshots
-      const screenshotResult = await generateScreenshots(suggestionAdapter, baseUrl);
-      if (screenshotResult.currentScreenshotUrl && screenshotResult.proposedScreenshotUrl) {
-        screenshots = {
-          currentScreenshotUrl: screenshotResult.currentScreenshotUrl,
-          proposedScreenshotUrl: screenshotResult.proposedScreenshotUrl,
-          isEmbedded: screenshotResult.isEmbedded,
-        };
-        log(`Screenshots captured: ${screenshotResult.isEmbedded ? 'embedded' : 'hosted on Cloudinary'}`);
-      } else {
-        log('Warning: Screenshots not available, using store URLs');
-      }
-    } catch (screenshotError) {
-      log(`Warning: Screenshot capture failed: ${screenshotError}`);
-    }
 
     if (!ownerEmail) {
       log('Warning: No owner email configured, skipping email');
@@ -426,17 +340,92 @@ ${mapping.expectedImpact}
       log('Warning: SendGrid not configured, skipping email');
     } else {
       log('Sending approval email...');
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      const fixId = `identity_${identity.state}_${Date.now()}`;
+
+      const suggestionAdapter: Suggestion = {
+        id: fixId,
+        createdAt: Date.now(),
+        status: 'pending',
+        analysis: {
+          summary: `User identified as "${identity.state}" with ${(identity.confidence * 100).toFixed(0)}% confidence`,
+          insights: [identity.reasoning],
+          dataPoints: [{
+            metric: 'Confidence',
+            value: identity.confidence,
+            interpretation: `${(identity.confidence * 100).toFixed(0)}% confident in this user identity`,
+          }],
+        },
+        recommendation: {
+          summary: mapping.summary,
+          rationale: mapping.rationale,
+          expectedImpact: mapping.expectedImpact,
+        },
+        changes: mapping.elementChanges.map(c => ({
+          field: c.property,
+          oldValue: c.oldValue,
+          newValue: c.newValue,
+          reason: c.reason,
+        })),
+        previewConfig: config,
+      };
+
+      const fixAdapter = {
+        id: `identityfix_${Date.now()}`,
+        suggestionId: fixId,
+        createdAt: Date.now(),
+        status: 'pending' as const,
+        configChanges: mapping.elementChanges.map(c => ({
+          path: c.property,
+          oldValue: c.oldValue,
+          newValue: c.newValue,
+        })),
+        affectedFiles: [{
+          path: 'data/config-live.json',
+          changeType: 'modify' as const,
+          diff: generateConfigDiff(originalConfig, config),
+        }],
+        metadata: {
+          estimatedImpact: mapping.expectedImpact,
+          rollbackPlan: `Revert branch ${branchName}`,
+          testingNotes: `Test with simulated ${identity.state} user behavior`,
+        },
+      };
+
+      // Save fix to store so approval page can find it
+      // Extract PR number from URL (e.g., https://github.com/user/repo/pull/123)
+      const prNumberMatch = prUrl?.match(/\/pull\/(\d+)/);
+      const prNumber = prNumberMatch ? parseInt(prNumberMatch[1], 10) : undefined;
+
+      const prInfo = {
+        id: `pr_${Date.now()}`,
+        number: prNumber,
+        branchName,
+        title: `Identity Fix: Optimize for ${identity.state} users`,
+        description: mapping.summary,
+        status: 'open' as const,
+        createdAt: Date.now(),
+        url: prUrl || undefined,
+        fixId: fixAdapter.id,
+        suggestionId: fixId,
+      };
+      await saveFix(suggestionAdapter, fixAdapter, prInfo);
+      log(`Saved fix to store with ID: ${fixId}`);
 
       const emailPayload = {
         to: ownerEmail,
         subject: `🧠 Identity Fix: Optimize for ${identity.state} users`,
         fixId,
-        storeName: originalConfig.storeName || 'Your Store',
+        storeName: config.storeName || 'Your Store',
         suggestion: suggestionAdapter,
         fix: fixAdapter,
-        screenshots,
-        approvalUrl: `${baseUrl}/fix/${fixId}`,  // No auto-action, let user click Ship
-        rejectionUrl: `${baseUrl}/fix/${fixId}`,
+        screenshots: {
+          currentScreenshotUrl: `${baseUrl}/store`,
+          proposedScreenshotUrl: prUrl || `${baseUrl}/store?preview=true`,
+          isEmbedded: false,
+        },
+        approvalUrl: `${baseUrl}/fix/${fixId}?action=approve`,
+        rejectionUrl: `${baseUrl}/fix/${fixId}?action=reject`,
         expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
       };
 
@@ -465,11 +454,6 @@ ${mapping.expectedImpact}
         summary: mapping.summary,
         expectedImpact: mapping.expectedImpact,
         changesCount: mapping.elementChanges.length,
-        changes: mapping.elementChanges.map(c => ({
-          field: c.property,
-          oldValue: c.oldValue,
-          newValue: c.newValue,
-        })),
       },
       result: {
         branch: branchName,

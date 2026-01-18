@@ -1,4 +1,4 @@
-import { ComponentMapping } from './types';
+import { ComponentMapping } from '@/types';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 

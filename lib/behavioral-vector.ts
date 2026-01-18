@@ -10,33 +10,10 @@
  * - content_focus_ratio: Focused vs scattered attention
  */
 
-import type { AnalyticsEvent } from '@/types/events';
+import type { AnalyticsEvent, BehavioralVector, IdentityState, UserIdentity } from '@/types';
 
-export interface BehavioralVector {
-  exploration_score: number;      // 0-1: High = exploring many items
-  hesitation_score: number;       // 0-1: High = uncertain/hesitant
-  engagement_depth: number;       // 0-1: High = deep engagement
-  decision_velocity: number;      // 0-1: High = moving fast through funnel
-  content_focus_ratio: number;    // 0-1: High = focused on specific content
-}
-
-export type IdentityState =
-  | 'exploratory'           // Browsing many options, high exploration
-  | 'overwhelmed'           // High exploration + high hesitation, struggling to choose
-  | 'comparison_focused'    // High engagement + moderate exploration, researching
-  | 'confident'             // Low hesitation + high velocity, knows what they want
-  | 'ready_to_decide'       // High engagement + high velocity + low hesitation
-  | 'cautious'              // Low velocity + high engagement, being careful
-  | 'impulse_buyer'         // High velocity + low engagement, quick decisions
-  | 'frustrated';           // High rage clicks, dead clicks
-
-export interface UserIdentity {
-  state: IdentityState;
-  confidence: number;        // 0-1
-  reasoning: string;
-  vector: BehavioralVector;
-  computedAt: number;
-}
+// Re-export types for backwards compatibility
+export type { BehavioralVector, IdentityState, UserIdentity } from '@/types';
 
 // Recency window in milliseconds (5 minutes like html.ai)
 const RECENCY_WINDOW_MS = 5 * 60 * 1000;
@@ -149,7 +126,7 @@ function computeEngagement(weightedEvents: WeightedEvent[]): number {
       engagementScore += weight * 2;
     }
     // Text selection = research behavior
-    if (event.type === 'text_selection') {
+    if (event.type === 'text_selection' || event.type === 'text_copy') {
       engagementScore += weight * 1.5;
     }
     // Product view with time

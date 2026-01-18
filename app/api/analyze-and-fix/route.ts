@@ -19,7 +19,7 @@ import { analyzeIssuesAndRecommendFix, isGeminiConfigured } from '@/lib/gemini-s
 import { generateCodeChanges, applyCodeChanges, isAnthropicConfigured } from '@/lib/code-change-service';
 import { sendFixApprovalEmail, buildFixApprovalEmail, isSendGridConfigured } from '@/lib/email-service';
 import { captureAndUploadScreenshots } from '@/lib/screenshot-service';
-import type { UIIssue, Suggestion } from '@/lib/types';
+import type { UIIssue, Suggestion } from '@/types';
 
 const execAsync = promisify(exec);
 

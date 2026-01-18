@@ -10,7 +10,7 @@
 
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import type { Suggestion } from './types';
+import type { Suggestion } from '@/types';
 import type { MinimalFix } from './fix-agent';
 import type { PRInfo } from './git-service';
 
@@ -60,7 +60,6 @@ async function initStore(): Promise<void> {
 async function persistStore(): Promise<void> {
   const fixes = Array.from(fixesCache.values());
   await fs.writeFile(FIXES_FILE, JSON.stringify(fixes, null, 2));
-  cacheTimestamp = Date.now(); // Update cache timestamp after write
 }
 
 /**

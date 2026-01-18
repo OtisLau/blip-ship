@@ -10,6 +10,8 @@ const nextConfig = {
       },
     ],
   },
+  // Allow dev server access from any origin (for local network testing)
+  allowedDevOrigins: ['*'],
 }
 
 module.exports = nextConfig

@@ -11,7 +11,7 @@
  */
 
 import sgMail from '@sendgrid/mail';
-import type { Suggestion } from './types';
+import type { Suggestion } from '@/types';
 import type { MinimalFix } from './fix-agent';
 import { captureFixScreenshots, isScreenshotServiceAvailable } from './screenshot-service';
 

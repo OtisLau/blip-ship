@@ -35,8 +35,18 @@ export async function POST(
     }
 
     if (fix.status !== 'pending') {
+      // If already merged, return success (idempotent)
+      if (fix.status === 'merged') {
+        return NextResponse.json({
+          success: true,
+          message: 'Fix was already shipped',
+          fix,
+          alreadyMerged: true,
+        });
+      }
+      // If rejected, return error
       return NextResponse.json(
-        { success: false, error: `Fix is already ${fix.status}` },
+        { success: false, error: `Fix was already ${fix.status}` },
         { status: 400 }
       );
     }

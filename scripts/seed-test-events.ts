@@ -4,7 +4,7 @@
  */
 
 import { appendEvents } from '../lib/db';
-import type { AnalyticsEvent } from '../types/events';
+import type { AnalyticsEvent } from '@/types';
 
 const now = Date.now();
 const hour = 60 * 60 * 1000;

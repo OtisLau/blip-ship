@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { SiteConfig } from '@/lib/types';
+import { SiteConfig } from '@/types';
 
 interface FooterProps {
   config: SiteConfig['footer'];

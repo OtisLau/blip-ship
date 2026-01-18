@@ -1,6 +1,6 @@
 'use client';
 
-import { SiteConfig } from '@/lib/types';
+import { SiteConfig } from '@/types';
 import { sanitizeText, sanitizeUrl } from '@/lib/sanitize';
 
 interface HeroProps {

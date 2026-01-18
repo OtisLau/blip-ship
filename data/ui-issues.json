@@ -1,362 +1,9 @@
 [
   {
-    "id": "issue_1768723648390_nmduyz",
+    "id": "issue_1768740593343_xux7fg",
     "status": "fix_generated",
-    "detectedAt": 1768723648390,
-    "lastOccurrence": 1768723629356,
-    "category": "frustration",
-    "severity": "low",
-    "patternId": "click_frustration",
-    "elementSelector": "#testimonials",
-    "sectionId": "/store",
-    "componentPath": "components/store/Testimonials.tsx",
-    "componentName": "Testimonials",
-    "eventCount": 2,
-    "uniqueSessions": 1,
-    "sampleEvents": [
-      {
-        "id": "evt_1768723628242_lhhu1ul",
-        "timestamp": 1768723628242,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 520,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 75,
-        "y": 469,
-        "elementSelector": "#testimonials",
-        "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
-        "elementContext": {
-          "selector": "#testimonials",
-          "fullPath": "#testimonials",
-          "tag": "section",
-          "text": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel",
-          "attributes": {
-            "id": "testimonials"
-          },
-          "boundingBox": {
-            "top": 1228,
-            "left": 0,
-            "width": 505,
-            "height": 742
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 423,
-            "visible": true,
-            "percentVisible": 62
-          },
-          "computedStyle": {
-            "cursor": "auto",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 805,
-          "scrollPercent": 50,
-          "documentHeight": 2493,
-          "documentWidth": 541,
-          "timeOnPage": 446809,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive section element \"What People Are Saying4.9 from...\". Expected it to do something. Element path: #testimonials",
-        "inferredBehavior": "browsing",
-        "behaviorConfidence": 0.6,
-        "behaviorContext": "Clicked 1 CTA(s) but hasn't added to cart"
-      },
-      {
-        "id": "evt_1768723629356_bbhjixd",
-        "timestamp": 1768723629356,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 520,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 229,
-        "y": 470,
-        "elementSelector": "#testimonials",
-        "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
-        "elementContext": {
-          "selector": "#testimonials",
-          "fullPath": "#testimonials",
-          "tag": "section",
-          "text": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel",
-          "attributes": {
-            "id": "testimonials"
-          },
-          "boundingBox": {
-            "top": 1228,
-            "left": 0,
-            "width": 505,
-            "height": 742
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 423,
-            "visible": true,
-            "percentVisible": 62
-          },
-          "computedStyle": {
-            "cursor": "auto",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 805,
-          "scrollPercent": 50,
-          "documentHeight": 2493,
-          "documentWidth": 541,
-          "timeOnPage": 447923,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive section element \"What People Are Saying4.9 from...\". Expected it to do something. Element path: #testimonials",
-        "inferredBehavior": "browsing",
-        "behaviorConfidence": 0.6,
-        "behaviorContext": "Clicked 2 CTA(s) but hasn't added to cart"
-      }
-    ],
-    "problemStatement": "Users clicking this element are frustrated",
-    "userIntent": "Expected the element to respond",
-    "currentOutcome": "Element did not behave as expected",
-    "suggestedFix": "",
-    "fix": {
-      "branch": "fix/cro-code-20260118-issue_176872",
-      "previewUrl": "https://github.com/OtisLau/blip-ship/compare/main...fix/cro-code-20260118-issue_176872",
-      "diff": "--- a/components/store/Testimonials.tsx\n+++ b/components/store/Testimonials.tsx\n@@ -41,41 +41,42 @@\n                 padding: '28px',\n                 border: '1px solid #e5e7eb',\n-              }}\n+                cursor: 'pointer',\n-            >\n+              }}\n-              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>\n+              onClick={() => {}}\n-                {[...Array(5)].map((_, i) => (\n+            >\n-                  <svg key={i} style={{ width: '14px', height: '14px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n+              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>\n-                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n+                {[...Array(5)].map((_, i) => (\n-                  </svg>\n+                  <svg key={i} style={{ width: '14px', height: '14px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n-                ))}\n+                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n-              </div>\n+                  </svg>\n-              <p style={{ color: '#374151', marginBottom: '20px', lineHeight: 1.6, fontSize: '15px' }}>\n+                ))}\n-                &ldquo;{testimonial.quote}&rdquo;\n+              </div>\n-              </p>\n+              <p style={{ color: '#374151', marginBottom: '20px', lineHeight: 1.6, fontSize: '15px' }}>\n-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>\n+                &ldquo;{testimonial.quote}&rdquo;\n-                <div style={{\n+              </p>\n-                  width: '40px',\n+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>\n-                  height: '40px',\n+                <div style={{\n-                  backgroundColor: '#111',\n+                  width: '40px',\n-                  display: 'flex',\n+                  height: '40px',\n-                  alignItems: 'center',\n+                  backgroundColor: '#111',\n-                  justifyContent: 'center',\n+                  display: 'flex',\n-                  color: 'white',\n+                  alignItems: 'center',\n-                  fontWeight: 500,\n+                  justifyContent: 'center',\n-                  fontSize: '16px',\n+                  color: 'white',\n-                }}>\n+                  fontWeight: 500,\n-                  {testimonial.author.charAt(0)}\n+                  fontSize: '16px',\n-                </div>\n+                }}>\n-                <div>\n+                  {testimonial.author.charAt(0)}\n-                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#111' }}>{testimonial.author}</p>\n+                </div>\n-                  <p style={{ fontSize: '12px', color: '#6b7280' }}>Verified Buyer</p>\n+                <div>\n-                </div>\n+                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#111' }}>{testimonial.author}</p>\n-              </div>\n+                  <p style={{ fontSize: '12px', color: '#6b7280' }}>Verified Buyer</p>\n-            </div>\n+                </div>\n-          ))}\n+              </div>\n-        </div>\n+            </div>\n-      </div>\n+          ))}\n-    </section>\n+        </div>\n-  );\n+      </div>\n-}\n+    </section>\n-\n+  );\n+}\n",
-      "modifiedFiles": [
-        {
-          "path": "components/store/Testimonials.tsx",
-          "content": "'use client';\n\nimport { SiteConfig } from '@/lib/types';\n\ninterface TestimonialsProps {\n  config: SiteConfig['testimonials'];\n}\n\nexport function Testimonials({ config }: TestimonialsProps) {\n  if (!config.show) {\n    return null;\n  }\n\n  return (\n    <section id=\"testimonials\" style={{ padding: '80px 0', backgroundColor: 'white' }}>\n      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>\n        <div style={{ textAlign: 'center', marginBottom: '48px' }}>\n          <h2 style={{ fontSize: '32px', fontWeight: 600, color: '#111', marginBottom: '12px', letterSpacing: '-0.5px' }}>\n            {config.sectionTitle}\n          </h2>\n          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>\n            {[...Array(5)].map((_, i) => (\n              <svg key={i} style={{ width: '18px', height: '18px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n                <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n              </svg>\n            ))}\n            <span style={{ marginLeft: '8px', fontSize: '14px', color: '#6b7280' }}>4.9 from 2,400+ reviews</span>\n          </div>\n        </div>\n\n        <div style={{\n          display: 'grid',\n          gridTemplateColumns: 'repeat(3, 1fr)',\n          gap: '24px',\n        }}>\n          {config.items.map((testimonial, index) => (\n            <div\n              key={index}\n              style={{\n                backgroundColor: '#fafafa',\n                padding: '28px',\n                border: '1px solid #e5e7eb',\n                cursor: 'pointer',\n              }}\n              onClick={() => {}}\n            >\n              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>\n                {[...Array(5)].map((_, i) => (\n                  <svg key={i} style={{ width: '14px', height: '14px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n                  </svg>\n                ))}\n              </div>\n              <p style={{ color: '#374151', marginBottom: '20px', lineHeight: 1.6, fontSize: '15px' }}>\n                &ldquo;{testimonial.quote}&rdquo;\n              </p>\n              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>\n                <div style={{\n                  width: '40px',\n                  height: '40px',\n                  backgroundColor: '#111',\n                  display: 'flex',\n                  alignItems: 'center',\n                  justifyContent: 'center',\n                  color: 'white',\n                  fontWeight: 500,\n                  fontSize: '16px',\n                }}>\n                  {testimonial.author.charAt(0)}\n                </div>\n                <div>\n                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#111' }}>{testimonial.author}</p>\n                  <p style={{ fontSize: '12px', color: '#6b7280' }}>Verified Buyer</p>\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}"
-        }
-      ],
-      "explanation": "The 'dead click' indicates the user expected the testimonial section to be interactive.  Changing the cursor to a pointer and providing a simple onClick handler can immediately improve the perceived interactivity. This addresses the direct cause of frustration without requiring more complex functionality.",
-      "generatedAt": 1768723674801
-    }
-  },
-  {
-    "id": "issue_1768724362788_hg6k3c",
-    "status": "detected",
-    "detectedAt": 1768724362788,
-    "lastOccurrence": 1768723660452,
-    "category": "frustration",
-    "severity": "low",
-    "patternId": "click_frustration",
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "sectionId": "/store",
-    "componentPath": "components/store/CartDrawer.tsx",
-    "componentName": "CartDrawer",
-    "eventCount": 3,
-    "uniqueSessions": 1,
-    "sampleEvents": [
-      {
-        "id": "evt_1768723658949_u60sohu",
-        "timestamp": 1768723658949,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 520,
-          "height": 884
-        },
-        "type": "double_click",
-        "x": 313,
-        "y": 765,
-        "elementSelector": "button.jsx-532d500bfc6d5d04",
-        "elementText": "Continue to Payment",
-        "elementContext": {
-          "selector": "button.jsx-532d500bfc6d5d04",
-          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1)",
-          "tag": "button",
-          "text": "Continue to Payment",
-          "attributes": {
-            "type": "submit",
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 1212,
-            "left": 109,
-            "width": 372,
-            "height": 48
-          },
-          "viewportPosition": {
-            "x": 109,
-            "y": 750,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "inline-block"
-          },
-          "isInteractive": true,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 462,
-          "scrollPercent": 29,
-          "documentHeight": 2493,
-          "documentWidth": 541,
-          "timeOnPage": 11179,
-          "url": "/store"
-        },
-        "frustrationReason": "User double-clicked button \"Continue to Payment\". Suggests no loading state or feedback - user unsure if click registered.",
-        "inferredBehavior": "ready_to_buy",
-        "behaviorConfidence": 0.85,
-        "behaviorContext": "User added 1 item(s) to cart"
-      },
-      {
-        "id": "evt_1768723658949_cry8wez",
-        "timestamp": 1768723658949,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 520,
-          "height": 884
-        },
-        "type": "rage_click",
-        "x": 310,
-        "y": 770,
-        "elementSelector": "button.jsx-532d500bfc6d5d04",
-        "clickCount": 4,
-        "elementContext": {
-          "selector": "button.jsx-532d500bfc6d5d04",
-          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1)",
-          "tag": "button",
-          "text": "Continue to Payment",
-          "attributes": {
-            "type": "submit",
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 1212,
-            "left": 109,
-            "width": 372,
-            "height": 48
-          },
-          "viewportPosition": {
-            "x": 109,
-            "y": 750,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "inline-block"
-          },
-          "isInteractive": true,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 462,
-          "scrollPercent": 29,
-          "documentHeight": 2493,
-          "documentWidth": 541,
-          "timeOnPage": 11402,
-          "url": "/store"
-        },
-        "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1), cursor: pointer",
-        "inferredBehavior": "ready_to_buy",
-        "behaviorConfidence": 0.85,
-        "behaviorContext": "User added 1 item(s) to cart"
-      },
-      {
-        "id": "evt_1768723660452_08hinjy",
-        "timestamp": 1768723660452,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 520,
-          "height": 884
-        },
-        "type": "rage_click",
-        "x": 313,
-        "y": 765,
-        "elementSelector": "button.jsx-532d500bfc6d5d04",
-        "clickCount": 3,
-        "elementContext": {
-          "selector": "button.jsx-532d500bfc6d5d04",
-          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1)",
-          "tag": "button",
-          "text": "Continue to Payment",
-          "attributes": {
-            "type": "submit",
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 1212,
-            "left": 109,
-            "width": 372,
-            "height": 48
-          },
-          "viewportPosition": {
-            "x": 109,
-            "y": 750,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "inline-block"
-          },
-          "isInteractive": true,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 462,
-          "scrollPercent": 29,
-          "documentHeight": 2493,
-          "documentWidth": 541,
-          "timeOnPage": 12077,
-          "url": "/store"
-        },
-        "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1), cursor: pointer",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 0 dead clicks"
-      }
-    ],
-    "problemStatement": "Users clicking this element are frustrated",
-    "userIntent": "Expected the element to respond",
-    "currentOutcome": "Element did not behave as expected",
-    "suggestedFix": ""
-  },
-  {
-    "id": "issue_1768724667813_43gj4p",
-    "status": "detected",
-    "detectedAt": 1768724667813,
-    "lastOccurrence": 1768724662054,
+    "detectedAt": 1768740593343,
+    "lastOccurrence": 1768740464199,
     "category": "frustration",
     "severity": "high",
     "patternId": "click_frustration",
@@ -364,223 +11,45 @@
     "sectionId": "/store",
     "componentPath": "components/store/ProductGrid.tsx",
     "componentName": "ProductGrid",
-    "eventCount": 15,
+    "eventCount": 16,
     "uniqueSessions": 1,
     "sampleEvents": [
       {
-        "id": "evt_1768724568453_httgkfg",
-        "timestamp": 1768724568453,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740456197_y9ck3f2",
+        "timestamp": 1768740456197,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 461,
-        "y": 278,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1521572163474-6864f9cf17ab%3Fw%3D600%26q%"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 287,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 287,
-            "y": 96,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 732,
-          "scrollPercent": 49,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 920078,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 2 dead clicks"
-      },
-      {
-        "id": "evt_1768724657752_16mymuc",
-        "timestamp": 1768724657752,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1009378,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 6 dead clicks"
-      },
-      {
-        "id": "evt_1768724659374_v5dvg3u",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1010460,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 7 dead clicks"
-      },
-      {
-        "id": "evt_1768724659374_4pl4y91",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
         "type": "rage_click",
-        "x": 701,
-        "y": 443,
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
         "clickCount": 3,
         "elementContext": {
           "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
           "tag": "img",
           "text": "",
           "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+            "src": "/img/quarter-zip-black.jpg"
           },
           "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
           },
           "viewportPosition": {
-            "x": 555,
-            "y": 351,
+            "x": 506,
+            "y": 214,
             "visible": true,
             "percentVisible": 100
           },
           "computedStyle": {
-            "cursor": "pointer",
+            "cursor": "auto",
             "pointerEvents": "auto",
             "opacity": "1",
             "display": "block"
@@ -592,54 +61,53 @@
         },
         "pageContext": {
           "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1011136,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129161,
           "url": "/store"
         },
-        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 3 rage clicks, 7 dead clicks"
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div:nth-child(3) > div > div:nth-child(1) > img, cursor: auto",
+        "inferredBehavior": "price_sensitive",
+        "behaviorConfidence": 0.7,
+        "behaviorContext": "Checked prices 2 times"
       },
       {
-        "id": "evt_1768724659374_gat3bur",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740456197_9i7k420",
+        "timestamp": 1768740456197,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
         "type": "dead_click",
-        "x": 701,
-        "y": 443,
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
         "elementContext": {
           "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
           "tag": "img",
           "text": "",
           "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+            "src": "/img/quarter-zip-black.jpg"
           },
           "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
           },
           "viewportPosition": {
-            "x": 555,
-            "y": 351,
+            "x": 506,
+            "y": 214,
             "visible": true,
             "percentVisible": 100
           },
           "computedStyle": {
-            "cursor": "pointer",
+            "cursor": "auto",
             "pointerEvents": "auto",
             "opacity": "1",
             "display": "block"
@@ -651,173 +119,54 @@
         },
         "pageContext": {
           "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1011137,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129161,
           "url": "/store"
         },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
+        "behaviorContext": "User shows frustration: 1 rage clicks, 3 dead clicks"
       },
       {
-        "id": "evt_1768724659374_j2n8b61",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740456197_gojz7bm",
+        "timestamp": 1768740456197,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1011828,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
-      },
-      {
-        "id": "evt_1768724659374_eknusub",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1012001,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
-      },
-      {
-        "id": "evt_1768724661051_yru52jx",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
         "type": "double_click",
-        "x": 701,
-        "y": 443,
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
         "elementText": "",
         "elementContext": {
           "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
           "tag": "img",
           "text": "",
           "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+            "src": "/img/quarter-zip-black.jpg"
           },
           "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
           },
           "viewportPosition": {
-            "x": 555,
-            "y": 351,
+            "x": 506,
+            "y": 214,
             "visible": true,
             "percentVisible": 100
           },
           "computedStyle": {
-            "cursor": "pointer",
+            "cursor": "auto",
             "pointerEvents": "auto",
             "opacity": "1",
             "display": "block"
@@ -829,54 +178,169 @@
         },
         "pageContext": {
           "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1012002,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129161,
           "url": "/store"
         },
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+        "behaviorContext": "User shows frustration: 1 rage clicks, 3 dead clicks"
       },
       {
-        "id": "evt_1768724661051_4joj4cl",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740456197_8xa3u8x",
+        "timestamp": 1768740456197,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 514,
+        "y": 345,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129327,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+      },
+      {
+        "id": "evt_1768740457018_visq0nm",
+        "timestamp": 1768740457018,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 514,
+        "y": 345,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129469,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
+      },
+      {
+        "id": "evt_1768740457018_2yfm12f",
+        "timestamp": 1768740457018,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
           "height": 884
         },
         "type": "rage_click",
-        "x": 701,
-        "y": 443,
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
         "clickCount": 3,
         "elementContext": {
           "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
           "tag": "img",
           "text": "",
           "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+            "src": "/img/quarter-zip-black.jpg"
           },
           "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
           },
           "viewportPosition": {
-            "x": 555,
-            "y": 351,
+            "x": 506,
+            "y": 214,
             "visible": true,
             "percentVisible": 100
           },
           "computedStyle": {
-            "cursor": "pointer",
+            "cursor": "auto",
             "pointerEvents": "auto",
             "opacity": "1",
             "display": "block"
@@ -888,673 +352,677 @@
         },
         "pageContext": {
           "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1012243,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129620,
           "url": "/store"
         },
-        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-      },
-      {
-        "id": "evt_1768724661051_p52z01w",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1012243,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-      },
-      {
-        "id": "evt_1768724661051_wboterh",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1012770,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 12 dead clicks"
-      },
-      {
-        "id": "evt_1768724661051_avw45qt",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1013219,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-      },
-      {
-        "id": "evt_1768724661051_legj6ia",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "double_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementText": "",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1013220,
-          "url": "/store"
-        },
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-      },
-      {
-        "id": "evt_1768724662054_8ubgft4",
-        "timestamp": 1768724662054,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "rage_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "clickCount": 3,
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1013679,
-          "url": "/store"
-        },
-        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-      },
-      {
-        "id": "evt_1768724662054_vcuzvxk",
-        "timestamp": 1768724662054,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "dead_click",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "elementContext": {
-          "selector": "img",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-          "tag": "img",
-          "text": "",
-          "attributes": {
-            "data-nimg": "fill",
-            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
-          },
-          "boundingBox": {
-            "top": 828,
-            "left": 555,
-            "width": 258,
-            "height": 258
-          },
-          "viewportPosition": {
-            "x": 555,
-            "y": 351,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 477,
-          "scrollPercent": 32,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 1013680,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 5 rage clicks, 14 dead clicks"
-      }
-    ],
-    "problemStatement": "Users clicking this element are frustrated",
-    "userIntent": "Expected the element to respond",
-    "currentOutcome": "Element did not behave as expected",
-    "suggestedFix": ""
-  },
-  {
-    "id": "issue_1768724667814_zc7vhy",
-    "status": "detected",
-    "detectedAt": 1768724667814,
-    "lastOccurrence": 1768724661051,
-    "category": "missing_feature",
-    "severity": "high",
-    "patternId": "multi_product_interaction",
-    "elementSelector": "/store",
-    "sectionId": "/store",
-    "componentPath": "unknown",
-    "componentName": "Unknown",
-    "eventCount": 14,
-    "uniqueSessions": 1,
-    "sampleEvents": [
-      {
-        "id": "evt_1768723657643_ah5ktwa",
-        "timestamp": 1768723657643,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 520,
-          "height": 884
-        },
-        "type": "add_to_cart",
-        "x": 78,
-        "y": 406,
-        "elementSelector": "button",
-        "elementText": "Added",
-        "elementId": "button_submit_newarrival_0",
-        "productId": "prod_001",
-        "productName": "Classic Heavyweight Hoodie",
-        "productPrice": 89,
-        "inferredBehavior": "ready_to_buy",
-        "behaviorConfidence": 0.85,
-        "behaviorContext": "User added 1 item(s) to cart"
-      },
-      {
-        "id": "evt_1768724568453_r84a633",
-        "timestamp": 1768724568453,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "product_view",
-        "x": 461,
-        "y": 278,
-        "elementSelector": "img",
-        "productId": "prod_002",
-        "productName": "Essential Cotton Tee",
-        "productPrice": 35,
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 1 dead clicks"
-      },
-      {
-        "id": "evt_1768724569644_g51zazl",
-        "timestamp": 1768724569644,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "add_to_cart",
-        "x": 383,
-        "y": 299,
-        "elementSelector": "button",
-        "elementText": "Added",
-        "elementId": "button_submit_newarrival_0",
-        "productId": "prod_002",
-        "productName": "Essential Cotton Tee",
-        "productPrice": 35,
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 2 dead clicks"
-      },
-      {
-        "id": "evt_1768724591561_5t9fu6s",
-        "timestamp": 1768724591561,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "add_to_cart",
-        "x": 289,
-        "y": 533,
-        "elementSelector": "#products",
-        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 2 dead clicks"
-      },
-      {
-        "id": "evt_1768724594277_ye5l4os",
-        "timestamp": 1768724594277,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "add_to_cart",
-        "x": 326,
-        "y": 543,
-        "elementSelector": "#products",
-        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 3 dead clicks"
-      },
-      {
-        "id": "evt_1768724657752_oie5t9l",
-        "timestamp": 1768724657752,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
-        "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div:nth-child(3) > div > div:nth-child(1) > img, cursor: auto",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 2 rage clicks, 5 dead clicks"
       },
       {
-        "id": "evt_1768724659374_3djy0wm",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740457018_crdla36",
+        "timestamp": 1768740457018,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129620,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 2 rage clicks, 6 dead clicks"
       },
       {
-        "id": "evt_1768724659374_p5e04jb",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740457018_opo9fc9",
+        "timestamp": 1768740457018,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129770,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 2 rage clicks, 7 dead clicks"
       },
       {
-        "id": "evt_1768724659374_xoa5rxb",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740457018_frsf4wd",
+        "timestamp": 1768740457018,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 514,
+        "y": 345,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129957,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 8 dead clicks"
+      },
+      {
+        "id": "evt_1768740458019_w95lo87",
+        "timestamp": 1768740458019,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 521,
+        "y": 351,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 130148,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div:nth-child(3) > div > div:nth-child(1) > img, cursor: auto",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
       },
       {
-        "id": "evt_1768724659374_k4y0gbt",
-        "timestamp": 1768724659374,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740458019_awco2xx",
+        "timestamp": 1768740458019,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 534,
+        "y": 364,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div:nth-child(3) > div > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "/img/quarter-zip-black.jpg"
+          },
+          "boundingBox": {
+            "top": 2114,
+            "left": 506,
+            "width": 500,
+            "height": 280
+          },
+          "viewportPosition": {
+            "x": 506,
+            "y": 214,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 130148,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(3) > div > div:nth-child(1) > img has cursor:auto, not clickable.",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
       },
       {
-        "id": "evt_1768724661051_j2pot1r",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740460420_6a3got6",
+        "timestamp": 1768740460420,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 724,
+        "y": 746,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=%2Fimg%2Fwide-leg-jeans.jpg&w=3840&q=75"
+          },
+          "boundingBox": {
+            "top": 2269,
+            "left": 542,
+            "width": 412,
+            "height": 515
+          },
+          "viewportPosition": {
+            "x": 542,
+            "y": 369,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 132549,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img has cursor:auto, not clickable.",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
       },
       {
-        "id": "evt_1768724661051_m4fbkj1",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740462427_h7m1trh",
+        "timestamp": 1768740462427,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 724,
+        "y": 746,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=%2Fimg%2Fwide-leg-jeans.jpg&w=3840&q=75"
+          },
+          "boundingBox": {
+            "top": 2269,
+            "left": 542,
+            "width": 412,
+            "height": 515
+          },
+          "viewportPosition": {
+            "x": 542,
+            "y": 369,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 134556,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img has cursor:auto, not clickable.",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
+        "behaviorContext": "User shows frustration: 3 rage clicks, 11 dead clicks"
       },
       {
-        "id": "evt_1768724661051_710s1er",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740464199_fey5o14",
+        "timestamp": 1768740464199,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
-        "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "type": "dead_click",
+        "x": 724,
+        "y": 746,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=%2Fimg%2Fwide-leg-jeans.jpg&w=3840&q=75"
+          },
+          "boundingBox": {
+            "top": 2269,
+            "left": 542,
+            "width": 412,
+            "height": 515
+          },
+          "viewportPosition": {
+            "x": 542,
+            "y": 369,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 135749,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img has cursor:auto, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 12 dead clicks"
+      },
+      {
+        "id": "evt_1768740464199_stuhyjb",
+        "timestamp": 1768740464199,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 724,
+        "y": 746,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=%2Fimg%2Fwide-leg-jeans.jpg&w=3840&q=75"
+          },
+          "boundingBox": {
+            "top": 2269,
+            "left": 542,
+            "width": 412,
+            "height": 515
+          },
+          "viewportPosition": {
+            "x": 542,
+            "y": 369,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 136328,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(8) > div.jsx-532d500bfc6d5d04:nth-child(1) > img, cursor: auto",
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
         "behaviorContext": "User shows frustration: 4 rage clicks, 12 dead clicks"
-      },
+      }
+    ],
+    "problemStatement": "Users clicking this element are frustrated",
+    "userIntent": "Expected the element to respond",
+    "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": "",
+    "fix": {
+      "branch": "fix/cro-code-20260118-issue_176874",
+      "previewUrl": "https://github.com/OtisLau/blip-ship/compare/main...fix/cro-code-20260118-issue_176874",
+      "diff": "--- a/components/store/ProductGrid.tsx\n+++ b/components/store/ProductGrid.tsx\n@@ -240,269 +240,270 @@\n                 onMouseEnter={() => setHoveredId(product.id)}\n                 onMouseLeave={() => setHoveredId(null)}\n-              >\n+                onClick={() => setSelectedProduct(product)}\n-                {/* Product Image - NOT CLICKABLE (creates dead click frustration) */}\n+              >\n-                <div\n+                {/* Product Image - NOT CLICKABLE (creates dead click frustration) */}\n-                  style={{\n+                <div\n-                    aspectRatio: '4/5',\n+                  style={{\n-                    position: 'relative',\n+                    aspectRatio: '4/5',\n-                    overflow: 'hidden',\n+                    position: 'relative',\n-                    backgroundColor: '#f5f5f5',\n+                    overflow: 'hidden',\n-                  }}\n+                    backgroundColor: '#f5f5f5',\n-                >\n+                  }}\n-                  <Image\n+                >\n-                    src={sanitizeUrl(product.image)}\n+                  <Image\n-                    alt={sanitizeText(product.name)}\n+                    src={sanitizeUrl(product.image)}\n-                    fill\n+                    alt={sanitizeText(product.name)}\n-                    sizes=\"(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw\"\n+                    fill\n-                    style={{\n+                    sizes=\"(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw\"\n-                      objectFit: 'contain',\n+                    style={{\n-                      transition: 'transform 0.5s ease',\n+                      objectFit: 'contain',\n-                      transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',\n+                      transition: 'transform 0.5s ease',\n-                      filter: isSoldOut ? 'grayscale(40%)' : 'none',\n+                      transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',\n-                    }}\n+                      filter: isSoldOut ? 'grayscale(40%)' : 'none',\n-                  />\n+                      cursor: 'pointer',\n-\n+                    }}\n-                  {/* Badge */}\n+                  />\n-                  {product.badge && !isSoldOut && (\n+\n-                    <span style={{\n+                  {/* Badge */}\n-                      position: 'absolute',\n+                  {product.badge && !isSoldOut && (\n-                      top: '16px',\n+                    <span style={{\n-                      left: '16px',\n+                      position: 'absolute',\n-                      backgroundColor: product.badge === 'New' ? '#0a0a0a' : '#0a0a0a',\n+                      top: '16px',\n-                      color: 'white',\n+                      left: '16px',\n-                      fontSize: '10px',\n+                      backgroundColor: product.badge === 'New' ? '#0a0a0a' : '#0a0a0a',\n-                      fontWeight: 600,\n+                      color: 'white',\n-                      padding: '6px 12px',\n+                      fontSize: '10px',\n-                      textTransform: 'uppercase',\n+                      fontWeight: 600,\n-                      letterSpacing: '1px',\n+                      padding: '6px 12px',\n-                    }}>\n+                      textTransform: 'uppercase',\n-                      {sanitizeText(product.badge)}\n+                      letterSpacing: '1px',\n-                    </span>\n+                    }}>\n-                  )}\n+                      {sanitizeText(product.badge)}\n-\n+                    </span>\n-                  {/* Sold Out Badge */}\n+                  )}\n-                  {isSoldOut && (\n+\n-                    <span style={{\n+                  {/* Sold Out Badge */}\n-                      position: 'absolute',\n+                  {isSoldOut && (\n-                      top: '16px',\n+                    <span style={{\n-                      left: '16px',\n+                      position: 'absolute',\n-                      backgroundColor: '#6b7280',\n+                      top: '16px',\n-                      color: 'white',\n+                      left: '16px',\n-                      fontSize: '10px',\n+                      backgroundColor: '#6b7280',\n-                      fontWeight: 600,\n+                      color: 'white',\n-                      padding: '6px 12px',\n+                      fontSize: '10px',\n-                      textTransform: 'uppercase',\n+                      fontWeight: 600,\n-                      letterSpacing: '1px',\n+                      padding: '6px 12px',\n-                    }}>\n+                      textTransform: 'uppercase',\n-                      Sold Out\n+                      letterSpacing: '1px',\n-                    </span>\n+                    }}>\n-                  )}\n+                      Sold Out\n-\n+                    </span>\n-                  {/* Add to Cart Button */}\n+                  )}\n-                  {!isSoldOut && (\n+\n-                    <button\n+                  {/* Add to Cart Button */}\n-                      data-add-to-cart\n+                  {!isSoldOut && (\n-                      data-cta\n+                    <button\n-                      onClick={(e) => {\n+                      data-add-to-cart\n-                        e.stopPropagation();\n+                      data-cta\n-                        handleAddToCart(product);\n+                      onClick={(e) => {\n-                      }}\n+                        e.stopPropagation();\n-                      style={{\n+                        handleAddToCart(product);\n-                        position: 'absolute',\n+                      }}\n-                        bottom: '16px',\n+                      style={{\n-                        left: '16px',\n+                        position: 'absolute',\n-                        right: '16px',\n+                        bottom: '16px',\n-                        padding: '14px',\n+                        left: '16px',\n-                        backgroundColor: addingId === product.id ? '#22c55e' : '#0a0a0a',\n+                        right: '16px',\n-                        color: 'white',\n+                        padding: '14px',\n-                        border: 'none',\n+                        backgroundColor: addingId === product.id ? '#22c55e' : '#0a0a0a',\n-                        fontSize: '11px',\n+                        color: 'white',\n-                        fontWeight: 600,\n+                        border: 'none',\n-                        cursor: addingId === product.id ? 'wait' : 'pointer',\n+                        fontSize: '11px',\n-                        opacity: hoveredId === product.id ? 1 : 0,\n+                        fontWeight: 600,\n-                        transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',\n+                        cursor: addingId === product.id ? 'wait' : 'pointer',\n-                        transition: 'all 0.25s ease',\n+                        opacity: hoveredId === product.id ? 1 : 0,\n-                        textTransform: 'uppercase',\n+                        transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',\n-                        letterSpacing: '1.5px',\n+                        transition: 'all 0.25s ease',\n-                      }}\n+                        textTransform: 'uppercase',\n-                    >\n+                        letterSpacing: '1.5px',\n-                      {addingId === product.id ? (\n+                      }}\n-                        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>\n+                    >\n-                          <svg style={{ width: '16px', height: '16px', animation: 'spin 1s linear infinite' }} fill=\"none\" viewBox=\"0 0 24 24\">\n+                      {addingId === product.id ? (\n-                            <circle style={{ opacity: 0.25 }} cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" strokeWidth=\"4\"></circle>\n+                        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>\n-                            <path style={{ opacity: 0.75 }} fill=\"currentColor\" d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"></path>\n+                          <svg style={{ width: '16px', height: '16px', animation: 'spin 1s linear infinite' }} fill=\"none\" viewBox=\"0 0 24 24\">\n-                          </svg>\n+                            <circle style={{ opacity: 0.25 }} cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" strokeWidth=\"4\"></circle>\n-                          Adding...\n+                            <path style={{ opacity: 0.75 }} fill=\"currentColor\" d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"></path>\n-                        </span>\n+                          </svg>\n-                      ) : 'Add to Bag'}\n+                          Adding...\n-                    </button>\n+                        </span>\n-                  )}\n+                      ) : 'Add to Bag'}\n-\n+                    </button>\n-                  {/* Notify Me Button for Sold Out */}\n+                  )}\n-                  {isSoldOut && (\n+\n-                    <button\n+                  {/* Notify Me Button for Sold Out */}\n-                      onClick={(e) => {\n+                  {isSoldOut && (\n-                        e.stopPropagation();\n+                    <button\n-                        alert('You\\'ll be notified when this item is back in stock!');\n+                      onClick={(e) => {\n-                      }}\n+                        e.stopPropagation();\n-                      style={{\n+                        alert('You\\'ll be notified when this item is back in stock!');\n-                        position: 'absolute',\n+                      }}\n-                        bottom: '16px',\n+                      style={{\n-                        left: '16px',\n+                        position: 'absolute',\n-                        right: '16px',\n+                        bottom: '16px',\n-                        padding: '14px',\n+                        left: '16px',\n-                        backgroundColor: 'white',\n+                        right: '16px',\n-                        color: '#0a0a0a',\n+                        padding: '14px',\n-                        border: '2px solid #0a0a0a',\n+                        backgroundColor: 'white',\n-                        fontSize: '11px',\n+                        color: '#0a0a0a',\n-                        fontWeight: 600,\n+                        border: '2px solid #0a0a0a',\n-                        cursor: 'pointer',\n+                        fontSize: '11px',\n-                        opacity: hoveredId === product.id ? 1 : 0,\n+                        fontWeight: 600,\n-                        transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',\n+                        cursor: 'pointer',\n-                        transition: 'all 0.25s ease',\n+                        opacity: hoveredId === product.id ? 1 : 0,\n-                        textTransform: 'uppercase',\n+                        transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',\n-                        letterSpacing: '1.5px',\n+                        transition: 'all 0.25s ease',\n-                      }}\n+                        textTransform: 'uppercase',\n-                    >\n+                        letterSpacing: '1.5px',\n-                      Notify Me\n+                      }}\n-                    </button>\n+                    >\n-                  )}\n+                      Notify Me\n-                </div>\n+                    </button>\n-\n+                  )}\n-                {/* Product Info */}\n+                </div>\n-                <div\n+\n-                  style={{ padding: '20px', cursor: 'pointer' }}\n+                {/* Product Info */}\n-                  onClick={() => setSelectedProduct(product)}\n+                <div\n-                >\n+                  style={{ padding: '20px', cursor: 'pointer' }}\n-                  <h3 style={{\n+                  onClick={() => setSelectedProduct(product)}\n-                    fontSize: '14px',\n+                >\n-                    fontWeight: 500,\n+                  <h3 style={{\n-                    color: isSoldOut ? '#9ca3af' : '#0a0a0a',\n+                    fontSize: '14px',\n-                    marginBottom: '6px',\n+                    fontWeight: 500,\n-                    letterSpacing: '0.3px'\n+                    color: isSoldOut ? '#9ca3af' : '#0a0a0a',\n-                  }}>\n+                    marginBottom: '6px',\n-                    {sanitizeText(product.name)}\n+                    letterSpacing: '0.3px'\n-                  </h3>\n+                  }}>\n-                  <p style={{\n+                    {sanitizeText(product.name)}\n-                    fontSize: '14px',\n+                  </h3>\n-                    color: isSoldOut ? '#9ca3af' : '#6b7280',\n+                  <p style={{\n-                    fontWeight: 500\n+                    fontSize: '14px',\n-                  }}>\n+                    color: isSoldOut ? '#9ca3af' : '#6b7280',\n-                    ${product.price}\n+                    fontWeight: 500\n-                  </p>\n+                  }}>\n-                  {features.compareFeature && !isSoldOut && (\n+                    ${product.price}\n-                    <label\n+                  </p>\n-                      onClick={(e) => e.stopPropagation()}\n+                  {features.compareFeature && !isSoldOut && (\n-                      style={{\n+                    <label\n-                        display: 'flex',\n+                      onClick={(e) => e.stopPropagation()}\n-                        alignItems: 'center',\n+                      style={{\n-                        gap: '8px',\n+                        display: 'flex',\n-                        fontSize: '11px',\n+                        alignItems: 'center',\n-                        fontWeight: 500,\n+                        gap: '8px',\n-                        color: '#6b7280',\n+                        fontSize: '11px',\n-                        cursor: 'pointer',\n+                        fontWeight: 500,\n-                        marginTop: '12px',\n+                        color: '#6b7280',\n-                        textTransform: 'uppercase',\n+                        cursor: 'pointer',\n-                        letterSpacing: '0.5px',\n+                        marginTop: '12px',\n-                      }}\n+                        textTransform: 'uppercase',\n-                    >\n+                        letterSpacing: '0.5px',\n-                      <input\n+                      }}\n-                        type=\"checkbox\"\n+                    >\n-                        checked={isInCompare(product.id)}\n+                      <input\n-                        onChange={() => handleCompareToggle(product)}\n+                        type=\"checkbox\"\n-                        onClick={(e) => e.stopPropagation()}\n+                        checked={isInCompare(product.id)}\n-                        style={{\n+                        onChange={() => handleCompareToggle(product)}\n-                          width: '16px',\n+                        onClick={(e) => e.stopPropagation()}\n-                          height: '16px',\n+                        style={{\n-                          accentColor: '#0a0a0a',\n+                          width: '16px',\n-                        }}\n+                          height: '16px',\n-                      />\n+                          accentColor: '#0a0a0a',\n-                      Compare\n+                        }}\n-                    </label>\n+                      />\n-                  )}\n+                      Compare\n-                </div>\n+                    </label>\n-              </div>\n+                  )}\n-            );\n+                </div>\n-          })}\n+              </div>\n-        </div>\n+            );\n-\n+          })}\n-        {/* Empty State */}\n+        </div>\n-        {filteredProducts.length === 0 && (\n+\n-          <div style={{ textAlign: 'center', padding: '80px 0' }}>\n+        {/* Empty State */}\n-            <p style={{ color: '#6b7280', fontSize: '16px' }}>No products found in this category.</p>\n+        {filteredProducts.length === 0 && (\n-            <button\n+          <div style={{ textAlign: 'center', padding: '80px 0' }}>\n-              onClick={() => setActiveCategory('all')}\n+            <p style={{ color: '#6b7280', fontSize: '16px' }}>No products found in this category.</p>\n-              style={{\n+            <button\n-                marginTop: '16px',\n+              onClick={() => setActiveCategory('all')}\n-                padding: '12px 24px',\n+              style={{\n-                backgroundColor: '#0a0a0a',\n+                marginTop: '16px',\n-                color: 'white',\n+                padding: '12px 24px',\n-                border: 'none',\n+                backgroundColor: '#0a0a0a',\n-                fontSize: '12px',\n+                color: 'white',\n-                fontWeight: 600,\n+                border: 'none',\n-                cursor: 'pointer',\n+                fontSize: '12px',\n-                textTransform: 'uppercase',\n+                fontWeight: 600,\n-                letterSpacing: '1px',\n+                cursor: 'pointer',\n-              }}\n+                textTransform: 'uppercase',\n-            >\n+                letterSpacing: '1px',\n-              View All Products\n+              }}\n-            </button>\n+            >\n-          </div>\n+              View All Products\n-        )}\n+            </button>\n-\n+          </div>\n-        {/* View All */}\n+        )}\n-        <div style={{ textAlign: 'center', marginTop: '64px' }}>\n+\n-          <button\n+        {/* View All */}\n-            onClick={() => alert('More products coming soon!')}\n+        <div style={{ textAlign: 'center', marginTop: '64px' }}>\n-            style={{\n+          <button\n-              padding: '16px 36px',\n+            onClick={() => alert('More products coming soon!')}\n-              backgroundColor: 'transparent',\n+            style={{\n-              border: '2px solid #0a0a0a',\n+              padding: '16px 36px',\n-              fontSize: '12px',\n+              backgroundColor: 'transparent',\n-              fontWeight: 600,\n+              border: '2px solid #0a0a0a',\n-              color: '#0a0a0a',\n+              fontSize: '12px',\n-              cursor: 'pointer',\n+              fontWeight: 600,\n-              display: 'inline-flex',\n+              color: '#0a0a0a',\n-              alignItems: 'center',\n+              cursor: 'pointer',\n-              gap: '10px',\n+              display: 'inline-flex',\n-              transition: 'all 0.2s',\n+              alignItems: 'center',\n-              textTransform: 'uppercase',\n+              gap: '10px',\n-              letterSpacing: '1.5px',\n+              transition: 'all 0.2s',\n-            }}\n+              textTransform: 'uppercase',\n-            onMouseEnter={(e) => {\n+              letterSpacing: '1.5px',\n-              e.currentTarget.style.backgroundColor = '#0a0a0a';\n+            }}\n-              e.currentTarget.style.color = 'white';\n+            onMouseEnter={(e) => {\n-            }}\n+              e.currentTarget.style.backgroundColor = '#0a0a0a';\n-            onMouseLeave={(e) => {\n+              e.currentTarget.style.color = 'white';\n-              e.currentTarget.style.backgroundColor = 'transparent';\n+            }}\n-              e.currentTarget.style.color = '#0a0a0a';\n+            onMouseLeave={(e) => {\n-            }}\n+              e.currentTarget.style.backgroundColor = 'transparent';\n-          >\n+              e.currentTarget.style.color = '#0a0a0a';\n-            View All Products\n+            }}\n-            <svg style={{ width: '16px', height: '16px' }} fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n+          >\n-              <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M17 8l4 4m0 0l-4 4m4-4H3\" />\n+            View All Products\n-            </svg>\n+            <svg style={{ width: '16px', height: '16px' }} fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n-          </button>\n+              <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M17 8l4 4m0 0l-4 4m4-4H3\" />\n-        </div>\n+            </svg>\n-      </div>\n+          </button>\n-\n+        </div>\n-      <ProductModal\n+      </div>\n-        product={selectedProduct}\n+\n-        onClose={() => setSelectedProduct(null)}\n+      <ProductModal\n-        onAddToCart={handleAddToCart}\n+        product={selectedProduct}\n-      />\n+        onClose={() => setSelectedProduct(null)}\n-      <CompareDrawer\n+        onAddToCart={handleAddToCart}\n-        isOpen={compareDrawerOpen}\n+      />\n-        onClose={() => setCompareDrawerOpen(false)}\n+      <CompareDrawer\n-      />\n+        isOpen={compareDrawerOpen}\n-\n+        onClose={() => setCompareDrawerOpen(false)}\n-      <style jsx global>{`\n+      />\n-        @keyframes spin {\n+\n-          from { transform: rotate(0deg); }\n+      <style jsx global>{`\n-          to { transform: rotate(360deg); }\n+        @keyframes spin {\n-        }\n+          from { transform: rotate(0deg); }\n-      `}</style>\n+          to { transform: rotate(360deg); }\n-    </section>\n+        }\n-  );\n+      `}</style>\n-}\n+    </section>\n-\n+  );\n+}\n",
+      "modifiedFiles": [
+        {
+          "path": "components/store/ProductGrid.tsx",
+          "content": "'use client';\n\nimport { useState, useMemo } from 'react';\nimport Image from 'next/image';\nimport { SiteConfig } from '@/lib/types';\nimport { useCart } from '@/context/CartContext';\nimport { useCompare } from '@/context/CompareContext';\nimport { useFeatureToggle } from '@/context/FeatureToggleContext';\nimport { sanitizeText, sanitizeUrl } from '@/lib/sanitize';\nimport { ProductModal } from './ProductModal';\nimport { CompareDrawer } from './CompareDrawer';\n\ninterface ProductGridProps {\n  config: SiteConfig['products'];\n}\n\ntype Category = 'all' | 'hoodies' | 'tops' | 'sweatshirts' | 'bottoms' | 'outerwear' | 'accessories';\n\nconst CATEGORIES: { value: Category; label: string }[] = [\n  { value: 'all', label: 'All' },\n  { value: 'tops', label: 'Tops' },\n  { value: 'hoodies', label: 'Hoodies' },\n  { value: 'sweatshirts', label: 'Sweatshirts' },\n  { value: 'bottoms', label: 'Bottoms' },\n  { value: 'outerwear', label: 'Outerwear' },\n  { value: 'accessories', label: 'Accessories' },\n];\n\nexport function ProductGrid({ config }: ProductGridProps) {\n  const { addItem } = useCart();\n  const { isInCompare, toggleCompare, compareItems } = useCompare();\n  const { features } = useFeatureToggle();\n  const [hoveredId, setHoveredId] = useState<string | null>(null);\n  const [selectedProduct, setSelectedProduct] = useState<typeof config.items[0] | null>(null);\n  const [addingId, setAddingId] = useState<string | null>(null);\n  const [compareDrawerOpen, setCompareDrawerOpen] = useState(false);\n  const [activeCategory, setActiveCategory] = useState<Category>('all');\n  const [showNotification, setShowNotification] = useState<string | null>(null);\n\n  const filteredProducts = useMemo(() => {\n    if (activeCategory === 'all') return config.items;\n    return config.items.filter((p) => (p as { category?: string }).category === activeCategory);\n  }, [config.items, activeCategory]);\n\n  const gridColumns = {\n    'grid-2': 2,\n    'grid-3': 3,\n    'grid-4': 4,\n  };\n\n  const columns = gridColumns[config.layout];\n\n  const handleAddToCart = async (product: typeof config.items[0]) => {\n    if ((product as { soldOut?: boolean }).soldOut) return;\n\n    setAddingId(product.id);\n    addItem({\n      id: product.id,\n      name: product.name,\n      price: product.price,\n      image: product.image,\n    });\n\n    // Show notification\n    setShowNotification(product.name);\n    setTimeout(() => setShowNotification(null), 2500);\n    setTimeout(() => setAddingId(null), 500);\n  };\n\n  const handleCompareToggle = (product: typeof config.items[0]) => {\n    const isCurrentlyInCompare = isInCompare(product.id);\n    toggleCompare(product);\n\n    if (typeof window !== 'undefined') {\n      window.dispatchEvent(new CustomEvent('track-event', {\n        detail: {\n          type: isCurrentlyInCompare ? 'comparison_remove' : 'comparison_add',\n          productId: product.id,\n          productName: product.name,\n        }\n      }));\n    }\n  };\n\n  return (\n    <section id=\"products\" style={{ padding: '100px 0', backgroundColor: '#fafafa' }}>\n      {/* Toast Notification */}\n      <div\n        style={{\n          position: 'fixed',\n          bottom: showNotification ? '32px' : '-100px',\n          left: '50%',\n          transform: 'translateX(-50%)',\n          backgroundColor: '#0a0a0a',\n          color: 'white',\n          padding: '16px 28px',\n          display: 'flex',\n          alignItems: 'center',\n          gap: '12px',\n          zIndex: 1000,\n          transition: 'bottom 0.3s ease',\n          boxShadow: '0 10px 40px rgba(0,0,0,0.2)',\n        }}\n      >\n        <svg style={{ width: '20px', height: '20px', color: '#22c55e' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n          <path fillRule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" clipRule=\"evenodd\" />\n        </svg>\n        <span style={{ fontSize: '14px', fontWeight: 500 }}>\n          {showNotification} added to bag\n        </span>\n      </div>\n\n      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>\n        {/* Header */}\n        <div style={{ textAlign: 'center', marginBottom: '48px' }}>\n          <h2 style={{\n            fontSize: '11px',\n            fontWeight: 600,\n            color: '#6b7280',\n            marginBottom: '12px',\n            letterSpacing: '2px',\n            textTransform: 'uppercase'\n          }}>\n            Collection\n          </h2>\n          <h3 style={{\n            fontSize: '36px',\n            fontWeight: 600,\n            color: '#0a0a0a',\n            marginBottom: '16px',\n            letterSpacing: '-0.5px'\n          }}>\n            {sanitizeText(config.sectionTitle)}\n          </h3>\n          <p style={{ color: '#6b7280', fontSize: '16px', maxWidth: '480px', margin: '0 auto' }}>\n            Thoughtfully designed essentials that prioritize quality, comfort, and longevity.\n          </p>\n        </div>\n\n        {/* Filters */}\n        <div style={{\n          display: 'flex',\n          justifyContent: 'center',\n          gap: '8px',\n          marginBottom: '48px',\n          flexWrap: 'wrap',\n        }}>\n          {CATEGORIES.map((cat) => (\n            <button\n              key={cat.value}\n              onClick={() => setActiveCategory(cat.value)}\n              style={{\n                padding: '10px 20px',\n                fontSize: '12px',\n                fontWeight: 500,\n                textTransform: 'uppercase',\n                letterSpacing: '1px',\n                border: activeCategory === cat.value ? '2px solid #0a0a0a' : '2px solid #e5e7eb',\n                backgroundColor: activeCategory === cat.value ? '#0a0a0a' : 'white',\n                color: activeCategory === cat.value ? 'white' : '#374151',\n                cursor: 'pointer',\n                transition: 'all 0.2s',\n              }}\n              onMouseEnter={(e) => {\n                if (activeCategory !== cat.value) {\n                  e.currentTarget.style.borderColor = '#0a0a0a';\n                }\n              }}\n              onMouseLeave={(e) => {\n                if (activeCategory !== cat.value) {\n                  e.currentTarget.style.borderColor = '#e5e7eb';\n                }\n              }}\n            >\n              {cat.label}\n            </button>\n          ))}\n        </div>\n\n        {/* Compare button */}\n        {features.compareFeature && compareItems.length > 0 && (\n          <div style={{ textAlign: 'center', marginBottom: '32px' }}>\n            <button\n              onClick={() => {\n                setCompareDrawerOpen(true);\n                if (typeof window !== 'undefined') {\n                  window.dispatchEvent(new CustomEvent('track-event', {\n                    detail: {\n                      type: 'comparison_view',\n                      elementText: `Comparing ${compareItems.length} products`,\n                    }\n                  }));\n                }\n              }}\n              style={{\n                padding: '12px 24px',\n                backgroundColor: '#0a0a0a',\n                color: 'white',\n                border: 'none',\n                fontSize: '12px',\n                fontWeight: 600,\n                cursor: 'pointer',\n                textTransform: 'uppercase',\n                letterSpacing: '1px',\n                display: 'inline-flex',\n                alignItems: 'center',\n                gap: '8px',\n              }}\n            >\n              <svg style={{ width: '16px', height: '16px' }} fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n                <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={1.5} d=\"M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z\" />\n              </svg>\n              Compare ({compareItems.length})\n            </button>\n          </div>\n        )}\n\n        {/* Product Grid */}\n        <div style={{\n          display: 'grid',\n          gridTemplateColumns: `repeat(${columns}, 1fr)`,\n          gap: '24px',\n        }}>\n          {filteredProducts.map((product) => {\n            const isSoldOut = (product as { soldOut?: boolean }).soldOut;\n\n            return (\n              <div\n                key={product.id}\n                data-product-id={product.id}\n                style={{\n                  backgroundColor: 'white',\n                  overflow: 'hidden',\n                  border: '1px solid #e5e7eb',\n                  transition: 'all 0.3s ease',\n                  borderColor: hoveredId === product.id ? '#0a0a0a' : '#e5e7eb',\n                  transform: hoveredId === product.id ? 'translateY(-4px)' : 'translateY(0)',\n                  boxShadow: hoveredId === product.id ? '0 12px 24px rgba(0,0,0,0.08)' : 'none',\n                }}\n                onMouseEnter={() => setHoveredId(product.id)}\n                onMouseLeave={() => setHoveredId(null)}\n                onClick={() => setSelectedProduct(product)}\n              >\n                {/* Product Image - NOT CLICKABLE (creates dead click frustration) */}\n                <div\n                  style={{\n                    aspectRatio: '4/5',\n                    position: 'relative',\n                    overflow: 'hidden',\n                    backgroundColor: '#f5f5f5',\n                  }}\n                >\n                  <Image\n                    src={sanitizeUrl(product.image)}\n                    alt={sanitizeText(product.name)}\n                    fill\n                    sizes=\"(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw\"\n                    style={{\n                      objectFit: 'contain',\n                      transition: 'transform 0.5s ease',\n                      transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',\n                      filter: isSoldOut ? 'grayscale(40%)' : 'none',\n                      cursor: 'pointer',\n                    }}\n                  />\n\n                  {/* Badge */}\n                  {product.badge && !isSoldOut && (\n                    <span style={{\n                      position: 'absolute',\n                      top: '16px',\n                      left: '16px',\n                      backgroundColor: product.badge === 'New' ? '#0a0a0a' : '#0a0a0a',\n                      color: 'white',\n                      fontSize: '10px',\n                      fontWeight: 600,\n                      padding: '6px 12px',\n                      textTransform: 'uppercase',\n                      letterSpacing: '1px',\n                    }}>\n                      {sanitizeText(product.badge)}\n                    </span>\n                  )}\n\n                  {/* Sold Out Badge */}\n                  {isSoldOut && (\n                    <span style={{\n                      position: 'absolute',\n                      top: '16px',\n                      left: '16px',\n                      backgroundColor: '#6b7280',\n                      color: 'white',\n                      fontSize: '10px',\n                      fontWeight: 600,\n                      padding: '6px 12px',\n                      textTransform: 'uppercase',\n                      letterSpacing: '1px',\n                    }}>\n                      Sold Out\n                    </span>\n                  )}\n\n                  {/* Add to Cart Button */}\n                  {!isSoldOut && (\n                    <button\n                      data-add-to-cart\n                      data-cta\n                      onClick={(e) => {\n                        e.stopPropagation();\n                        handleAddToCart(product);\n                      }}\n                      style={{\n                        position: 'absolute',\n                        bottom: '16px',\n                        left: '16px',\n                        right: '16px',\n                        padding: '14px',\n                        backgroundColor: addingId === product.id ? '#22c55e' : '#0a0a0a',\n                        color: 'white',\n                        border: 'none',\n                        fontSize: '11px',\n                        fontWeight: 600,\n                        cursor: addingId === product.id ? 'wait' : 'pointer',\n                        opacity: hoveredId === product.id ? 1 : 0,\n                        transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',\n                        transition: 'all 0.25s ease',\n                        textTransform: 'uppercase',\n                        letterSpacing: '1.5px',\n                      }}\n                    >\n                      {addingId === product.id ? (\n                        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>\n                          <svg style={{ width: '16px', height: '16px', animation: 'spin 1s linear infinite' }} fill=\"none\" viewBox=\"0 0 24 24\">\n                            <circle style={{ opacity: 0.25 }} cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" strokeWidth=\"4\"></circle>\n                            <path style={{ opacity: 0.75 }} fill=\"currentColor\" d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"></path>\n                          </svg>\n                          Adding...\n                        </span>\n                      ) : 'Add to Bag'}\n                    </button>\n                  )}\n\n                  {/* Notify Me Button for Sold Out */}\n                  {isSoldOut && (\n                    <button\n                      onClick={(e) => {\n                        e.stopPropagation();\n                        alert('You\\'ll be notified when this item is back in stock!');\n                      }}\n                      style={{\n                        position: 'absolute',\n                        bottom: '16px',\n                        left: '16px',\n                        right: '16px',\n                        padding: '14px',\n                        backgroundColor: 'white',\n                        color: '#0a0a0a',\n                        border: '2px solid #0a0a0a',\n                        fontSize: '11px',\n                        fontWeight: 600,\n                        cursor: 'pointer',\n                        opacity: hoveredId === product.id ? 1 : 0,\n                        transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',\n                        transition: 'all 0.25s ease',\n                        textTransform: 'uppercase',\n                        letterSpacing: '1.5px',\n                      }}\n                    >\n                      Notify Me\n                    </button>\n                  )}\n                </div>\n\n                {/* Product Info */}\n                <div\n                  style={{ padding: '20px', cursor: 'pointer' }}\n                  onClick={() => setSelectedProduct(product)}\n                >\n                  <h3 style={{\n                    fontSize: '14px',\n                    fontWeight: 500,\n                    color: isSoldOut ? '#9ca3af' : '#0a0a0a',\n                    marginBottom: '6px',\n                    letterSpacing: '0.3px'\n                  }}>\n                    {sanitizeText(product.name)}\n                  </h3>\n                  <p style={{\n                    fontSize: '14px',\n                    color: isSoldOut ? '#9ca3af' : '#6b7280',\n                    fontWeight: 500\n                  }}>\n                    ${product.price}\n                  </p>\n                  {features.compareFeature && !isSoldOut && (\n                    <label\n                      onClick={(e) => e.stopPropagation()}\n                      style={{\n                        display: 'flex',\n                        alignItems: 'center',\n                        gap: '8px',\n                        fontSize: '11px',\n                        fontWeight: 500,\n                        color: '#6b7280',\n                        cursor: 'pointer',\n                        marginTop: '12px',\n                        textTransform: 'uppercase',\n                        letterSpacing: '0.5px',\n                      }}\n                    >\n                      <input\n                        type=\"checkbox\"\n                        checked={isInCompare(product.id)}\n                        onChange={() => handleCompareToggle(product)}\n                        onClick={(e) => e.stopPropagation()}\n                        style={{\n                          width: '16px',\n                          height: '16px',\n                          accentColor: '#0a0a0a',\n                        }}\n                      />\n                      Compare\n                    </label>\n                  )}\n                </div>\n              </div>\n            );\n          })}\n        </div>\n\n        {/* Empty State */}\n        {filteredProducts.length === 0 && (\n          <div style={{ textAlign: 'center', padding: '80px 0' }}>\n            <p style={{ color: '#6b7280', fontSize: '16px' }}>No products found in this category.</p>\n            <button\n              onClick={() => setActiveCategory('all')}\n              style={{\n                marginTop: '16px',\n                padding: '12px 24px',\n                backgroundColor: '#0a0a0a',\n                color: 'white',\n                border: 'none',\n                fontSize: '12px',\n                fontWeight: 600,\n                cursor: 'pointer',\n                textTransform: 'uppercase',\n                letterSpacing: '1px',\n              }}\n            >\n              View All Products\n            </button>\n          </div>\n        )}\n\n        {/* View All */}\n        <div style={{ textAlign: 'center', marginTop: '64px' }}>\n          <button\n            onClick={() => alert('More products coming soon!')}\n            style={{\n              padding: '16px 36px',\n              backgroundColor: 'transparent',\n              border: '2px solid #0a0a0a',\n              fontSize: '12px',\n              fontWeight: 600,\n              color: '#0a0a0a',\n              cursor: 'pointer',\n              display: 'inline-flex',\n              alignItems: 'center',\n              gap: '10px',\n              transition: 'all 0.2s',\n              textTransform: 'uppercase',\n              letterSpacing: '1.5px',\n            }}\n            onMouseEnter={(e) => {\n              e.currentTarget.style.backgroundColor = '#0a0a0a';\n              e.currentTarget.style.color = 'white';\n            }}\n            onMouseLeave={(e) => {\n              e.currentTarget.style.backgroundColor = 'transparent';\n              e.currentTarget.style.color = '#0a0a0a';\n            }}\n          >\n            View All Products\n            <svg style={{ width: '16px', height: '16px' }} fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n              <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M17 8l4 4m0 0l-4 4m4-4H3\" />\n            </svg>\n          </button>\n        </div>\n      </div>\n\n      <ProductModal\n        product={selectedProduct}\n        onClose={() => setSelectedProduct(null)}\n        onAddToCart={handleAddToCart}\n      />\n      <CompareDrawer\n        isOpen={compareDrawerOpen}\n        onClose={() => setCompareDrawerOpen(false)}\n      />\n\n      <style jsx global>{`\n        @keyframes spin {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n      `}</style>\n    </section>\n  );\n}"
+        }
+      ],
+      "explanation": "Users expect product images to be clickable and lead to more information. By making the entire product grid item clickable and opening the product modal, we address this expectation and reduce user frustration by removing the dead clicks. Adding the `cursor: pointer` style to the image provides visual feedback, reinforcing the interaction.",
+      "generatedAt": 1768740661317
+    }
+  },
+  {
+    "id": "issue_1768740593344_tsy7jx",
+    "status": "detected",
+    "detectedAt": 1768740593344,
+    "lastOccurrence": 1768740464199,
+    "category": "missing_feature",
+    "severity": "low",
+    "patternId": "multi_product_interaction",
+    "elementSelector": "/store",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 5,
+    "uniqueSessions": 1,
+    "sampleEvents": [
       {
-        "id": "evt_1768724661051_49zpuq3",
-        "timestamp": 1768724661051,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740460420_sw2yc4s",
+        "timestamp": 1768740460420,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
+          "height": 884
+        },
+        "type": "product_compare",
+        "productId": "prod_008",
+        "productName": "Wide Leg Jeans",
+        "productPrice": 125,
+        "elementText": "Comparing: prod_004 vs prod_008",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
+      },
+      {
+        "id": "evt_1768740460420_40cfg6z",
+        "timestamp": 1768740460420,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
           "height": 884
         },
         "type": "product_view",
-        "x": 701,
-        "y": 443,
+        "x": 724,
+        "y": 746,
         "elementSelector": "img",
-        "productId": "prod_003",
-        "productName": "Relaxed Fit Joggers",
-        "productPrice": 75,
+        "productId": "prod_008",
+        "productName": "Wide Leg Jeans",
+        "productPrice": 125,
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
+        "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
+      },
+      {
+        "id": "evt_1768740462427_svo8in7",
+        "timestamp": 1768740462427,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 724,
+        "y": 746,
+        "elementSelector": "img",
+        "productId": "prod_008",
+        "productName": "Wide Leg Jeans",
+        "productPrice": 125,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+      },
+      {
+        "id": "evt_1768740464199_hnzl78a",
+        "timestamp": 1768740464199,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 724,
+        "y": 746,
+        "elementSelector": "img",
+        "productId": "prod_008",
+        "productName": "Wide Leg Jeans",
+        "productPrice": 125,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 11 dead clicks"
+      },
+      {
+        "id": "evt_1768740464199_64lb3ba",
+        "timestamp": 1768740464199,
+        "sessionId": "sess_1768739361564_acvrtpaog",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 724,
+        "y": 746,
+        "elementSelector": "img",
+        "productId": "prod_008",
+        "productName": "Wide Leg Jeans",
+        "productPrice": 125,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 12 dead clicks"
       }
     ],
     "problemStatement": "Users interacting with multiple products",
@@ -1563,83 +1031,14 @@
     "suggestedFix": ""
   },
   {
-    "id": "issue_1768724667814_ytrcl1",
+    "id": "issue_1768740593343_u5v1n0",
     "status": "detected",
-    "detectedAt": 1768724667814,
-    "lastOccurrence": 1768724566417,
-    "category": "missing_feature",
-    "severity": "low",
-    "patternId": "scroll_confusion",
-    "elementSelector": "/store",
-    "sectionId": "/store",
-    "componentPath": "unknown",
-    "componentName": "Unknown",
-    "eventCount": 3,
-    "uniqueSessions": 1,
-    "sampleEvents": [
-      {
-        "id": "evt_1768724465015_0cwnq5t",
-        "timestamp": 1768724465015,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "scroll_reversal",
-        "scrollDepth": 1,
-        "elementText": "User reversed scroll direction 3 times",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 0 dead clicks"
-      },
-      {
-        "id": "evt_1768724556375_zbi360z",
-        "timestamp": 1768724556375,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "scroll_reversal",
-        "scrollDepth": 0,
-        "elementText": "User reversed scroll direction 3 times",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 1 dead clicks"
-      },
-      {
-        "id": "evt_1768724566417_qavm62k",
-        "timestamp": 1768724566417,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 1115,
-          "height": 884
-        },
-        "type": "scroll_reversal",
-        "scrollDepth": 0,
-        "elementText": "User reversed scroll direction 3 times",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 1 dead clicks"
-      }
-    ],
-    "problemStatement": "Users scrolling up and down repeatedly",
-    "userIntent": "Looking for something they cannot find",
-    "currentOutcome": "Content organization may be confusing",
-    "suggestedFix": ""
-  },
-  {
-    "id": "issue_1768724667814_nonu8i",
-    "status": "detected",
-    "detectedAt": 1768724667814,
-    "lastOccurrence": 1768724594277,
+    "detectedAt": 1768740593343,
+    "lastOccurrence": 1768740456197,
     "category": "frustration",
     "severity": "low",
     "patternId": "click_frustration",
-    "elementSelector": "#products",
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "sectionId": "/store",
     "componentPath": "components/store/ProductGrid.tsx",
     "componentName": "ProductGrid",
@@ -1647,44 +1046,44 @@
     "uniqueSessions": 1,
     "sampleEvents": [
       {
-        "id": "evt_1768724591561_ppda9kz",
-        "timestamp": 1768724591561,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740456197_gl39bl6",
+        "timestamp": 1768740456197,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
         "type": "dead_click",
-        "x": 289,
-        "y": 533,
-        "elementSelector": "#products",
-        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+        "x": 514,
+        "y": 345,
+        "elementSelector": "div.jsx-532d500bfc6d5d04",
+        "elementText": "Best SellerAdd to BagFaux Fur Tote$145CompareAdd to BagGrey Heavyweight Hoodie$89CompareNewAdd to Ba",
         "elementContext": {
-          "selector": "#products",
-          "fullPath": "#products",
-          "tag": "section",
-          "text": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd",
+          "selector": "div.jsx-532d500bfc6d5d04",
+          "fullPath": "#products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3)",
+          "tag": "div",
+          "text": "Best SellerAdd to BagFaux Fur Tote$145CompareAdd to BagGrey Heavyweight Hoodie$89CompareNewAdd to BagPleated Trousers$115CompareAdd to BagBlack Quarte",
           "attributes": {
-            "id": "products"
+            "class": "jsx-532d500bfc6d5d04"
           },
           "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 1100,
-            "height": 710
+            "top": 1018,
+            "left": 133,
+            "width": 1232,
+            "height": 2509
           },
           "viewportPosition": {
-            "x": 0,
-            "y": -107,
+            "x": 133,
+            "y": -882,
             "visible": true,
-            "percentVisible": 85
+            "percentVisible": 35
           },
           "computedStyle": {
             "cursor": "auto",
             "pointerEvents": "auto",
             "opacity": "1",
-            "display": "block"
+            "display": "grid"
           },
           "isInteractive": false,
           "isVisible": true,
@@ -1693,54 +1092,54 @@
         },
         "pageContext": {
           "scrollX": 0,
-          "scrollY": 732,
-          "scrollPercent": 49,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 943186,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 128833,
           "url": "/store"
         },
-        "frustrationReason": "User clicked on non-interactive section element \"Featured ProductsCurated essen...\". Expected it to do something. Element path: #products",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 3 dead clicks"
+        "frustrationReason": "User clicked on non-interactive div element \"Best SellerAdd to BagFaux Fur ...\". Expected it to do something. Element path: #products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3)",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
       },
       {
-        "id": "evt_1768724594277_eq61smk",
-        "timestamp": 1768724594277,
-        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "id": "evt_1768740456197_e2tichf",
+        "timestamp": 1768740456197,
+        "sessionId": "sess_1768739361564_acvrtpaog",
         "pageUrl": "/store",
         "viewport": {
-          "width": 1115,
+          "width": 1512,
           "height": 884
         },
         "type": "dead_click",
-        "x": 326,
-        "y": 543,
-        "elementSelector": "#products",
-        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+        "x": 514,
+        "y": 345,
+        "elementSelector": "div.jsx-532d500bfc6d5d04",
+        "elementText": "Black Quarter Zip$95Compare",
         "elementContext": {
-          "selector": "#products",
-          "fullPath": "#products",
-          "tag": "section",
-          "text": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd",
+          "selector": "div.jsx-532d500bfc6d5d04",
+          "fullPath": "#products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(4) > div.jsx-532d500bfc6d5d04:nth-child(2)",
+          "tag": "div",
+          "text": "Black Quarter Zip$95Compare",
           "attributes": {
-            "id": "products"
+            "class": "jsx-532d500bfc6d5d04"
           },
           "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 1100,
-            "height": 710
+            "top": 2139,
+            "left": 141,
+            "width": 393,
+            "height": 117
           },
           "viewportPosition": {
-            "x": 0,
-            "y": -107,
+            "x": 141,
+            "y": 239,
             "visible": true,
-            "percentVisible": 85
+            "percentVisible": 100
           },
           "computedStyle": {
-            "cursor": "auto",
+            "cursor": "pointer",
             "pointerEvents": "auto",
             "opacity": "1",
             "display": "block"
@@ -1752,22 +1151,298 @@
         },
         "pageContext": {
           "scrollX": 0,
-          "scrollY": 732,
-          "scrollPercent": 49,
-          "documentHeight": 2391,
-          "documentWidth": 1100,
-          "timeOnPage": 945904,
+          "scrollY": 1900,
+          "scrollPercent": 47,
+          "documentHeight": 4888,
+          "documentWidth": 1512,
+          "timeOnPage": 129015,
           "url": "/store"
         },
-        "frustrationReason": "User clicked on non-interactive section element \"Featured ProductsCurated essen...\". Expected it to do something. Element path: #products",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 2 rage clicks, 4 dead clicks"
+        "frustrationReason": "User clicked on non-interactive div element \"Black Quarter Zip$95Compare...\". Expected it to do something. Element path: #products > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(3) > div.jsx-532d500bfc6d5d04:nth-child(4) > div.jsx-532d500bfc6d5d04:nth-child(2)",
+        "inferredBehavior": "price_sensitive",
+        "behaviorConfidence": 0.7,
+        "behaviorContext": "Checked prices 2 times"
       }
     ],
     "problemStatement": "Users clicking this element are frustrated",
     "userIntent": "Expected the element to respond",
     "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768741258689_ky3fs1",
+    "status": "detected",
+    "detectedAt": 1768741258689,
+    "lastOccurrence": 1768741258114,
+    "category": "frustration",
+    "severity": "low",
+    "patternId": "click_frustration",
+    "elementSelector": "div",
+    "sectionId": "/store",
+    "componentPath": "components/store/Header.tsx",
+    "componentName": "Header",
+    "eventCount": 3,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768741255270_q0u7v2s",
+        "timestamp": 1768741255270,
+        "sessionId": "sess_1768741246848_kuogdq96k",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 1076,
+        "y": 345,
+        "elementSelector": "div",
+        "elementText": "NewPleated Trousers$115.00Add to Cart",
+        "elementContext": {
+          "selector": "div",
+          "fullPath": "div",
+          "tag": "div",
+          "text": "NewPleated Trousers$115.00Add to Cart",
+          "attributes": {},
+          "boundingBox": {
+            "top": 713,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": 0,
+            "visible": false,
+            "percentVisible": 0
+          },
+          "computedStyle": {
+            "cursor": "",
+            "pointerEvents": "",
+            "opacity": "",
+            "display": ""
+          },
+          "isInteractive": false,
+          "isVisible": false,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 713,
+          "scrollPercent": 18,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 5537,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive div element \"NewPleated Trousers$115.00Add ...\". Expected it to do something. Element path: div",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+      },
+      {
+        "id": "evt_1768741258114_cxlus23",
+        "timestamp": 1768741258114,
+        "sessionId": "sess_1768741246848_kuogdq96k",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 1028,
+        "y": 424,
+        "elementSelector": "div",
+        "elementText": "NewPleated Trousers$115.00Add to Cart",
+        "elementContext": {
+          "selector": "div",
+          "fullPath": "div",
+          "tag": "div",
+          "text": "NewPleated Trousers$115.00Add to Cart",
+          "attributes": {},
+          "boundingBox": {
+            "top": 713,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": 0,
+            "visible": false,
+            "percentVisible": 0
+          },
+          "computedStyle": {
+            "cursor": "",
+            "pointerEvents": "",
+            "opacity": "",
+            "display": ""
+          },
+          "isInteractive": false,
+          "isVisible": false,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 713,
+          "scrollPercent": 18,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 8422,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive div element \"NewPleated Trousers$115.00Add ...\". Expected it to do something. Element path: div",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 0 rage clicks, 7 dead clicks"
+      },
+      {
+        "id": "evt_1768741258114_u0l9yiy",
+        "timestamp": 1768741258114,
+        "sessionId": "sess_1768741246848_kuogdq96k",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1512,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 1120,
+        "y": 533,
+        "elementSelector": "div",
+        "elementText": "Grey Heavyweight Hoodie$89.00Add to Cart",
+        "elementContext": {
+          "selector": "div",
+          "fullPath": "div",
+          "tag": "div",
+          "text": "Grey Heavyweight Hoodie$89.00Add to Cart",
+          "attributes": {},
+          "boundingBox": {
+            "top": 1167,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": 0,
+            "visible": false,
+            "percentVisible": 0
+          },
+          "computedStyle": {
+            "cursor": "",
+            "pointerEvents": "",
+            "opacity": "",
+            "display": ""
+          },
+          "isInteractive": false,
+          "isVisible": false,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 1167,
+          "scrollPercent": 29,
+          "documentHeight": 4888,
+          "documentWidth": 1497,
+          "timeOnPage": 10264,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive div element \"Grey Heavyweight Hoodie$89.00A...\". Expected it to do something. Element path: div",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 0 rage clicks, 9 dead clicks"
+      }
+    ],
+    "problemStatement": "Users clicking this element are frustrated",
+    "userIntent": "Expected the element to respond",
+    "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768741444100_au4dio",
+    "status": "detected",
+    "detectedAt": 1768741444100,
+    "lastOccurrence": 1768741443581,
+    "category": "missing_feature",
+    "severity": "low",
+    "patternId": "price_focused",
+    "elementSelector": "/store",
+    "sectionId": "/store",
+    "componentPath": "components/store/ProductGrid.tsx",
+    "componentName": "ProductGrid",
+    "eventCount": 3,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768741442242_16fsfwe",
+        "timestamp": 1768741442242,
+        "sessionId": "sess_1768741430168_02qtgkeil",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1158,
+          "height": 733
+        },
+        "type": "price_check",
+        "x": 657,
+        "y": 259,
+        "elementSelector": "div.jsx-532d500bfc6d5d04",
+        "elementText": "Grey Heavyweight Hoodie$89Compare",
+        "productId": "prod_002",
+        "productName": "Grey Heavyweight Hoodie",
+        "productPrice": 89,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768741442876_be7cvt2",
+        "timestamp": 1768741442876,
+        "sessionId": "sess_1768741430168_02qtgkeil",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1158,
+          "height": 733
+        },
+        "type": "price_check",
+        "x": 492,
+        "y": 273,
+        "elementSelector": "div.jsx-532d500bfc6d5d04",
+        "elementText": "Grey Heavyweight Hoodie$89Compare",
+        "productId": "prod_002",
+        "productName": "Grey Heavyweight Hoodie",
+        "productPrice": 89,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768741443581_hj0l1on",
+        "timestamp": 1768741443581,
+        "sessionId": "sess_1768741430168_02qtgkeil",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1158,
+          "height": 733
+        },
+        "type": "price_check",
+        "x": 859,
+        "y": 239,
+        "elementSelector": "div.jsx-532d500bfc6d5d04",
+        "elementText": "Pleated Trousers$115Compare",
+        "productId": "prod_003",
+        "productName": "Pleated Trousers",
+        "productPrice": 115,
+        "inferredBehavior": "ready_to_buy",
+        "behaviorConfidence": 0.85,
+        "behaviorContext": "User added 1 item(s) to cart"
+      }
+    ],
+    "problemStatement": "Users are clicking on prices frequently",
+    "userIntent": "Want more price information or deals",
+    "currentOutcome": "Limited price interaction available",
     "suggestedFix": ""
   }
 ]

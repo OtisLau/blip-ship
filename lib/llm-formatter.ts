@@ -7,8 +7,8 @@
  * and let the LLM reason about what the fix should be.
  */
 
-import { UIIssue } from './types';
-import { AnalyticsEvent } from '../types/events';
+import { UIIssue } from '@/types';
+import { AnalyticsEvent } from '@/types';
 import { resolveComponent, getComponentContext } from './component-registry';
 
 /**

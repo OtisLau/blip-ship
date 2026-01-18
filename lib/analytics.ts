@@ -3,7 +3,7 @@
  * Aggregates raw events into meaningful metrics
  */
 
-import type { AnalyticsEvent, AggregatedAnalytics, EventType } from '../types/events';
+import type { AnalyticsEvent, AggregatedAnalytics, EventType } from '@/types';
 
 /**
  * Aggregate events into summary metrics
@@ -96,6 +96,7 @@ export function aggregateEvents(events: AnalyticsEvent[]): AggregatedAnalytics {
       totalSessions: sessions.size,
       totalEvents: events.length,
       bounceRate: Math.round(bounceRate * 10) / 10,
+      avgTimeOnPage: Math.round(avgSessionDuration * 10) / 10,
       avgSessionDuration: Math.round(avgSessionDuration * 10) / 10,
       ctaClickRate: Math.round(ctaClickRate * 10) / 10,
       avgCTAVisibleTime: Math.round(avgCTAVisibleTime * 10) / 10,

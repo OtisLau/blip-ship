@@ -15,7 +15,7 @@ import * as path from 'path';
 import { sendFixApprovalEmail, isSendGridConfigured } from '@/lib/email-service';
 import { saveFix } from '@/lib/fix-store';
 import { getConfig } from '@/lib/db';
-import type { Suggestion } from '@/lib/types';
+import type { Suggestion } from '@/types';
 
 const execAsync = promisify(exec);
 
@@ -274,6 +274,7 @@ Co-Authored-By: CRO Agent <cro-agent@blip.ship>`;
       title: 'Fix: Make product images clickable',
       description: 'Add onClick to open modal',
       status: 'open' as const,
+      createdAt: Date.now(),
       url: prUrl || undefined,
       fixId: fixAdapter.id,
       suggestionId: fixId,

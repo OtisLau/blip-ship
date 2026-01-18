@@ -15,23 +15,13 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import type { Suggestion, SiteConfig } from './types';
+import type { Suggestion, SiteConfig, PRInfo } from '@/types';
 import type { MinimalFix } from './fix-agent';
 
 const execAsync = promisify(exec);
 
-export interface PRInfo {
-  id: string;
-  number?: number;
-  branchName: string;
-  title: string;
-  description: string;
-  status: 'open' | 'merged' | 'closed';
-  createdAt: number;
-  fixId: string;
-  suggestionId: string;
-  url?: string;
-}
+// Re-export PRInfo for backwards compatibility
+export type { PRInfo } from '@/types';
 
 // Store PRs in memory for POC
 const openPRs: Map<string, PRInfo> = new Map();

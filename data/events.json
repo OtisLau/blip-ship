@@ -1,1 +1,117 @@
-[]
+[
+  {
+    "id": "evt_1768747234083_n06e1qq",
+    "timestamp": 1768747234083,
+    "sessionId": "sess_1768742413757_od9dhdly4",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1512,
+      "height": 884
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 11 dead clicks"
+  },
+  {
+    "id": "evt_1768747234083_98jnq45",
+    "timestamp": 1768747234083,
+    "sessionId": "sess_1768742413757_od9dhdly4",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1512,
+      "height": 884
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 11 dead clicks"
+  },
+  {
+    "id": "evt_1768747235084_nwfudj5",
+    "timestamp": 1768747235084,
+    "sessionId": "sess_1768742435130_9xc3e02a7",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1158,
+      "height": 733
+    },
+    "type": "form_blur",
+    "elementSelector": "input.jsx-532d500bfc6d5d04",
+    "elementText": "[filled: 2 chars, 1s]",
+    "elementId": "input_text_johndoe_34",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768747235084_o4551jq",
+    "timestamp": 1768747235084,
+    "sessionId": "sess_1768742435130_9xc3e02a7",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1158,
+      "height": 733
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768747236084_zp8iqc3",
+    "timestamp": 1768747236084,
+    "sessionId": "sess_1768742458721_koa8l6ncq",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1158,
+      "height": 733
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768747236084_1cbgzs0",
+    "timestamp": 1768747236084,
+    "sessionId": "sess_1768742458721_koa8l6ncq",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1158,
+      "height": 733
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768747238083_wvi2ywt",
+    "timestamp": 1768747238083,
+    "sessionId": "sess_1768741430168_02qtgkeil",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1512,
+      "height": 884
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 39 dead clicks"
+  },
+  {
+    "id": "evt_1768747238083_ay8lk50",
+    "timestamp": 1768747238083,
+    "sessionId": "sess_1768741430168_02qtgkeil",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1512,
+      "height": 884
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 39 dead clicks"
+  }
+]

@@ -3,7 +3,7 @@
  * Uses navigator.sendBeacon() for reliable delivery as specified in blip-ship architecture
  */
 
-import type { AnalyticsEvent, EventType, Viewport } from '../types/events';
+import type { AnalyticsEvent, EventType, Viewport } from '@/types';
 
 /**
  * Generate a unique event ID with evt_ prefix

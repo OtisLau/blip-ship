@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { EventType, InferredBehavior } from '@/lib/types';
+import { EventType, InferredBehavior } from '@/types';
 
 interface ElementContext {
   selector: string;

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { SiteConfig } from '@/lib/types';
+import { SiteConfig } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useCompare } from '@/context/CompareContext';
 import { useFeatureToggle } from '@/context/FeatureToggleContext';

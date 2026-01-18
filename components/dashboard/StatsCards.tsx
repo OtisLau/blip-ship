@@ -1,17 +1,9 @@
 'use client';
 
-interface Summary {
-  totalSessions: number;
-  totalEvents: number;
-  bounceRate: number;
-  avgSessionDuration: number;
-  ctaClickRate: number;
-  avgCTAVisibleTime: number;
-  ctaExpireRate: number;
-}
+import type { AnalyticsSummary } from '@/types';
 
 interface StatsCardsProps {
-  summary: Summary;
+  summary: AnalyticsSummary;
 }
 
 function formatDuration(seconds: number): string {

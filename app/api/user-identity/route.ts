@@ -10,7 +10,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { classifyUserIdentity, getUIRecommendations, isIdentityClassifierConfigured } from '@/lib/identity-classifier';
 import { computeBehavioralVector, formatVector, computeUserIdentity } from '@/lib/behavioral-vector';
-import type { AnalyticsEvent } from '@/types/events';
+import type { AnalyticsEvent } from '@/types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const EVENTS_FILE = path.join(DATA_DIR, 'events.json');

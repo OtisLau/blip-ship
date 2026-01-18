@@ -9,7 +9,7 @@ import { Footer } from '@/components/store/Footer';
 import { CartProvider } from '@/context/CartContext';
 import { CompareProvider } from '@/context/CompareContext';
 import { FeatureToggleProvider } from '@/context/FeatureToggleContext';
-import { SiteConfig } from '@/lib/types';
+import { SiteConfig } from '@/types';
 
 // Dynamic imports for heavy components (rule: bundle-dynamic-imports)
 // EventTracker: ~50KB - loads after hydration, doesn't block initial paint

@@ -5,7 +5,7 @@ import { Heatmap } from '@/components/dashboard/Heatmap';
 import { StatsCards } from '@/components/dashboard/StatsCards';
 import { CTAFunnel } from '@/components/dashboard/CTAFunnel';
 import { ScrollDepth } from '@/components/dashboard/ScrollDepth';
-import type { AggregatedAnalytics } from '@/types/events';
+import type { AggregatedAnalytics } from '@/types';
 
 // SWR fetcher function
 const fetcher = (url: string) => fetch(url).then((res) => res.json());

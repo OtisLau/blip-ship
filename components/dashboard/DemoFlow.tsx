@@ -16,11 +16,6 @@ interface FlowState {
     emailSent: boolean;
   };
   error?: string;
-  changes?: Array<{
-    field: string;
-    oldValue: string;
-    newValue: string;
-  }>;
 }
 
 export function DemoFlow() {
@@ -28,7 +23,6 @@ export function DemoFlow() {
     status: 'idle',
     eventCount: 0,
   });
-  const [viewMode, setViewMode] = useState<'live' | 'preview'>('live');
 
   // Poll for event count
   useEffect(() => {
@@ -72,16 +66,14 @@ export function DemoFlow() {
       const data = await res.json();
 
       if (data.success) {
-        const fixIdMatch = data.logs?.find((l: string) => l.includes('Saved fix'))?.match(/ID: (.+)/);
         setState(prev => ({
           ...prev,
           status: 'success',
           identity: data.identity,
-          changes: data.mapping?.changes || data.suggestion?.changes || [],
           result: {
             prUrl: data.result.prUrl,
             prNumber: data.result.prNumber,
-            fixId: fixIdMatch?.[1] || data.result.fixId || '',
+            fixId: data.logs?.find((l: string) => l.includes('Saved fix'))?.match(/ID: (.+)/)?.[1] || '',
             emailSent: data.result.emailSent,
           },
         }));
@@ -102,240 +94,150 @@ export function DemoFlow() {
     }
   };
 
-  const handleShip = async () => {
-    if (!state.result?.fixId) return;
-
-    try {
-      const res = await fetch(`/api/fix/${state.result.fixId}/approve`, {
-        method: 'POST',
-      });
-      const data = await res.json();
-      if (data.success) {
-        window.location.reload();
-      }
-    } catch {
-      // Ignore
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-white flex">
-      {/* Left Side - Store Preview */}
-      <div className="flex-1 border-r border-gray-200">
-        {/* Top Bar */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
-          <button
-            onClick={handleReset}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 transition"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-            Reset
-          </button>
+    <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
+      <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <span className="text-2xl">🧠</span> CRO Agent Demo
+      </h2>
 
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-gray-500">Events:</span>
-            <span className="font-mono font-medium">{state.eventCount}</span>
-            {state.eventCount >= 5 && (
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            )}
+      {/* Step 1: Store Link */}
+      <div className="mb-6 p-4 bg-gray-800/50 rounded-lg">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="font-medium">Step 1: Interact with Store</h3>
+            <p className="text-sm text-gray-400">
+              Click around, hover on buttons, scroll up and down
+            </p>
           </div>
+          <a
+            href="/store"
+            target="_blank"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition font-medium"
+          >
+            Open Store →
+          </a>
         </div>
-
-        {/* Store iframe */}
-        <div className="relative" style={{ height: 'calc(100vh - 120px)' }}>
-          <iframe
-            src={viewMode === 'preview' ? '/store?mode=preview' : '/store'}
-            className="w-full h-full border-0"
-            title="Store Preview"
-            key={viewMode}
-          />
-          {state.status === 'analyzing' && (
-            <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
-                <span className="text-gray-600 font-medium">Analyzing behavior...</span>
-              </div>
-            </div>
+        <div className="mt-3 flex items-center gap-2">
+          <span className="text-sm text-gray-400">Events tracked:</span>
+          <span className="px-2 py-0.5 bg-gray-700 rounded text-sm font-mono">
+            {state.eventCount}
+          </span>
+          {state.eventCount >= 5 && (
+            <span className="text-green-400 text-sm">✓ Ready for analysis</span>
           )}
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="flex items-center justify-center gap-4 px-4 py-3 border-t border-gray-200 bg-gray-50">
+      {/* Step 2: Run Analysis */}
+      <div className="mb-6 p-4 bg-gray-800/50 rounded-lg">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="font-medium">Step 2: Run AI Analysis</h3>
+            <p className="text-sm text-gray-400">
+              AI will classify user behavior and generate a fix
+            </p>
+          </div>
           <button
-            onClick={() => setViewMode('live')}
-            className={`px-4 py-1.5 text-sm font-medium transition ${
-              viewMode === 'live'
-                ? 'text-gray-600 border-b-2 border-green-500'
-                : 'text-gray-400 hover:text-gray-600'
+            onClick={handleRunAnalysis}
+            disabled={state.status === 'analyzing' || state.eventCount < 5}
+            className={`px-4 py-2 rounded-lg transition font-medium ${
+              state.status === 'analyzing'
+                ? 'bg-yellow-600 cursor-wait'
+                : state.eventCount < 5
+                ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                : 'bg-green-600 hover:bg-green-700'
             }`}
           >
-            LIVE
-          </button>
-          <button
-            onClick={() => setViewMode('preview')}
-            disabled={state.status !== 'success'}
-            className={`px-4 py-1.5 text-sm font-medium transition ${
-              viewMode === 'preview'
-                ? 'text-gray-600 border-b-2 border-green-500'
-                : state.status === 'success'
-                ? 'text-gray-400 hover:text-gray-600'
-                : 'text-gray-300 cursor-not-allowed'
-            }`}
-          >
-            PREVIEW
+            {state.status === 'analyzing' ? (
+              <span className="flex items-center gap-2">
+                <span className="animate-spin">⏳</span> Analyzing...
+              </span>
+            ) : (
+              'Run Analysis'
+            )}
           </button>
         </div>
       </div>
 
-      {/* Right Side - Suggestions */}
-      <div className="w-80 flex flex-col bg-gray-50">
-        {/* Header */}
-        <div className="px-6 py-4 border-b border-gray-200 bg-white">
-          <h2 className="text-lg font-semibold text-gray-900">Suggestions</h2>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3">
-          {state.status === 'idle' && state.eventCount < 5 && (
-            <div className="text-center py-12">
-              <div className="text-6xl mb-4">🚢</div>
-              <p className="text-gray-500 text-sm">
-                Interact with the store to<br />generate suggestions
-              </p>
-              <p className="text-gray-400 text-xs mt-2">
-                {5 - state.eventCount} more events needed
-              </p>
-            </div>
-          )}
-
-          {state.status === 'idle' && state.eventCount >= 5 && (
-            <div className="text-center py-8">
-              <div className="text-5xl mb-4">✨</div>
-              <p className="text-gray-700 font-medium mb-2">Ready to analyze!</p>
-              <p className="text-gray-500 text-sm mb-4">
-                {state.eventCount} events captured
-              </p>
-              <button
-                onClick={handleRunAnalysis}
-                className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition"
-              >
-                Find Improvements
-              </button>
-            </div>
-          )}
-
-          {state.status === 'analyzing' && (
-            <div className="text-center py-12">
-              <div className="text-4xl mb-4 animate-bounce">🔍</div>
-              <p className="text-gray-600 font-medium">Analyzing patterns...</p>
-            </div>
-          )}
-
-          {state.status === 'success' && state.identity && (
-            <>
-              {/* Identity Badge */}
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-lg">🧠</span>
-                  <span className="text-sm font-medium text-gray-500">User Profile</span>
-                </div>
-                <p className="text-lg font-semibold text-gray-900 capitalize">
-                  {state.identity.state.replace('_', ' ')}
-                </p>
-                <p className="text-sm text-gray-500">
-                  {(state.identity.confidence * 100).toFixed(0)}% confidence
-                </p>
-              </div>
-
-              {/* Suggestions */}
-              {state.changes && state.changes.length > 0 && (
-                <div className="space-y-2">
-                  {state.changes.slice(0, 4).map((change, i) => (
-                    <div
-                      key={i}
-                      className="bg-white rounded-lg border border-gray-200 p-3 hover:border-green-300 transition"
-                    >
-                      <p className="text-sm font-medium text-gray-900 mb-2">
-                        {formatChangeLabel(change.field)}
-                      </p>
-                      <div className="flex items-center gap-2 text-xs">
-                        <span className="px-2 py-1 bg-red-50 text-red-700 rounded line-through max-w-[100px] truncate">
-                          {change.oldValue === '*' ? 'default' : change.oldValue}
-                        </span>
-                        <span className="text-gray-400">→</span>
-                        <span className="px-2 py-1 bg-green-50 text-green-700 rounded max-w-[100px] truncate">
-                          {change.newValue}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* PR Link */}
-              {state.result?.prUrl && (
+      {/* Status Display */}
+      {state.status === 'success' && state.identity && state.result && (
+        <div className="p-4 bg-green-900/30 border border-green-700 rounded-lg">
+          <h3 className="font-medium text-green-400 mb-2">✓ Fix Generated!</h3>
+          <div className="space-y-2 text-sm">
+            <p>
+              <span className="text-gray-400">User Identity:</span>{' '}
+              <span className="font-medium">{state.identity.state}</span>{' '}
+              <span className="text-gray-500">
+                ({(state.identity.confidence * 100).toFixed(0)}% confidence)
+              </span>
+            </p>
+            {state.result.prUrl && (
+              <p>
+                <span className="text-gray-400">Pull Request:</span>{' '}
                 <a
                   href={state.result.prUrl}
                   target="_blank"
-                  className="block text-center text-sm text-green-600 hover:text-green-700 transition"
+                  className="text-blue-400 hover:underline"
                 >
-                  View PR #{state.result.prNumber} →
+                  PR #{state.result.prNumber}
                 </a>
+              </p>
+            )}
+            <p>
+              <span className="text-gray-400">Email:</span>{' '}
+              {state.result.emailSent ? (
+                <span className="text-green-400">✓ Sent to store owner</span>
+              ) : (
+                <span className="text-yellow-400">Not configured</span>
               )}
-            </>
-          )}
-
-          {state.status === 'error' && (
-            <div className="text-center py-8">
-              <div className="text-4xl mb-4">😅</div>
-              <p className="text-gray-700 font-medium mb-2">No changes needed</p>
-              <p className="text-gray-500 text-sm mb-4">{state.error}</p>
-              <button
-                onClick={handleReset}
-                className="text-sm text-green-600 hover:text-green-700 transition"
-              >
-                Try again
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* Ship Button */}
-        <div className="p-4 border-t border-gray-200 bg-white">
-          {state.status === 'success' && state.result ? (
-            <button
-              onClick={handleShip}
-              className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition flex items-center justify-center gap-3 shadow-lg shadow-green-500/25"
+            </p>
+          </div>
+          <div className="mt-4 flex gap-3">
+            <a
+              href={`/fix/${state.result.fixId || 'latest'}`}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition text-sm font-medium"
             >
-              <span className="text-2xl">⚓</span>
-              SHIP IT!
-            </button>
-          ) : (
+              View Approval Page →
+            </a>
             <button
-              disabled
-              className="w-full py-4 bg-gray-200 text-gray-400 font-bold text-lg rounded-xl cursor-not-allowed flex items-center justify-center gap-3"
+              onClick={handleReset}
+              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition text-sm"
             >
-              <span className="text-2xl opacity-50">⚓</span>
-              SHIP IT!
+              Reset & Try Again
             </button>
-          )}
+          </div>
         </div>
-      </div>
+      )}
+
+      {state.status === 'error' && (
+        <div className="p-4 bg-red-900/30 border border-red-700 rounded-lg">
+          <h3 className="font-medium text-red-400 mb-2">Error</h3>
+          <p className="text-sm text-gray-300">{state.error}</p>
+          {state.identity && (
+            <p className="text-sm text-gray-400 mt-2">
+              Detected identity: {state.identity.state} ({(state.identity.confidence * 100).toFixed(0)}%)
+            </p>
+          )}
+          <button
+            onClick={handleReset}
+            className="mt-3 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition text-sm"
+          >
+            Reset & Try Again
+          </button>
+        </div>
+      )}
+
+      {/* Reset Button */}
+      {state.status === 'idle' && state.eventCount > 0 && (
+        <div className="text-center">
+          <button
+            onClick={handleReset}
+            className="text-sm text-gray-500 hover:text-gray-300 transition"
+          >
+            Reset all data
+          </button>
+        </div>
+      )}
     </div>
   );
-}
-
-function formatChangeLabel(field: string): string {
-  const labels: Record<string, string> = {
-    'hero.headline': 'Headline Change',
-    'hero.subheadline': 'Subheadline Update',
-    'hero.cta.text': 'Button Text',
-    'hero.cta.size': 'Button Size',
-    'hero.cta.color': 'Button Color',
-    'products.layout': 'Product Layout',
-    'testimonials.show': 'Show Reviews',
-  };
-  return labels[field] || field.split('.').pop()?.replace(/_/g, ' ') || field;
 }

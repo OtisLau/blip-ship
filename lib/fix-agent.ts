@@ -12,7 +12,7 @@
  * 4. Return a structured fix that can be applied via PR
  */
 
-import type { Suggestion, SiteConfig } from './types';
+import type { Suggestion, SiteConfig } from '@/types';
 
 export interface MinimalFix {
   id: string;

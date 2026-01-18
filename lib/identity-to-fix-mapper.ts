@@ -270,106 +270,6 @@ const READY_TO_DECIDE_RULES: IdentityFixRule[] = [
   },
 ];
 
-const EXPLORATORY_RULES: IdentityFixRule[] = [
-  {
-    id: 'exploratory_show_more',
-    identityState: 'exploratory',
-    recommendation: 'show_comparison_tools',
-    priority: 10,
-    summary: 'Show more content for exploring users',
-    expectedImpact: '+20-30% engagement time',
-    changes: [
-      {
-        selector: '#testimonials',
-        componentPath: 'components/store/Testimonials.tsx',
-        changeType: 'config',
-        property: 'testimonials.show',
-        oldValue: '*',
-        newValue: 'true',
-        reason: 'Exploratory users want to see more content and social proof',
-      },
-      {
-        selector: 'button[data-cta]',
-        componentPath: 'components/store/Hero.tsx',
-        changeType: 'config',
-        property: 'hero.cta.text',
-        oldValue: '*',
-        newValue: 'Explore Collection',
-        reason: 'Non-committal CTA encourages continued exploration',
-      },
-    ],
-  },
-  {
-    id: 'exploratory_low_pressure',
-    identityState: 'exploratory',
-    recommendation: 'low_urgency',
-    priority: 9,
-    summary: 'Low pressure messaging for browsers',
-    expectedImpact: '+15-20% return visits',
-    changes: [
-      {
-        selector: '#hero h1',
-        componentPath: 'components/store/Hero.tsx',
-        changeType: 'config',
-        property: 'hero.subheadline',
-        oldValue: '*',
-        newValue: 'Take your time. Find what speaks to you.',
-        reason: 'Reassuring message for users who are just browsing',
-      },
-    ],
-  },
-];
-
-const COMPARISON_FOCUSED_RULES: IdentityFixRule[] = [
-  {
-    id: 'comparison_show_trust',
-    identityState: 'comparison_focused',
-    recommendation: 'show_trust_badges',
-    priority: 10,
-    summary: 'Show testimonials and reviews for comparison shoppers',
-    expectedImpact: '+25-35% conversion from comparison shoppers',
-    changes: [
-      {
-        selector: '#testimonials',
-        componentPath: 'components/store/Testimonials.tsx',
-        changeType: 'config',
-        property: 'testimonials.show',
-        oldValue: '*',
-        newValue: 'true',
-        reason: 'Comparison shoppers need social proof to make decisions',
-      },
-    ],
-  },
-  {
-    id: 'comparison_detailed_cta',
-    identityState: 'comparison_focused',
-    recommendation: 'show_comparison_tools',
-    priority: 9,
-    summary: 'Use informative CTA for research-focused users',
-    expectedImpact: '+20-25% click-through',
-    changes: [
-      {
-        selector: 'button[data-cta]',
-        componentPath: 'components/store/Hero.tsx',
-        changeType: 'config',
-        property: 'hero.cta.text',
-        oldValue: '*',
-        newValue: 'Compare Products',
-        reason: 'Comparison-focused users want to evaluate options side by side',
-      },
-      {
-        selector: '#hero h1',
-        componentPath: 'components/store/Hero.tsx',
-        changeType: 'config',
-        property: 'hero.subheadline',
-        oldValue: '*',
-        newValue: 'Quality you can trust. See why customers love us.',
-        reason: 'Emphasize quality for users who are evaluating options',
-      },
-    ],
-  },
-];
-
 const IMPULSE_BUYER_RULES: IdentityFixRule[] = [
   {
     id: 'impulse_urgent_cta',
@@ -429,6 +329,77 @@ const IMPULSE_BUYER_RULES: IdentityFixRule[] = [
   },
 ];
 
+const COMPARISON_FOCUSED_RULES: IdentityFixRule[] = [
+  {
+    id: 'comparison_show_tools',
+    identityState: 'comparison_focused',
+    recommendation: 'show_comparison_tools',
+    priority: 10,
+    summary: 'Show comparison tools and trust badges for comparison shoppers',
+    expectedImpact: '+20-30% engagement from comparison shoppers',
+    changes: [
+      {
+        selector: '#testimonials',
+        componentPath: 'components/store/Testimonials.tsx',
+        changeType: 'config',
+        property: 'testimonials.show',
+        oldValue: '*',
+        newValue: 'true',
+        reason: 'Social proof helps comparison shoppers make decisions',
+      },
+      {
+        selector: 'button[data-cta]',
+        componentPath: 'components/store/Hero.tsx',
+        changeType: 'config',
+        property: 'hero.cta.text',
+        oldValue: '*',
+        newValue: 'Compare Our Products',
+        reason: 'Matches user intent to compare options',
+      },
+      {
+        selector: '#hero h1',
+        componentPath: 'components/store/Hero.tsx',
+        changeType: 'config',
+        property: 'hero.subheadline',
+        oldValue: '*',
+        newValue: 'Trusted by 10,000+ customers. See why we\'re rated #1.',
+        reason: 'Trust signals help comparison shoppers choose',
+      },
+    ],
+  },
+];
+
+const CURIOUS_RULES: IdentityFixRule[] = [
+  {
+    id: 'curious_explore_cta',
+    identityState: 'curious',
+    recommendation: 'show_comparison_tools',
+    priority: 10,
+    summary: 'Encourage exploration with discovery-focused CTA',
+    expectedImpact: '+25-35% page engagement',
+    changes: [
+      {
+        selector: 'button[data-cta]',
+        componentPath: 'components/store/Hero.tsx',
+        changeType: 'config',
+        property: 'hero.cta.text',
+        oldValue: '*',
+        newValue: 'Discover Our Collection',
+        reason: 'Discovery language matches curious user intent',
+      },
+      {
+        selector: '#hero h1',
+        componentPath: 'components/store/Hero.tsx',
+        changeType: 'config',
+        property: 'hero.headline',
+        oldValue: '*',
+        newValue: 'Explore Something New',
+        reason: 'Inviting headline encourages curious users to browse',
+      },
+    ],
+  },
+];
+
 // Combine all rules
 const ALL_RULES: IdentityFixRule[] = [
   ...FRUSTRATED_RULES,
@@ -437,8 +408,8 @@ const ALL_RULES: IdentityFixRule[] = [
   ...IMPULSE_BUYER_RULES,
   ...CONFIDENT_RULES,
   ...READY_TO_DECIDE_RULES,
-  ...EXPLORATORY_RULES,
   ...COMPARISON_FOCUSED_RULES,
+  ...CURIOUS_RULES,
 ];
 
 // =============================================================================

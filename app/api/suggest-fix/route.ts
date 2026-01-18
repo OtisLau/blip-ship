@@ -11,7 +11,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import type { Suggestion, SiteConfig } from '../../../lib/types';
+import type { Suggestion, SiteConfig } from '@/types';
 import { getConfig } from '../../../lib/db';
 
 // Stub: Mock suggestions based on common CRO issues

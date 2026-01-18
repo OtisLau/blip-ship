@@ -40,8 +40,18 @@ export async function POST(
     }
 
     if (fix.status !== 'pending') {
+      // If already rejected, return success (idempotent)
+      if (fix.status === 'rejected') {
+        return NextResponse.json({
+          success: true,
+          message: 'Fix was already rejected',
+          fix,
+          alreadyRejected: true,
+        });
+      }
+      // If merged, can't reject
       return NextResponse.json(
-        { success: false, error: `Fix is already ${fix.status}` },
+        { success: false, error: `Fix was already ${fix.status}` },
         { status: 400 }
       );
     }

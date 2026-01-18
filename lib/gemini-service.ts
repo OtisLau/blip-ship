@@ -4,7 +4,7 @@
  */
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { UIIssue } from './types';
+import { UIIssue } from '@/types';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { loadElementIndex, getElementsByComponent, IndexedElement } from './element-indexer';

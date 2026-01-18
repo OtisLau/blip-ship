@@ -110,7 +110,7 @@ export async function captureFixScreenshots(
     const current = await captureScreenshot(page, currentUrl, {
       width,
       height,
-      waitForSelector: '#hero', // Wait for hero section
+      waitForSelector: '[data-testid="hero"]', // Wait for hero section
       delay: 1500,
     });
     console.log(`[Screenshot] Current screenshot captured (${Math.round(current.length / 1024)}KB)`);
@@ -121,7 +121,7 @@ export async function captureFixScreenshots(
     const preview = await captureScreenshot(page, previewUrl, {
       width,
       height,
-      waitForSelector: '#hero',
+      waitForSelector: '[data-testid="hero"]',
       delay: 1500,
     });
     console.log(`[Screenshot] Preview screenshot captured (${Math.round(preview.length / 1024)}KB)`);

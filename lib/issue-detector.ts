@@ -4,8 +4,8 @@
  * and generate actionable issues for LLM-powered fixes.
  */
 
-import { UIIssue, PatternRule, IssueCategory, IssueSeverity } from './types';
-import { AnalyticsEvent } from '../types/events';
+import { UIIssue, PatternRule, IssueCategory, IssueSeverity } from '@/types';
+import { AnalyticsEvent } from '@/types';
 import { resolveComponent, getComponentContext } from './component-registry';
 import { readEvents } from './db';
 import { loadElementIndex, resolveComponentFromEvent, IndexedElement } from './element-indexer';

@@ -19,7 +19,7 @@ import {
   getState,
 } from '../lib/session-store';
 import { sendEvent, getSelector, isAboveFold } from '../lib/tracker';
-import type { CTAState } from '../types/events';
+import type { CTAState } from '@/types';
 
 interface UseCTATrackingOptions {
   ctaId: string;

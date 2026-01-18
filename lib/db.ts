@@ -5,8 +5,8 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import type { AnalyticsEvent } from '../types/events';
-import type { SiteConfig, UIIssue } from './types';
+import type { AnalyticsEvent } from '@/types';
+import type { SiteConfig, UIIssue } from '@/types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const EVENTS_FILE = path.join(DATA_DIR, 'events.json');

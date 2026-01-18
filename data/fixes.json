@@ -1,1 +1,195 @@
-[]
+[
+  {
+    "id": "demo_product_image_click_1768742352614",
+    "suggestion": {
+      "id": "demo_product_image_click_1768742352614",
+      "createdAt": 1768742352614,
+      "status": "pending",
+      "analysis": {
+        "summary": "Product images don't respond to clicks",
+        "insights": [
+          "Users expect clicking product images to show details",
+          "Dead clicks detected on image containers",
+          "This causes frustration and abandonment"
+        ],
+        "dataPoints": [
+          {
+            "metric": "Dead Clicks",
+            "value": 47,
+            "interpretation": "High frustration signal"
+          },
+          {
+            "metric": "Expected Engagement",
+            "value": 35,
+            "interpretation": "+35% with fix"
+          }
+        ]
+      },
+      "recommendation": {
+        "summary": "Add onClick handler to product images to open modal",
+        "rationale": "Users expect images to be interactive. Adding click handler improves UX.",
+        "expectedImpact": "+35% product detail views, -50% dead clicks"
+      },
+      "changes": [
+        {
+          "field": "components/store/ProductGrid.tsx",
+          "oldValue": "No onClick handler",
+          "newValue": "onClick={() => setSelectedProduct(product)}",
+          "reason": "Makes product images clickable"
+        },
+        {
+          "field": "cursor style",
+          "oldValue": "default",
+          "newValue": "pointer",
+          "reason": "Visual feedback that image is clickable"
+        }
+      ],
+      "previewConfig": {
+        "id": "preview_fix_1768696065613_8535er",
+        "version": 2,
+        "status": "live",
+        "ownerEmail": "lucianlavric2005@gmail.com",
+        "storeName": "Blip Ship Store",
+        "hero": {
+          "headline": "Elevate Your Everyday",
+          "subheadline": "Trusted by 10,000+ customers. See why we're rated #1.",
+          "backgroundColor": "#1F2937",
+          "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
+          "cta": {
+            "text": "Browse Risk-Free",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        },
+        "products": {
+          "sectionTitle": "Featured Products",
+          "layout": "grid-3",
+          "items": [
+            {
+              "id": "prod_001",
+              "name": "Faux Fur Tote",
+              "price": 145,
+              "image": "/img/faux-fur-tote.jpg",
+              "badge": "Best Seller"
+            },
+            {
+              "id": "prod_002",
+              "name": "Grey Heavyweight Hoodie",
+              "price": 89,
+              "image": "/img/hoodie-grey.jpg"
+            },
+            {
+              "id": "prod_003",
+              "name": "Pleated Trousers",
+              "price": 115,
+              "image": "/img/pleated-trousers.jpg",
+              "badge": "New"
+            },
+            {
+              "id": "prod_004",
+              "name": "Black Quarter Zip",
+              "price": 95,
+              "image": "/img/quarter-zip-black.jpg"
+            },
+            {
+              "id": "prod_005",
+              "name": "Rosette Top Black",
+              "price": 78,
+              "image": "/img/rosette-top-black.jpg"
+            },
+            {
+              "id": "prod_006",
+              "name": "Rosette Top White",
+              "price": 78,
+              "image": "/img/rosette-top-white.jpg"
+            },
+            {
+              "id": "prod_007",
+              "name": "Varsity Jacket",
+              "price": 185,
+              "image": "/img/varsity-jacket.jpg",
+              "badge": "Popular"
+            },
+            {
+              "id": "prod_008",
+              "name": "Wide Leg Jeans",
+              "price": 125,
+              "image": "/img/wide-leg-jeans.jpg"
+            },
+            {
+              "id": "prod_009",
+              "name": "Belted Wool Coat",
+              "price": 295,
+              "image": "/img/wool-coat-belted.jpg",
+              "badge": "Premium"
+            },
+            {
+              "id": "prod_010",
+              "name": "Camel Wool Coat",
+              "price": 275,
+              "image": "/img/wool-coat-camel.jpg"
+            }
+          ]
+        },
+        "testimonials": {
+          "sectionTitle": "What People Are Saying",
+          "show": true,
+          "items": [
+            {
+              "quote": "The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel of these pieces.",
+              "author": "Alex T."
+            },
+            {
+              "quote": "Finally found my go-to brand. The fit is perfect and they actually last through hundreds of washes.",
+              "author": "Jordan M."
+            },
+            {
+              "quote": "Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+              "author": "Sam K."
+            }
+          ]
+        },
+        "footer": {
+          "backgroundColor": "#09090b",
+          "showNewsletter": true,
+          "newsletterHeadline": "Get 15% Off Your First Order"
+        }
+      }
+    },
+    "fix": {
+      "id": "demofix_1768742352614",
+      "suggestionId": "demo_product_image_click_1768742352614",
+      "createdAt": 1768742352614,
+      "status": "pending",
+      "configChanges": [],
+      "affectedFiles": [
+        {
+          "path": "components/store/ProductGrid.tsx",
+          "changeType": "modify",
+          "diff": "- {/* Product Image - NOT CLICKABLE */}\n+ {/* Product Image - CLICKABLE */}\n+ onClick={() => setSelectedProduct(product)}\n+ cursor: 'pointer'"
+        }
+      ],
+      "metadata": {
+        "estimatedImpact": "+35% engagement, -50% dead clicks",
+        "rollbackPlan": "Revert branch fix/product-image-click-20260118-1usi",
+        "testingNotes": "Click any product image - should open modal"
+      }
+    },
+    "prInfo": {
+      "id": "pr_1768742352614",
+      "number": 23,
+      "branchName": "fix/product-image-click-20260118-1usi",
+      "title": "Fix: Make product images clickable",
+      "description": "Add onClick to open modal",
+      "status": "open",
+      "url": "https://github.com/OtisLau/blip-ship/pull/23",
+      "fixId": "demofix_1768742352614",
+      "suggestionId": "demo_product_image_click_1768742352614"
+    },
+    "status": "merged",
+    "createdAt": 1768742352616,
+    "updatedAt": 1768742438311
+  }
+]
