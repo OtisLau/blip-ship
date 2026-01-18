@@ -82,7 +82,7 @@ async function loadElementIndex(): Promise<IndexedElement[]> {
     if (response.ok) {
       const data = await response.json();
       elementIndexCache = data.elements || [];
-      console.log(`📋 [Tracker] Loaded ${elementIndexCache.length} indexed elements`);
+      console.log(`📋 [Tracker] Loaded ${elementIndexCache!.length} indexed elements`);
     } else {
       elementIndexCache = [];
     }
@@ -91,7 +91,7 @@ async function loadElementIndex(): Promise<IndexedElement[]> {
     elementIndexCache = [];
   }
   elementIndexLoading = false;
-  return elementIndexCache;
+  return elementIndexCache ?? [];
 }
 
 // Match an element to an indexed element

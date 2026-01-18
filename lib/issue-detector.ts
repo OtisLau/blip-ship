@@ -360,8 +360,9 @@ export async function detectIssues(
 
       // Resolve component - try element index first, then component registry
       const sampleEvent = events[0];
-      const fullPath = (sampleEvent as Record<string, unknown>).elementContext
-        ? ((sampleEvent as Record<string, unknown>).elementContext as Record<string, unknown>).fullPath as string
+      const sampleEventAny = sampleEvent as unknown as Record<string, unknown>;
+      const fullPath = sampleEventAny.elementContext
+        ? (sampleEventAny.elementContext as Record<string, unknown>).fullPath as string
         : undefined;
 
       // Try element index first (more accurate)
@@ -373,7 +374,7 @@ export async function detectIssues(
         const resolved = resolveComponentFromEvent(elementIndex, {
           elementSelector: fullPath || key,
           elementText: sampleEvent.elementText,
-          placeholder: (sampleEvent as Record<string, unknown>).placeholder as string | undefined,
+          placeholder: sampleEventAny.placeholder as string | undefined,
         });
         if (resolved.componentPath !== 'unknown') {
           componentPath = resolved.componentPath;

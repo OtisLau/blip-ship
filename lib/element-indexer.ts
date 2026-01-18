@@ -43,9 +43,9 @@ const COMPONENT_PATTERNS: Array<{
 }> = [
   // Cart/Checkout forms - shipping and payment inputs (detected by placeholders)
   {
-    pattern: (el) =>
+    pattern: (el): boolean =>
       el.tag === 'input' &&
-      (el.placeholder?.includes('John') ||
+      !!(el.placeholder?.includes('John') ||
        el.placeholder?.includes('example.com') ||
        el.placeholder?.includes('Main Street') ||
        el.placeholder?.includes('New York') ||
@@ -58,37 +58,37 @@ const COMPONENT_PATTERNS: Array<{
   },
   // Cart buttons (by text content)
   {
-    pattern: (el) =>
-      el.text?.toLowerCase().includes('checkout') ||
+    pattern: (el): boolean =>
+      !!(el.text?.toLowerCase().includes('checkout') ||
       el.text?.toLowerCase().includes('continue to payment') ||
       el.text?.toLowerCase().includes('back to cart') ||
       el.text?.toLowerCase().includes('back to shipping') ||
       el.text?.toLowerCase().includes('pay $') ||
-      el.text?.toLowerCase().includes('continue shopping'),
+      el.text?.toLowerCase().includes('continue shopping')),
     componentPath: 'components/store/CartDrawer.tsx',
     componentName: 'CartDrawer',
   },
   // Cart drawer elements (by page URL context)
   {
-    pattern: (el) =>
-      (el.pageUrl?.includes('#shipping') || el.pageUrl?.includes('#payment')) &&
+    pattern: (el): boolean =>
+      !!(el.pageUrl?.includes('#shipping') || el.pageUrl?.includes('#payment')) &&
       (el.tag === 'input' || el.tag === 'button' || el.tag === 'form'),
     componentPath: 'components/store/CartDrawer.tsx',
     componentName: 'CartDrawer',
   },
   // Cart item controls (detected by jsx classes used in styled-jsx cart drawer)
   {
-    pattern: (el) =>
-      el.fullPath?.includes('jsx-') &&
+    pattern: (el): boolean =>
+      !!el.fullPath?.includes('jsx-') &&
       (el.text === '−' || el.text === '+' || el.text?.toLowerCase() === 'remove'),
     componentPath: 'components/store/CartDrawer.tsx',
     componentName: 'CartDrawer',
   },
   // Hero section
   {
-    pattern: (el) =>
-      el.fullPath?.includes('section') &&
-      (el.text?.toLowerCase().includes('shop') ||
+    pattern: (el): boolean =>
+      !!el.fullPath?.includes('section') &&
+      !!(el.text?.toLowerCase().includes('shop') ||
        el.text?.toLowerCase().includes('explore') ||
        el.text?.toLowerCase().includes('collection')),
     componentPath: 'components/store/Hero.tsx',
@@ -96,35 +96,35 @@ const COMPONENT_PATTERNS: Array<{
   },
   // Product grid
   {
-    pattern: (el) =>
-      el.fullPath?.includes('#products') ||
+    pattern: (el): boolean =>
+      !!(el.fullPath?.includes('#products') ||
       el.fullPath?.includes('data-product-id') ||
-      el.text?.toLowerCase().includes('add to cart'),
+      el.text?.toLowerCase().includes('add to cart')),
     componentPath: 'components/store/ProductGrid.tsx',
     componentName: 'ProductGrid',
   },
   // Header
   {
-    pattern: (el) =>
-      el.fullPath?.includes('header') ||
-      el.fullPath?.includes('nav'),
+    pattern: (el): boolean =>
+      !!(el.fullPath?.includes('header') ||
+      el.fullPath?.includes('nav')),
     componentPath: 'components/store/Header.tsx',
     componentName: 'Header',
   },
   // Footer
   {
-    pattern: (el) =>
-      el.fullPath?.includes('footer') ||
+    pattern: (el): boolean =>
+      !!(el.fullPath?.includes('footer') ||
       el.text?.toLowerCase().includes('subscribe') ||
-      el.text?.toLowerCase().includes('newsletter'),
+      el.text?.toLowerCase().includes('newsletter')),
     componentPath: 'components/store/Footer.tsx',
     componentName: 'Footer',
   },
   // Testimonials
   {
-    pattern: (el) =>
-      el.fullPath?.includes('testimonial') ||
-      el.fullPath?.includes('#testimonials'),
+    pattern: (el): boolean =>
+      !!(el.fullPath?.includes('testimonial') ||
+      el.fullPath?.includes('#testimonials')),
     componentPath: 'components/store/Testimonials.tsx',
     componentName: 'Testimonials',
   },

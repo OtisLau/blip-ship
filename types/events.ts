@@ -25,6 +25,7 @@ export type EventType =
   | 'click'
   | 'rage_click'
   | 'dead_click'
+  | 'double_click'        // User double-clicked (uncertainty signal)
   | 'cta_click'
   // Engagement events
   | 'page_view'
@@ -32,6 +33,7 @@ export type EventType =
   | 'section_view'
   // Conversion events
   | 'add_to_cart'
+  | 'cart_remove'         // User removed item from cart
   | 'checkout_start'
   | 'checkout_abandon'    // User left during checkout
   | 'purchase'

@@ -2934,5 +2934,19 @@
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 5 rage clicks, 16 dead clicks"
+  },
+  {
+    "id": "evt_1768725615421_3ue7uf1",
+    "timestamp": 1768725615421,
+    "sessionId": "sess_1768720182102_i3x1pq4kq",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1115,
+      "height": 884
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
   }
 ]

@@ -10,7 +10,19 @@
       "Bash(npm ls:*)",
       "Bash(npm uninstall:*)",
       "Bash(ls:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(git push:*)",
+      "Bash(git branch:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pkill:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm type-check:*)",
+      "Bash(git checkout:*)",
+      "Bash(xargs:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm build:*)"
     ]
   }
 }
