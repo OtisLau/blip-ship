@@ -1,0 +1,789 @@
+[
+  {
+    "id": "issue_1768696387241_5dy7rr",
+    "status": "detected",
+    "detectedAt": 1768696387241,
+    "lastOccurrence": 1768696094544,
+    "category": "frustration",
+    "severity": "high",
+    "patternId": "dead_click_image",
+    "elementSelector": "img",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 11,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768696092369_gc1kr5z",
+        "timestamp": 1768696092369,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "dead_click",
+        "x": 668,
+        "y": 685,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 3420,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768696092369_u54m0dy",
+        "timestamp": 1768696092369,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "dead_click",
+        "x": 668,
+        "y": 685,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 3903,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768696092369_avfwanq",
+        "timestamp": 1768696092369,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "double_click",
+        "x": 668,
+        "y": 685,
+        "elementSelector": "img",
+        "elementText": "",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 3903,
+          "url": "/store"
+        },
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768696092369_4koyovc",
+        "timestamp": 1768696092369,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "dead_click",
+        "x": 668,
+        "y": 684,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 4649,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 3 dead clicks"
+      },
+      {
+        "id": "evt_1768696092895_xgbb6oo",
+        "timestamp": 1768696092895,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "dead_click",
+        "x": 668,
+        "y": 684,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 4912,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+      }
+    ],
+    "problemStatement": "Users are clicking on images expecting them to be interactive",
+    "userIntent": "View larger image or see more details",
+    "currentOutcome": "Nothing happens - the image is not clickable",
+    "suggestedFix": "Make images clickable - either open a lightbox/modal or navigate to product details"
+  },
+  {
+    "id": "issue_1768696387241_kdtzrr",
+    "status": "detected",
+    "detectedAt": 1768696387241,
+    "lastOccurrence": 1768696094544,
+    "category": "frustration",
+    "severity": "medium",
+    "patternId": "button_no_loading_feedback",
+    "elementSelector": "img",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 3,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768696092369_wd3cbll",
+        "timestamp": 1768696092369,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 668,
+        "y": 685,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 4648,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768696092895_nezphq1",
+        "timestamp": 1768696092895,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 668,
+        "y": 684,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 5165,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 5 dead clicks"
+      },
+      {
+        "id": "evt_1768696094544_5menjtq",
+        "timestamp": 1768696094544,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 668,
+        "y": 684,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 5559,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
+      }
+    ],
+    "problemStatement": "Users are rage-clicking buttons - no loading feedback when clicked",
+    "userIntent": "Clicked button and expected immediate visual response",
+    "currentOutcome": "Button appears unresponsive - no loading spinner or disabled state",
+    "suggestedFix": "Add loading spinner inside button, disable button while processing, change button text to \"Processing...\""
+  },
+  {
+    "id": "issue_1768696387241_8qidrw",
+    "status": "detected",
+    "detectedAt": 1768696387241,
+    "lastOccurrence": 1768696094544,
+    "category": "frustration",
+    "severity": "low",
+    "patternId": "rage_click_hotspot",
+    "elementSelector": "img",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 3,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768696092369_wd3cbll",
+        "timestamp": 1768696092369,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 668,
+        "y": 685,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 4648,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768696092895_nezphq1",
+        "timestamp": 1768696092895,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 668,
+        "y": 684,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 5165,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 5 dead clicks"
+      },
+      {
+        "id": "evt_1768696094544_5menjtq",
+        "timestamp": 1768696094544,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 668,
+        "y": 684,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 530,
+            "width": 245,
+            "height": 245
+          },
+          "viewportPosition": {
+            "x": 530,
+            "y": 575,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 253,
+          "scrollPercent": 19,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 5559,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
+      }
+    ],
+    "problemStatement": "Users are rage-clicking on this element out of frustration",
+    "userIntent": "Expecting the element to respond or do something",
+    "currentOutcome": "Element is not responding as expected - likely missing loading animation or feedback",
+    "suggestedFix": "Add a loading spinner/animation on click, disable button while processing, show visual feedback immediately"
+  },
+  {
+    "id": "issue_1768696387241_au72xt",
+    "status": "detected",
+    "detectedAt": 1768696387241,
+    "lastOccurrence": 1768696100637,
+    "category": "frustration",
+    "severity": "low",
+    "patternId": "button_no_loading_feedback",
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 1,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768696100637_xzjrr8g",
+        "timestamp": 1768696100637,
+        "sessionId": "sess_1768695712877_onqggupzd",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1050,
+          "height": 1016
+        },
+        "type": "rage_click",
+        "x": 844,
+        "y": 206,
+        "elementSelector": "button.jsx-532d500bfc6d5d04",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "button.jsx-532d500bfc6d5d04",
+          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04:nth-child(2)",
+          "tag": "button",
+          "text": "+",
+          "attributes": {
+            "class": "jsx-532d500bfc6d5d04"
+          },
+          "boundingBox": {
+            "top": 563,
+            "left": 828,
+            "width": 32,
+            "height": 32
+          },
+          "viewportPosition": {
+            "x": 828,
+            "y": 188,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": true,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 375,
+          "scrollPercent": 28,
+          "documentHeight": 2378,
+          "documentWidth": 1050,
+          "timeOnPage": 12172,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04:nth-child(2), cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
+      }
+    ],
+    "problemStatement": "Users are rage-clicking buttons - no loading feedback when clicked",
+    "userIntent": "Clicked button and expected immediate visual response",
+    "currentOutcome": "Button appears unresponsive - no loading spinner or disabled state",
+    "suggestedFix": "Add loading spinner inside button, disable button while processing, change button text to \"Processing...\""
+  }
+]

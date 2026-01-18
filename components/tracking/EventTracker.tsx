@@ -3,6 +3,31 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { EventType, InferredBehavior } from '@/lib/types';
 
+interface ElementContext {
+  selector: string;
+  fullPath: string;
+  tag: string;
+  text: string;
+  attributes: Record<string, string>;
+  boundingBox: { top: number; left: number; width: number; height: number };
+  viewportPosition: { x: number; y: number; visible: boolean; percentVisible: number };
+  computedStyle: { cursor: string; pointerEvents: string; opacity: string; display: string };
+  isInteractive: boolean;
+  isVisible: boolean;
+  isInIframe: boolean;
+  nearestInteractive: string | null;
+}
+
+interface PageContext {
+  scrollX: number;
+  scrollY: number;
+  scrollPercent: number;
+  documentHeight: number;
+  documentWidth: number;
+  timeOnPage: number;
+  url: string;
+}
+
 interface PartialEvent {
   type: EventType;
   x?: number;
@@ -18,6 +43,10 @@ interface PartialEvent {
   inferredBehavior?: InferredBehavior;
   behaviorConfidence?: number;
   behaviorContext?: string;
+  // Rich context for LLM
+  elementContext?: ElementContext;
+  pageContext?: PageContext;
+  frustrationReason?: string; // Human-readable why this is a problem
 }
 
 // Session behavior tracking for intent inference
@@ -57,6 +86,172 @@ function getSelector(el: HTMLElement): string {
   }
 
   return el.tagName.toLowerCase();
+}
+
+// Get FULL unique CSS path to element (for precise LLM context)
+function getFullPath(el: HTMLElement): string {
+  const path: string[] = [];
+  let current: HTMLElement | null = el;
+
+  while (current && current !== document.body) {
+    let selector = current.tagName.toLowerCase();
+
+    if (current.id) {
+      selector = `#${current.id}`;
+      path.unshift(selector);
+      break; // ID is unique, stop here
+    }
+
+    // Add classes
+    if (current.className && typeof current.className === 'string') {
+      const classes = current.className.trim().split(/\s+/).slice(0, 2).join('.');
+      if (classes) selector += `.${classes}`;
+    }
+
+    // Add nth-child if needed for uniqueness
+    const parent = current.parentElement;
+    if (parent) {
+      const siblings = Array.from(parent.children).filter(c => c.tagName === current!.tagName);
+      if (siblings.length > 1) {
+        const index = siblings.indexOf(current) + 1;
+        selector += `:nth-child(${index})`;
+      }
+    }
+
+    path.unshift(selector);
+    current = current.parentElement;
+  }
+
+  return path.join(' > ');
+}
+
+// Get detailed element info for LLM context
+function getElementContext(el: HTMLElement): {
+  selector: string;
+  fullPath: string;
+  tag: string;
+  text: string;
+  attributes: Record<string, string>;
+  boundingBox: { top: number; left: number; width: number; height: number };
+  viewportPosition: { x: number; y: number; visible: boolean; percentVisible: number };
+  computedStyle: { cursor: string; pointerEvents: string; opacity: string; display: string };
+  isInteractive: boolean;
+  isVisible: boolean;
+  isInIframe: boolean;
+  nearestInteractive: string | null;
+} {
+  const rect = el.getBoundingClientRect();
+  const style = window.getComputedStyle(el);
+
+  // Check if element is in viewport
+  const viewportHeight = window.innerHeight;
+  const viewportWidth = window.innerWidth;
+  const visibleTop = Math.max(0, rect.top);
+  const visibleBottom = Math.min(viewportHeight, rect.bottom);
+  const visibleLeft = Math.max(0, rect.left);
+  const visibleRight = Math.min(viewportWidth, rect.right);
+  const visibleArea = Math.max(0, visibleRight - visibleLeft) * Math.max(0, visibleBottom - visibleTop);
+  const totalArea = rect.width * rect.height;
+  const percentVisible = totalArea > 0 ? Math.round((visibleArea / totalArea) * 100) : 0;
+
+  // Get all data attributes
+  const attributes: Record<string, string> = {};
+  for (const attr of el.attributes) {
+    if (attr.name.startsWith('data-') || ['id', 'class', 'href', 'src', 'type', 'name', 'placeholder', 'role', 'aria-label'].includes(attr.name)) {
+      attributes[attr.name] = attr.value.slice(0, 100);
+    }
+  }
+
+  // Find nearest interactive parent/ancestor
+  let nearestInteractive: string | null = null;
+  const interactiveParent = el.closest('a, button, input, [onclick], [role="button"], [tabindex]');
+  if (interactiveParent && interactiveParent !== el) {
+    nearestInteractive = getSelector(interactiveParent as HTMLElement);
+  }
+
+  // Check if in iframe
+  const isInIframe = window.self !== window.top;
+
+  return {
+    selector: getSelector(el),
+    fullPath: getFullPath(el),
+    tag: el.tagName.toLowerCase(),
+    text: (el.textContent || '').slice(0, 150).trim(),
+    attributes,
+    boundingBox: {
+      top: Math.round(rect.top + window.scrollY),
+      left: Math.round(rect.left + window.scrollX),
+      width: Math.round(rect.width),
+      height: Math.round(rect.height),
+    },
+    viewportPosition: {
+      x: Math.round(rect.left),
+      y: Math.round(rect.top),
+      visible: percentVisible > 0,
+      percentVisible,
+    },
+    computedStyle: {
+      cursor: style.cursor,
+      pointerEvents: style.pointerEvents,
+      opacity: style.opacity,
+      display: style.display,
+    },
+    isInteractive: isInteractive(el),
+    isVisible: style.display !== 'none' && style.visibility !== 'hidden' && parseFloat(style.opacity) > 0,
+    isInIframe,
+    nearestInteractive,
+  };
+}
+
+// Get current page context
+function getPageContext(pageEntryTime: number): PageContext {
+  const docHeight = document.documentElement.scrollHeight;
+  const viewportHeight = window.innerHeight;
+  const scrollPercent = docHeight > viewportHeight
+    ? Math.round((window.scrollY / (docHeight - viewportHeight)) * 100)
+    : 0;
+
+  return {
+    scrollX: Math.round(window.scrollX),
+    scrollY: Math.round(window.scrollY),
+    scrollPercent,
+    documentHeight: docHeight,
+    documentWidth: document.documentElement.scrollWidth,
+    timeOnPage: Date.now() - pageEntryTime,
+    url: window.location.pathname,
+  };
+}
+
+// Generate human-readable frustration reason
+function describeFrustration(type: string, el: HTMLElement, context: ElementContext): string {
+  switch (type) {
+    case 'dead_click':
+      if (context.tag === 'img') {
+        return `User clicked on image expecting it to be interactive (enlarge/open). Image at ${context.fullPath} has cursor:${context.computedStyle.cursor}, not clickable.`;
+      }
+      if (context.nearestInteractive) {
+        return `User clicked near but missed the interactive element "${context.nearestInteractive}". Clicked on ${context.tag} instead. May need larger click target.`;
+      }
+      return `User clicked on non-interactive ${context.tag} element "${context.text.slice(0, 30)}...". Expected it to do something. Element path: ${context.fullPath}`;
+
+    case 'rage_click':
+      return `User rage-clicked ${context.tag} element multiple times rapidly. Likely no visual feedback on click. Element: ${context.fullPath}, cursor: ${context.computedStyle.cursor}`;
+
+    case 'double_click':
+      if (context.tag === 'button' || context.attributes['role'] === 'button') {
+        return `User double-clicked button "${context.text.slice(0, 30)}". Suggests no loading state or feedback - user unsure if click registered.`;
+      }
+      return `User double-clicked on ${context.tag}. May expect different behavior than single click.`;
+
+    case 'slow_form_fill':
+      return `User spent excessive time on form field. Field: ${context.attributes['name'] || context.attributes['placeholder'] || context.selector}. May need better autofill support, clearer instructions, or simpler input.`;
+
+    case 'scroll_reversal':
+      return `User scrolling up and down repeatedly - searching for something they can't find. Consider better navigation, search, or content organization.`;
+
+    default:
+      return `Frustration signal: ${type} on ${context.tag} at ${context.fullPath}`;
+  }
 }
 
 // Check if element or its parent is interactive
@@ -365,6 +560,15 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoveredElement = useRef<HTMLElement | null>(null);
 
+  // Track form field timing (for slow_form_fill detection)
+  const formFieldStartTime = useRef<Map<string, number>>(new Map());
+  const SLOW_FORM_THRESHOLD = 10000; // 10 seconds = slow
+
+  // Track checkout flow state
+  const checkoutStarted = useRef(false);
+  const lastClickedElement = useRef<string | null>(null);
+  const lastClickTime = useRef<number>(0);
+
   // Send event helper
   const sendEvent = useCallback((event: PartialEvent) => {
     queueEvent(event);
@@ -472,6 +676,10 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
 
       sendEvent(clickEvent);
 
+      // Track last click for "click then exit" detection
+      lastClickedElement.current = getSelector(target);
+      lastClickTime.current = now;
+
       // Rage click detection: 3+ clicks in same area within 2 seconds
       clickBuffer.current.push({ time: now, x: e.clientX, y: e.clientY });
       clickBuffer.current = clickBuffer.current.filter(c => now - c.time < 2000);
@@ -487,12 +695,16 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
 
         if (allClustered) {
           behaviorState.rageClicks++;
+          const elemContext = getElementContext(target);
           sendEvent({
             type: 'rage_click',
             x: Math.round(avgX),
             y: Math.round(avgY),
             elementSelector: getSelector(target),
             clickCount: recentClicks.length,
+            elementContext: elemContext,
+            pageContext: getPageContext(pageEntryTime.current),
+            frustrationReason: describeFrustration('rage_click', target, elemContext),
           });
           // Clear buffer after detecting rage click to avoid duplicate reports
           clickBuffer.current = [];
@@ -502,12 +714,16 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       // Dead click detection: click on non-interactive element
       if (!isInteractive(target)) {
         behaviorState.deadClicks++;
+        const elemContext = getElementContext(target);
         sendEvent({
           type: 'dead_click',
           x: e.clientX,
           y: e.clientY,
           elementSelector: getSelector(target),
           elementText: target.textContent?.slice(0, 100)?.trim() || undefined,
+          elementContext: elemContext,
+          pageContext: getPageContext(pageEntryTime.current),
+          frustrationReason: describeFrustration('dead_click', target, elemContext),
         });
       }
     };
@@ -592,29 +808,67 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       });
     };
 
-    // Bounce detection on page unload
+    // Bounce and checkout abandonment detection on page unload
     const handleBeforeUnload = () => {
       // Flush any remaining events
       flushEvents();
 
       const timeOnPage = Date.now() - pageEntryTime.current;
+      const eventsToSend: Array<Record<string, unknown>> = [];
 
       // If user spent < 10 seconds and didn't interact meaningfully, it's a bounce
       if (timeOnPage < 10000 && !hasInteracted.current) {
-        // Use sendBeacon directly for unload
-        navigator.sendBeacon('/api/events', JSON.stringify({
-          events: [{
-            id: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
-            type: 'bounce',
-            timestamp: Date.now(),
-            sessionId: getSessionId(),
-            pageUrl: window.location.pathname,
-            viewport: {
-              width: window.innerWidth,
-              height: window.innerHeight,
-            },
-          }],
-        }));
+        eventsToSend.push({
+          id: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+          type: 'bounce',
+          timestamp: Date.now(),
+          sessionId: getSessionId(),
+          pageUrl: window.location.pathname,
+          viewport: {
+            width: window.innerWidth,
+            height: window.innerHeight,
+          },
+        });
+      }
+
+      // If user started checkout but is leaving, it's checkout abandonment
+      if (checkoutStarted.current) {
+        eventsToSend.push({
+          id: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+          type: 'checkout_abandon',
+          timestamp: Date.now(),
+          sessionId: getSessionId(),
+          pageUrl: window.location.pathname,
+          elementText: 'User left during checkout flow',
+          viewport: {
+            width: window.innerWidth,
+            height: window.innerHeight,
+          },
+        });
+        console.log('🚨 [Checkout Abandon] User left during checkout');
+      }
+
+      // If user clicked something and left within 2 seconds, the click didn't do what they expected
+      const timeSinceLastClick = Date.now() - lastClickTime.current;
+      if (lastClickedElement.current && timeSinceLastClick < 2000 && timeSinceLastClick > 100) {
+        eventsToSend.push({
+          id: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+          type: 'dead_click',
+          timestamp: Date.now(),
+          sessionId: getSessionId(),
+          pageUrl: window.location.pathname,
+          elementSelector: lastClickedElement.current,
+          elementText: `Click then exit within ${timeSinceLastClick}ms - click likely failed expectations`,
+          viewport: {
+            width: window.innerWidth,
+            height: window.innerHeight,
+          },
+        });
+        console.log(`⚠️ [Click→Exit] User clicked "${lastClickedElement.current}" then left within ${timeSinceLastClick}ms`);
+      }
+
+      if (eventsToSend.length > 0) {
+        navigator.sendBeacon('/api/events', JSON.stringify({ events: eventsToSend }));
       }
     };
 
@@ -710,16 +964,30 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       }
     };
 
-    // Double click handler
+    // Double click handler - especially important on buttons (indicates no feedback)
     const handleDoubleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      const buttonEl = target.closest('button, [role="button"], input[type="submit"], .btn, [data-cta]') as HTMLElement || target;
+      const isButton = target.matches('button, [role="button"], input[type="submit"], .btn, [data-cta]') ||
+                       target.closest('button, [role="button"], input[type="submit"], .btn, [data-cta]') !== null;
+
+      const elemContext = getElementContext(isButton ? buttonEl : target);
+
       sendEvent({
         type: 'double_click',
         x: e.clientX,
         y: e.clientY,
         elementSelector: getSelector(target),
         elementText: target.textContent?.slice(0, 100)?.trim(),
+        elementContext: elemContext,
+        pageContext: getPageContext(pageEntryTime.current),
+        frustrationReason: isButton ? describeFrustration('double_click', buttonEl, elemContext) : undefined,
       });
+
+      // Double-click on button = user unsure if click registered (missing loading state)
+      if (isButton) {
+        console.log('⚠️ [Double-click on button] User may be unsure if click registered - consider adding loading state');
+      }
     };
 
     // Right click / context menu handler
@@ -734,27 +1002,56 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       });
     };
 
-    // Form focus handler
+    // Form focus handler - track start time
     const handleFocusIn = (e: FocusEvent) => {
       const target = e.target as HTMLElement;
       if (target.matches('input, textarea, select')) {
+        const selector = getSelector(target);
+        formFieldStartTime.current.set(selector, Date.now());
+
+        // Detect if this is a checkout form
+        const isCheckoutField = target.closest('[data-checkout], .checkout, form') !== null;
+        if (isCheckoutField && !checkoutStarted.current) {
+          checkoutStarted.current = true;
+          sendEvent({ type: 'checkout_start' });
+        }
+
         sendEvent({
           type: 'form_focus',
-          elementSelector: getSelector(target),
+          elementSelector: selector,
           elementText: (target as HTMLInputElement).placeholder || target.getAttribute('name') || undefined,
         });
       }
     };
 
-    // Form blur handler
+    // Form blur handler - detect slow fills and empty abandonment
     const handleFocusOut = (e: FocusEvent) => {
       const target = e.target as HTMLElement;
       if (target.matches('input, textarea, select')) {
+        const selector = getSelector(target);
         const value = (target as HTMLInputElement).value;
+        const startTime = formFieldStartTime.current.get(selector);
+
+        // Calculate time spent on field
+        let timeSpent = 0;
+        if (startTime) {
+          timeSpent = Date.now() - startTime;
+          formFieldStartTime.current.delete(selector);
+
+          // Detect slow form fill (user struggling)
+          if (timeSpent > SLOW_FORM_THRESHOLD && value.length > 0) {
+            sendEvent({
+              type: 'slow_form_fill',
+              elementSelector: selector,
+              elementText: `Took ${Math.round(timeSpent / 1000)}s to fill`,
+            });
+          }
+        }
+
         sendEvent({
           type: 'form_blur',
-          elementSelector: getSelector(target),
-          elementText: value ? `[filled: ${value.length} chars]` : '[empty]',
+          elementSelector: selector,
+          elementText: value ? `[filled: ${value.length} chars, ${Math.round(timeSpent / 1000)}s]` : '[empty]',
         });
       }
     };
