@@ -176,7 +176,13 @@ export function ProductGrid({ config }: ProductGridProps) {
                 <h3 style={{ fontSize: '14px', fontWeight: 500, color: '#111', marginBottom: '4px' }}>
                   {sanitizeText(product.name)}
                 </h3>
-                <p style={{ fontSize: '14px', color: '#6b7280' }}>
+                <p 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedProduct(product);
+                  }}
+                  style={{ fontSize: '14px', color: '#6b7280', cursor: 'pointer' }}
+                >
                   ${product.price.toFixed(2)}
                 </p>
                 <label

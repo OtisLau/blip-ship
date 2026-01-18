@@ -16,7 +16,17 @@
       "Bash(pnpm install:*)",
       "Bash(pkill:*)",
       "Bash(pnpm build:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(wc:*)",
+      "Bash(git checkout:*)",
+      "Bash(xargs:*)",
+      "Bash(python3:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run lint:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
