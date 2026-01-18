@@ -8,6 +8,7 @@ export type EventType =
   | 'scroll_depth'
   | 'section_view'
   | 'add_to_cart'
+  | 'cart_remove'         // User removed item from cart
   | 'checkout_start'
   | 'checkout_abandon'    // User left during checkout (frustration signal)
   | 'purchase'
@@ -41,7 +42,18 @@ export type EventType =
   | 'link_hover'          // User hovered on a link
   | 'keyboard_shortcut'   // User used keyboard shortcut
   | 'right_click'         // User right-clicked (context menu)
-  | 'double_click';       // User double-clicked
+  | 'double_click'        // User double-clicked
+  // Color interaction events
+  | 'color_select'        // User selected a color swatch
+  | 'color_hover'         // User hovered on a color swatch
+  // Image gallery events
+  | 'image_gallery_open'  // User opened image gallery/lightbox
+  | 'image_gallery_navigate' // User navigated within gallery
+  | 'image_zoom'          // User zoomed in on image
+  // Comparison events
+  | 'comparison_add'      // User added product to comparison
+  | 'comparison_remove'   // User removed product from comparison
+  | 'comparison_view';    // User opened comparison view
 
 // Inferred user behaviors - what we think the user is trying to do
 export type InferredBehavior =

@@ -223,3 +223,25 @@ export async function generateAndValidateSuggestions(
 
   return { approved, rejected };
 }
+
+/**
+ * Simple passthrough to Gemini API - receives a prompt, returns the response.
+ * No processing, no thresholds - just calls the LLM.
+ */
+export async function callGemini(prompt: string): Promise<string> {
+  const result = await geminiModel.generateContent(prompt);
+  return result.response.text();
+}
+
+/**
+ * Call Gemini and parse JSON response
+ */
+export async function callGeminiJSON<T>(prompt: string): Promise<T> {
+  const text = await callGemini(prompt);
+
+  // Handle potential markdown code blocks
+  const jsonMatch = text.match(/```json\n?([\s\S]*?)\n?```/) || [null, text];
+  const jsonStr = jsonMatch[1] || text;
+
+  return JSON.parse(jsonStr.trim()) as T;
+}

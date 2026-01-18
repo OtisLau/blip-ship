@@ -32,7 +32,9 @@ export async function GET() {
     }
 
     // Analyze for image clickability issues
-    const analysis = await analyzeImageClickability(events);
+    // Default config assumes images are not yet clickable
+    const currentConfig = { products: { imageClickable: false } };
+    const analysis = await analyzeImageClickability(events, currentConfig);
 
     return NextResponse.json({
       ...analysis,

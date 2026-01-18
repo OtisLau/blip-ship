@@ -10,7 +10,13 @@
       "Bash(npm ls:*)",
       "Bash(npm uninstall:*)",
       "Bash(ls:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(pnpm dev)",
+      "Bash(pnpm type-check:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pkill:*)",
+      "Bash(pnpm build:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

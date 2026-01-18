@@ -1,439 +1,12 @@
 [
   {
-    "id": "issue_1768697969531_g9x6ve",
+    "id": "issue_1768710718221_kxqlv1",
     "status": "detected",
-    "detectedAt": 1768697969531,
-    "lastOccurrence": 1768697969517,
-    "category": "frustration",
-    "severity": "medium",
-    "patternId": "click_frustration",
-    "elementSelector": "div.jsx-532d500bfc6d5d04",
-    "sectionId": "/store",
-    "componentPath": "unknown",
-    "componentName": "Unknown",
-    "eventCount": 7,
-    "uniqueSessions": 1,
-    "sampleEvents": [
-      {
-        "id": "evt_1768697840784_0zexd0p",
-        "timestamp": 1768697840784,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 376,
-        "y": 508,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 52853,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 7 dead clicks"
-      },
-      {
-        "id": "evt_1768697840784_9muesx5",
-        "timestamp": 1768697840784,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 294,
-        "y": 471,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 54229,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 8 dead clicks"
-      },
-      {
-        "id": "evt_1768697843063_sxt493x",
-        "timestamp": 1768697843063,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 206,
-        "y": 518,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 55598,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 9 dead clicks"
-      },
-      {
-        "id": "evt_1768697843063_hxfld7h",
-        "timestamp": 1768697843063,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 294,
-        "y": 457,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 56862,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 10 dead clicks"
-      },
-      {
-        "id": "evt_1768697969517_hkzgrat",
-        "timestamp": 1768697969517,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 341,
-        "y": 465,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 1890,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "ready_to_buy",
-        "behaviorConfidence": 0.85,
-        "behaviorContext": "User added 1 item(s) to cart"
-      },
-      {
-        "id": "evt_1768697969517_6g5a9je",
-        "timestamp": 1768697969517,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 386,
-        "y": 481,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 3215,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "ready_to_buy",
-        "behaviorConfidence": 0.85,
-        "behaviorContext": "User added 2 item(s) to cart"
-      },
-      {
-        "id": "evt_1768697969517_ngeffuo",
-        "timestamp": 1768697969517,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 419,
-        "y": 536,
-        "elementSelector": "div.jsx-532d500bfc6d5d04",
-        "elementContext": {
-          "selector": "div.jsx-532d500bfc6d5d04",
-          "fullPath": "div.jsx-532d500bfc6d5d04",
-          "tag": "div",
-          "text": "",
-          "attributes": {
-            "class": "jsx-532d500bfc6d5d04"
-          },
-          "boundingBox": {
-            "top": 625,
-            "left": 0,
-            "width": 0,
-            "height": 0
-          },
-          "viewportPosition": {
-            "x": 0,
-            "y": 0,
-            "visible": false,
-            "percentVisible": 0
-          },
-          "computedStyle": {
-            "cursor": "",
-            "pointerEvents": "",
-            "opacity": "",
-            "display": ""
-          },
-          "isInteractive": false,
-          "isVisible": false,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 4530,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
-        "inferredBehavior": "confused",
-        "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
-      }
-    ],
-    "problemStatement": "Users clicking this element are frustrated",
-    "userIntent": "Expected the element to respond",
-    "currentOutcome": "Element did not behave as expected",
-    "suggestedFix": ""
-  },
-  {
-    "id": "issue_1768697969531_zp93fx",
-    "status": "detected",
-    "detectedAt": 1768697969531,
-    "lastOccurrence": 1768697801601,
+    "detectedAt": 1768710718221,
+    "lastOccurrence": 1768710718201,
     "category": "missing_feature",
     "severity": "low",
-    "patternId": "comparison_shopping",
+    "patternId": "multi_product_interaction",
     "elementSelector": "/store",
     "sectionId": "/store",
     "componentPath": "unknown",
@@ -442,237 +15,256 @@
     "uniqueSessions": 1,
     "sampleEvents": [
       {
-        "id": "evt_1768697789721_wxbb79d",
-        "timestamp": 1768697789721,
-        "sessionId": "sess_1768695712877_onqggupzd",
+        "id": "evt_1768710716126_mpycgal",
+        "timestamp": 1768710716126,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
         "pageUrl": "/store",
         "viewport": {
-          "width": 900,
+          "width": 1300,
           "height": 1016
         },
         "type": "product_view",
-        "x": 341,
-        "y": 281,
+        "x": 778,
+        "y": 468,
         "elementSelector": "img",
-        "productId": "prod_002",
-        "productName": "Essential Cotton Tee",
-        "inferredBehavior": "browsing",
-        "behaviorConfidence": 0.5,
-        "behaviorContext": "User is casually browsing the store"
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 18 rage clicks, 77 dead clicks"
       },
       {
-        "id": "evt_1768697789721_j5bj68u",
-        "timestamp": 1768697789721,
-        "sessionId": "sess_1768695712877_onqggupzd",
+        "id": "evt_1768710718201_lo95haq",
+        "timestamp": 1768710718201,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
         "pageUrl": "/store",
         "viewport": {
-          "width": 900,
+          "width": 1300,
           "height": 1016
         },
         "type": "product_view",
-        "x": 302,
-        "y": 439,
-        "elementSelector": "h3",
-        "elementText": "Essential Cotton Tee",
-        "productId": "prod_002",
-        "productName": "Essential Cotton Tee",
-        "inferredBehavior": "browsing",
-        "behaviorConfidence": 0.5,
-        "behaviorContext": "User is casually browsing the store"
-      },
-      {
-        "id": "evt_1768697794688_59mdvk3",
-        "timestamp": 1768697794689,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "product_compare",
-        "productId": "prod_001",
-        "productName": "Classic Heavyweight Hoodie",
-        "elementText": "Comparing: prod_002 vs prod_001",
-        "inferredBehavior": "ready_to_buy",
-        "behaviorConfidence": 0.85,
-        "behaviorContext": "User added 1 item(s) to cart"
-      },
-      {
-        "id": "evt_1768697801601_pupgh2q",
-        "timestamp": 1768697801601,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "product_compare",
+        "x": 772,
+        "y": 457,
+        "elementSelector": "img",
         "productId": "prod_003",
         "productName": "Relaxed Fit Joggers",
-        "elementText": "Comparing: prod_001 vs prod_003",
+        "productPrice": 75,
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 4 dead clicks"
+        "behaviorContext": "User shows frustration: 18 rage clicks, 78 dead clicks"
       },
       {
-        "id": "evt_1768697801601_2khq83l",
-        "timestamp": 1768697801601,
-        "sessionId": "sess_1768695712877_onqggupzd",
+        "id": "evt_1768710718201_t66krtc",
+        "timestamp": 1768710718201,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
         "pageUrl": "/store",
         "viewport": {
-          "width": 900,
+          "width": 1300,
           "height": 1016
         },
         "type": "product_view",
-        "x": 527,
-        "y": 441,
-        "elementSelector": "h3",
-        "elementText": "Relaxed Fit Joggers",
+        "x": 772,
+        "y": 457,
+        "elementSelector": "img",
         "productId": "prod_003",
         "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 4 dead clicks"
+        "behaviorContext": "User shows frustration: 18 rage clicks, 79 dead clicks"
+      },
+      {
+        "id": "evt_1768710718201_vauk29q",
+        "timestamp": 1768710718201,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 770,
+        "y": 464,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 18 rage clicks, 80 dead clicks"
+      },
+      {
+        "id": "evt_1768710718201_f4freb9",
+        "timestamp": 1768710718201,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 770,
+        "y": 464,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 19 rage clicks, 81 dead clicks"
       }
     ],
-    "problemStatement": "Users are comparing multiple products",
-    "userIntent": "Want to compare products side-by-side",
-    "currentOutcome": "No comparison tool available",
+    "problemStatement": "Users interacting with multiple products",
+    "userIntent": "",
+    "currentOutcome": "",
     "suggestedFix": ""
   },
   {
-    "id": "issue_1768697969531_av9lyf",
+    "id": "issue_1768711326477_tudr9j",
     "status": "detected",
-    "detectedAt": 1768697969531,
-    "lastOccurrence": 1768697801601,
-    "category": "frustration",
+    "detectedAt": 1768711326477,
+    "lastOccurrence": 1768711278341,
+    "category": "missing_feature",
     "severity": "low",
-    "patternId": "click_frustration",
-    "elementSelector": "h3",
+    "patternId": "price_focused",
+    "elementSelector": "/store",
     "sectionId": "/store",
     "componentPath": "components/store/ProductGrid.tsx",
     "componentName": "ProductGrid",
-    "eventCount": 2,
+    "eventCount": 6,
     "uniqueSessions": 1,
     "sampleEvents": [
       {
-        "id": "evt_1768697789721_vssgg44",
-        "timestamp": 1768697789721,
-        "sessionId": "sess_1768695712877_onqggupzd",
+        "id": "evt_1768711274295_7m4nwtk",
+        "timestamp": 1768711274295,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
         "pageUrl": "/store",
         "viewport": {
-          "width": 900,
+          "width": 1300,
           "height": 1016
         },
-        "type": "dead_click",
-        "x": 302,
-        "y": 439,
-        "elementSelector": "h3",
-        "elementText": "Essential Cotton Tee",
-        "elementContext": {
-          "selector": "h3",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > h3",
-          "tag": "h3",
-          "text": "Essential Cotton Tee",
-          "attributes": {},
-          "boundingBox": {
-            "top": 1046,
-            "left": 259,
-            "width": 164,
-            "height": 21
-          },
-          "viewportPosition": {
-            "x": 259,
-            "y": 421,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 2543,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive h3 element \"Essential Cotton Tee...\". Expected it to do something. Element path: #products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > h3",
-        "inferredBehavior": "browsing",
-        "behaviorConfidence": 0.5,
-        "behaviorContext": "User is casually browsing the store"
-      },
-      {
-        "id": "evt_1768697801601_b8iid30",
-        "timestamp": 1768697801601,
-        "sessionId": "sess_1768695712877_onqggupzd",
-        "pageUrl": "/store",
-        "viewport": {
-          "width": 900,
-          "height": 1016
-        },
-        "type": "dead_click",
-        "x": 527,
-        "y": 441,
-        "elementSelector": "h3",
-        "elementText": "Relaxed Fit Joggers",
-        "elementContext": {
-          "selector": "h3",
-          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > h3",
-          "tag": "h3",
-          "text": "Relaxed Fit Joggers",
-          "attributes": {},
-          "boundingBox": {
-            "top": 1046,
-            "left": 477,
-            "width": 164,
-            "height": 21
-          },
-          "viewportPosition": {
-            "x": 477,
-            "y": 421,
-            "visible": true,
-            "percentVisible": 100
-          },
-          "computedStyle": {
-            "cursor": "pointer",
-            "pointerEvents": "auto",
-            "opacity": "1",
-            "display": "block"
-          },
-          "isInteractive": false,
-          "isVisible": true,
-          "isInIframe": false,
-          "nearestInteractive": null
-        },
-        "pageContext": {
-          "scrollX": 0,
-          "scrollY": 625,
-          "scrollPercent": 46,
-          "documentHeight": 2385,
-          "documentWidth": 900,
-          "timeOnPage": 14737,
-          "url": "/store"
-        },
-        "frustrationReason": "User clicked on non-interactive h3 element \"Relaxed Fit Joggers...\". Expected it to do something. Element path: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > h3",
+        "type": "price_check",
+        "x": 819,
+        "y": 659,
+        "elementSelector": "div",
+        "elementText": "Relaxed Fit Joggers$75.00",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
         "inferredBehavior": "confused",
         "behaviorConfidence": 0.8,
-        "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+        "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
+      },
+      {
+        "id": "evt_1768711274295_0anv2tf",
+        "timestamp": 1768711274295,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "price_check",
+        "x": 816,
+        "y": 658,
+        "elementSelector": "div",
+        "elementText": "Relaxed Fit Joggers$75.00",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
+      },
+      {
+        "id": "evt_1768711274295_1uivhhl",
+        "timestamp": 1768711274295,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "price_check",
+        "x": 816,
+        "y": 658,
+        "elementSelector": "div",
+        "elementText": "Relaxed Fit Joggers$75.00",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+      },
+      {
+        "id": "evt_1768711274295_vu67xum",
+        "timestamp": 1768711274295,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "price_check",
+        "x": 816,
+        "y": 658,
+        "elementSelector": "div",
+        "elementText": "Relaxed Fit Joggers$75.00",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 8 dead clicks"
+      },
+      {
+        "id": "evt_1768711278341_ptctw7t",
+        "timestamp": 1768711278341,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "price_check",
+        "x": 858,
+        "y": 642,
+        "elementSelector": "p",
+        "elementText": "$75.00",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 9 dead clicks"
+      },
+      {
+        "id": "evt_1768711278341_3hgz0ih",
+        "timestamp": 1768711278341,
+        "sessionId": "sess_1768710570574_9hgsp4yk2",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "price_check",
+        "x": 858,
+        "y": 642,
+        "elementSelector": "p",
+        "elementText": "$75.00",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 1 rage clicks, 10 dead clicks"
       }
     ],
-    "problemStatement": "Users clicking this element are frustrated",
-    "userIntent": "Expected the element to respond",
-    "currentOutcome": "Element did not behave as expected",
+    "problemStatement": "Users are clicking on prices frequently",
+    "userIntent": "Want more price information or deals",
+    "currentOutcome": "Limited price interaction available",
     "suggestedFix": ""
   }
 ]

@@ -22,6 +22,7 @@ const PATTERN_RULES: PatternRule[] = [
   // ===========================================
   // One pattern for ALL click frustration - grouped by element
   // The evidence (dead_click, rage_click, double_click) tells the story
+  // Thresholds aligned with ux-config-guardrails.md: 5 rapid clicks, 3 sessions minimum
   {
     id: 'click_frustration',
     name: 'Click Frustration',
@@ -29,9 +30,9 @@ const PATTERN_RULES: PatternRule[] = [
     eventTypes: ['dead_click', 'rage_click', 'double_click'],
     groupBy: 'elementSelector',
     timeWindowHours: 24,
-    minOccurrences: 2,
-    minUniqueSessions: 1,
-    severityThresholds: { low: 2, medium: 5, high: 10, critical: 20 },
+    minOccurrences: 5,
+    minUniqueSessions: 3,
+    severityThresholds: { low: 5, medium: 15, high: 30, critical: 50 },
     problemTemplate: 'Users clicking this element are frustrated',
     intentTemplate: 'Expected the element to respond',
     outcomeTemplate: 'Element did not behave as expected',
@@ -250,6 +251,93 @@ const PATTERN_RULES: PatternRule[] = [
     outcomeTemplate: 'Visual hierarchy is confusing - unclear what is clickable',
     fixTemplate: 'Make CTA buttons more prominent, increase contrast, add hover states to clickable areas, make entire card clickable',
   },
+
+  // ============ UX AUTO-FIX PATTERNS ============
+
+  // BUTTON NO FEEDBACK - rage/double clicks suggest missing loading state
+  {
+    id: 'button_no_feedback',
+    name: 'Button Missing Loading Feedback',
+    category: 'frustration',
+    eventTypes: ['rage_click', 'double_click'],
+    groupBy: 'elementSelector',
+    timeWindowHours: 24,
+    minOccurrences: 5,
+    minUniqueSessions: 3,
+    severityThresholds: { low: 5, medium: 10, high: 20, critical: 35 },
+    problemTemplate: 'Users rage/double-clicking buttons - no loading feedback',
+    intentTemplate: 'User clicked button and expected immediate feedback or action',
+    outcomeTemplate: 'No visual indication that action is processing',
+    fixTemplate: 'Add loading spinner to button during async operations',
+  },
+
+  // IMAGE GALLERY NEEDED - dead clicks on product images suggest gallery desire
+  {
+    id: 'image_gallery_needed',
+    name: 'Product Image Needs Gallery/Zoom',
+    category: 'missing_feature',
+    eventTypes: ['dead_click', 'image_click', 'double_click'],
+    groupBy: 'elementSelector',
+    timeWindowHours: 24,
+    minOccurrences: 8,
+    minUniqueSessions: 4,
+    severityThresholds: { low: 8, medium: 15, high: 25, critical: 40 },
+    problemTemplate: 'Users clicking/double-clicking product images expecting to enlarge',
+    intentTemplate: 'View larger product image or browse multiple angles',
+    outcomeTemplate: 'Image does not open gallery or zoom view',
+    fixTemplate: 'Add lightbox gallery with image zoom and navigation',
+  },
+
+  // ADDRESS AUTOCOMPLETE NEEDED - slow form fills on address fields
+  {
+    id: 'address_autocomplete_needed',
+    name: 'Address Fields Need Autocomplete',
+    category: 'frustration',
+    eventTypes: ['slow_form_fill', 'form_focus', 'form_blur'],
+    groupBy: 'elementSelector',
+    timeWindowHours: 24,
+    minOccurrences: 6,
+    minUniqueSessions: 3,
+    severityThresholds: { low: 6, medium: 12, high: 20, critical: 35 },
+    problemTemplate: 'Users spending excessive time on address fields',
+    intentTemplate: 'Quickly enter shipping/billing address',
+    outcomeTemplate: 'Manual typing without autocomplete suggestions',
+    fixTemplate: 'Add address autocomplete with Google Places or similar',
+  },
+
+  // COMPARISON FEATURE NEEDED - rapid product views suggest comparison shopping
+  {
+    id: 'comparison_feature_needed',
+    name: 'Product Comparison Feature Needed',
+    category: 'missing_feature',
+    eventTypes: ['product_compare', 'product_view'],
+    groupBy: 'sectionId',
+    timeWindowHours: 24,
+    minOccurrences: 15,
+    minUniqueSessions: 5,
+    severityThresholds: { low: 15, medium: 25, high: 40, critical: 60 },
+    problemTemplate: 'Users viewing multiple products rapidly - comparison shopping',
+    intentTemplate: 'Compare product features, prices, or specifications side-by-side',
+    outcomeTemplate: 'No way to compare products without opening each individually',
+    fixTemplate: 'Add compare checkbox on product cards with side-by-side comparison drawer',
+  },
+
+  // COLOR PREVIEW NEEDED - users open products then check colors
+  {
+    id: 'color_preview_needed',
+    name: 'Color Preview on Grid Needed',
+    category: 'missing_feature',
+    eventTypes: ['product_view', 'color_select', 'color_hover'],
+    groupBy: 'sectionId',
+    timeWindowHours: 24,
+    minOccurrences: 12,
+    minUniqueSessions: 4,
+    severityThresholds: { low: 12, medium: 20, high: 35, critical: 55 },
+    problemTemplate: 'Users opening products just to check available colors',
+    intentTemplate: 'See available color options before clicking through',
+    outcomeTemplate: 'Must open product modal to see color variants',
+    fixTemplate: 'Add color swatches below product image in grid view',
+  },
 ];
 
 /**
@@ -353,8 +441,9 @@ export async function detectIssues(
 
       // Resolve component - try fullPath first, then selector
       const sampleEvent = events[0];
-      const fullPath = (sampleEvent as Record<string, unknown>).elementContext
-        ? ((sampleEvent as Record<string, unknown>).elementContext as Record<string, unknown>).fullPath as string
+      const eventRecord = sampleEvent as unknown as Record<string, unknown>;
+      const fullPath = eventRecord.elementContext
+        ? (eventRecord.elementContext as Record<string, unknown>).fullPath as string
         : undefined;
       const component = resolveComponent(fullPath || key, sampleEvent.elementText);
 

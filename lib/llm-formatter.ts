@@ -18,9 +18,9 @@ function buildUserJourney(events: AnalyticsEvent[]): string {
   const lines: string[] = [];
 
   for (const event of events) {
-    const e = event as Record<string, unknown>;
-    const ctx = e.elementContext as Record<string, unknown> | undefined;
-    const pageCtx = e.pageContext as Record<string, unknown> | undefined;
+    const e = event as unknown as Record<string, unknown>;
+    const ctx = e.elementContext as unknown as Record<string, unknown> | undefined;
+    const pageCtx = e.pageContext as unknown as Record<string, unknown> | undefined;
 
     const time = pageCtx?.timeOnPage
       ? `${Math.round((pageCtx.timeOnPage as number) / 1000)}s into session`
@@ -108,7 +108,7 @@ function analyzePatterns(events: AnalyticsEvent[]): {
   let maxTime = 0;
 
   for (const event of events) {
-    const e = event as Record<string, unknown>;
+    const e = event as unknown as Record<string, unknown>;
     eventTypes[event.type] = (eventTypes[event.type] || 0) + 1;
 
     if (e.x && e.y) {
@@ -116,12 +116,12 @@ function analyzePatterns(events: AnalyticsEvent[]): {
       positions.set(key, (positions.get(key) || 0) + 1);
     }
 
-    const ctx = e.elementContext as Record<string, unknown> | undefined;
+    const ctx = e.elementContext as unknown as Record<string, unknown> | undefined;
     if (ctx?.fullPath) {
       paths.add(ctx.fullPath as string);
     }
 
-    const pageCtx = e.pageContext as Record<string, unknown> | undefined;
+    const pageCtx = e.pageContext as unknown as Record<string, unknown> | undefined;
     if (pageCtx?.timeOnPage) {
       const t = pageCtx.timeOnPage as number;
       if (t < minTime) minTime = t;
@@ -169,7 +169,7 @@ function analyzeProductInteractions(events: AnalyticsEvent[]): {
   const actionTimeline: string[] = [];
 
   for (const event of events) {
-    const e = event as Record<string, unknown>;
+    const e = event as unknown as Record<string, unknown>;
     const productName = e.productName as string;
     const productPrice = e.productPrice as number | undefined;
 
@@ -220,8 +220,8 @@ function analyzeClickExpectation(events: AnalyticsEvent[]): {
   let likelyIntent = '';
   let suggestedBehavior = '';
 
-  const firstEvent = events[0] as Record<string, unknown>;
-  const ctx = firstEvent?.elementContext as Record<string, unknown> | undefined;
+  const firstEvent = events[0] as unknown as Record<string, unknown>;
+  const ctx = firstEvent?.elementContext as unknown as Record<string, unknown> | undefined;
 
   if (ctx) {
     const style = ctx.computedStyle as Record<string, string> | undefined;
@@ -273,7 +273,7 @@ function analyzeSessionBehavior(events: AnalyticsEvent[]): {
   journeyStage: string;
   frustrationLevel: string;
 } {
-  const firstEvent = events[0] as Record<string, unknown>;
+  const firstEvent = events[0] as unknown as Record<string, unknown>;
   const inferredBehavior = firstEvent?.inferredBehavior as string || 'browsing';
   const behaviorConfidence = firstEvent?.behaviorConfidence as number || 0.5;
   const behaviorContext = firstEvent?.behaviorContext as string || '';
@@ -310,8 +310,8 @@ function analyzeSessionBehavior(events: AnalyticsEvent[]): {
  */
 export async function formatIssueForLLM(issue: UIIssue): Promise<string> {
   // Get component code - try fullPath from sample events first
-  const sampleEvent = issue.sampleEvents[0] as Record<string, unknown> | undefined;
-  const elementContext = sampleEvent?.elementContext as Record<string, unknown> | undefined;
+  const sampleEvent = issue.sampleEvents[0] as unknown as Record<string, unknown> | undefined;
+  const elementContext = sampleEvent?.elementContext as unknown as Record<string, unknown> | undefined;
   const fullPath = elementContext?.fullPath as string | undefined;
 
   const component = resolveComponent(fullPath || issue.elementSelector, sampleEvent?.elementText as string | undefined);
@@ -336,7 +336,7 @@ export async function formatIssueForLLM(issue: UIIssue): Promise<string> {
   // Get unique frustration reasons
   const frustrationReasons = [...new Set(
     issue.sampleEvents
-      .map(e => (e as Record<string, unknown>).frustrationReason as string)
+      .map(e => (e as unknown as Record<string, unknown>).frustrationReason as string)
       .filter(Boolean)
   )];
 
@@ -518,12 +518,12 @@ ${topComponents.map(([name, count]) => `- **${name}**: ${count} issue(s)`).join(
   for (const issue of issues) {
     // Get frustration reasons from sample events
     const frustrationReasons = issue.sampleEvents
-      .map(e => (e as Record<string, unknown>).frustrationReason as string)
+      .map(e => (e as unknown as Record<string, unknown>).frustrationReason as string)
       .filter(Boolean)
       .slice(0, 2);
 
     // Get element context from first event
-    const ctx = (issue.sampleEvents[0] as Record<string, unknown>)?.elementContext as Record<string, unknown> | undefined;
+    const ctx = (issue.sampleEvents[0] as unknown as Record<string, unknown>)?.elementContext as unknown as Record<string, unknown> | undefined;
     const fullPath = ctx?.fullPath as string || issue.elementSelector;
     const tag = ctx?.tag as string || issue.elementSelector;
     const attrs = ctx?.attributes as Record<string, string> | undefined;
@@ -547,7 +547,7 @@ ${topComponents.map(([name, count]) => `- **${name}**: ${count} issue(s)`).join(
 
     // Get product names if this involves multiple products
     const productNames = issue.sampleEvents
-      .map(e => (e as Record<string, unknown>).productName as string)
+      .map(e => (e as unknown as Record<string, unknown>).productName as string)
       .filter(Boolean);
     const uniqueProducts = [...new Set(productNames)];
 

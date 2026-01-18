@@ -418,6 +418,17 @@ const eventEmojis: Record<string, string> = {
   keyboard_shortcut: '⌨️',
   right_click: '🖱️',
   double_click: '👆👆',
+  // Color interaction events
+  color_select: '🎨',
+  color_hover: '🖌️',
+  // Image gallery events
+  image_gallery_open: '🖼️',
+  image_gallery_navigate: '◀️▶️',
+  image_zoom: '🔍',
+  // Comparison events
+  comparison_add: '➕',
+  comparison_remove: '➖',
+  comparison_view: '⚖️',
 };
 
 // Batch events before sending to reduce API calls
@@ -464,10 +475,10 @@ function queueEvent(event: PartialEvent) {
   }
 
   // Log the event with inferred behavior
-  // console.log(
-  //   `${emoji} [${event.type}]`,
-  //   eventInfo
-  // );
+  console.log(
+    `${emoji} [${event.type}]`,
+    eventInfo
+  );
 
   // Log behavior inference on significant events
   const significantEvents = ['cta_click', 'add_to_cart', 'product_view', 'rage_click', 'cart_review', 'search_intent'];
@@ -1115,6 +1126,19 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       }
     };
 
+    // Custom event handler for component-dispatched tracking events
+    const handleTrackEvent = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail && customEvent.detail.type) {
+        sendEvent({
+          type: customEvent.detail.type as EventType,
+          productId: customEvent.detail.productId,
+          productName: customEvent.detail.productName,
+          elementText: customEvent.detail.colorName || customEvent.detail.elementText,
+        });
+      }
+    };
+
     // Add event listeners
     document.addEventListener('click', handleClick);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -1132,6 +1156,9 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
     document.addEventListener('focusin', handleFocusIn);
     document.addEventListener('focusout', handleFocusOut);
     document.addEventListener('keydown', handleKeyDown);
+
+    // Custom event listener for component tracking
+    window.addEventListener('track-event', handleTrackEvent);
 
     // Cleanup
     return () => {
@@ -1151,6 +1178,7 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       document.removeEventListener('focusin', handleFocusIn);
       document.removeEventListener('focusout', handleFocusOut);
       document.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('track-event', handleTrackEvent);
 
       if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
       if (selectionTimeout) clearTimeout(selectionTimeout);

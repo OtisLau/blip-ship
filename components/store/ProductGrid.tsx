@@ -14,7 +14,6 @@ interface ProductGridProps {
 export function ProductGrid({ config }: ProductGridProps) {
   const { addItem } = useCart();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [addedId, setAddedId] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<typeof config.items[0] | null>(null);
 
   const gridColumns = {
@@ -32,10 +31,7 @@ export function ProductGrid({ config }: ProductGridProps) {
       price: product.price,
       image: product.image,
     });
-    setAddedId(product.id);
-    setTimeout(() => setAddedId(null), 1500);
   };
-
 
   return (
     <section id="products" style={{ padding: '80px 0', backgroundColor: '#fafafa' }}>
@@ -66,13 +62,20 @@ export function ProductGrid({ config }: ProductGridProps) {
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Product Image */}
-              <div style={{
-                aspectRatio: '1',
-                position: 'relative',
-                overflow: 'hidden',
-                backgroundColor: '#f5f5f5',
-              }}>
+              {/* Product Image - clickable to open modal */}
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedProduct(product);
+                }}
+                style={{
+                  aspectRatio: '1',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  backgroundColor: '#f5f5f5',
+                  cursor: 'pointer',
+                }}
+              >
                 <Image
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
@@ -90,7 +93,7 @@ export function ProductGrid({ config }: ProductGridProps) {
                     position: 'absolute',
                     top: '12px',
                     left: '12px',
-                    backgroundColor: product.badge === 'Best Seller' ? '#111' : '#111',
+                    backgroundColor: '#111',
                     color: 'white',
                     fontSize: '10px',
                     fontWeight: 600,
@@ -102,7 +105,6 @@ export function ProductGrid({ config }: ProductGridProps) {
                   </span>
                 )}
 
-                {/* Add to Cart Button */}
                 <button
                   data-add-to-cart
                   data-cta
@@ -116,32 +118,24 @@ export function ProductGrid({ config }: ProductGridProps) {
                     left: '12px',
                     right: '12px',
                     padding: '12px',
-                    backgroundColor: addedId === product.id ? '#22c55e' : '#111',
+                    backgroundColor: '#111',
                     color: 'white',
                     border: 'none',
                     fontSize: '12px',
                     fontWeight: 600,
                     cursor: 'pointer',
-                    opacity: hoveredId === product.id || addedId === product.id ? 1 : 0,
-                    transform: hoveredId === product.id || addedId === product.id ? 'translateY(0)' : 'translateY(8px)',
+                    opacity: hoveredId === product.id ? 1 : 0,
+                    transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',
                     transition: 'all 0.2s ease',
                     textTransform: 'uppercase',
                     letterSpacing: '0.5px',
                   }}
                 >
-                  {addedId === product.id ? 'Added' : 'Add to Cart'}
+                  Add to Cart
                 </button>
               </div>
 
-              {/* Product Info */}
-              <div
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setSelectedProduct(product);
-                }}
-                style={{ padding: '16px', cursor: 'pointer' }}
-              >
+              <div style={{ padding: '16px' }}>
                 <h3 style={{ fontSize: '14px', fontWeight: 500, color: '#111', marginBottom: '4px' }}>
                   {sanitizeText(product.name)}
                 </h3>
@@ -153,7 +147,6 @@ export function ProductGrid({ config }: ProductGridProps) {
           ))}
         </div>
 
-        {/* View All Button */}
         <div style={{ textAlign: 'center', marginTop: '48px' }}>
           <button
             onClick={() => alert('More products coming soon!')}

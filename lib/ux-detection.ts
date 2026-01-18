@@ -1,4 +1,3 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { promises as fs } from 'fs';
 import path from 'path';
 import type { AnalyticsEvent } from './types';
@@ -16,6 +15,8 @@ import type {
   CodePatch,
   GeneratedCodeChange,
 } from '@/types/suggestions';
+// Use simple Gemini passthrough from Nam's module
+import { callGemini, callGeminiJSON } from './gemini';
 
 /**
  * Extended mapping type that includes generated code
@@ -24,13 +25,61 @@ export type DeadClickActionMappingWithCode = DeadClickActionMapping & {
   generatedCode?: GeneratedCodeChange;
 };
 
-// Initialize Gemini client
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY || '');
-const geminiModel = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-
 // ============================================
 // Prompt Loading
 // ============================================
+
+/**
+ * Mapping from fix types to their corresponding agent prompt files
+ */
+const FIX_TYPE_TO_AGENT_PROMPT: Record<string, string> = {
+  loading_state: 'button-loading-generator.md',
+  image_gallery: 'gallery-generator.md',
+  address_autocomplete: 'autocomplete-generator.md',
+  product_comparison: 'comparison-generator.md',
+  color_preview: 'color-preview-generator.md',
+  // Dead click handling uses a different agent
+  dead_click: 'dead-click-action-mapper.md',
+};
+
+/**
+ * Load an agent prompt by fix type
+ * Returns the prompt content with YAML frontmatter removed
+ */
+export async function loadAgentPrompt(fixType: string): Promise<string | null> {
+  const promptFile = FIX_TYPE_TO_AGENT_PROMPT[fixType];
+  if (!promptFile) {
+    console.log(`[loadAgentPrompt] No agent prompt for fix type: ${fixType}`);
+    return null;
+  }
+
+  try {
+    const promptPath = path.join(process.cwd(), '.claude/agents', promptFile);
+    const content = await fs.readFile(promptPath, 'utf-8');
+    // Remove YAML frontmatter if present
+    return content.replace(/^---[\s\S]*?---\n/, '');
+  } catch (error) {
+    console.error(`[loadAgentPrompt] Failed to load ${promptFile}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Load theme protection guardrails
+ * These define the visual constraints that ALL generated code must follow
+ */
+export async function loadThemeGuardrails(): Promise<string> {
+  try {
+    const guardrailsPath = path.join(
+      process.cwd(),
+      '.claude/rules/theme-protection-guardrails.md'
+    );
+    return await fs.readFile(guardrailsPath, 'utf-8');
+  } catch (error) {
+    console.error('[loadThemeGuardrails] Failed to load guardrails:', error);
+    return '';
+  }
+}
 
 /**
  * Load the UX issue detector agent prompt
@@ -225,11 +274,7 @@ ${JSON.stringify(input, null, 2)}
 
 Remember: Return ONLY valid JSON with issuesDetected, configChanges, and summary.`;
 
-    const result = await geminiModel.generateContent(prompt);
-    const text = result.response.text();
-    const jsonMatch = text.match(/```json\n?([\s\S]*?)\n?```/) || [null, text];
-    const jsonStr = jsonMatch[1] || text;
-    const llmResult = JSON.parse(jsonStr.trim()) as ImageClickabilityAnalysis;
+    const llmResult = await callGeminiJSON<ImageClickabilityAnalysis>(prompt);
 
     return {
       issuesDetected: llmResult.issuesDetected || issuesDetected,
@@ -507,15 +552,8 @@ Remember:
 2. Your oldCode MUST be copied EXACTLY from the source code above - do not modify whitespace or formatting.`;
 
     console.log('  [LLM] Calling Gemini API...');
-    const result = await geminiModel.generateContent(prompt);
-    const text = result.response.text();
-    console.log('  [LLM] Gemini response received, length:', text.length, 'chars');
-    console.log('  [LLM] Response preview:', text.substring(0, 200) + '...');
-    
-    const jsonMatch = text.match(/```json\n?([\s\S]*?)\n?```/) || [null, text];
-    const jsonStr = jsonMatch[1] || text;
-    console.log('  [LLM] Parsing JSON response...');
-    const mapping = JSON.parse(jsonStr.trim()) as DeadClickActionMappingWithCode;
+    const mapping = await callGeminiJSON<DeadClickActionMappingWithCode>(prompt);
+    console.log('  [LLM] Response received and parsed');
     
     console.log('  [LLM] Mapping parsed successfully!');
     console.log('  [LLM] Action type:', mapping.actionMapping?.suggestedAction?.actionType);
@@ -560,14 +598,15 @@ export async function generateFallbackActionMapping(
   // Check which pattern exists in the file
   const hasOriginalComment = fileContent.includes('{/* Product Image */}');
   const hasUpdatedComment = fileContent.includes('{/* Product Image - clickable to open modal */}');
-  const hasOnClick = fileContent.includes('onClick={(e) => {\n                  e.stopPropagation();\n                  setSelectedProduct(product);');
+  // Check if fix is already applied - look for the specific pattern of updated comment + onClick together
+  const hasOnClick = hasUpdatedComment && fileContent.includes('Product Image - clickable to open modal */}\n              <div\n                onClick');
 
   console.log('  [FALLBACK] File state:');
   console.log('    - hasOriginalComment:', hasOriginalComment);
   console.log('    - hasUpdatedComment:', hasUpdatedComment);
   console.log('    - hasOnClick (already applied):', hasOnClick);
 
-  // If onClick already exists, no patch needed
+  // If onClick already exists on image container, no patch needed
   if (hasOnClick) {
     console.log('  [FALLBACK] Patch already applied, returning no-op');
     const oldCode = `{/* Product Image - clickable to open modal */}
@@ -590,15 +629,21 @@ export async function generateFallbackActionMapping(
 
   // Determine oldCode based on current file state
   let oldCode: string;
+  // Match actual file format (div and style on separate lines)
   if (hasUpdatedComment) {
     console.log('  [FALLBACK] Using updated comment pattern for oldCode');
     oldCode = `{/* Product Image - clickable to open modal */}
               <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedProduct(product);
+                }}
                 style={{
                   aspectRatio: '1',
                   position: 'relative',
                   overflow: 'hidden',
                   backgroundColor: '#f5f5f5',
+                  cursor: 'pointer',
                 }}
               >`;
   } else {
@@ -875,13 +920,14 @@ export async function analyzeDeadClicksForActionMapping(
   const enrichedEvents = enrichDeadClickEvents(events);
   console.log('[ANALYZE] Enriched events count:', enrichedEvents.length);
 
-  // Filter to significant patterns - THRESHOLD: 1 click is enough to trigger
-  // Using clickCount >= 1 instead of rapidClicks >= 1 so single clicks work
+  // Filter to significant patterns
+  // For testing: very low thresholds (1 rapid click, 1 session)
+  // For production: raise to (5 rapid clicks, 3 sessions) per guardrails
   const significantEvents = enrichedEvents.filter(
-    (e) => e.uniqueSessions >= 1 && e.clickCount >= 1
+    (e) => e.uniqueSessions >= 1 && e.rapidClicks >= 1
   );
 
-  console.log('[ANALYZE] Significant events (clickCount >= 1):', significantEvents.length);
+  console.log('[ANALYZE] Significant events (rapidClicks >= 5, sessions >= 3):', significantEvents.length);
   significantEvents.forEach((e, i) => {
     console.log(`  [${i}] ${e.elementRole} - clicks: ${e.clickCount}, rapid: ${e.rapidClicks}, sessions: ${e.uniqueSessions}`);
   });
@@ -1062,8 +1108,10 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
 } {
   const enriched = enrichDeadClickEvents(events);
   
+  // Use same thresholds as analyzeDeadClicksForActionMapping
+  // For testing: lower thresholds
   const significant = enriched.filter(
-    (e) => e.uniqueSessions >= 1 && e.rapidClicks >= 1
+    (e) => e.uniqueSessions >= 1 && e.rapidClicks >= 2
   );
 
   if (significant.length === 0) {
@@ -1086,7 +1134,8 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
     severity = 'critical';
   } else if (totalRapidClicks > 15 || maxSessions > 5) {
     severity = 'high';
-  } else if (totalRapidClicks > 5 || maxSessions > 2) {
+  } else if (totalRapidClicks >= 3 || maxSessions >= 1) {
+    // Lowered for testing: 3+ rapid clicks OR 1+ session triggers medium
     severity = 'medium';
   }
 
@@ -1097,6 +1146,303 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
       totalDeadClicks: significant.reduce((sum, e) => sum + e.clickCount, 0),
       uniqueSessions: maxSessions,
       affectedProducts: significant.length,
+    },
+  };
+}
+
+// ============================================
+// General Issue → LLM → Patches Pipeline
+// ============================================
+
+import { formatIssueForLLM } from './llm-formatter';
+import type { UIIssue } from './types';
+import type { NewFileSpec, LLMPipelineResult } from '@/types/suggestions';
+
+// Pattern ID to fix type mapping
+const PATTERN_TO_FIX_TYPE: Record<string, string> = {
+  button_no_feedback: 'loading_state',
+  click_frustration: 'loading_state',
+  image_gallery_needed: 'image_gallery',
+  address_autocomplete_needed: 'address_autocomplete',
+  comparison_feature_needed: 'product_comparison',
+  color_preview_needed: 'color_preview',
+};
+
+/**
+ * Write a new file to the project
+ */
+export async function writeNewFile(
+  filePath: string,
+  content: string
+): Promise<{ success: boolean; error?: string }> {
+  console.log(`\n    [WRITE-NEW-FILE] Creating: ${filePath}`);
+  try {
+    const fullPath = path.join(process.cwd(), filePath);
+
+    // Ensure directory exists
+    const dir = path.dirname(fullPath);
+    await fs.mkdir(dir, { recursive: true });
+
+    // Write the file
+    await fs.writeFile(fullPath, content, 'utf-8');
+    console.log(`    [WRITE-NEW-FILE] SUCCESS: Created ${filePath}`);
+
+    return { success: true };
+  } catch (error) {
+    console.error(`    [WRITE-NEW-FILE] ERROR:`, error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+}
+
+/**
+ * Write multiple new files (created BEFORE patches are applied)
+ */
+export async function writeNewFiles(
+  files: NewFileSpec[]
+): Promise<{
+  success: boolean;
+  results: Array<{ path: string; success: boolean; error?: string }>
+}> {
+  console.log(`\n  [WRITE-NEW-FILES] Creating ${files.length} new file(s)...`);
+  const results: Array<{ path: string; success: boolean; error?: string }> = [];
+
+  for (const file of files) {
+    const result = await writeNewFile(file.path, file.content);
+    results.push({
+      path: file.path,
+      success: result.success,
+      error: result.error,
+    });
+  }
+
+  const allSuccess = results.every(r => r.success);
+  console.log(`  [WRITE-NEW-FILES] Complete: ${results.filter(r => r.success).length}/${files.length} succeeded`);
+
+  return { success: allSuccess, results };
+}
+
+/**
+ * Process a UI issue through the full LLM pipeline:
+ * 1. Determine fix type from pattern ID
+ * 2. Load specialized agent prompt (if available)
+ * 3. Load theme guardrails
+ * 4. Format issue into rich prompt via formatIssueForLLM
+ * 5. Combine agent prompt + formatted issue + guardrails
+ * 6. Request JSON output with newFiles[] AND patches[]
+ * 7. Parse response and return results
+ */
+export async function processIssueWithLLM(issue: UIIssue): Promise<LLMPipelineResult> {
+  console.log(`\n[LLM-PIPELINE] Processing issue: ${issue.patternId}`);
+  console.log(`  Severity: ${issue.severity}, Events: ${issue.eventCount}`);
+
+  // Determine fix type from pattern ID
+  const fixType = PATTERN_TO_FIX_TYPE[issue.patternId] || 'unknown';
+  console.log(`[LLM-PIPELINE] Fix type: ${fixType}`);
+
+  try {
+    // Step 1: Load specialized agent prompt (if available)
+    console.log('[LLM-PIPELINE] Loading agent prompt...');
+    const agentPrompt = await loadAgentPrompt(fixType);
+    const agentUsed = agentPrompt ? FIX_TYPE_TO_AGENT_PROMPT[fixType] : 'generic';
+    console.log(`[LLM-PIPELINE] Agent prompt: ${agentUsed}`);
+
+    // Step 2: Load theme guardrails
+    console.log('[LLM-PIPELINE] Loading theme guardrails...');
+    const themeGuardrails = await loadThemeGuardrails();
+    console.log(`[LLM-PIPELINE] Theme guardrails loaded: ${themeGuardrails.length} chars`);
+
+    // Step 3: Format the issue into a rich prompt
+    console.log('[LLM-PIPELINE] Formatting issue for LLM...');
+    const formattedIssue = await formatIssueForLLM(issue);
+    console.log('[LLM-PIPELINE] Formatted issue length:', formattedIssue.length);
+
+    // Step 4: Build the combined prompt
+    let fullPrompt = '';
+
+    // If we have a specialized agent prompt, use it as the base
+    if (agentPrompt) {
+      fullPrompt = `${agentPrompt}
+
+---
+
+# Theme Protection Guardrails
+
+${themeGuardrails}
+
+---
+
+# Issue Context
+
+${formattedIssue}
+
+---`;
+    } else {
+      // Fallback to generic prompt
+      fullPrompt = `${formattedIssue}
+
+---
+
+# Theme Protection Guardrails
+
+${themeGuardrails}
+
+---`;
+    }
+
+    // Step 5: Add structured output instructions
+    fullPrompt += `
+
+## REQUIRED OUTPUT FORMAT
+
+You MUST respond with ONLY valid JSON in this exact format:
+
+\`\`\`json
+{
+  "diagnosis": "Brief explanation of the root cause",
+  "explanation": "Why users expected different behavior",
+  "newFiles": [
+    {
+      "path": "context/CompareContext.tsx",
+      "content": "// Full file content here...",
+      "description": "What this file does"
+    }
+  ],
+  "patches": [
+    {
+      "filePath": "path/to/file.tsx",
+      "description": "What this patch does",
+      "oldCode": "EXACT code to replace (copy from source above)",
+      "newCode": "The replacement code"
+    }
+  ]
+}
+\`\`\`
+
+CRITICAL RULES:
+1. oldCode MUST be copied EXACTLY from the component source code shown above (including whitespace)
+2. Do NOT guess the code structure - only use what's shown in the source
+3. If you cannot find the exact code to patch, return an empty patches array
+4. Keep patches minimal - only change what's necessary to fix the issue
+5. Follow the existing code style (inline styles, React patterns, etc.)
+6. For new files: provide complete, working TypeScript/TSX code
+7. For comparison features: create CompareContext.tsx and CompareDrawer.tsx
+8. For loading states: use the LoadingSpinner component
+9. For galleries: create ProductGallery.tsx
+10. Always include stopPropagation() when adding onClick to elements with siblings
+11. FOLLOW ALL THEME GUARDRAILS: no border-radius, use only allowed colors, etc.`;
+
+    // Step 6: Send to Gemini
+    console.log('[LLM-PIPELINE] Calling Gemini...');
+    const response = await callGemini(fullPrompt);
+    console.log('[LLM-PIPELINE] Response received, length:', response.length);
+
+    // Step 7: Parse response
+    const jsonMatch = response.match(/```json\n?([\s\S]*?)\n?```/) || [null, response];
+    const jsonStr = (jsonMatch[1] || response).trim();
+
+    let parsed: {
+      diagnosis?: string;
+      explanation: string;
+      newFiles?: NewFileSpec[];
+      patches?: CodePatch[];
+    };
+
+    try {
+      parsed = JSON.parse(jsonStr);
+    } catch (parseError) {
+      console.error('[LLM-PIPELINE] Failed to parse JSON:', parseError);
+      console.log('[LLM-PIPELINE] Raw response:', response.substring(0, 500));
+      return {
+        success: false,
+        newFiles: [],
+        patches: [],
+        explanation: 'Failed to parse LLM response as JSON',
+        error: `Parse error: ${parseError}`,
+        agentUsed,
+      };
+    }
+
+    console.log('[LLM-PIPELINE] Parsed response:');
+    console.log('  Diagnosis:', parsed.diagnosis?.substring(0, 100));
+    console.log('  New files count:', parsed.newFiles?.length || 0);
+    console.log('  Patches count:', parsed.patches?.length || 0);
+
+    return {
+      success: true,
+      newFiles: parsed.newFiles || [],
+      patches: parsed.patches || [],
+      explanation: parsed.explanation || parsed.diagnosis || 'No explanation provided',
+      agentUsed,
+    };
+
+  } catch (error) {
+    console.error('[LLM-PIPELINE] Error:', error);
+    return {
+      success: false,
+      newFiles: [],
+      patches: [],
+      explanation: '',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+}
+
+/**
+ * Process multiple issues through LLM pipeline
+ */
+export async function processIssuesWithLLM(issues: UIIssue[]): Promise<{
+  results: Array<{
+    issue: UIIssue;
+    success: boolean;
+    newFiles: NewFileSpec[];
+    patches: CodePatch[];
+    explanation: string;
+    error?: string;
+    agentUsed?: string;
+  }>;
+  summary: {
+    total: number;
+    successful: number;
+    totalNewFiles: number;
+    totalPatches: number;
+  };
+}> {
+  console.log(`\n[LLM-PIPELINE] Processing ${issues.length} issues...`);
+
+  const results: Array<{
+    issue: UIIssue;
+    success: boolean;
+    newFiles: NewFileSpec[];
+    patches: CodePatch[];
+    explanation: string;
+    error?: string;
+    agentUsed?: string;
+  }> = [];
+
+  for (const issue of issues) {
+    const result = await processIssueWithLLM(issue);
+    results.push({
+      issue,
+      ...result,
+    });
+  }
+
+  const successful = results.filter(r => r.success).length;
+  const totalNewFiles = results.reduce((sum, r) => sum + (r.newFiles?.length || 0), 0);
+  const totalPatches = results.reduce((sum, r) => sum + (r.patches?.length || 0), 0);
+
+  console.log(`[LLM-PIPELINE] Complete: ${successful}/${issues.length} successful, ${totalNewFiles} new files, ${totalPatches} patches`);
+
+  return {
+    results,
+    summary: {
+      total: issues.length,
+      successful,
+      totalNewFiles,
+      totalPatches,
     },
   };
 }

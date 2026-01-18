@@ -32,6 +32,7 @@ export type EventType =
   | 'section_view'
   // Conversion events
   | 'add_to_cart'
+  | 'cart_remove'         // User removed item from cart
   | 'checkout_start'
   | 'checkout_abandon'    // User left during checkout
   | 'purchase'
@@ -57,7 +58,29 @@ export type EventType =
   | 'cta_visible'         // Maps to spawnTool()
   | 'cta_expired'         // Maps to expireTool()
   | 'session_start'       // Maps to startSession()
-  | 'session_end';        // Maps to endSession()
+  | 'session_end'         // Maps to endSession()
+  // Additional interaction events
+  | 'double_click'        // User double-clicked
+  | 'text_copy'           // User copied text
+  | 'tab_hidden'          // User switched tabs
+  | 'tab_visible'         // User returned to tab
+  | 'image_click'         // User clicked on image
+  | 'link_hover'          // User hovered on link
+  | 'keyboard_shortcut'   // User used keyboard shortcut
+  | 'right_click'         // User right-clicked
+  | 'navigation_browse'   // User browsing navigation
+  | 'search_intent'       // User clicked search
+  // Color interaction events
+  | 'color_select'        // User selected a color swatch
+  | 'color_hover'         // User hovered on a color swatch
+  // Image gallery events
+  | 'image_gallery_open'  // User opened image gallery/lightbox
+  | 'image_gallery_navigate' // User navigated within gallery
+  | 'image_zoom'          // User zoomed in on image
+  // Comparison events
+  | 'comparison_add'      // User added product to comparison
+  | 'comparison_remove'   // User removed product from comparison
+  | 'comparison_view';    // User opened comparison view
 
 // CTA state tracking (adapted from 0-1's FloatingToolState)
 export type CTAStatus = 'visible' | 'clicked' | 'expired';

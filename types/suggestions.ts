@@ -364,3 +364,46 @@ export interface DeadClickActionResponse {
   error?: string;
   appliedAt?: string;
 }
+
+// ============================================
+// Component Generation Types
+// ============================================
+
+/**
+ * A new file to be created by the LLM
+ */
+export interface NewFileSpec {
+  path: string;       // Relative path from project root (e.g., "context/CompareContext.tsx")
+  content: string;    // Full file content
+  description?: string; // What this file does
+}
+
+/**
+ * Extended LLM response that can include new files AND patches
+ * Used for component generation (compare, gallery, autocomplete, etc.)
+ */
+export interface ComponentGenerationResponse {
+  // New files to create (created BEFORE patches are applied)
+  newFiles: NewFileSpec[];
+
+  // Patches to apply to existing files
+  patches: CodePatch[];
+
+  // Explanation of what was generated
+  explanation: string;
+
+  // Diagnosis of the issue (optional)
+  diagnosis?: string;
+}
+
+/**
+ * Result of processing an issue through the LLM pipeline
+ */
+export interface LLMPipelineResult {
+  success: boolean;
+  newFiles: NewFileSpec[];
+  patches: CodePatch[];
+  explanation: string;
+  error?: string;
+  agentUsed?: string;  // Which agent prompt was used
+}
