@@ -33,15 +33,31 @@ export type EventType =
   // Conversion events
   | 'add_to_cart'
   | 'checkout_start'
+  | 'checkout_abandon'    // User left during checkout
   | 'purchase'
   // Frustration signals
   | 'bounce'
   | 'rapid_scroll'
+  | 'scroll_reversal'     // User scrolling up/down (confusion)
+  | 'exit_intent'         // Mouse moving to leave
+  // Form interaction events
+  | 'form_focus'
+  | 'form_blur'
+  | 'slow_form_fill'      // Form took too long to complete
+  | 'form_error'          // Validation error shown
+  // Product behavior events
+  | 'product_view'
+  | 'product_compare'     // Viewing multiple products
+  | 'price_check'         // Clicked/focused on price
+  | 'cart_review'         // Opened cart without adding
+  // Content interaction
+  | 'text_selection'      // User selected/highlighted text
+  | 'hover_intent'        // Hovered for 1.5+ seconds
   // CTA lifecycle events (adapted from 0-1's tool lifecycle)
-  | 'cta_visible'      // Maps to spawnTool()
-  | 'cta_expired'      // Maps to expireTool()
-  | 'session_start'    // Maps to startSession()
-  | 'session_end';     // Maps to endSession()
+  | 'cta_visible'         // Maps to spawnTool()
+  | 'cta_expired'         // Maps to expireTool()
+  | 'session_start'       // Maps to startSession()
+  | 'session_end';        // Maps to endSession()
 
 // CTA state tracking (adapted from 0-1's FloatingToolState)
 export type CTAStatus = 'visible' | 'clicked' | 'expired';

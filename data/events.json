@@ -1,1 +1,1176 @@
-[]
+[
+  {
+    "id": "evt_1768699079056_izpjbve",
+    "timestamp": 1768699079056,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699080569_t1iqe2j",
+    "timestamp": 1768699080569,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00",
+    "productId": "prod_001",
+    "productName": "Classic Heavyweight Hoodie",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699085000_beaxg8w",
+    "timestamp": 1768699085000,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 318,
+    "y": 385,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 1 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_e0pmd20",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 149,
+    "y": 391,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 1 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_ke5k9h8",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 149,
+    "y": 391,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 7131,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 1 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_1xtqdc7",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 117,
+    "y": 384,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_001",
+    "productName": "Classic Heavyweight Hoodie",
+    "productPrice": 89,
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 2 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_celsiv1",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 390,
+    "y": 378,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 2 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_2jqziwd",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 390,
+    "y": 378,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 8571,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 2 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_52mse84",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 551,
+    "y": 368,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 3 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_x1cj2np",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 424,
+    "y": 380,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 3 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_tojx9qf",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 424,
+    "y": 380,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 9779,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_u2qs28k",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 374,
+    "y": 374,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_5727xbv",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 394,
+    "y": 422,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_6vwvauw",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "rage_click",
+    "x": 397,
+    "y": 392,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "clickCount": 3,
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 11636,
+      "url": "/store"
+    },
+    "frustrationReason": "User rage-clicked div element multiple times rapidly. Likely no visual feedback on click. Element: div.jsx-532d500bfc6d5d04, cursor: ",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_gyce985",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 394,
+    "y": 422,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 11637,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_r1hlbny",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 514,
+    "y": 373,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_oprlja2",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 412,
+    "y": 470,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_7vj26ap",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 412,
+    "y": 470,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 12912,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_7dgve6w",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 345,
+    "y": 373,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_l846lud",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 344,
+    "y": 458,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_4untsmq",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 344,
+    "y": 458,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 14035,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
+  },
+  {
+    "id": "evt_1768699094091_x1xrnzs",
+    "timestamp": 1768699094091,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 501,
+    "y": 376,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
+  },
+  {
+    "id": "evt_1768699094092_oab8fqy",
+    "timestamp": 1768699094092,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 327,
+    "y": 459,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
+  },
+  {
+    "id": "evt_1768699094092_9d6bnfm",
+    "timestamp": 1768699094092,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 327,
+    "y": 459,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 15037,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699152366_b6ua5ad",
+    "timestamp": 1768699152366,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "scroll_depth",
+    "scrollDepth": 25,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699152366_3bpxw3y",
+    "timestamp": 1768699152366,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "products",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699152366_aho54i3",
+    "timestamp": 1768699152366,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "scroll_depth",
+    "scrollDepth": 50,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699154436_8c1houq",
+    "timestamp": 1768699154436,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00",
+    "productId": "prod_001",
+    "productName": "Classic Heavyweight Hoodie",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699167558_drrrdl9",
+    "timestamp": 1768699167558,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699167558_57cvak9",
+    "timestamp": 1768699167558,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 323,
+    "y": 690,
+    "elementSelector": "img",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699167558_2temayi",
+    "timestamp": 1768699167558,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 323,
+    "y": 690,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "src": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80"
+      },
+      "boundingBox": {
+        "top": 830,
+        "left": 239,
+        "width": 204,
+        "height": 204
+      },
+      "viewportPosition": {
+        "x": 239,
+        "y": 574,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "pointer",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 256,
+      "scrollPercent": 19,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 425,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699168839_2rir4j3",
+    "timestamp": 1768699168839,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Add to CartEssential Cotton Tee$35.00",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699171398_v0pup2k",
+    "timestamp": 1768699171398,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 67,
+    "y": 974,
+    "elementSelector": "nextjs-portal",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699171398_0xcdvvg",
+    "timestamp": 1768699171398,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 67,
+    "y": 974,
+    "elementSelector": "nextjs-portal",
+    "elementContext": {
+      "selector": "nextjs-portal",
+      "fullPath": "script:nth-child(14) > nextjs-portal",
+      "tag": "nextjs-portal",
+      "text": "",
+      "attributes": {},
+      "boundingBox": {
+        "top": 2385,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 2129,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "auto",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 256,
+      "scrollPercent": 19,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 4266,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive nextjs-portal element \"...\". Expected it to do something. Element path: script:nth-child(14) > nextjs-portal",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699173850_asnm7i2",
+    "timestamp": 1768699173850,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 128,
+    "y": 880,
+    "elementSelector": "nextjs-portal",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699173850_g24xqi8",
+    "timestamp": 1768699173850,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 128,
+    "y": 880,
+    "elementSelector": "nextjs-portal",
+    "elementContext": {
+      "selector": "nextjs-portal",
+      "fullPath": "script:nth-child(14) > nextjs-portal",
+      "tag": "nextjs-portal",
+      "text": "",
+      "attributes": {},
+      "boundingBox": {
+        "top": 2385,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 2129,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "auto",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 256,
+      "scrollPercent": 19,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 5902,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive nextjs-portal element \"...\". Expected it to do something. Element path: script:nth-child(14) > nextjs-portal",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699173850_99gc7qm",
+    "timestamp": 1768699173850,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "products",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699175456_zz0axh1",
+    "timestamp": 1768699175456,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 190,
+    "y": 971,
+    "elementSelector": "#products",
+    "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699175456_mjirjkm",
+    "timestamp": 1768699175456,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 190,
+    "y": 971,
+    "elementSelector": "#products",
+    "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+    "elementContext": {
+      "selector": "#products",
+      "fullPath": "#products",
+      "tag": "section",
+      "text": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd",
+      "attributes": {
+        "id": "products"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 900,
+        "height": 681
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 326,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "auto",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 299,
+      "scrollPercent": 22,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 8323,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive section element \"Featured ProductsCurated essen...\". Expected it to do something. Element path: #products",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 4 dead clicks"
+  }
+]

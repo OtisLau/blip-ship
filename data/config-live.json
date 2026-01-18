@@ -1,22 +1,20 @@
 {
-  "id": "config_001",
-  "version": 1,
+  "id": "preview_fix_1768696065613_8535er",
+  "version": 2,
   "status": "live",
-
   "hero": {
     "headline": "Elevate Your Everyday",
     "subheadline": "Premium basics designed for comfort and style. Sustainably made, built to last.",
-    "backgroundColor": "#18181b",
+    "backgroundColor": "#1F2937",
     "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
     "cta": {
-      "text": "Shop Collection",
-      "color": "#3b82f6",
-      "textColor": "#ffffff",
+      "text": "Explore Collection",
+      "color": "#F59E0B",
+      "textColor": "#000000",
       "position": "inside-hero",
       "size": "large"
     }
   },
-
   "products": {
     "sectionTitle": "Featured Products",
     "layout": "grid-4",
@@ -24,7 +22,7 @@
       {
         "id": "prod_001",
         "name": "Classic Heavyweight Hoodie",
-        "price": 89.00,
+        "price": 89,
         "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
         "badge": "Best Seller",
         "description": "Our signature heavyweight hoodie features a relaxed fit with dropped shoulders and a cozy kangaroo pocket. Double-stitched seams ensure durability while the brushed fleece interior provides maximum comfort.",
@@ -33,7 +31,7 @@
       {
         "id": "prod_002",
         "name": "Essential Cotton Tee",
-        "price": 35.00,
+        "price": 35,
         "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
         "description": "The perfect everyday tee with a slightly oversized fit. Features a ribbed crew neck and reinforced shoulder seams for lasting comfort and shape retention.",
         "materials": "100% premium cotton, 180 GSM. Enzyme-washed for softness."
@@ -41,7 +39,7 @@
       {
         "id": "prod_003",
         "name": "Relaxed Fit Joggers",
-        "price": 75.00,
+        "price": 75,
         "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
         "badge": "New",
         "description": "Designed for all-day comfort, these joggers feature a tapered leg, elastic waistband with drawcord, and deep side pockets. Perfect for lounging or light activity.",
@@ -50,14 +48,13 @@
       {
         "id": "prod_004",
         "name": "Oversized Crewneck",
-        "price": 79.00,
+        "price": 79,
         "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80",
         "description": "A wardrobe staple with a modern oversized silhouette. Features a ribbed collar, cuffs, and hem with a relaxed drop-shoulder design for effortless style.",
         "materials": "100% organic cotton, 350 GSM midweight fleece. Garment-washed."
       }
     ]
   },
-
   "testimonials": {
     "sectionTitle": "What People Are Saying",
     "show": true,
@@ -76,7 +73,6 @@
       }
     ]
   },
-
   "footer": {
     "backgroundColor": "#09090b",
     "showNewsletter": true,
