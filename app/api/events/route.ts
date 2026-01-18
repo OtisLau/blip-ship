@@ -369,7 +369,8 @@ export async function POST(request: NextRequest) {
 
       if (patternCheck.hasIssue && patternCheck.severity !== 'low') {
         console.log(`🤖 [Gemini] Significant dead click pattern detected (${patternCheck.severity}). Triggering LLM analysis...`);
-        console.log(`   Stats: ${patternCheck.quickStats.totalDeadClicks} clicks, ${patternCheck.quickStats.uniqueSessions} sessions`);
+        console.log(`   Stats: ${patternCheck.quickStats.rapidClicks} rapid clicks, ${patternCheck.quickStats.totalDeadClicks} total clicks, ${patternCheck.quickStats.uniqueSessions} sessions`);
+        console.log(`   This will auto-generate onClick + cursor:pointer for product images`);
 
         lastLLMAnalysisTime = now;
 

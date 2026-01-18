@@ -974,14 +974,13 @@ export async function analyzeDeadClicksForActionMapping(
   const enrichedEvents = enrichDeadClickEvents(events);
   console.log('[ANALYZE] Enriched events count:', enrichedEvents.length);
 
-  // Filter to significant patterns
-  // For testing: very low thresholds (1 rapid click, 1 session)
-  // For production: raise to (5 rapid clicks, 3 sessions) per guardrails
+  // Filter to product images with 3+ rapid clicks (user-specified threshold)
+  const RAPID_CLICK_THRESHOLD = 3;
   const significantEvents = enrichedEvents.filter(
-    (e) => e.uniqueSessions >= 1 && e.rapidClicks >= 1
+    (e) => (e.elementRole === 'product-image' || e.elementType === 'img') && e.rapidClicks >= RAPID_CLICK_THRESHOLD
   );
 
-  console.log('[ANALYZE] Significant events (rapidClicks >= 5, sessions >= 3):', significantEvents.length);
+  console.log(`[ANALYZE] Product images with ${RAPID_CLICK_THRESHOLD}+ rapid clicks:`, significantEvents.length);
   significantEvents.forEach((e, i) => {
     console.log(`  [${i}] ${e.elementRole} - clicks: ${e.clickCount}, rapid: ${e.rapidClicks}, sessions: ${e.uniqueSessions}`);
   });
@@ -1150,6 +1149,7 @@ export async function analyzeDeadClicksComprehensive(
 
 /**
  * Quick check if dead clicks on product images warrant attention
+ * Triggers when 3+ rapid dead clicks are detected on product images
  */
 export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
   hasIssue: boolean;
@@ -1158,17 +1158,24 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
     totalDeadClicks: number;
     uniqueSessions: number;
     affectedProducts: number;
+    rapidClicks: number;
   };
 } {
   const enriched = enrichDeadClickEvents(events);
   
-  // Use same thresholds as analyzeDeadClicksForActionMapping
-  // For testing: lower thresholds
+  // Filter for product images with 3+ rapid clicks (user-specified threshold)
+  const RAPID_CLICK_THRESHOLD = 3;
   const significant = enriched.filter(
-    (e) => e.uniqueSessions >= 1 && e.rapidClicks >= 2
+    (e) => (e.elementRole === 'product-image' || e.elementType === 'img') && e.rapidClicks >= RAPID_CLICK_THRESHOLD
   );
+  
+  console.log(`[PATTERN-CHECK] Checking for significant dead click pattern...`);
+  console.log(`  - Total enriched events: ${enriched.length}`);
+  console.log(`  - Product images with ${RAPID_CLICK_THRESHOLD}+ rapid clicks: ${significant.length}`);
 
   if (significant.length === 0) {
+    const totalRapidClicks = enriched.reduce((sum, e) => sum + e.rapidClicks, 0);
+    console.log(`  - No significant pattern (total rapid clicks on images: ${totalRapidClicks})`);
     return {
       hasIssue: false,
       severity: 'none',
@@ -1176,6 +1183,7 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
         totalDeadClicks: enriched.reduce((sum, e) => sum + e.clickCount, 0),
         uniqueSessions: new Set(enriched.flatMap((e) => e.productId || [])).size,
         affectedProducts: enriched.length,
+        rapidClicks: totalRapidClicks,
       },
     };
   }
@@ -1183,15 +1191,15 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
   const totalRapidClicks = significant.reduce((sum, e) => sum + e.rapidClicks, 0);
   const maxSessions = Math.max(...significant.map((e) => e.uniqueSessions));
 
-  let severity: 'critical' | 'high' | 'medium' | 'low' = 'low';
+  // Severity based on rapid clicks - 3+ triggers medium, which is enough to auto-fix
+  let severity: 'critical' | 'high' | 'medium' | 'low' = 'medium'; // Default to medium for 3+ rapid clicks
   if (totalRapidClicks > 30 || maxSessions > 10) {
     severity = 'critical';
   } else if (totalRapidClicks > 15 || maxSessions > 5) {
     severity = 'high';
-  } else if (totalRapidClicks >= 3 || maxSessions >= 1) {
-    // Lowered for testing: 3+ rapid clicks OR 1+ session triggers medium
-    severity = 'medium';
   }
+
+  console.log(`  - SIGNIFICANT PATTERN FOUND! Rapid clicks: ${totalRapidClicks}, Severity: ${severity}`);
 
   return {
     hasIssue: true,
@@ -1200,6 +1208,7 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
       totalDeadClicks: significant.reduce((sum, e) => sum + e.clickCount, 0),
       uniqueSessions: maxSessions,
       affectedProducts: significant.length,
+      rapidClicks: totalRapidClicks,
     },
   };
 }

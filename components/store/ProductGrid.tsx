@@ -89,30 +89,20 @@ export function ProductGrid({ config }: ProductGridProps) {
                 border: '1px solid #e5e7eb',
                 transition: 'border-color 0.2s',
                 borderColor: hoveredId === product.id ? '#111' : '#e5e7eb',
-                cursor: 'pointer',
               }}
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* Product Image - clickable to open modal */}
               <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedProduct(product);
-                }}
                 style={{
                   aspectRatio: '1',
                   position: 'relative',
                   overflow: 'hidden',
                   backgroundColor: '#f5f5f5',
-                  cursor: 'pointer',
                 }}
               >
                 <Image
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedProduct(product);
-                  }}
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
                   fill
@@ -121,7 +111,6 @@ export function ProductGrid({ config }: ProductGridProps) {
                     objectFit: 'cover',
                     transition: 'transform 0.4s ease',
                     transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
-                    cursor: 'pointer',
                   }}
                 />
 
