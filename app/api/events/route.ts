@@ -33,16 +33,6 @@ const DEAD_CLICK_LLM_COOLDOWN = 10 * 1000; // Don't re-run LLM within 10 seconds
 // Track last detection times (in-memory for simplicity)
 let lastDetectionTime = 0;
 let lastLLMAnalysisTime = 0;
-let lastCategorizationTime = 0;
-let lastNavFilterTime = 0;
-const CATEGORIZATION_COOLDOWN = 5 * 1000; // 5 seconds between categorizations
-const NAV_FILTER_COOLDOWN = 10 * 1000; // 10 seconds between nav filter generations
-
-// Track products that have been categorized to avoid re-categorizing
-const categorizedProducts = new Set<string>();
-
-// Track if nav filter has been generated
-let navFilterGenerated = false;
 
 // Store pending LLM-generated fixes (in-memory for now)
 export const pendingFixes: Array<{
@@ -463,155 +453,14 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Check for rage clicks on product images to trigger categorization
-    const rageClickEvents = allEvents.filter(e => e.type === 'rage_click');
-    const categorizationCooldownPassed = (now - lastCategorizationTime) > CATEGORIZATION_COOLDOWN;
-    
-    if (rageClickEvents.length > 0 && categorizationCooldownPassed) {
-      // Filter recent rage clicks (last 30 seconds) on product images
-      // Using type assertion since productId is added dynamically by the tracker
-      const RECENT_WINDOW_MS = 30 * 1000;
-      type EventWithProduct = AnalyticsEvent & { productId?: string };
-      const recentRageClicks = (rageClickEvents as EventWithProduct[]).filter(e => 
-        (now - e.timestamp) < RECENT_WINDOW_MS &&
-        e.elementSelector === 'img' &&
-        e.productId &&
-        !categorizedProducts.has(e.productId)
-      );
-      
-      // Group by product
-      const rageClicksByProduct = new Map<string, typeof recentRageClicks>();
-      for (const event of recentRageClicks) {
-        if (!event.productId) continue;
-        const existing = rageClicksByProduct.get(event.productId) || [];
-        existing.push(event);
-        rageClicksByProduct.set(event.productId, existing);
-      }
-
-      // Find products with 3+ rage click events (indicating user frustration)
-      for (const [productId, clicks] of rageClicksByProduct) {
-        // Check if total click count from rage click events >= 3
-        const totalClickCount = clicks.reduce((sum, c) => sum + (c.clickCount || 1), 0);
-        
-        if (totalClickCount >= 3) {
-          const product = clicks[0];
-          console.log(`\n🏷️ [Categorize] Detected ${totalClickCount} rage clicks on product ${productId}`);
-          
-          lastCategorizationTime = now;
-          categorizedProducts.add(productId);
-          
-          // Read config to get product image
-          try {
-            const configPath = path.join(process.cwd(), 'data/config-live.json');
-            const configContent = await fs.readFile(configPath, 'utf-8');
-            const config = JSON.parse(configContent);
-            const productData = config.products.items.find((p: { id: string }) => p.id === productId);
-            
-            if (productData) {
-              console.log(`   Triggering LLM categorization for: ${productData.name}`);
-              
-              // Call categorization API in background
-              fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/categorize`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  productId,
-                  productName: productData.name,
-                  imageUrl: productData.image,
-                }),
-              })
-                .then(res => res.json())
-                .then(result => {
-                  if (result.success) {
-                    console.log(`   ✅ Product ${productId} categorized as: ${result.newCategory}`);
-                  } else {
-                    console.log(`   ❌ Categorization failed:`, result.error);
-                  }
-                })
-                .catch(err => {
-                  console.error(`   ❌ Categorization request failed:`, err);
-                });
-            }
-          } catch (err) {
-            console.error(`   ❌ Failed to read config for categorization:`, err);
-          }
-          
-          break; // Only categorize one product per request to avoid spam
-        }
-      }
-    }
-
-    // Check for rage clicks on Men/Women nav buttons to trigger filter generation
-    const navFilterCooldownPassed = (now - lastNavFilterTime) > NAV_FILTER_COOLDOWN;
-    
-    // Debug logging
-    console.log(`\n🧭 [Nav Filter Debug] Checking for nav rage clicks...`);
-    console.log(`   - navFilterGenerated: ${navFilterGenerated}`);
-    console.log(`   - cooldownPassed: ${navFilterCooldownPassed}`);
-    console.log(`   - Total rage clicks in allEvents: ${rageClickEvents.length}`);
-    
-    if (rageClickEvents.length > 0) {
-      console.log(`   - Sample rage click:`, JSON.stringify(rageClickEvents[0], null, 2).substring(0, 300));
-    }
-    
-    if (!navFilterGenerated && navFilterCooldownPassed) {
-      // Look for rage clicks on nav buttons (Men or Women)
-      const RECENT_WINDOW_MS = 30 * 1000;
-      const recentNavRageClicks = rageClickEvents.filter(e => {
-        const isRecent = (now - e.timestamp) < RECENT_WINDOW_MS;
-        const isButton = e.elementSelector === 'button';
-        const isNavButton = e.elementText === 'Men' || e.elementText === 'Women';
-        console.log(`   - Event check: recent=${isRecent}, button=${isButton}, navButton=${isNavButton}, text="${e.elementText}"`);
-        return isRecent && isButton && isNavButton;
-      });
-      
-      console.log(`   - Matching nav rage clicks: ${recentNavRageClicks.length}`);
-      
-      // Check if we have 3+ rapid clicks on nav buttons
-      const totalNavClicks = recentNavRageClicks.reduce((sum, c) => sum + (c.clickCount || 1), 0);
-      console.log(`   - Total nav click count: ${totalNavClicks}`);
-      
-      if (totalNavClicks >= 3) {
-        const clickedNav = recentNavRageClicks[0]?.elementText || 'Men/Women';
-        console.log(`\n🧭 [Nav Filter] Detected ${totalNavClicks} rage clicks on "${clickedNav}" nav button`);
-        console.log(`   Triggering LLM to generate filtering functionality...`);
-        
-        lastNavFilterTime = now;
-        
-        // Call the nav filter generation API
-        fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/generate-filter`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            triggerButton: clickedNav,
-            rageClickCount: totalNavClicks,
-          }),
-        })
-          .then(res => res.json())
-          .then(result => {
-            if (result.success) {
-              console.log(`   ✅ Filter code generated and applied!`);
-              navFilterGenerated = true;
-            } else {
-              console.log(`   ❌ Filter generation failed:`, result.error);
-            }
-          })
-          .catch(err => {
-            console.error(`   ❌ Filter generation request failed:`, err);
-          });
-      }
-    }
-
     return NextResponse.json({
       success: true,
       received: validatedEvents.length,
       totalEvents: allEvents.length,
       deadClickCount: allEvents.filter(e => e.type === 'dead_click').length,
-      rageClickCount: rageClickEvents.length,
       detectionTriggered,
       issuesDetected: detectionTriggered ? issuesDetected : undefined,
       pendingFixes: pendingFixes.filter(f => !f.applied).length,
-      navFilterGenerated,
     });
   } catch (error) {
     console.error('Error processing events:', error);

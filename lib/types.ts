@@ -123,7 +123,6 @@ export interface SiteConfig {
       badge?: string;
       description?: string; // Longer product description
       materials?: string; // Materials/fabric information
-      category?: 'men' | 'women' | 'unisex'; // Product category for filtering
     }>;
   };
 
