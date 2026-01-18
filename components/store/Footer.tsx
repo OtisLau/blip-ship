@@ -204,7 +204,7 @@ export function Footer({ config }: FooterProps) {
           alignItems: 'center',
         }}>
           <p style={{ color: '#52525b', fontSize: '13px' }}>
-            &copy; 2024 Urban Threads. All rights reserved.
+            &copy; 2024 VOID Studios. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '20px' }}>
             {['Privacy', 'Terms'].map((item) => (

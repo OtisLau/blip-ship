@@ -444,8 +444,9 @@ export function CartDrawer() {
                         width={80}
                         height={100}
                         style={{
-                          objectFit: 'cover',
+                          objectFit: 'contain',
                           flexShrink: 0,
+                          backgroundColor: '#f5f5f5',
                         }}
                       />
                       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>

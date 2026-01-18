@@ -101,7 +101,7 @@ async function seedEvents() {
     });
   }
 
-  await appendEvents(events);
+  await appendEvents(events as AnalyticsEvent[]);
   console.log(`✅ Seeded ${events.length} test events`);
   console.log('\nTest the API:');
   console.log('  curl http://localhost:3000/api/ui-issues | jq');

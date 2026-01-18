@@ -386,6 +386,7 @@ ${mapping.expectedImpact}
       url: prUrl || undefined,
       fixId: fixAdapter.id,
       suggestionId: fixId,
+      createdAt: Date.now(),
     };
     await saveFix(suggestionAdapter, fixAdapter, prInfo);
     log(`Saved fix to store with ID: ${fixId}`);
@@ -405,10 +406,10 @@ ${mapping.expectedImpact}
 
       // Capture screenshots
       const screenshotResult = await generateScreenshots(suggestionAdapter, baseUrl);
-      if (screenshotResult.currentUrl && screenshotResult.proposedUrl) {
+      if (screenshotResult.currentScreenshotUrl && screenshotResult.proposedScreenshotUrl) {
         screenshots = {
-          currentScreenshotUrl: screenshotResult.currentUrl,
-          proposedScreenshotUrl: screenshotResult.proposedUrl,
+          currentScreenshotUrl: screenshotResult.currentScreenshotUrl,
+          proposedScreenshotUrl: screenshotResult.proposedScreenshotUrl,
           isEmbedded: screenshotResult.isEmbedded,
         };
         log(`Screenshots captured: ${screenshotResult.isEmbedded ? 'embedded' : 'hosted on Cloudinary'}`);

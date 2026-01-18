@@ -149,7 +149,7 @@ function computeEngagement(weightedEvents: WeightedEvent[]): number {
       engagementScore += weight * 2;
     }
     // Text selection = research behavior
-    if (event.type === 'text_selection' || event.type === 'text_copy') {
+    if (event.type === 'text_selection') {
       engagementScore += weight * 1.5;
     }
     // Product view with time
