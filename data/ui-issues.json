@@ -1,0 +1,1773 @@
+[
+  {
+    "id": "issue_1768723648390_nmduyz",
+    "status": "fix_generated",
+    "detectedAt": 1768723648390,
+    "lastOccurrence": 1768723629356,
+    "category": "frustration",
+    "severity": "low",
+    "patternId": "click_frustration",
+    "elementSelector": "#testimonials",
+    "sectionId": "/store",
+    "componentPath": "components/store/Testimonials.tsx",
+    "componentName": "Testimonials",
+    "eventCount": 2,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768723628242_lhhu1ul",
+        "timestamp": 1768723628242,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 520,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 75,
+        "y": 469,
+        "elementSelector": "#testimonials",
+        "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
+        "elementContext": {
+          "selector": "#testimonials",
+          "fullPath": "#testimonials",
+          "tag": "section",
+          "text": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel",
+          "attributes": {
+            "id": "testimonials"
+          },
+          "boundingBox": {
+            "top": 1228,
+            "left": 0,
+            "width": 505,
+            "height": 742
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": 423,
+            "visible": true,
+            "percentVisible": 62
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 805,
+          "scrollPercent": 50,
+          "documentHeight": 2493,
+          "documentWidth": 541,
+          "timeOnPage": 446809,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive section element \"What People Are Saying4.9 from...\". Expected it to do something. Element path: #testimonials",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.6,
+        "behaviorContext": "Clicked 1 CTA(s) but hasn't added to cart"
+      },
+      {
+        "id": "evt_1768723629356_bbhjixd",
+        "timestamp": 1768723629356,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 520,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 229,
+        "y": 470,
+        "elementSelector": "#testimonials",
+        "elementText": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of b",
+        "elementContext": {
+          "selector": "#testimonials",
+          "fullPath": "#testimonials",
+          "tag": "section",
+          "text": "What People Are Saying4.9 from 2,400+ reviews“The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel",
+          "attributes": {
+            "id": "testimonials"
+          },
+          "boundingBox": {
+            "top": 1228,
+            "left": 0,
+            "width": 505,
+            "height": 742
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": 423,
+            "visible": true,
+            "percentVisible": 62
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 805,
+          "scrollPercent": 50,
+          "documentHeight": 2493,
+          "documentWidth": 541,
+          "timeOnPage": 447923,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive section element \"What People Are Saying4.9 from...\". Expected it to do something. Element path: #testimonials",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.6,
+        "behaviorContext": "Clicked 2 CTA(s) but hasn't added to cart"
+      }
+    ],
+    "problemStatement": "Users clicking this element are frustrated",
+    "userIntent": "Expected the element to respond",
+    "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": "",
+    "fix": {
+      "branch": "fix/cro-code-20260118-issue_176872",
+      "previewUrl": "https://github.com/OtisLau/blip-ship/compare/main...fix/cro-code-20260118-issue_176872",
+      "diff": "--- a/components/store/Testimonials.tsx\n+++ b/components/store/Testimonials.tsx\n@@ -41,41 +41,42 @@\n                 padding: '28px',\n                 border: '1px solid #e5e7eb',\n-              }}\n+                cursor: 'pointer',\n-            >\n+              }}\n-              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>\n+              onClick={() => {}}\n-                {[...Array(5)].map((_, i) => (\n+            >\n-                  <svg key={i} style={{ width: '14px', height: '14px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n+              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>\n-                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n+                {[...Array(5)].map((_, i) => (\n-                  </svg>\n+                  <svg key={i} style={{ width: '14px', height: '14px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n-                ))}\n+                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n-              </div>\n+                  </svg>\n-              <p style={{ color: '#374151', marginBottom: '20px', lineHeight: 1.6, fontSize: '15px' }}>\n+                ))}\n-                &ldquo;{testimonial.quote}&rdquo;\n+              </div>\n-              </p>\n+              <p style={{ color: '#374151', marginBottom: '20px', lineHeight: 1.6, fontSize: '15px' }}>\n-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>\n+                &ldquo;{testimonial.quote}&rdquo;\n-                <div style={{\n+              </p>\n-                  width: '40px',\n+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>\n-                  height: '40px',\n+                <div style={{\n-                  backgroundColor: '#111',\n+                  width: '40px',\n-                  display: 'flex',\n+                  height: '40px',\n-                  alignItems: 'center',\n+                  backgroundColor: '#111',\n-                  justifyContent: 'center',\n+                  display: 'flex',\n-                  color: 'white',\n+                  alignItems: 'center',\n-                  fontWeight: 500,\n+                  justifyContent: 'center',\n-                  fontSize: '16px',\n+                  color: 'white',\n-                }}>\n+                  fontWeight: 500,\n-                  {testimonial.author.charAt(0)}\n+                  fontSize: '16px',\n-                </div>\n+                }}>\n-                <div>\n+                  {testimonial.author.charAt(0)}\n-                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#111' }}>{testimonial.author}</p>\n+                </div>\n-                  <p style={{ fontSize: '12px', color: '#6b7280' }}>Verified Buyer</p>\n+                <div>\n-                </div>\n+                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#111' }}>{testimonial.author}</p>\n-              </div>\n+                  <p style={{ fontSize: '12px', color: '#6b7280' }}>Verified Buyer</p>\n-            </div>\n+                </div>\n-          ))}\n+              </div>\n-        </div>\n+            </div>\n-      </div>\n+          ))}\n-    </section>\n+        </div>\n-  );\n+      </div>\n-}\n+    </section>\n-\n+  );\n+}\n",
+      "modifiedFiles": [
+        {
+          "path": "components/store/Testimonials.tsx",
+          "content": "'use client';\n\nimport { SiteConfig } from '@/lib/types';\n\ninterface TestimonialsProps {\n  config: SiteConfig['testimonials'];\n}\n\nexport function Testimonials({ config }: TestimonialsProps) {\n  if (!config.show) {\n    return null;\n  }\n\n  return (\n    <section id=\"testimonials\" style={{ padding: '80px 0', backgroundColor: 'white' }}>\n      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>\n        <div style={{ textAlign: 'center', marginBottom: '48px' }}>\n          <h2 style={{ fontSize: '32px', fontWeight: 600, color: '#111', marginBottom: '12px', letterSpacing: '-0.5px' }}>\n            {config.sectionTitle}\n          </h2>\n          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>\n            {[...Array(5)].map((_, i) => (\n              <svg key={i} style={{ width: '18px', height: '18px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n                <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n              </svg>\n            ))}\n            <span style={{ marginLeft: '8px', fontSize: '14px', color: '#6b7280' }}>4.9 from 2,400+ reviews</span>\n          </div>\n        </div>\n\n        <div style={{\n          display: 'grid',\n          gridTemplateColumns: 'repeat(3, 1fr)',\n          gap: '24px',\n        }}>\n          {config.items.map((testimonial, index) => (\n            <div\n              key={index}\n              style={{\n                backgroundColor: '#fafafa',\n                padding: '28px',\n                border: '1px solid #e5e7eb',\n                cursor: 'pointer',\n              }}\n              onClick={() => {}}\n            >\n              <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>\n                {[...Array(5)].map((_, i) => (\n                  <svg key={i} style={{ width: '14px', height: '14px', color: '#111' }} fill=\"currentColor\" viewBox=\"0 0 20 20\">\n                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\" />\n                  </svg>\n                ))}\n              </div>\n              <p style={{ color: '#374151', marginBottom: '20px', lineHeight: 1.6, fontSize: '15px' }}>\n                &ldquo;{testimonial.quote}&rdquo;\n              </p>\n              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>\n                <div style={{\n                  width: '40px',\n                  height: '40px',\n                  backgroundColor: '#111',\n                  display: 'flex',\n                  alignItems: 'center',\n                  justifyContent: 'center',\n                  color: 'white',\n                  fontWeight: 500,\n                  fontSize: '16px',\n                }}>\n                  {testimonial.author.charAt(0)}\n                </div>\n                <div>\n                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#111' }}>{testimonial.author}</p>\n                  <p style={{ fontSize: '12px', color: '#6b7280' }}>Verified Buyer</p>\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}"
+        }
+      ],
+      "explanation": "The 'dead click' indicates the user expected the testimonial section to be interactive.  Changing the cursor to a pointer and providing a simple onClick handler can immediately improve the perceived interactivity. This addresses the direct cause of frustration without requiring more complex functionality.",
+      "generatedAt": 1768723674801
+    }
+  },
+  {
+    "id": "issue_1768724362788_hg6k3c",
+    "status": "detected",
+    "detectedAt": 1768724362788,
+    "lastOccurrence": 1768723660452,
+    "category": "frustration",
+    "severity": "low",
+    "patternId": "click_frustration",
+    "elementSelector": "button.jsx-532d500bfc6d5d04",
+    "sectionId": "/store",
+    "componentPath": "components/store/CartDrawer.tsx",
+    "componentName": "CartDrawer",
+    "eventCount": 3,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768723658949_u60sohu",
+        "timestamp": 1768723658949,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 520,
+          "height": 884
+        },
+        "type": "double_click",
+        "x": 313,
+        "y": 765,
+        "elementSelector": "button.jsx-532d500bfc6d5d04",
+        "elementText": "Continue to Payment",
+        "elementContext": {
+          "selector": "button.jsx-532d500bfc6d5d04",
+          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1)",
+          "tag": "button",
+          "text": "Continue to Payment",
+          "attributes": {
+            "type": "submit",
+            "class": "jsx-532d500bfc6d5d04"
+          },
+          "boundingBox": {
+            "top": 1212,
+            "left": 109,
+            "width": 372,
+            "height": 48
+          },
+          "viewportPosition": {
+            "x": 109,
+            "y": 750,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "inline-block"
+          },
+          "isInteractive": true,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 462,
+          "scrollPercent": 29,
+          "documentHeight": 2493,
+          "documentWidth": 541,
+          "timeOnPage": 11179,
+          "url": "/store"
+        },
+        "frustrationReason": "User double-clicked button \"Continue to Payment\". Suggests no loading state or feedback - user unsure if click registered.",
+        "inferredBehavior": "ready_to_buy",
+        "behaviorConfidence": 0.85,
+        "behaviorContext": "User added 1 item(s) to cart"
+      },
+      {
+        "id": "evt_1768723658949_cry8wez",
+        "timestamp": 1768723658949,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 520,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 310,
+        "y": 770,
+        "elementSelector": "button.jsx-532d500bfc6d5d04",
+        "clickCount": 4,
+        "elementContext": {
+          "selector": "button.jsx-532d500bfc6d5d04",
+          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1)",
+          "tag": "button",
+          "text": "Continue to Payment",
+          "attributes": {
+            "type": "submit",
+            "class": "jsx-532d500bfc6d5d04"
+          },
+          "boundingBox": {
+            "top": 1212,
+            "left": 109,
+            "width": 372,
+            "height": 48
+          },
+          "viewportPosition": {
+            "x": 109,
+            "y": 750,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "inline-block"
+          },
+          "isInteractive": true,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 462,
+          "scrollPercent": 29,
+          "documentHeight": 2493,
+          "documentWidth": 541,
+          "timeOnPage": 11402,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1), cursor: pointer",
+        "inferredBehavior": "ready_to_buy",
+        "behaviorConfidence": 0.85,
+        "behaviorContext": "User added 1 item(s) to cart"
+      },
+      {
+        "id": "evt_1768723660452_08hinjy",
+        "timestamp": 1768723660452,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 520,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 313,
+        "y": 765,
+        "elementSelector": "button.jsx-532d500bfc6d5d04",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "button.jsx-532d500bfc6d5d04",
+          "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1)",
+          "tag": "button",
+          "text": "Continue to Payment",
+          "attributes": {
+            "type": "submit",
+            "class": "jsx-532d500bfc6d5d04"
+          },
+          "boundingBox": {
+            "top": 1212,
+            "left": 109,
+            "width": 372,
+            "height": 48
+          },
+          "viewportPosition": {
+            "x": 109,
+            "y": 750,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "inline-block"
+          },
+          "isInteractive": true,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 462,
+          "scrollPercent": 29,
+          "documentHeight": 2493,
+          "documentWidth": 541,
+          "timeOnPage": 12077,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > button.jsx-532d500bfc6d5d04:nth-child(1), cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 0 dead clicks"
+      }
+    ],
+    "problemStatement": "Users clicking this element are frustrated",
+    "userIntent": "Expected the element to respond",
+    "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768724667813_43gj4p",
+    "status": "detected",
+    "detectedAt": 1768724667813,
+    "lastOccurrence": 1768724662054,
+    "category": "frustration",
+    "severity": "high",
+    "patternId": "click_frustration",
+    "elementSelector": "img",
+    "sectionId": "/store",
+    "componentPath": "components/store/ProductGrid.tsx",
+    "componentName": "ProductGrid",
+    "eventCount": 15,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768724568453_httgkfg",
+        "timestamp": 1768724568453,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 461,
+        "y": 278,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1521572163474-6864f9cf17ab%3Fw%3D600%26q%"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 287,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 287,
+            "y": 96,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 732,
+          "scrollPercent": 49,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 920078,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 2 dead clicks"
+      },
+      {
+        "id": "evt_1768724657752_16mymuc",
+        "timestamp": 1768724657752,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1009378,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 6 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_v5dvg3u",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1010460,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 7 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_4pl4y91",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1011136,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 7 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_gat3bur",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1011137,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_j2n8b61",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1011828,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_eknusub",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1012001,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_yru52jx",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "double_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementText": "",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1012002,
+          "url": "/store"
+        },
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_4joj4cl",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1012243,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_p52z01w",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1012243,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_wboterh",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1012770,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 12 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_avw45qt",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1013219,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_legj6ia",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "double_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementText": "",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1013220,
+          "url": "/store"
+        },
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
+      },
+      {
+        "id": "evt_1768724662054_8ubgft4",
+        "timestamp": 1768724662054,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "rage_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "clickCount": 3,
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1013679,
+          "url": "/store"
+        },
+        "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
+      },
+      {
+        "id": "evt_1768724662054_vcuzvxk",
+        "timestamp": 1768724662054,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "elementContext": {
+          "selector": "img",
+          "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+          "tag": "img",
+          "text": "",
+          "attributes": {
+            "data-nimg": "fill",
+            "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+          },
+          "boundingBox": {
+            "top": 828,
+            "left": 555,
+            "width": 258,
+            "height": 258
+          },
+          "viewportPosition": {
+            "x": 555,
+            "y": 351,
+            "visible": true,
+            "percentVisible": 100
+          },
+          "computedStyle": {
+            "cursor": "pointer",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 477,
+          "scrollPercent": 32,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 1013680,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 5 rage clicks, 14 dead clicks"
+      }
+    ],
+    "problemStatement": "Users clicking this element are frustrated",
+    "userIntent": "Expected the element to respond",
+    "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768724667814_zc7vhy",
+    "status": "detected",
+    "detectedAt": 1768724667814,
+    "lastOccurrence": 1768724661051,
+    "category": "missing_feature",
+    "severity": "high",
+    "patternId": "multi_product_interaction",
+    "elementSelector": "/store",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 14,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768723657643_ah5ktwa",
+        "timestamp": 1768723657643,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 520,
+          "height": 884
+        },
+        "type": "add_to_cart",
+        "x": 78,
+        "y": 406,
+        "elementSelector": "button",
+        "elementText": "Added",
+        "elementId": "button_submit_newarrival_0",
+        "productId": "prod_001",
+        "productName": "Classic Heavyweight Hoodie",
+        "productPrice": 89,
+        "inferredBehavior": "ready_to_buy",
+        "behaviorConfidence": 0.85,
+        "behaviorContext": "User added 1 item(s) to cart"
+      },
+      {
+        "id": "evt_1768724568453_r84a633",
+        "timestamp": 1768724568453,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 461,
+        "y": 278,
+        "elementSelector": "img",
+        "productId": "prod_002",
+        "productName": "Essential Cotton Tee",
+        "productPrice": 35,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 1 dead clicks"
+      },
+      {
+        "id": "evt_1768724569644_g51zazl",
+        "timestamp": 1768724569644,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "add_to_cart",
+        "x": 383,
+        "y": 299,
+        "elementSelector": "button",
+        "elementText": "Added",
+        "elementId": "button_submit_newarrival_0",
+        "productId": "prod_002",
+        "productName": "Essential Cotton Tee",
+        "productPrice": 35,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 2 dead clicks"
+      },
+      {
+        "id": "evt_1768724591561_5t9fu6s",
+        "timestamp": 1768724591561,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "add_to_cart",
+        "x": 289,
+        "y": 533,
+        "elementSelector": "#products",
+        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 2 dead clicks"
+      },
+      {
+        "id": "evt_1768724594277_ye5l4os",
+        "timestamp": 1768724594277,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "add_to_cart",
+        "x": 326,
+        "y": 543,
+        "elementSelector": "#products",
+        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 3 dead clicks"
+      },
+      {
+        "id": "evt_1768724657752_oie5t9l",
+        "timestamp": 1768724657752,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 5 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_3djy0wm",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 6 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_p5e04jb",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 7 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_xoa5rxb",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
+      },
+      {
+        "id": "evt_1768724659374_k4y0gbt",
+        "timestamp": 1768724659374,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_j2pot1r",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_m4fbkj1",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_710s1er",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 12 dead clicks"
+      },
+      {
+        "id": "evt_1768724661051_49zpuq3",
+        "timestamp": 1768724661051,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "product_view",
+        "x": 701,
+        "y": 443,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
+      }
+    ],
+    "problemStatement": "Users interacting with multiple products",
+    "userIntent": "",
+    "currentOutcome": "",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768724667814_ytrcl1",
+    "status": "detected",
+    "detectedAt": 1768724667814,
+    "lastOccurrence": 1768724566417,
+    "category": "missing_feature",
+    "severity": "low",
+    "patternId": "scroll_confusion",
+    "elementSelector": "/store",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 3,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768724465015_0cwnq5t",
+        "timestamp": 1768724465015,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "scroll_reversal",
+        "scrollDepth": 1,
+        "elementText": "User reversed scroll direction 3 times",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 0 dead clicks"
+      },
+      {
+        "id": "evt_1768724556375_zbi360z",
+        "timestamp": 1768724556375,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "scroll_reversal",
+        "scrollDepth": 0,
+        "elementText": "User reversed scroll direction 3 times",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 1 dead clicks"
+      },
+      {
+        "id": "evt_1768724566417_qavm62k",
+        "timestamp": 1768724566417,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "scroll_reversal",
+        "scrollDepth": 0,
+        "elementText": "User reversed scroll direction 3 times",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 1 dead clicks"
+      }
+    ],
+    "problemStatement": "Users scrolling up and down repeatedly",
+    "userIntent": "Looking for something they cannot find",
+    "currentOutcome": "Content organization may be confusing",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768724667814_nonu8i",
+    "status": "detected",
+    "detectedAt": 1768724667814,
+    "lastOccurrence": 1768724594277,
+    "category": "frustration",
+    "severity": "low",
+    "patternId": "click_frustration",
+    "elementSelector": "#products",
+    "sectionId": "/store",
+    "componentPath": "components/store/ProductGrid.tsx",
+    "componentName": "ProductGrid",
+    "eventCount": 2,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768724591561_ppda9kz",
+        "timestamp": 1768724591561,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 289,
+        "y": 533,
+        "elementSelector": "#products",
+        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+        "elementContext": {
+          "selector": "#products",
+          "fullPath": "#products",
+          "tag": "section",
+          "text": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd",
+          "attributes": {
+            "id": "products"
+          },
+          "boundingBox": {
+            "top": 625,
+            "left": 0,
+            "width": 1100,
+            "height": 710
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": -107,
+            "visible": true,
+            "percentVisible": 85
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 732,
+          "scrollPercent": 49,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 943186,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive section element \"Featured ProductsCurated essen...\". Expected it to do something. Element path: #products",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 3 dead clicks"
+      },
+      {
+        "id": "evt_1768724594277_eq61smk",
+        "timestamp": 1768724594277,
+        "sessionId": "sess_1768720182102_i3x1pq4kq",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1115,
+          "height": 884
+        },
+        "type": "dead_click",
+        "x": 326,
+        "y": 543,
+        "elementSelector": "#products",
+        "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+        "elementContext": {
+          "selector": "#products",
+          "fullPath": "#products",
+          "tag": "section",
+          "text": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd",
+          "attributes": {
+            "id": "products"
+          },
+          "boundingBox": {
+            "top": 625,
+            "left": 0,
+            "width": 1100,
+            "height": 710
+          },
+          "viewportPosition": {
+            "x": 0,
+            "y": -107,
+            "visible": true,
+            "percentVisible": 85
+          },
+          "computedStyle": {
+            "cursor": "auto",
+            "pointerEvents": "auto",
+            "opacity": "1",
+            "display": "block"
+          },
+          "isInteractive": false,
+          "isVisible": true,
+          "isInIframe": false,
+          "nearestInteractive": null
+        },
+        "pageContext": {
+          "scrollX": 0,
+          "scrollY": 732,
+          "scrollPercent": 49,
+          "documentHeight": 2391,
+          "documentWidth": 1100,
+          "timeOnPage": 945904,
+          "url": "/store"
+        },
+        "frustrationReason": "User clicked on non-interactive section element \"Featured ProductsCurated essen...\". Expected it to do something. Element path: #products",
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 2 rage clicks, 4 dead clicks"
+      }
+    ],
+    "problemStatement": "Users clicking this element are frustrated",
+    "userIntent": "Expected the element to respond",
+    "currentOutcome": "Element did not behave as expected",
+    "suggestedFix": ""
+  }
+]

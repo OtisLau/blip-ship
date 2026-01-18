@@ -2,13 +2,15 @@
   "id": "preview_fix_1768696065613_8535er",
   "version": 2,
   "status": "live",
+  "ownerEmail": "lucianlavric2005@gmail.com",
+  "storeName": "Blip Ship Store",
   "hero": {
     "headline": "Elevate Your Everyday",
-    "subheadline": "Premium basics designed for comfort and style. Sustainably made, built to last.",
+    "subheadline": "Trusted by 10,000+ customers. See why we're rated #1.",
     "backgroundColor": "#1F2937",
     "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
     "cta": {
-      "text": "Explore Collection",
+      "text": "Browse Risk-Free",
       "color": "#F59E0B",
       "textColor": "#000000",
       "position": "inside-hero",
@@ -17,7 +19,7 @@
   },
   "products": {
     "sectionTitle": "Featured Products",
-    "layout": "grid-4",
+    "layout": "grid-3",
     "items": [
       {
         "id": "prod_001",

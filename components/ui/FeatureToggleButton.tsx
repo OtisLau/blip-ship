@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { useFeatureToggle } from '@/context/FeatureToggleContext';
+import { useFeatureToggle } from '@/context/FeatureToggleContext'
 
 /**
- * Floating toggle button to switch between enhanced and basic modes.
+ * Floating toggle button to control feature flags.
  * For testing/demo purposes.
  */
 export function FeatureToggleButton() {
-  const { enhancedMode, toggleEnhancedMode, features } = useFeatureToggle();
+  const { features, toggleFeature } = useFeatureToggle()
 
   return (
     <div
@@ -21,25 +21,6 @@ export function FeatureToggleButton() {
         gap: '8px',
       }}
     >
-      <button
-        onClick={toggleEnhancedMode}
-        style={{
-          padding: '12px 20px',
-          backgroundColor: enhancedMode ? '#22c55e' : '#6b7280',
-          color: 'white',
-          border: 'none',
-          fontSize: '12px',
-          fontWeight: 600,
-          textTransform: 'uppercase',
-          letterSpacing: '0.5px',
-          cursor: 'pointer',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-          transition: 'all 0.2s',
-        }}
-      >
-        {enhancedMode ? '✓ Enhanced Mode' : '○ Basic Mode'}
-      </button>
-
       {/* Feature status indicators */}
       <div
         style={{
@@ -51,21 +32,41 @@ export function FeatureToggleButton() {
         }}
       >
         <div style={{ marginBottom: '4px', fontWeight: 600 }}>Features:</div>
-        <div style={{ color: features.loadingSpinner ? '#22c55e' : '#6b7280' }}>
-          {features.loadingSpinner ? '●' : '○'} Loading Spinners
-        </div>
-        <div style={{ color: features.imageGallery ? '#22c55e' : '#6b7280' }}>
-          {features.imageGallery ? '●' : '○'} Image Gallery
-        </div>
-        <div style={{ color: features.compareFeature ? '#22c55e' : '#6b7280' }}>
+        <button
+          onClick={() => toggleFeature('compareFeature')}
+          style={{
+            display: 'block',
+            background: 'none',
+            border: 'none',
+            padding: '2px 0',
+            cursor: 'pointer',
+            color: features.compareFeature ? '#22c55e' : '#6b7280',
+            fontSize: '10px',
+            fontFamily: 'monospace',
+            textAlign: 'left',
+          }}
+        >
           {features.compareFeature ? '●' : '○'} Compare Feature
-        </div>
-        <div style={{ color: features.colorSwatches ? '#22c55e' : '#6b7280' }}>
-          {features.colorSwatches ? '●' : '○'} Color Swatches
-        </div>
+        </button>
+        <button
+          onClick={() => toggleFeature('quickView')}
+          style={{
+            display: 'block',
+            background: 'none',
+            border: 'none',
+            padding: '2px 0',
+            cursor: 'pointer',
+            color: features.quickView ? '#22c55e' : '#6b7280',
+            fontSize: '10px',
+            fontFamily: 'monospace',
+            textAlign: 'left',
+          }}
+        >
+          {features.quickView ? '●' : '○'} Quick View
+        </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default FeatureToggleButton;
+export default FeatureToggleButton

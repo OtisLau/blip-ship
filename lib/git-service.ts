@@ -1,0 +1,384 @@
+/**
+ * Git Service - PR Creation and Management
+ *
+ * This service handles:
+ * - Creating branches for fixes
+ * - Applying config changes
+ * - Creating pull requests
+ * - Merging approved PRs
+ *
+ * For POC: Uses actual git commands via child_process
+ * In production: Would use GitHub API or similar
+ */
+
+import { exec } from 'child_process';
+import { promisify } from 'util';
+import * as fs from 'fs/promises';
+import * as path from 'path';
+import type { Suggestion, SiteConfig } from './types';
+import type { MinimalFix } from './fix-agent';
+
+const execAsync = promisify(exec);
+
+export interface PRInfo {
+  id: string;
+  number?: number;
+  branchName: string;
+  title: string;
+  description: string;
+  status: 'open' | 'merged' | 'closed';
+  createdAt: number;
+  fixId: string;
+  suggestionId: string;
+  url?: string;
+}
+
+// Store PRs in memory for POC
+const openPRs: Map<string, PRInfo> = new Map();
+
+/**
+ * Execute a git command in the repo directory
+ */
+async function gitCommand(command: string): Promise<string> {
+  const repoPath = process.cwd();
+  try {
+    const { stdout, stderr } = await execAsync(`git ${command}`, {
+      cwd: repoPath,
+    });
+    if (stderr && !stderr.includes('Switched to')) {
+      console.log('[Git stderr]:', stderr);
+    }
+    return stdout.trim();
+  } catch (error) {
+    console.error('[Git error]:', error);
+    throw error;
+  }
+}
+
+/**
+ * Get the current branch name
+ */
+export async function getCurrentBranch(): Promise<string> {
+  return gitCommand('rev-parse --abbrev-ref HEAD');
+}
+
+/**
+ * Check if there are uncommitted changes
+ */
+export async function hasUncommittedChanges(): Promise<boolean> {
+  const status = await gitCommand('status --porcelain');
+  return status.length > 0;
+}
+
+/**
+ * Create a new branch for a fix
+ */
+export async function createFixBranch(
+  suggestion: Suggestion,
+  fix: MinimalFix
+): Promise<string> {
+  // Generate a safe branch name
+  const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  const shortId = suggestion.id.slice(0, 8);
+  const branchName = `fix/cro-${timestamp}-${shortId}`;
+
+  console.log('[Git] Creating branch:', branchName);
+
+  // Store current branch to return to later if needed
+  const originalBranch = await getCurrentBranch();
+  console.log('[Git] Current branch:', originalBranch);
+
+  // Create and checkout the new branch from main
+  await gitCommand('fetch origin main');
+  await gitCommand(`checkout -b ${branchName} origin/main`);
+
+  return branchName;
+}
+
+/**
+ * Apply config changes and commit
+ */
+export async function applyAndCommitChanges(
+  suggestion: Suggestion,
+  fix: MinimalFix,
+  branchName: string
+): Promise<void> {
+  const configPath = path.join(process.cwd(), 'data', 'config-live.json');
+
+  // Read current config
+  const currentConfigStr = await fs.readFile(configPath, 'utf-8');
+  const currentConfig: SiteConfig = JSON.parse(currentConfigStr);
+
+  // Apply the preview config changes
+  const newConfig: SiteConfig = {
+    ...suggestion.previewConfig,
+    status: 'live',
+    version: currentConfig.version + 1,
+  };
+
+  // Write the new config
+  await fs.writeFile(configPath, JSON.stringify(newConfig, null, 2));
+
+  // Stage and commit
+  await gitCommand('add data/config-live.json');
+
+  const commitMessage = `fix(cro): ${suggestion.analysis.summary}
+
+Automated CRO optimization fix.
+
+Changes:
+${suggestion.changes.map((c) => `- ${c.field}: ${JSON.stringify(c.oldValue)} → ${JSON.stringify(c.newValue)}`).join('\n')}
+
+Expected Impact: ${suggestion.recommendation.expectedImpact}
+
+Fix ID: ${fix.id}
+Suggestion ID: ${suggestion.id}
+
+Co-Authored-By: CRO Agent <cro-agent@blip.ship>`;
+
+  // Use a temp file for commit message to handle special characters
+  const msgFile = path.join(process.cwd(), '.git', 'COMMIT_MSG_TEMP');
+  await fs.writeFile(msgFile, commitMessage);
+  await gitCommand(`commit -F "${msgFile}"`);
+  await fs.unlink(msgFile);
+}
+
+/**
+ * Push the branch to remote
+ */
+export async function pushBranch(branchName: string): Promise<void> {
+  console.log('[Git] Pushing branch:', branchName);
+  await gitCommand(`push -u origin ${branchName}`);
+}
+
+/**
+ * Create a pull request (simulated for POC, would use GitHub API in production)
+ */
+export async function createPullRequest(
+  suggestion: Suggestion,
+  fix: MinimalFix,
+  branchName: string
+): Promise<PRInfo> {
+  const prId = `pr_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+
+  const prInfo: PRInfo = {
+    id: prId,
+    branchName,
+    title: `🔧 CRO Fix: ${suggestion.analysis.summary}`,
+    description: `
+## Summary
+${suggestion.analysis.summary}
+
+## Expected Impact
+${suggestion.recommendation.expectedImpact}
+
+## Changes
+${suggestion.changes.map((c) => `- **${c.field}**: \`${JSON.stringify(c.oldValue)}\` → \`${JSON.stringify(c.newValue)}\``).join('\n')}
+
+## Rationale
+${suggestion.recommendation.rationale}
+
+---
+_This PR was automatically generated by the CRO Agent._
+_Fix ID: ${fix.id}_
+    `.trim(),
+    status: 'open',
+    createdAt: Date.now(),
+    fixId: fix.id,
+    suggestionId: suggestion.id,
+  };
+
+  // Store the PR
+  openPRs.set(suggestion.id, prInfo);
+
+  // Try to create actual PR using gh CLI if available
+  try {
+    const result = await execAsync(
+      `gh pr create --title "${prInfo.title}" --body "${prInfo.description.replace(/"/g, '\\"')}" --base main --head ${branchName}`,
+      { cwd: process.cwd() }
+    );
+    const prUrl = result.stdout.trim();
+    prInfo.url = prUrl;
+
+    // Extract PR number from URL
+    const match = prUrl.match(/\/pull\/(\d+)/);
+    if (match) {
+      prInfo.number = parseInt(match[1], 10);
+    }
+
+    console.log('[Git] Created PR:', prUrl);
+  } catch (error) {
+    console.log('[Git] Could not create PR via gh CLI (may not be installed or authenticated)');
+    console.log('[Git] PR info stored locally for POC');
+    prInfo.url = `https://github.com/example/blip-ship/compare/main...${branchName}`;
+  }
+
+  return prInfo;
+}
+
+/**
+ * Merge a pull request
+ */
+export async function mergePullRequest(suggestionId: string): Promise<{
+  success: boolean;
+  message: string;
+}> {
+  const prInfo = openPRs.get(suggestionId);
+
+  if (!prInfo) {
+    return {
+      success: false,
+      message: 'PR not found for this suggestion',
+    };
+  }
+
+  if (prInfo.status !== 'open') {
+    return {
+      success: false,
+      message: `PR is already ${prInfo.status}`,
+    };
+  }
+
+  try {
+    // Try to merge via gh CLI
+    if (prInfo.number) {
+      await execAsync(`gh pr merge ${prInfo.number} --squash --delete-branch`, {
+        cwd: process.cwd(),
+      });
+    } else {
+      // Fallback: merge manually
+      const currentBranch = await getCurrentBranch();
+      await gitCommand('checkout main');
+      await gitCommand('pull origin main');
+      await gitCommand(`merge ${prInfo.branchName} --squash`);
+      await gitCommand('commit -m "Merge CRO fix"');
+      await gitCommand('push origin main');
+      await gitCommand(`branch -D ${prInfo.branchName}`);
+
+      // Return to original branch if different
+      if (currentBranch !== 'main' && currentBranch !== prInfo.branchName) {
+        await gitCommand(`checkout ${currentBranch}`);
+      }
+    }
+
+    prInfo.status = 'merged';
+    openPRs.set(suggestionId, prInfo);
+
+    return {
+      success: true,
+      message: 'PR merged successfully',
+    };
+  } catch (error) {
+    console.error('[Git] Merge error:', error);
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Merge failed',
+    };
+  }
+}
+
+/**
+ * Close a pull request without merging (reject)
+ */
+export async function closePullRequest(suggestionId: string): Promise<{
+  success: boolean;
+  message: string;
+}> {
+  const prInfo = openPRs.get(suggestionId);
+
+  if (!prInfo) {
+    return {
+      success: false,
+      message: 'PR not found for this suggestion',
+    };
+  }
+
+  try {
+    // Try to close via gh CLI
+    if (prInfo.number) {
+      await execAsync(`gh pr close ${prInfo.number} --delete-branch`, {
+        cwd: process.cwd(),
+      });
+    } else {
+      // Fallback: just delete the branch
+      await gitCommand(`branch -D ${prInfo.branchName}`);
+      await gitCommand(`push origin --delete ${prInfo.branchName}`);
+    }
+
+    prInfo.status = 'closed';
+    openPRs.set(suggestionId, prInfo);
+
+    return {
+      success: true,
+      message: 'PR closed and branch deleted',
+    };
+  } catch (error) {
+    console.error('[Git] Close PR error:', error);
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Failed to close PR',
+    };
+  }
+}
+
+/**
+ * Get PR info by suggestion ID
+ */
+export function getPRInfo(suggestionId: string): PRInfo | undefined {
+  return openPRs.get(suggestionId);
+}
+
+/**
+ * Get all open PRs
+ */
+export function getAllOpenPRs(): PRInfo[] {
+  return Array.from(openPRs.values()).filter((pr) => pr.status === 'open');
+}
+
+/**
+ * Switch back to main branch
+ */
+export async function switchToMain(): Promise<void> {
+  await gitCommand('checkout main');
+}
+
+/**
+ * Full PR creation flow
+ */
+export async function createFixPR(
+  suggestion: Suggestion,
+  fix: MinimalFix
+): Promise<{ success: boolean; prInfo?: PRInfo; error?: string }> {
+  const originalBranch = await getCurrentBranch();
+
+  try {
+    // 1. Create branch
+    const branchName = await createFixBranch(suggestion, fix);
+
+    // 2. Apply changes and commit
+    await applyAndCommitChanges(suggestion, fix, branchName);
+
+    // 3. Push branch
+    await pushBranch(branchName);
+
+    // 4. Create PR
+    const prInfo = await createPullRequest(suggestion, fix, branchName);
+
+    // 5. Return to original branch
+    await gitCommand(`checkout ${originalBranch}`);
+
+    return { success: true, prInfo };
+  } catch (error) {
+    // Try to return to original branch on error
+    try {
+      await gitCommand(`checkout ${originalBranch}`);
+    } catch {
+      // Ignore
+    }
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+}

@@ -1,0 +1,971 @@
+{
+  "version": 1,
+  "generatedAt": 1768719554218,
+  "pages": [
+    "/store"
+  ],
+  "elements": [
+    {
+      "id": "button_submit_newarrival_0",
+      "selector": "button",
+      "fullPath": "main > header > div > div > nav > button",
+      "tag": "button",
+      "type": "button",
+      "text": "New Arrivals",
+      "attributes": {},
+      "componentPath": "components/store/Header.tsx",
+      "componentName": "Header",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 476,
+        "y": 22,
+        "width": 103,
+        "height": 20
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_men_1",
+      "selector": "button",
+      "fullPath": "main > header > div > div > nav > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Men",
+      "attributes": {},
+      "componentPath": "components/store/Header.tsx",
+      "componentName": "Header",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 612,
+        "y": 22,
+        "width": 31,
+        "height": 20
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_women_2",
+      "selector": "button",
+      "fullPath": "main > header > div > div > nav > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Women",
+      "attributes": {},
+      "componentPath": "components/store/Header.tsx",
+      "componentName": "Header",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 675,
+        "y": 22,
+        "width": 55,
+        "height": 20
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_sale_3",
+      "selector": "button",
+      "fullPath": "main > header > div > div > nav > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Sale",
+      "attributes": {},
+      "componentPath": "components/store/Header.tsx",
+      "componentName": "Header",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 762,
+        "y": 22,
+        "width": 35,
+        "height": 20
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_4",
+      "selector": "button",
+      "fullPath": "main > header > div > div > div > button",
+      "tag": "button",
+      "type": "button",
+      "text": "",
+      "attributes": {},
+      "componentPath": "components/store/Header.tsx",
+      "componentName": "Header",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 1052,
+        "y": 14,
+        "width": 36,
+        "height": 36
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_1_6",
+      "selector": "button",
+      "fullPath": "main > header > div > div > div > button",
+      "tag": "button",
+      "type": "button",
+      "text": "1",
+      "attributes": {},
+      "componentPath": "components/store/Header.tsx",
+      "componentName": "Header",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 1140,
+        "y": 14,
+        "width": 36,
+        "height": 36
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_explorecol_7",
+      "selector": "button.hero-cta",
+      "fullPath": "#hero > div > div > button.hero-cta",
+      "tag": "button",
+      "type": "button",
+      "text": "Explore Collection",
+      "attributes": {
+        "class": "hero-cta"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 24,
+        "y": 397,
+        "width": 257,
+        "height": 55
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_addtocart_8",
+      "selector": "button",
+      "fullPath": "#products > div > div > div > div > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Add to Cart",
+      "attributes": {},
+      "componentPath": "components/store/ProductGrid.tsx",
+      "componentName": "ProductGrid",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 37,
+        "y": 1059,
+        "width": 247,
+        "height": 42
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_viewallpro_12",
+      "selector": "button",
+      "fullPath": "#products > div > div > button",
+      "tag": "button",
+      "type": "button",
+      "text": "View All Products",
+      "attributes": {},
+      "componentPath": "components/store/ProductGrid.tsx",
+      "componentName": "ProductGrid",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 491,
+        "y": 1232,
+        "width": 217,
+        "height": 48
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "input_email_enteryoure_13",
+      "selector": "input",
+      "fullPath": "#footer > div > div > div > form > input",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "Enter your email",
+        "type": "email"
+      },
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 420,
+        "y": 2005,
+        "width": 243,
+        "height": 47
+      },
+      "inputType": "email",
+      "placeholder": "Enter your email"
+    },
+    {
+      "id": "button_submit_subscribe_14",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > form > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Subscribe",
+      "attributes": {
+        "type": "submit"
+      },
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 663,
+        "y": 2005,
+        "width": 117,
+        "height": 47
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_bestseller_16",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Best Sellers",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 24,
+        "y": 2202,
+        "width": 78,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_allproduct_18",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "All Products",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 24,
+        "y": 2270,
+        "width": 79,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_faq_19",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "FAQ",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 320,
+        "y": 2168,
+        "width": 27,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_shipping_20",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Shipping",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 320,
+        "y": 2202,
+        "width": 58,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_returns_21",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Returns",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 320,
+        "y": 2236,
+        "width": 51,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_contact_22",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Contact",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 320,
+        "y": 2270,
+        "width": 52,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_about_23",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "About",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 616,
+        "y": 2168,
+        "width": 39,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_sustainabi_24",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Sustainability",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 616,
+        "y": 2202,
+        "width": 88,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_careers_25",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Careers",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 616,
+        "y": 2236,
+        "width": 52,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_press_26",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > ul > li > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Press",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 616,
+        "y": 2270,
+        "width": 37,
+        "height": 21
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_privacy_30",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Privacy",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 1072,
+        "y": 2357,
+        "width": 46,
+        "height": 20
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_terms_31",
+      "selector": "button",
+      "fullPath": "#footer > div > div > div > button",
+      "tag": "button",
+      "type": "button",
+      "text": "Terms",
+      "attributes": {},
+      "componentPath": "components/store/Footer.tsx",
+      "componentName": "Footer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 1138,
+        "y": 2357,
+        "width": 38,
+        "height": 20
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_submit_32",
+      "selector": "button.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04",
+      "tag": "button",
+      "type": "button",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 1140,
+        "y": 20,
+        "width": 36,
+        "height": 36
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "label_interactive_fullname_33",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "Full Name",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 101,
+        "width": 372,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_johndoe_34",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "John Doe",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 124,
+        "width": 372,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "John Doe"
+    },
+    {
+      "id": "label_interactive_email_35",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "Email",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 187,
+        "width": 372,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_email_johnexampl_36",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "john@example.com",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "email"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 209,
+        "width": 372,
+        "height": 47
+      },
+      "inputType": "email",
+      "placeholder": "john@example.com"
+    },
+    {
+      "id": "label_interactive_streetaddr_37",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "Street Address",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 272,
+        "width": 372,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_123mainstr_38",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "123 Main Street",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 295,
+        "width": 372,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "123 Main Street"
+    },
+    {
+      "id": "label_interactive_city_39",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "City",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 358,
+        "width": 180,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_newyork_40",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "New York",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 380,
+        "width": 180,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "New York"
+    },
+    {
+      "id": "label_interactive_zipcode_41",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "ZIP Code",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 996,
+        "y": 358,
+        "width": 180,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_10001_42",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "10001",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 996,
+        "y": 380,
+        "width": 180,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "10001"
+    },
+    {
+      "id": "button_submit_continueto_43",
+      "selector": "button.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04",
+      "tag": "button",
+      "type": "button",
+      "text": "Continue to Payment",
+      "attributes": {
+        "type": "submit",
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 681,
+        "width": 372,
+        "height": 48
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_button_backtocart_44",
+      "selector": "button.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04",
+      "tag": "button",
+      "type": "button",
+      "text": "Back to Cart",
+      "attributes": {
+        "type": "button",
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#shipping",
+      "boundingBox": {
+        "x": 804,
+        "y": 737,
+        "width": 372,
+        "height": 44
+      },
+      "inputType": "button"
+    },
+    {
+      "id": "label_interactive_cardnumber_33",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "Card Number",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 804,
+        "y": 101,
+        "width": 372,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_4242424242_34",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "4242 4242 4242 4242",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 804,
+        "y": 124,
+        "width": 372,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "4242 4242 4242 4242"
+    },
+    {
+      "id": "label_interactive_expirydate_35",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "Expiry Date",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 804,
+        "y": 187,
+        "width": 180,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_mmyy_36",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "MM/YY",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 804,
+        "y": 209,
+        "width": 180,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "MM/YY"
+    },
+    {
+      "id": "label_interactive_cvc_37",
+      "selector": "label.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > label.jsx-532d500bfc6d5d04",
+      "tag": "label",
+      "type": "interactive",
+      "text": "CVC",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "unknown",
+      "componentName": "Unknown",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 996,
+        "y": 187,
+        "width": 180,
+        "height": 17
+      }
+    },
+    {
+      "id": "input_text_123_38",
+      "selector": "input.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > input.jsx-532d500bfc6d5d04",
+      "tag": "input",
+      "type": "input",
+      "text": "",
+      "attributes": {
+        "placeholder": "123",
+        "class": "jsx-532d500bfc6d5d04",
+        "type": "text"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 996,
+        "y": 209,
+        "width": 180,
+        "height": 47
+      },
+      "inputType": "text",
+      "placeholder": "123"
+    },
+    {
+      "id": "button_submit_pay10611_39",
+      "selector": "button.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04",
+      "tag": "button",
+      "type": "button",
+      "text": "Pay $106.11",
+      "attributes": {
+        "type": "submit",
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 804,
+        "y": 653,
+        "width": 372,
+        "height": 48
+      },
+      "inputType": "submit"
+    },
+    {
+      "id": "button_button_backtoship_40",
+      "selector": "button.jsx-532d500bfc6d5d04",
+      "fullPath": "main > div.jsx-532d500bfc6d5d04 > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04",
+      "tag": "button",
+      "type": "button",
+      "text": "Back to Shipping",
+      "attributes": {
+        "type": "button",
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "componentPath": "components/store/CartDrawer.tsx",
+      "componentName": "CartDrawer",
+      "pageUrl": "/store#payment",
+      "boundingBox": {
+        "x": 804,
+        "y": 708,
+        "width": 372,
+        "height": 44
+      },
+      "inputType": "button"
+    }
+  ],
+  "componentMap": {
+    "components/store/Header.tsx": [
+      "button_submit_newarrival_0",
+      "button_submit_men_1",
+      "button_submit_women_2",
+      "button_submit_sale_3",
+      "button_submit_4",
+      "button_submit_1_6"
+    ],
+    "unknown": [
+      "button_submit_explorecol_7",
+      "button_submit_32",
+      "label_interactive_fullname_33",
+      "label_interactive_email_35",
+      "label_interactive_streetaddr_37",
+      "label_interactive_city_39",
+      "label_interactive_zipcode_41",
+      "label_interactive_cardnumber_33",
+      "label_interactive_expirydate_35",
+      "label_interactive_cvc_37"
+    ],
+    "components/store/ProductGrid.tsx": [
+      "button_submit_addtocart_8",
+      "button_submit_viewallpro_12"
+    ],
+    "components/store/Footer.tsx": [
+      "input_email_enteryoure_13",
+      "button_submit_subscribe_14",
+      "button_submit_bestseller_16",
+      "button_submit_allproduct_18",
+      "button_submit_faq_19",
+      "button_submit_shipping_20",
+      "button_submit_returns_21",
+      "button_submit_contact_22",
+      "button_submit_about_23",
+      "button_submit_sustainabi_24",
+      "button_submit_careers_25",
+      "button_submit_press_26",
+      "button_submit_privacy_30",
+      "button_submit_terms_31"
+    ],
+    "components/store/CartDrawer.tsx": [
+      "input_text_johndoe_34",
+      "input_email_johnexampl_36",
+      "input_text_123mainstr_38",
+      "input_text_newyork_40",
+      "input_text_10001_42",
+      "button_submit_continueto_43",
+      "button_button_backtocart_44",
+      "input_text_4242424242_34",
+      "input_text_mmyy_36",
+      "input_text_123_38",
+      "button_submit_pay10611_39",
+      "button_button_backtoship_40"
+    ]
+  }
+}

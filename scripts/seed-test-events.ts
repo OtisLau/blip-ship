@@ -4,6 +4,7 @@
  */
 
 import { appendEvents } from '../lib/db';
+import type { AnalyticsEvent } from '../types/events';
 
 const now = Date.now();
 const hour = 60 * 60 * 1000;
@@ -19,7 +20,7 @@ const sessions = [
 ];
 
 async function seedEvents() {
-  const events: any[] = [];
+  const events: Partial<AnalyticsEvent>[] = [];
 
   // Simulate dead clicks on product images (6 users clicking images expecting them to work)
   for (let i = 0; i < 6; i++) {
@@ -100,7 +101,7 @@ async function seedEvents() {
     });
   }
 
-  await appendEvents(events);
+  await appendEvents(events as AnalyticsEvent[]);
   console.log(`✅ Seeded ${events.length} test events`);
   console.log('\nTest the API:');
   console.log('  curl http://localhost:3000/api/ui-issues | jq');

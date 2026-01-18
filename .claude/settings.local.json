@@ -27,7 +27,15 @@
       "mcp__ide__getDiagnostics",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git branch:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pkill:*)",
+      "Bash(pnpm add:*)",
+      "Bash(git checkout:*)",
+      "Bash(xargs:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm exec next lint:*)"
     ]
   }
 }

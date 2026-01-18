@@ -1,0 +1,279 @@
+{
+  "timestamp": "2026-01-17T18:34:00Z",
+  "task": "Vercel React Best Practices Optimization Analysis",
+  "files": [
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/app/dashboard/page.tsx",
+      "lines": [10, 33],
+      "relevance": "Client component with useEffect data fetching - convert to Server Component with streaming",
+      "priority": "CRITICAL",
+      "optimizationRules": [
+        "Prefer Server Components over client-side data fetching",
+        "Use Suspense boundaries for loading states",
+        "Eliminate request waterfalls"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/tracking/EventTracker.tsx",
+      "lines": [1, 830],
+      "relevance": "830-line heavy component blocking initial render - use dynamic import",
+      "priority": "CRITICAL",
+      "optimizationRules": [
+        "Dynamic import for large non-critical components",
+        "Defer initialization with ssr: false"
+      ],
+      "estimatedBundleReduction": "50KB"
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/store/ProductGrid.tsx",
+      "lines": [74, 84],
+      "relevance": "Using native <img> instead of Next.js Image component",
+      "priority": "CRITICAL",
+      "optimizationRules": [
+        "Use Next.js Image component for automatic optimization",
+        "Enable automatic WebP conversion",
+        "Implement responsive images with sizes"
+      ],
+      "estimatedImpact": "60-80% image size reduction"
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/context/CartContext.tsx",
+      "lines": [66, 82],
+      "relevance": "Context value not memoized, causing unnecessary re-renders across cart consumers",
+      "priority": "HIGH",
+      "optimizationRules": [
+        "Memoize context values with useMemo",
+        "Split contexts by update frequency",
+        "Memoize derived values (totalItems, totalPrice)"
+      ],
+      "estimatedImpact": "30-40% fewer re-renders"
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/app/store/page.tsx",
+      "lines": [11, 25],
+      "relevance": "Sequential awaits creating request waterfall",
+      "priority": "HIGH",
+      "optimizationRules": [
+        "Parallelize independent data fetching",
+        "Use Promise.allSettled for error-resilient fetching",
+        "Cache config data with Next.js cache()"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/store/CartDrawer.tsx",
+      "lines": [1, 567],
+      "relevance": "Large component (567 lines) loaded even when cart is closed",
+      "priority": "HIGH",
+      "optimizationRules": [
+        "Dynamic import for conditional components",
+        "Split checkout flow into micro-components",
+        "ssr: false for client-only UI"
+      ],
+      "estimatedBundleReduction": "35KB"
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/dashboard/index.ts",
+      "lines": [1, 4],
+      "relevance": "Barrel file export - potential for unnecessary bundling",
+      "priority": "MEDIUM",
+      "optimizationRules": [
+        "Remove barrel files",
+        "Use direct imports from specific files"
+      ],
+      "action": "DELETE - file not currently used but risky if adopted"
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/tracking/EventTracker.tsx",
+      "lines": [373, 826],
+      "relevance": "Massive useEffect with 12+ event listeners and sendEvent dependency",
+      "priority": "MEDIUM",
+      "optimizationRules": [
+        "Split complex useEffects into focused hooks",
+        "Use React 19 useEffectEvent for stable callbacks",
+        "Lazy register expensive handlers"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/dashboard/Heatmap.tsx",
+      "lines": [28, 108],
+      "relevance": "Canvas rendering in useEffect without debouncing",
+      "priority": "MEDIUM",
+      "optimizationRules": [
+        "Debounce expensive useEffect operations",
+        "Use requestAnimationFrame for smooth updates",
+        "Memoize drawing functions"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/app/api/analytics/route.ts",
+      "lines": [10, 26],
+      "relevance": "GET endpoint without caching headers",
+      "priority": "MEDIUM",
+      "optimizationRules": [
+        "Add Cache-Control headers to API routes",
+        "Implement revalidation strategy",
+        "Consider streaming for large datasets"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/components/store/CartDrawer.tsx",
+      "lines": [441, 449],
+      "relevance": "Native img tag in cart items",
+      "priority": "MEDIUM",
+      "optimizationRules": [
+        "Use Next.js Image component"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/context/ToastContext.tsx",
+      "lines": [19, 47],
+      "relevance": "Context value not memoized, setTimeout in state updater",
+      "priority": "MEDIUM",
+      "optimizationRules": [
+        "Memoize context value",
+        "Use refs for timeouts to prevent memory leaks"
+      ]
+    },
+    {
+      "path": "/Users/lukalavric/repos/blip-ship/app/layout.tsx",
+      "lines": [2, 5, 19],
+      "relevance": "Font loading already optimized with next/font - could add display: swap",
+      "priority": "LOW",
+      "optimizationRules": [
+        "Add display: swap for better UX during font load"
+      ]
+    }
+  ],
+  "symbols": [
+    {
+      "name": "Dashboard",
+      "location": "/Users/lukalavric/repos/blip-ship/app/dashboard/page.tsx:10",
+      "type": "component",
+      "purpose": "Client component fetching analytics with useEffect",
+      "optimization": "Convert to Server Component"
+    },
+    {
+      "name": "EventTracker",
+      "location": "/Users/lukalavric/repos/blip-ship/components/tracking/EventTracker.tsx:339",
+      "type": "component",
+      "purpose": "830-line analytics tracking wrapper",
+      "optimization": "Dynamic import with ssr: false"
+    },
+    {
+      "name": "CartProvider",
+      "location": "/Users/lukalavric/repos/blip-ship/context/CartContext.tsx:28",
+      "type": "context",
+      "purpose": "Cart state management",
+      "optimization": "Memoize value, split contexts"
+    },
+    {
+      "name": "useCart",
+      "location": "/Users/lukalavric/repos/blip-ship/context/CartContext.tsx:89",
+      "type": "hook",
+      "purpose": "Access cart context",
+      "consumers": [
+        "/Users/lukalavric/repos/blip-ship/components/store/Header.tsx:7",
+        "/Users/lukalavric/repos/blip-ship/components/store/ProductGrid.tsx:13",
+        "/Users/lukalavric/repos/blip-ship/components/store/CartDrawer.tsx:7"
+      ]
+    },
+    {
+      "name": "getConfig",
+      "location": "/Users/lukalavric/repos/blip-ship/lib/db.ts:105",
+      "type": "function",
+      "purpose": "Load site configuration from JSON",
+      "optimization": "Add caching with Next.js cache()"
+    },
+    {
+      "name": "aggregateEvents",
+      "location": "/Users/lukalavric/repos/blip-ship/lib/analytics.ts:11",
+      "type": "function",
+      "purpose": "Transform raw events into metrics",
+      "usage": "/Users/lukalavric/repos/blip-ship/app/api/analytics/route.ts:16"
+    }
+  ],
+  "commits": [
+    {
+      "hash": "f6593a2",
+      "message": "Update tsconfig.json for Next.js 16 compatibility",
+      "relevance": "Recent upgrade to Next.js 16 - good baseline for optimizations"
+    },
+    {
+      "hash": "2cde287",
+      "message": "Fix TypeScript errors for React 19 compatibility",
+      "relevance": "React 19 enables useEffectEvent (upcoming) - can leverage for EventTracker"
+    },
+    {
+      "hash": "27197eb",
+      "message": "Add secure e-commerce store with security improvements",
+      "relevance": "Store page with server component pattern - good reference"
+    }
+  ],
+  "dependencies": {
+    "external": [
+      {
+        "name": "next",
+        "version": "16.1.3",
+        "usage": "App Router framework"
+      },
+      {
+        "name": "react",
+        "version": "19.0.0",
+        "usage": "UI library - enables useEffectEvent (future)"
+      },
+      {
+        "name": "isomorphic-dompurify",
+        "version": "2.35.0",
+        "usage": "XSS sanitization - good security practice"
+      }
+    ],
+    "internal": [
+      {
+        "module": "@/context/CartContext",
+        "consumers": 3,
+        "optimization": "High re-render impact"
+      },
+      {
+        "module": "@/components/tracking/EventTracker",
+        "consumers": 1,
+        "optimization": "Bundle size impact"
+      },
+      {
+        "module": "@/lib/db",
+        "consumers": 2,
+        "optimization": "Caching opportunity"
+      }
+    ]
+  },
+  "optimizationSummary": {
+    "totalFiles": 23,
+    "criticalIssues": 3,
+    "highPriorityIssues": 3,
+    "mediumPriorityIssues": 6,
+    "lowPriorityIssues": 1,
+    "estimatedBundleReduction": "110KB",
+    "estimatedReRenderReduction": "30-40%",
+    "estimatedImageSizeReduction": "60-80%",
+    "projectedMetricsImprovement": {
+      "FCP": "-400ms",
+      "LCP": "-800ms",
+      "TTI": "-600ms",
+      "CLS": "Improved"
+    }
+  },
+  "openQuestions": [
+    "Is real-time analytics critical? Could replace polling with SSE/WebSocket",
+    "Are there analytics feature flags to conditionally load EventTracker?",
+    "What's the CDN strategy for product images? Could use Vercel Image Optimization",
+    "Is the store page data cacheable? Could add ISR with revalidation",
+    "Are there plans to add more dashboard visualizations? Could extract into separate route"
+  ],
+  "nextActions": [
+    "Run Vercel React Best Practices skill on Dashboard page for detailed conversion guide",
+    "Implement dynamic import for EventTracker - quick win",
+    "Replace <img> tags with <Image> component in ProductGrid and CartDrawer",
+    "Add useMemo to CartContext value",
+    "Parallelize data fetching in Store page",
+    "Set up bundle analyzer to measure improvements"
+  ]
+}

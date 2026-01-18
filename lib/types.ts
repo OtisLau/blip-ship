@@ -95,6 +95,8 @@ export interface SiteConfig {
   id: string;
   version: number;
   status: 'live' | 'preview';
+  ownerEmail?: string;
+  storeName?: string;
 
   hero: {
     headline: string;
@@ -146,6 +148,7 @@ export interface Suggestion {
   id: string;
   createdAt: number;
   status: 'pending' | 'accepted' | 'rejected';
+  version?: string; // Optional version string for UI display
 
   analysis: {
     summary: string;
