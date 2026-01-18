@@ -9,6 +9,7 @@ export type EventType =
   | 'section_view'
   | 'add_to_cart'
   | 'checkout_start'
+  | 'checkout_abandon'    // User left during checkout (frustration signal)
   | 'purchase'
   | 'bounce'
   | 'rapid_scroll'
@@ -29,6 +30,8 @@ export type EventType =
   | 'scroll_reversal'     // User scrolling up and down (confusion)
   | 'form_focus'          // User focused on a form field
   | 'form_blur'           // User left a form field
+  | 'slow_form_fill'      // Form field took too long (user struggling)
+  | 'form_error'          // Form validation error shown
   | 'image_click'         // User clicked on an image
   | 'link_hover'          // User hovered on a link
   | 'keyboard_shortcut'   // User used keyboard shortcut
@@ -182,4 +185,105 @@ export interface AggregatedAnalytics {
     deadClicks: HeatmapPoint[];
   };
   scrollData: ScrollData;
+}
+
+// Re-export AnalyticsEvent from types/events for convenience
+import { AnalyticsEvent as EventsAnalyticsEvent } from '../types/events';
+export type { EventsAnalyticsEvent };
+
+// UI Issue Types for Self-Healing System
+export type IssueStatus =
+  | 'detected'
+  | 'fix_generated'
+  | 'preview_deployed'
+  | 'email_sent'
+  | 'approved'
+  | 'rejected'
+  | 'ignored';
+
+export type IssueCategory = 'frustration' | 'missing_feature' | 'conversion_blocker';
+export type IssueSeverity = 'low' | 'medium' | 'high' | 'critical';
+
+export interface UIIssue {
+  id: string;
+  status: IssueStatus;
+  detectedAt: number;
+  lastOccurrence: number;
+
+  // Problem classification
+  category: IssueCategory;
+  severity: IssueSeverity;
+  patternId: string;
+
+  // Location
+  elementSelector: string;
+  sectionId?: string;
+  componentPath: string;
+  componentName: string;
+
+  // Evidence
+  eventCount: number;
+  uniqueSessions: number;
+  sampleEvents: EventsAnalyticsEvent[];
+
+  // Human-readable descriptions
+  problemStatement: string;
+  userIntent: string;
+  currentOutcome: string;
+  suggestedFix: string;
+
+  // Fix details (populated after LLM generates fix)
+  fix?: {
+    branch: string;
+    previewUrl: string;
+    diff: string;
+    modifiedFiles: Array<{ path: string; content: string }>;
+    explanation: string;
+    generatedAt: number;
+  };
+
+  // Email tracking
+  emailSentAt?: number;
+  approvedAt?: number;
+  approvedBy?: string;
+  ignoredAt?: number;
+  ignoreUntil?: number;
+}
+
+// Pattern rule for issue detection
+export interface PatternRule {
+  id: string;
+  name: string;
+  category: IssueCategory;
+
+  // What events to look for (using string to be compatible with both EventType definitions)
+  eventTypes: string[];
+
+  // How to aggregate
+  groupBy: 'elementSelector' | 'sectionId' | 'componentPath';
+  timeWindowHours: number;
+  minOccurrences: number;
+  minUniqueSessions: number;
+
+  // Severity calculation
+  severityThresholds: {
+    low: number;
+    medium: number;
+    high: number;
+    critical: number;
+  };
+
+  // Output templates
+  problemTemplate: string;
+  intentTemplate: string;
+  outcomeTemplate: string;
+  fixTemplate: string;
+}
+
+// Component mapping for selector → source code resolution
+export interface ComponentMapping {
+  selector: string;
+  componentPath: string;
+  componentName: string;
+  dataAttributes: string[];
 }
