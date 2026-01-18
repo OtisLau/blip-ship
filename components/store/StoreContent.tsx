@@ -32,22 +32,22 @@ export function StoreContent({ config }: StoreContentProps) {
     <EventTracker>
       <CartProvider>
         <CompareProvider>
-        <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
-          <Header />
-          <section data-section="hero">
-            <Hero config={config.hero} />
-          </section>
-          <section data-section="products">
-            <ProductGrid config={config.products} />
-          </section>
-          <section data-section="testimonials">
-            <Testimonials config={config.testimonials} />
-          </section>
-          <section data-section="footer">
-            <Footer config={config.footer} />
-          </section>
-          <CartDrawer />
-        </main>
+          <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+            <Header />
+            <section data-section="hero">
+              <Hero config={config.hero} />
+            </section>
+            <section data-section="products">
+              <ProductGrid config={config.products} />
+            </section>
+            <section data-section="testimonials">
+              <Testimonials config={config.testimonials} />
+            </section>
+            <section data-section="footer">
+              <Footer config={config.footer} />
+            </section>
+            <CartDrawer />
+          </main>
         </CompareProvider>
       </CartProvider>
     </EventTracker>

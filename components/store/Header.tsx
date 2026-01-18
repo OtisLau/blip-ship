@@ -45,11 +45,12 @@ export function Header() {
               </span>
             </div>
 
-            {/* Nav */}
+            {/* Nav - Men/Women buttons don't filter yet. Rage click 3x to trigger LLM fix! */}
             <nav style={{ display: 'flex', gap: '32px' }}>
               {['New Arrivals', 'Men', 'Women'].map((item) => (
                 <button
                   key={item}
+                  data-nav-item={item.toLowerCase().replace(' ', '-')}
                   onClick={() => scrollToSection('products')}
                   style={{
                     color: '#111',

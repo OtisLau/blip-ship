@@ -126,6 +126,11 @@ export interface AnalyticsEvent {
   // Page context
   pageUrl: string;
   viewport: Viewport;
+
+  // Product context (for e-commerce events)
+  productId?: string;
+  productName?: string;
+  productPrice?: number;
 }
 
 // Session state interface (adapted from 0-1's AppState)

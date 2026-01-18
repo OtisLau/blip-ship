@@ -985,18 +985,25 @@ export async function analyzeDeadClicksForActionMapping(
   console.log('\n[ANALYZE] Starting analyzeDeadClicksForActionMapping...');
   console.log('[ANALYZE] Options:', options);
   
-  const enrichedEvents = enrichDeadClickEvents(events);
+  // Only consider events from the last 30 seconds to avoid counting old historical data
+  const RECENT_WINDOW_MS = 30 * 1000;
+  const now = Date.now();
+  const recentEvents = events.filter(e => (now - e.timestamp) < RECENT_WINDOW_MS);
+  console.log(`[ANALYZE] Filtering to recent events (last 30s): ${recentEvents.length}/${events.length} events`);
+  
+  const enrichedEvents = enrichDeadClickEvents(recentEvents);
   console.log('[ANALYZE] Enriched events count:', enrichedEvents.length);
 
   // Filter to product images with 3+ rapid clicks (user-specified threshold)
-  const RAPID_CLICK_THRESHOLD = 3;
+  // Note: rapidClicks counts transitions, so 3 rapid clicks = 2 transitions
+  const RAPID_CLICK_THRESHOLD = 2; // 2 rapid transitions = 3 rapid clicks
   const significantEvents = enrichedEvents.filter(
     (e) => (e.elementRole === 'product-image' || e.elementType === 'img') && e.rapidClicks >= RAPID_CLICK_THRESHOLD
   );
 
-  console.log(`[ANALYZE] Product images with ${RAPID_CLICK_THRESHOLD}+ rapid clicks:`, significantEvents.length);
+  console.log(`[ANALYZE] Product images with 3+ rapid clicks (${RAPID_CLICK_THRESHOLD}+ transitions):`, significantEvents.length);
   significantEvents.forEach((e, i) => {
-    console.log(`  [${i}] ${e.elementRole} - clicks: ${e.clickCount}, rapid: ${e.rapidClicks}, sessions: ${e.uniqueSessions}`);
+    console.log(`  [${i}] ${e.elementRole} - total clicks: ${e.clickCount}, rapid transitions: ${e.rapidClicks} (=${e.rapidClicks + 1} rapid clicks), sessions: ${e.uniqueSessions}`);
   });
 
   if (significantEvents.length === 0) {
@@ -1164,6 +1171,7 @@ export async function analyzeDeadClicksComprehensive(
 /**
  * Quick check if dead clicks on product images warrant attention
  * Triggers when 3+ rapid dead clicks are detected on product images
+ * Only considers events from the last 30 seconds to avoid counting old historical data
  */
 export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
   hasIssue: boolean;
@@ -1175,17 +1183,25 @@ export function hasSignificantDeadClickPattern(events: AnalyticsEvent[]): {
     rapidClicks: number;
   };
 } {
-  const enriched = enrichDeadClickEvents(events);
+  // Only consider events from the last 30 seconds
+  const RECENT_WINDOW_MS = 30 * 1000;
+  const now = Date.now();
+  const recentEvents = events.filter(e => (now - e.timestamp) < RECENT_WINDOW_MS);
+  
+  console.log(`[PATTERN-CHECK] Filtering to recent events (last 30s): ${recentEvents.length}/${events.length} events`);
+  
+  const enriched = enrichDeadClickEvents(recentEvents);
   
   // Filter for product images with 3+ rapid clicks (user-specified threshold)
-  const RAPID_CLICK_THRESHOLD = 3;
+  // Note: rapidClicks counts transitions, so 3 rapid clicks = 2 transitions
+  const RAPID_CLICK_THRESHOLD = 2; // 2 rapid transitions = 3 rapid clicks
   const significant = enriched.filter(
     (e) => (e.elementRole === 'product-image' || e.elementType === 'img') && e.rapidClicks >= RAPID_CLICK_THRESHOLD
   );
   
   console.log(`[PATTERN-CHECK] Checking for significant dead click pattern...`);
   console.log(`  - Total enriched events: ${enriched.length}`);
-  console.log(`  - Product images with ${RAPID_CLICK_THRESHOLD}+ rapid clicks: ${significant.length}`);
+  console.log(`  - Product images with 3+ rapid clicks (${RAPID_CLICK_THRESHOLD}+ transitions): ${significant.length}`);
 
   if (significant.length === 0) {
     const totalRapidClicks = enriched.reduce((sum, e) => sum + e.rapidClicks, 0);
