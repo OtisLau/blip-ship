@@ -1,6 +1,6 @@
 /**
- * POST /api/events - Receive and persist tracking events
- * As specified in blip-ship CRO-AGENT-MASTER-DOC.md
+ * POST /api/pulse - Receive and persist tracking events
+ * Renamed from /api/events to avoid ad blocker detection
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -9,7 +9,7 @@ import { detectIssues } from '../../../lib/issue-detector';
 import type { AnalyticsEvent } from '../../../types/events';
 
 // Config for auto-detection trigger
-const AUTO_DETECT_THRESHOLD = 50; // Trigger after this many events
+const AUTO_DETECT_THRESHOLD = 10; // Lowered from 50 for faster demo feedback
 const AUTO_DETECT_COOLDOWN = 5 * 60 * 1000; // Don't re-run within 5 minutes
 
 // Track last detection time (in-memory for simplicity)

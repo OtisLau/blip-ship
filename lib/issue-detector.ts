@@ -8,6 +8,7 @@ import { UIIssue, PatternRule, IssueCategory, IssueSeverity } from './types';
 import { AnalyticsEvent } from '../types/events';
 import { resolveComponent, getComponentContext } from './component-registry';
 import { readEvents } from './db';
+import { loadElementIndex, resolveComponentFromEvent, IndexedElement } from './element-indexer';
 
 /**
  * Pattern rules for detecting UI issues
@@ -322,6 +323,12 @@ export async function detectIssues(
 ): Promise<UIIssue[]> {
   const allEvents = await readEvents();
 
+  // Load element index for accurate component resolution
+  const elementIndex = await loadElementIndex();
+  if (elementIndex) {
+    console.log(`📋 [Detector] Using element index with ${elementIndex.elements.length} elements`);
+  }
+
   // Filter events to time window
   const cutoffTime = Date.now() - (timeWindowHours * 60 * 60 * 1000);
   const recentEvents = allEvents.filter(e => e.timestamp >= cutoffTime);
@@ -351,12 +358,39 @@ export async function detectIssues(
       if (events.length < rule.minOccurrences) continue;
       if (uniqueSessions < rule.minUniqueSessions) continue;
 
-      // Resolve component - try fullPath first, then selector
+      // Resolve component - try element index first, then component registry
       const sampleEvent = events[0];
       const fullPath = (sampleEvent as Record<string, unknown>).elementContext
         ? ((sampleEvent as Record<string, unknown>).elementContext as Record<string, unknown>).fullPath as string
         : undefined;
-      const component = resolveComponent(fullPath || key, sampleEvent.elementText);
+
+      // Try element index first (more accurate)
+      let componentPath = 'unknown';
+      let componentName = 'Unknown';
+      let matchedElementId: string | undefined;
+
+      if (elementIndex) {
+        const resolved = resolveComponentFromEvent(elementIndex, {
+          elementSelector: fullPath || key,
+          elementText: sampleEvent.elementText,
+          placeholder: (sampleEvent as Record<string, unknown>).placeholder as string | undefined,
+        });
+        if (resolved.componentPath !== 'unknown') {
+          componentPath = resolved.componentPath;
+          componentName = resolved.componentName;
+          matchedElementId = resolved.elementId;
+          console.log(`🎯 [Indexer] Matched event to ${componentName} (${matchedElementId})`);
+        }
+      }
+
+      // Fallback to component registry
+      if (componentPath === 'unknown') {
+        const component = resolveComponent(fullPath || key, sampleEvent.elementText);
+        if (component) {
+          componentPath = component.componentPath;
+          componentName = component.componentName;
+        }
+      }
 
       // Calculate severity
       const severity = calculateSeverity(events.length, rule.severityThresholds);
@@ -379,8 +413,8 @@ export async function detectIssues(
 
         elementSelector: key,
         sectionId: sampleEvent.pageUrl,
-        componentPath: component?.componentPath || 'unknown',
-        componentName: component?.componentName || 'Unknown',
+        componentPath,
+        componentName,
 
         eventCount: events.length,
         uniqueSessions,

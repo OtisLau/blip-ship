@@ -34,6 +34,8 @@ interface PartialEvent {
   y?: number;
   elementSelector?: string;
   elementText?: string;
+  elementId?: string; // Indexed element ID for precise targeting
+  elementPlaceholder?: string; // For form inputs
   scrollDepth?: number;
   clickCount?: number;
   sectionId?: string;
@@ -47,6 +49,95 @@ interface PartialEvent {
   elementContext?: ElementContext;
   pageContext?: PageContext;
   frustrationReason?: string; // Human-readable why this is a problem
+}
+
+// Indexed element from element-index.json
+interface IndexedElement {
+  id: string;
+  selector: string;
+  fullPath: string;
+  tag: string;
+  text: string;
+  placeholder?: string;
+  componentPath: string;
+  componentName: string;
+}
+
+// Element index cache
+let elementIndexCache: IndexedElement[] | null = null;
+let elementIndexLoading = false;
+
+// Load element index from API
+async function loadElementIndex(): Promise<IndexedElement[]> {
+  if (elementIndexCache) return elementIndexCache;
+  if (elementIndexLoading) {
+    // Wait for existing load to complete
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return elementIndexCache || [];
+  }
+
+  elementIndexLoading = true;
+  try {
+    const response = await fetch('/api/index-elements');
+    if (response.ok) {
+      const data = await response.json();
+      elementIndexCache = data.elements || [];
+      console.log(`📋 [Tracker] Loaded ${elementIndexCache.length} indexed elements`);
+    } else {
+      elementIndexCache = [];
+    }
+  } catch {
+    console.warn('[Tracker] Could not load element index');
+    elementIndexCache = [];
+  }
+  elementIndexLoading = false;
+  return elementIndexCache;
+}
+
+// Match an element to an indexed element
+function matchToIndexedElement(
+  el: HTMLElement,
+  fullPath: string
+): { id: string; componentPath: string; componentName: string } | null {
+  if (!elementIndexCache || elementIndexCache.length === 0) return null;
+
+  const selector = getSelector(el);
+  const text = (el.textContent || '').trim().slice(0, 50).toLowerCase();
+  const placeholder = (el as HTMLInputElement).placeholder || '';
+
+  // Try exact fullPath match first
+  for (const indexed of elementIndexCache) {
+    if (indexed.fullPath === fullPath) {
+      return { id: indexed.id, componentPath: indexed.componentPath, componentName: indexed.componentName };
+    }
+  }
+
+  // Try placeholder match for inputs
+  if (placeholder) {
+    for (const indexed of elementIndexCache) {
+      if (indexed.placeholder && indexed.placeholder.toLowerCase() === placeholder.toLowerCase()) {
+        return { id: indexed.id, componentPath: indexed.componentPath, componentName: indexed.componentName };
+      }
+    }
+  }
+
+  // Try text + selector match
+  for (const indexed of elementIndexCache) {
+    const indexedText = indexed.text.toLowerCase().slice(0, 50);
+    if (indexedText && text && indexedText === text && indexed.selector === selector) {
+      return { id: indexed.id, componentPath: indexed.componentPath, componentName: indexed.componentName };
+    }
+  }
+
+  // Try selector match with same tag
+  const tag = el.tagName.toLowerCase();
+  for (const indexed of elementIndexCache) {
+    if (indexed.tag === tag && indexed.selector === selector) {
+      return { id: indexed.id, componentPath: indexed.componentPath, componentName: indexed.componentName };
+    }
+  }
+
+  return null;
 }
 
 // Session behavior tracking for intent inference
@@ -515,14 +606,14 @@ function flushEvents() {
     ...event,
   }));
 
-  console.log(`📤 [Flush] Sending ${events.length} event(s) to server`, events.map(e => e.type));
+  console.log(`📤 [Flush] Sending ${events.length} event(s) to /api/pulse`, events.map(e => e.type));
 
   // Use sendBeacon for reliability (works even if page is closing)
-  const success = navigator.sendBeacon('/api/events', JSON.stringify({ events }));
+  const success = navigator.sendBeacon('/api/pulse', JSON.stringify({ events }));
 
   // Fallback to fetch if sendBeacon fails
   if (!success) {
-    fetch('/api/events', {
+    fetch('/api/pulse', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ events }),
@@ -569,12 +660,58 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
   const lastClickedElement = useRef<string | null>(null);
   const lastClickTime = useRef<number>(0);
 
-  // Send event helper
-  const sendEvent = useCallback((event: PartialEvent) => {
-    queueEvent(event);
+  // Auto-fix timer: triggers CRO flow 10 seconds after first interaction
+  const autoFixTimer = useRef<NodeJS.Timeout | null>(null);
+  const autoFixTriggered = useRef(false);
+
+  const startAutoFixTimer = useCallback(() => {
+    if (autoFixTimer.current || autoFixTriggered.current) return;
+
+    console.log('⏱️ [AutoFix] Starting 10-second collection window...');
+    autoFixTimer.current = setTimeout(async () => {
+      autoFixTriggered.current = true;
+      console.log('⏱️ [AutoFix] Collection complete. Triggering CRO flow...');
+
+      // Flush any remaining events
+      flushEvents();
+
+      // Small delay to ensure events are processed
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Detect issues then trigger fix
+      try {
+        console.log('🔍 [AutoFix] Detecting issues...');
+        const detectRes = await fetch('/api/detect-issues');
+        const detectData = await detectRes.json();
+        console.log('🔍 [AutoFix] Detection result:', detectData);
+
+        if (detectData.issuesFound > 0) {
+          console.log('🤖 [AutoFix] Issues found! Triggering fix flow...');
+          const fixRes = await fetch('/api/analyze-and-fix', { method: 'POST' });
+          const fixData = await fixRes.json();
+          console.log('🤖 [AutoFix] Fix result:', fixData);
+        } else {
+          console.log('✅ [AutoFix] No issues detected.');
+        }
+      } catch (err) {
+        console.error('❌ [AutoFix] Error:', err);
+      }
+    }, 10000);
   }, []);
 
+  // Send event helper
+  const sendEvent = useCallback((event: PartialEvent) => {
+    // Start auto-fix timer on first real interaction
+    if (event.type !== 'page_view') {
+      startAutoFixTimer();
+    }
+    queueEvent(event);
+  }, [startAutoFixTimer]);
+
   useEffect(() => {
+    // Load element index for precise element matching
+    loadElementIndex().catch(() => {});
+
     // Track page view on mount
     sendEvent({ type: 'page_view' });
     pageEntryTime.current = Date.now();
@@ -608,6 +745,10 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
         }
       }
 
+      // Get full path for element matching
+      const fullPath = getFullPath(target);
+      const indexedMatch = matchToIndexedElement(target, fullPath);
+
       // Basic click event
       const clickEvent: PartialEvent = {
         type: 'click',
@@ -615,10 +756,17 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
         y: e.clientY,
         elementSelector: getSelector(target),
         elementText: target.textContent?.slice(0, 100)?.trim() || undefined,
+        elementId: indexedMatch?.id,
+        elementPlaceholder: (target as HTMLInputElement).placeholder || undefined,
         productId,
         productName,
         productPrice,
       };
+
+      // Log indexed element match for debugging
+      if (indexedMatch) {
+        console.log(`🎯 [Matched] ${indexedMatch.id} → ${indexedMatch.componentName}`);
+      }
 
       // === E-COMMERCE BEHAVIOR DETECTION ===
 
@@ -884,7 +1032,7 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       }
 
       if (eventsToSend.length > 0) {
-        navigator.sendBeacon('/api/events', JSON.stringify({ events: eventsToSend }));
+        navigator.sendBeacon('/api/pulse', JSON.stringify({ events: eventsToSend }));
       }
     };
 
@@ -1023,6 +1171,9 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       const target = e.target as HTMLElement;
       if (target.matches('input, textarea, select')) {
         const selector = getSelector(target);
+        const fullPath = getFullPath(target);
+        const indexedMatch = matchToIndexedElement(target, fullPath);
+
         formFieldStartTime.current.set(selector, Date.now());
 
         // Detect if this is a checkout form
@@ -1032,11 +1183,19 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
           sendEvent({ type: 'checkout_start' });
         }
 
+        const placeholder = (target as HTMLInputElement).placeholder;
+
         sendEvent({
           type: 'form_focus',
           elementSelector: selector,
-          elementText: (target as HTMLInputElement).placeholder || target.getAttribute('name') || undefined,
+          elementText: placeholder || target.getAttribute('name') || undefined,
+          elementId: indexedMatch?.id,
+          elementPlaceholder: placeholder || undefined,
         });
+
+        if (indexedMatch) {
+          console.log(`✏️ [Form Focus] ${indexedMatch.id} → ${indexedMatch.componentName}`);
+        }
       }
     };
 
@@ -1045,7 +1204,10 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       const target = e.target as HTMLElement;
       if (target.matches('input, textarea, select')) {
         const selector = getSelector(target);
+        const fullPath = getFullPath(target);
+        const indexedMatch = matchToIndexedElement(target, fullPath);
         const value = (target as HTMLInputElement).value;
+        const placeholder = (target as HTMLInputElement).placeholder;
         const startTime = formFieldStartTime.current.get(selector);
 
         // Calculate time spent on field
@@ -1060,6 +1222,8 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
               type: 'slow_form_fill',
               elementSelector: selector,
               elementText: `Took ${Math.round(timeSpent / 1000)}s to fill`,
+              elementId: indexedMatch?.id,
+              elementPlaceholder: placeholder || undefined,
             });
           }
         }
@@ -1068,6 +1232,8 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
           type: 'form_blur',
           elementSelector: selector,
           elementText: value ? `[filled: ${value.length} chars, ${Math.round(timeSpent / 1000)}s]` : '[empty]',
+          elementId: indexedMatch?.id,
+          elementPlaceholder: placeholder || undefined,
         });
       }
     };

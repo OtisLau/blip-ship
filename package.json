@@ -17,13 +17,15 @@
     "clean": "rm -rf .next out node_modules/.cache"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@google/generative-ai": "^0.24.1",
     "@sendgrid/mail": "^8.1.6",
     "isomorphic-dompurify": "^2.35.0",
     "next": "^16.1.3",
     "playwright": "^1.57.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-"swr": "^2.3.8",
+    "swr": "^2.3.8",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
