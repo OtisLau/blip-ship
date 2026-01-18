@@ -26,25 +26,32 @@ export interface StoredFix {
 
 const FIXES_FILE = path.join(process.cwd(), 'data', 'fixes.json');
 
-// In-memory cache
+// In-memory cache with timestamp for invalidation
 let fixesCache: Map<string, StoredFix> = new Map();
-let initialized = false;
+let cacheTimestamp = 0;
 
 /**
  * Initialize the store by loading from file
+ * Always reloads if file is newer than cache
  */
 async function initStore(): Promise<void> {
-  if (initialized) return;
-
   try {
-    const data = await fs.readFile(FIXES_FILE, 'utf-8');
-    const fixes: StoredFix[] = JSON.parse(data);
-    fixesCache = new Map(fixes.map((f) => [f.id, f]));
+    const stats = await fs.stat(FIXES_FILE);
+    const fileModTime = stats.mtimeMs;
+
+    // Reload if file is newer than our cache
+    if (fileModTime > cacheTimestamp) {
+      const data = await fs.readFile(FIXES_FILE, 'utf-8');
+      const fixes: StoredFix[] = JSON.parse(data);
+      fixesCache = new Map(fixes.map((f) => [f.id, f]));
+      cacheTimestamp = Date.now();
+    }
   } catch {
     // File doesn't exist yet, that's ok
-    fixesCache = new Map();
+    if (fixesCache.size === 0) {
+      fixesCache = new Map();
+    }
   }
-  initialized = true;
 }
 
 /**
@@ -53,6 +60,7 @@ async function initStore(): Promise<void> {
 async function persistStore(): Promise<void> {
   const fixes = Array.from(fixesCache.values());
   await fs.writeFile(FIXES_FILE, JSON.stringify(fixes, null, 2));
+  cacheTimestamp = Date.now(); // Update cache timestamp after write
 }
 
 /**

@@ -198,11 +198,32 @@ export async function POST(request: NextRequest) {
     // 7. Create branch and commit
     log('Creating fix branch...');
     const originalBranch = await gitCommand('rev-parse --abbrev-ref HEAD');
-    const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const timestamp = Date.now().toString(36); // Base36 timestamp for uniqueness
     const shortId = identity.state.slice(0, 8);
     const branchName = `fix/identity-${shortId}-${timestamp}`;
 
     await gitCommand('fetch origin main');
+
+    // Clean up any existing local branch with similar name pattern
+    try {
+      const existingBranches = await gitCommand('branch --list "fix/identity-*"');
+      const branchesToDelete = existingBranches
+        .split('\n')
+        .map(b => b.trim().replace('* ', ''))
+        .filter(b => b && b !== originalBranch);
+
+      for (const branch of branchesToDelete) {
+        try {
+          await gitCommand(`branch -D ${branch}`);
+          log(`Cleaned up old branch: ${branch}`);
+        } catch {
+          // Branch might be in use or already deleted
+        }
+      }
+    } catch {
+      // No existing branches to clean up
+    }
+
     await gitCommand(`checkout -b ${branchName} origin/main`);
     log(`Created branch: ${branchName}`);
 
