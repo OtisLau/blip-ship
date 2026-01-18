@@ -239,6 +239,7 @@ export function ProductGrid({ config }: ProductGridProps) {
                 }}
                 onMouseEnter={() => setHoveredId(product.id)}
                 onMouseLeave={() => setHoveredId(null)}
+                onClick={() => setSelectedProduct(product)}
               >
                 {/* Product Image - NOT CLICKABLE (creates dead click frustration) */}
                 <div
@@ -259,6 +260,7 @@ export function ProductGrid({ config }: ProductGridProps) {
                       transition: 'transform 0.5s ease',
                       transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
                       filter: isSoldOut ? 'grayscale(40%)' : 'none',
+                      cursor: 'pointer',
                     }}
                   />
 
