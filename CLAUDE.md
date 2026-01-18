@@ -1,6 +1,6 @@
 # CLAUDE.md - Blip Ship Architecture Documentation
 
-> **Last Updated:** 2026-01-17
+> **Last Updated:** 2026-01-18
 > **Purpose:** Architectural reference for future Claude sessions and new developers
 
 This document provides a comprehensive technical overview of the Blip Ship CRO Agent system, focusing on implementation details, design decisions, and the complete fix approval workflow.
@@ -10,11 +10,12 @@ This document provides a comprehensive technical overview of the Blip Ship CRO A
 ## Table of Contents
 
 1. [CRO Fix Flow Architecture](#cro-fix-flow-architecture)
-2. [Component Reference](#component-reference)
-3. [Environment Configuration](#environment-configuration)
-4. [Roadblocks & Solutions](#roadblocks--solutions)
-5. [Testing & Debugging](#testing--debugging)
-6. [Future Enhancements](#future-enhancements)
+2. [AI-Powered Issue Detection & Fix Flow](#ai-powered-issue-detection--fix-flow)
+3. [Component Reference](#component-reference)
+4. [Environment Configuration](#environment-configuration)
+5. [Roadblocks & Solutions](#roadblocks--solutions)
+6. [Testing & Debugging](#testing--debugging)
+7. [Future Enhancements](#future-enhancements)
 
 ---
 
@@ -211,6 +212,183 @@ The CRO Fix Flow is an end-to-end automated system that detects website optimiza
 
 ---
 
+## AI-Powered Issue Detection & Fix Flow
+
+### Overview
+
+The AI-powered flow provides real-time detection of UI/UX issues based on user behavior events, with automated code fix generation using a two-stage AI pipeline (Gemini for analysis, Claude for code generation).
+
+### Complete AI Flow Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  1. EVENT TRACKING: components/tracking/EventTracker.tsx            │
+│     - Captures user interactions (clicks, scrolls, form events)     │
+│     - Detects frustration signals (rage clicks, dead clicks)        │
+│     - Sends batched events to /api/pulse                            │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  2. EVENT INGESTION: POST /api/pulse                                │
+│     - Persists events to data/events.json                           │
+│     - Auto-triggers issue detection at threshold (10 events)        │
+│     - 5-minute cooldown between detections                          │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  3. ISSUE DETECTION: lib/issue-detector.ts                          │
+│     - Pattern-based analysis of event streams                       │
+│     - Categories: frustration, missing_feature, conversion_blocker  │
+│     - Severity levels: low, medium, high, critical                  │
+│     - Outputs: UIIssue objects with component paths                 │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  4. ELEMENT INDEXING: POST /api/index-elements                      │
+│     - Playwright crawls site pages                                  │
+│     - Indexes all interactable elements (buttons, inputs, links)    │
+│     - Maps elements to component files                              │
+│     - Output: data/element-index.json                               │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  5. AI ANALYSIS: POST /api/analyze-and-fix                          │
+│     ┌─────────────────────────────────────────────────────────────┐ │
+│     │  5a. GEMINI 2.0 FLASH: lib/gemini-service.ts                │ │
+│     │      - Analyzes top 5 issues by severity                    │ │
+│     │      - Reads component source code for context              │ │
+│     │      - Uses element index for precise targeting             │ │
+│     │      - Outputs: FixRecommendation with confidence score     │ │
+│     └────────────────────────────┬────────────────────────────────┘ │
+│                                  │                                  │
+│                                  ▼                                  │
+│     ┌─────────────────────────────────────────────────────────────┐ │
+│     │  5b. CLAUDE SONNET: lib/code-change-service.ts              │ │
+│     │      - Receives FixRecommendation from Gemini               │ │
+│     │      - Reads affected component files                       │ │
+│     │      - Generates complete modified file content             │ │
+│     │      - Creates unified diff for PR                          │ │
+│     │      - Outputs: CodeChange[] with diffs                     │ │
+│     └────────────────────────────┴────────────────────────────────┘ │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  6. PR CREATION & EMAIL                                             │
+│     - Creates branch: fix/cro-code-{YYYYMMDD}-{issueId}            │
+│     - Applies code changes to files                                 │
+│     - Commits and pushes to remote                                  │
+│     - Creates GitHub PR via gh CLI                                  │
+│     - Sends approval email to store owner                           │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Data Flow
+
+#### 1. UIIssue Object
+```typescript
+// Generated by lib/issue-detector.ts
+{
+  id: "issue_1705507200000_abc123",
+  status: "detected" | "fix_generated" | "approved" | "rejected",
+  detectedAt: 1705507200000,
+  lastOccurrence: 1705510800000,
+
+  category: "frustration" | "missing_feature" | "conversion_blocker",
+  severity: "low" | "medium" | "high" | "critical",
+  patternId: "click_frustration",
+
+  elementSelector: "button.add-to-cart",
+  sectionId: "/store",
+  componentPath: "components/store/ProductGrid.tsx",
+  componentName: "ProductGrid",
+
+  eventCount: 25,
+  uniqueSessions: 8,
+  sampleEvents: AnalyticsEvent[], // Up to 15 sample events
+
+  problemStatement: "Users clicking this element are frustrated",
+  userIntent: "Expected the element to respond",
+  currentOutcome: "Element did not behave as expected",
+  suggestedFix: "" // Let AI decide
+}
+```
+
+#### 2. FixRecommendation Object
+```typescript
+// Generated by lib/gemini-service.ts
+{
+  issueId: "issue_1705507200000_abc123",
+  confidence: 0.85, // 0-1
+  summary: "Add loading state to Add to Cart button",
+  changeType: "attribute" | "style" | "text" | "structure",
+  changes: [
+    {
+      file: "components/store/ProductGrid.tsx",
+      elementSelector: "button.add-to-cart",
+      action: "add_attribute",
+      attribute: "disabled",
+      value: "{isLoading}",
+      reason: "Prevent double-clicks during cart update"
+    }
+  ],
+  expectedImpact: "+15-20% reduction in rage clicks",
+  rationale: "Users are clicking multiple times because..."
+}
+```
+
+#### 3. CodeChange Object
+```typescript
+// Generated by lib/code-change-service.ts
+{
+  file: "components/store/ProductGrid.tsx",
+  originalContent: "... original file content ...",
+  modifiedContent: "... modified file content ...",
+  diff: "--- a/components/store/ProductGrid.tsx\n+++ b/..."
+}
+```
+
+### Pattern Rules
+
+The issue detector uses configurable pattern rules to identify UI problems:
+
+| Pattern ID | Category | Event Types | Description |
+|------------|----------|-------------|-------------|
+| `click_frustration` | frustration | dead_click, rage_click, double_click | Users clicking elements that don't respond |
+| `multi_product_interaction` | missing_feature | product_compare, product_view | Users comparing multiple products |
+| `scroll_confusion` | missing_feature | scroll_reversal | Users scrolling up/down repeatedly |
+| `form_abandonment` | conversion_blocker | form_focus, form_blur | Form fields causing friction |
+| `checkout_autofill_disabled` | frustration | form_focus, slow_form_fill | Checkout forms not autofill-friendly |
+| `address_no_autocomplete` | frustration | form_focus, form_blur | Address fields missing autocomplete |
+| `no_popular_indicators` | missing_feature | product_compare, product_view | No "Most Popular" badges |
+| `no_urgency_cues` | conversion_blocker | cart_review, checkout_abandon | No urgency to complete purchase |
+| `poor_visual_hierarchy` | frustration | dead_click, hover_intent | Unclear what is clickable |
+
+### Two-Stage AI Pipeline
+
+**Stage 1: Gemini 2.0 Flash (Fast & Cheap)**
+- Analyzes issues and determines which one to fix
+- Reads component source code for context
+- Uses element index for precise element targeting
+- Returns structured FixRecommendation with confidence score
+
+**Stage 2: Claude Sonnet (Precise & Expensive)**
+- Only called after Gemini selects an issue
+- Generates complete, production-ready code changes
+- Preserves existing code formatting and style
+- Returns unified diffs for PR creation
+
+**Why Two Stages?**
+- Gemini is fast and cost-effective for analysis (~$0.001 per call)
+- Claude Sonnet produces higher quality code but costs more (~$0.03 per call)
+- Pipeline ensures we only use expensive API for high-confidence fixes
+
+---
+
 ## Component Reference
 
 ### Backend Services
@@ -299,6 +477,143 @@ Gmail clips emails larger than 102KB. Base64-embedded screenshots were ~250KB ea
 **Key Functions:**
 - `processFixSuggestion(suggestion)`: Main entry point
 - `validateFix(fix)`: Security checks (path traversal, etc.)
+
+#### `/lib/gemini-service.ts`
+**Purpose:** AI-powered issue analysis using Gemini 2.0 Flash
+
+**Key Functions:**
+- `analyzeIssuesAndRecommendFix(issues)`: Analyzes issues and returns highest-confidence fix recommendation
+- `assessIssueConfidence(issue)`: Quick heuristic confidence scoring
+- `isGeminiConfigured()`: Environment variable check
+
+**Implementation Details:**
+- Model: `gemini-2.0-flash` (fast, cost-effective)
+- Sorts issues by severity and event count
+- Takes top 5 issues for analysis
+- Reads component source code for context
+- Uses element index for precise targeting
+- Returns JSON FixRecommendation object
+
+**Prompt Structure:**
+1. Lists detected issues with full context
+2. Includes component code if available
+3. Lists indexed elements in affected component
+4. Requests single highest-confidence fix
+5. Specifies allowed change types (attributes, styles, text, loading states)
+
+**Confidence Scoring Heuristics:**
+- Base: 0.5
+- Critical severity: +0.2
+- 20+ events: +0.15
+- 5+ unique sessions: +0.1
+- Known fixable patterns: +0.15
+
+#### `/lib/element-indexer.ts`
+**Purpose:** Playwright-based DOM element indexing for precise fix targeting
+
+**Key Functions:**
+- `buildElementIndex(baseUrl, pages)`: Crawls pages and indexes elements
+- `saveElementIndex(index)`: Persists to data/element-index.json
+- `loadElementIndex()`: Loads index from file
+- `findElement(index, query)`: Find element by selector/text/placeholder
+- `getElementsByComponent(index, componentPath)`: Get all elements for a component
+- `resolveComponentFromEvent(index, eventData)`: Map event to component
+
+**Indexed Element Properties:**
+- `id`: Unique element ID
+- `selector`: CSS selector
+- `fullPath`: Full DOM path
+- `tag`: HTML tag (button, input, a, etc.)
+- `type`: Element type (button, input, link, form, interactive)
+- `text`: Visible text content
+- `attributes`: Key attributes (id, class, name, type, placeholder, aria-label)
+- `componentPath`: Resolved component file path
+- `componentName`: Component name
+- `boundingBox`: Position and dimensions
+
+**Component Pattern Matching:**
+Maps DOM elements to component files using patterns:
+- Cart/checkout forms → `components/store/CartDrawer.tsx`
+- Hero section → `components/store/Hero.tsx`
+- Product grid → `components/store/ProductGrid.tsx`
+- Header → `components/store/Header.tsx`
+- Footer → `components/store/Footer.tsx`
+
+**Crawl Flow:**
+1. Launch headless Chromium
+2. Navigate to each page
+3. Navigate through checkout flow (add item, open cart, fill forms)
+4. Extract all interactable elements
+5. Resolve component paths
+6. Deduplicate elements
+7. Build component map
+
+#### `/lib/code-change-service.ts`
+**Purpose:** Claude Sonnet-powered code generation for actual file changes
+
+**Key Functions:**
+- `generateCodeChanges(recommendation)`: Generate code changes from Gemini recommendation
+- `applyCodeChanges(changes)`: Write modified files to disk
+- `isAnthropicConfigured()`: Environment variable check
+
+**Implementation Details:**
+- Model: `claude-sonnet-4-20250514` (high-quality code generation)
+- Max tokens: 8192
+- Reads all affected files
+- Generates complete modified file content
+- Creates unified diff for each file
+
+**Prompt Structure:**
+1. Fix summary from Gemini
+2. List of required changes
+3. Rationale from analysis
+4. Current file contents
+5. Instructions for minimal, targeted changes
+
+**Output:**
+- Complete modified file content (not patches)
+- Preserves formatting and indentation
+- No comments or explanations added
+- Unified diff for PR description
+
+**Cost Considerations:**
+This is the expensive API call (~$0.03 per invocation). Only called after Gemini confirms high-confidence fix.
+
+#### `/lib/issue-detector.ts`
+**Purpose:** Pattern-based detection of UI/UX issues from user behavior events
+
+**Key Functions:**
+- `detectIssues(timeWindowHours)`: Main detection function
+- `enrichIssueWithCode(issue)`: Add component code context
+- `summarizeIssues(issues)`: Generate summary statistics
+
+**Pattern Rules Configuration:**
+Each pattern rule defines:
+- `id`: Unique pattern identifier
+- `name`: Human-readable name
+- `category`: frustration | missing_feature | conversion_blocker
+- `eventTypes`: Array of event types to match
+- `groupBy`: How to group events (elementSelector, sectionId, componentPath)
+- `timeWindowHours`: Lookback window
+- `minOccurrences`: Minimum events to trigger
+- `minUniqueSessions`: Minimum unique sessions
+- `severityThresholds`: Event counts for low/medium/high/critical
+- `problemTemplate`: Template for problem statement
+- `intentTemplate`: Template for user intent
+- `outcomeTemplate`: Template for current outcome
+- `fixTemplate`: Suggested fix (empty = let AI decide)
+
+**Detection Flow:**
+1. Load all events from timeWindow
+2. For each pattern rule:
+   - Filter events by type
+   - Group events by groupBy field
+   - Check thresholds (occurrences, sessions)
+   - Calculate severity
+   - Resolve component path (element index → component registry)
+   - Create UIIssue object
+3. Sort by severity and event count
+4. Return detected issues
 
 #### `/lib/fix-store.ts`
 **Purpose:** File-based persistence for fixes
@@ -473,6 +788,162 @@ Co-Authored-By: CRO Agent <cro-agent@blip.ship>
 - Fix not found: 404
 - Fix already processed: 400
 
+#### `POST /api/pulse`
+**Purpose:** Event ingestion endpoint (renamed from /api/events to avoid ad blockers)
+
+**Request Body:**
+```typescript
+{
+  events: AnalyticsEvent[]
+}
+```
+
+**Response:**
+```typescript
+{
+  success: true,
+  received: 5,
+  totalEvents: 150,
+  detectionTriggered: true,
+  issuesDetected: 3
+}
+```
+
+**Auto-Detection:**
+- Triggers issue detection when event count reaches threshold (10 events)
+- 5-minute cooldown between detections
+- Automatically stores new issues to data/ui-issues.json
+
+#### `GET/POST /api/detect-issues`
+**Purpose:** Manual trigger for issue detection
+
+**Response:**
+```typescript
+{
+  success: true,
+  message: "Found 5 issues (2 new)",
+  issuesFound: 5,
+  newIssues: 2,
+  issues: [
+    {
+      id: "issue_...",
+      severity: "high",
+      problem: "Users clicking this element are frustrated",
+      element: "button.add-to-cart",
+      eventCount: 25
+    }
+  ]
+}
+```
+
+**Notes:**
+- Runs detection on last 24 hours of events
+- Merges with existing issues (no duplicates)
+- Supports both GET and POST methods
+
+#### `POST /api/index-elements`
+**Purpose:** Build element index by crawling site pages
+
+**Request Body (optional):**
+```typescript
+{
+  baseUrl?: string;  // Default: NEXT_PUBLIC_BASE_URL or localhost:3000
+  pages?: string[];  // Default: ['/store']
+}
+```
+
+**Response:**
+```typescript
+{
+  success: true,
+  duration: 5432,
+  summary: {
+    totalElements: 85,
+    pages: ["/store"],
+    componentBreakdown: {
+      "components/store/CartDrawer.tsx": 25,
+      "components/store/ProductGrid.tsx": 30,
+      "components/store/Header.tsx": 10,
+      "unknown": 20
+    }
+  },
+  sampleElements: [...]
+}
+```
+
+#### `GET /api/index-elements`
+**Purpose:** Retrieve current element index
+
+**Response:**
+```typescript
+{
+  success: true,
+  index: {
+    version: 1,
+    generatedAt: "2026-01-18T...",
+    totalElements: 85,
+    pages: ["/store"],
+    componentBreakdown: {...}
+  },
+  elements: IndexedElement[]
+}
+```
+
+#### `POST /api/analyze-and-fix`
+**Purpose:** Full AI-powered analysis and fix generation flow
+
+**Flow:**
+1. Read detected UI issues
+2. Filter pending issues
+3. Analyze with Gemini 2.0 Flash
+4. Generate code changes with Claude Sonnet
+5. Create fix branch
+6. Apply changes and commit
+7. Push and create PR
+8. Update issue status
+9. Send approval email
+
+**Response:**
+```typescript
+{
+  success: true,
+  duration: 15432,
+  logs: ["[0ms] Starting analyze-and-fix flow", ...],
+  result: {
+    issueId: "issue_...",
+    summary: "Add loading state to Add to Cart button",
+    confidence: 0.85,
+    expectedImpact: "+15-20% reduction in rage clicks",
+    filesChanged: ["components/store/ProductGrid.tsx"],
+    branch: "fix/cro-code-20260118-issue_rage",
+    prUrl: "https://github.com/user/repo/pull/43",
+    prNumber: 43,
+    emailSent: true
+  }
+}
+```
+
+**Error Cases:**
+- No pending issues: Returns success: false
+- Gemini/Anthropic not configured: 500 error
+- Code generation fails: 500 with error details
+
+#### `POST /api/reset`
+**Purpose:** Clear all events and issues for fresh demo
+
+**Response:**
+```typescript
+{
+  success: true,
+  message: "Reset complete - events and issues cleared",
+  timestamp: "2026-01-18T..."
+}
+```
+
+**Clears:**
+- `data/events.json` → `[]`
+- `data/ui-issues.json` → `[]`
+
 ### Frontend Components
 
 #### `/app/fix/[fixId]/page.tsx`
@@ -525,6 +996,22 @@ Co-Authored-By: CRO Agent <cro-agent@blip.ship>
 Create a `.env.local` file in the project root:
 
 ```bash
+# ===========================================
+# AI Services (Required for AI-powered flow)
+# ===========================================
+
+# Google Gemini API Key (for issue analysis)
+# Get API key: https://aistudio.google.com/apikey
+GOOGLE_GEMINI_API_KEY=your-gemini-api-key
+
+# Anthropic API Key (for code generation)
+# Get API key: https://console.anthropic.com/settings/keys
+ANTHROPIC_API_KEY=sk-ant-api03-xxxxxxxxxxxx
+
+# ===========================================
+# Email & Screenshots
+# ===========================================
+
 # SendGrid Configuration
 # Get API key: https://app.sendgrid.com/settings/api_keys
 SENDGRID_API_KEY=SG.xxxxxxxxxxxxxxxxxxxx
@@ -541,6 +1028,13 @@ SENDGRID_FROM_NAME=Blip Ship CRO Agent
 CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
+
+# ===========================================
+# Application
+# ===========================================
+
+# Base URL for links in emails and screenshots
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
 ### Configuration Validation
@@ -549,6 +1043,8 @@ The system gracefully degrades if services are unavailable:
 
 | Service | Required? | Fallback Behavior |
 |---------|-----------|-------------------|
+| Gemini API | Yes (for AI flow) | `/api/analyze-and-fix` returns 500 error |
+| Anthropic API | Yes (for AI flow) | `/api/analyze-and-fix` returns 500 error |
 | SendGrid | No | Logs email to console, creates preview URL |
 | Cloudinary | No | Embeds screenshots as base64 (may clip in Gmail) |
 | Playwright | No | Shows store links instead of screenshots |
@@ -688,7 +1184,7 @@ while (await branchExists(branchName)) {
 
 ## Testing & Debugging
 
-### Manual Testing Flow
+### Manual Testing Flow (Config-based)
 
 1. **Trigger the flow:**
 ```bash
@@ -716,6 +1212,40 @@ Visit the `emailPreviewUrl` from the response (usually `/api/email-preview/{fixI
 
 5. **Test approval flow:**
 Visit the `approvalUrl` from the response and click "Approve & Merge"
+
+### Manual Testing Flow (AI-powered)
+
+1. **Reset demo data:**
+```bash
+curl -X POST http://localhost:3000/api/reset
+```
+
+2. **Build element index:**
+```bash
+curl -X POST http://localhost:3000/api/index-elements \
+  -H "Content-Type: application/json" \
+  -d '{"baseUrl": "http://localhost:3000"}'
+```
+
+3. **Simulate user events:**
+Visit `/store` in browser and interact with elements (click buttons, fill forms, etc.)
+The EventTracker will send events to `/api/pulse` automatically.
+
+4. **Manually trigger issue detection:**
+```bash
+curl http://localhost:3000/api/detect-issues
+```
+
+5. **Run AI analysis and fix generation:**
+```bash
+curl -X POST http://localhost:3000/api/analyze-and-fix
+```
+
+6. **Check the created PR:**
+The response includes `prUrl` - visit it to see the generated code changes.
+
+7. **Verify the fix:**
+Visit the approval page from the response or check your email.
 
 ### Debugging Tips
 
@@ -866,20 +1396,37 @@ await page.screenshot({ path: 'debug-screenshot.png' });
 - `/lib/fix-store.ts` - File-based persistence
 - `/lib/git-service.ts` - Git operations & PRs
 
-### API Routes
+### AI-Powered Services
+- `/lib/gemini-service.ts` - Gemini 2.0 Flash issue analysis
+- `/lib/code-change-service.ts` - Claude Sonnet code generation
+- `/lib/issue-detector.ts` - Pattern-based issue detection
+- `/lib/element-indexer.ts` - Playwright DOM element indexing
+
+### API Routes (Config-based Flow)
 - `/app/api/trigger-fix-flow/route.ts` - Main orchestration
 - `/app/api/suggest-fix/route.ts` - Suggestion generation (STUB)
 - `/app/api/fix/[fixId]/route.ts` - Get fix by ID
 - `/app/api/fix/[fixId]/approve/route.ts` - Approve & merge
 - `/app/api/fix/[fixId]/reject/route.ts` - Reject & close
 
+### API Routes (AI-powered Flow)
+- `/app/api/pulse/route.ts` - Event ingestion (renamed from /events)
+- `/app/api/detect-issues/route.ts` - Manual issue detection trigger
+- `/app/api/index-elements/route.ts` - Element index build/read
+- `/app/api/analyze-and-fix/route.ts` - Full AI analysis & fix flow
+- `/app/api/reset/route.ts` - Clear events and issues
+
 ### Frontend
 - `/app/fix/[fixId]/page.tsx` - Approval landing page
 - `/components/fix/FixApprovalContent.tsx` - Approval UI
+- `/components/tracking/EventTracker.tsx` - User behavior tracking
 
 ### Data Files
 - `/data/fixes.json` - Stored fixes (created on first run)
 - `/data/config-live.json` - Site config (includes ownerEmail)
+- `/data/events.json` - User behavior events
+- `/data/ui-issues.json` - Detected UI issues
+- `/data/element-index.json` - Indexed DOM elements
 
 ### Configuration
 - `/.env.local` - Environment variables (not committed)
