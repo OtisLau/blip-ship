@@ -20,7 +20,6 @@
   "products": {
     "sectionTitle": "Featured Products",
     "layout": "grid-4",
-    "imageClickable": false,
     "items": [
       {
         "id": "prod_001",

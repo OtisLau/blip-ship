@@ -12,6 +12,11 @@ export type EventType =
   | 'purchase'
   | 'bounce'
   | 'rapid_scroll'
+  // CTA lifecycle events
+  | 'cta_visible'         // CTA became visible on screen
+  | 'cta_expired'         // CTA expired without interaction
+  | 'session_start'       // New session started
+  | 'session_end'         // Session ended
   // E-commerce behavior events
   | 'product_view'        // User focused on a specific product
   | 'product_compare'     // User viewing multiple products (comparison shopping)
@@ -99,7 +104,6 @@ export interface SiteConfig {
       price: number;
       image: string;
       badge?: string;
-      productUrl?: string; // URL to navigate when image/card is clicked
       description?: string; // Longer product description
       materials?: string; // Materials/fabric information
     }>;

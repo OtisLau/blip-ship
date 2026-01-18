@@ -95,3 +95,64 @@ export interface SuggestionsResponse {
   rejected: RejectedSuggestion[];
   generatedAt: string;
 }
+
+// ============================================
+// UX Pattern Detection Types
+// ============================================
+
+/**
+ * Detected UX issue pattern
+ */
+export type UXIssueType =
+  | 'non_clickable_image'      // Users clicking images expecting navigation
+  | 'rage_click_element'       // Repeated frustrated clicks on element
+  | 'dead_click_area'          // Clicks on non-interactive area
+  | 'missed_tap_target'        // Mobile users missing small buttons
+  | 'confusing_navigation';    // Users lost or confused
+
+/**
+ * Analytics for dead click detection on images
+ */
+export interface ImageClickAnalytics {
+  elementSelector: string;       // CSS selector for the image
+  productId?: string;            // Associated product ID
+  totalClicks: number;           // Total clicks on image
+  rapidClicks: number;           // Clicks < 500ms apart (frustration signal)
+  followedByTitleClick: number;  // User clicked title link within 2s after
+  avgTimeBetweenClicks: number;  // Average ms between clicks
+  uniqueSessions: number;        // Number of unique sessions with this pattern
+}
+
+/**
+ * Detected UX issue from analytics
+ */
+export interface DetectedUXIssue {
+  type: UXIssueType;
+  severity: 'critical' | 'high' | 'medium' | 'low';
+  elementSelector: string;
+  productId?: string;
+  analytics: ImageClickAnalytics;
+  detectedAt: string;
+}
+
+/**
+ * Config change suggestion from LLM
+ */
+export interface ConfigChangeSuggestion {
+  issueType: UXIssueType;
+  configPath: string;            // e.g., "products.imageClickable"
+  currentValue: unknown;
+  suggestedValue: unknown;
+  reasoning: string;
+  expectedImpact: string;
+  priority: 'high' | 'medium' | 'low';
+}
+
+/**
+ * Full analysis result for image clickability issue
+ */
+export interface ImageClickabilityAnalysis {
+  issuesDetected: DetectedUXIssue[];
+  configChanges: ConfigChangeSuggestion[];
+  summary: string;
+}

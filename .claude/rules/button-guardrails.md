@@ -1,164 +1,274 @@
 # Button UI/UX Guardrails
 
-These rules define the constraints for LLM-generated button suggestions to ensure consistency with the website theme.
+These rules define the constraints for LLM-generated button suggestions to ensure consistency with the website theme. The guardrails are derived from analyzing all store components.
 
-## Color Palette
+---
+
+## Page Component Context
+
+Before generating suggestions, understand the components on the page:
+
+### Component Inventory
+
+| Component | Location | Primary CTAs | Style Pattern |
+|-----------|----------|--------------|---------------|
+| Hero | Top of page | "Shop Collection" | Configurable color, large size |
+| ProductGrid | Product section | "Add to Cart", "View All" | Black bg, white text, overlay buttons |
+| ProductModal | Modal overlay | "Add to Cart" | Full-width, black bg |
+| CartDrawer | Right drawer | "Checkout", "Continue Shopping" | Full-width, black bg |
+| Testimonials | Social proof | None | No CTAs |
+| Footer | Bottom | "Subscribe" | White bg, black text |
+| Header | Fixed top | Cart icon | Icon buttons only |
+
+### Component-Specific Rules
+
+**Hero CTA:**
+- Position: inside-hero or below-hero
+- Size: configurable (small/medium/large)
+- Color: from SiteConfig (typically `#3b82f6` blue)
+- Hover: opacity 0.9
+
+**ProductGrid CTAs:**
+- "Add to Cart": Overlay button, appears on hover
+- Background: `#111`, success state `#22c55e`
+- Transform animation: translateY on hover
+- "View All": Outline style, inverts on hover
+
+**Modal/Drawer CTAs:**
+- Full width buttons
+- Background: `#111`
+- Disabled state: `#9ca3af`
+
+---
+
+## Color Palette (Actual Site Colors)
 
 ### Primary Actions (CTA buttons)
 Allowed background colors:
-- `bg-blue-600` (default primary)
-- `bg-blue-700` (hover state)
-- `bg-blue-500` (lighter variant)
+- `#111` / `bg-gray-900` (default primary - used in ProductGrid, Modal, Drawer)
+- `#3b82f6` / `bg-blue-600` (Hero CTA only, configurable)
+- `white` (inverted/outline buttons)
 
 Allowed text colors:
-- `text-white` (on primary backgrounds)
+- `white` (on dark backgrounds)
+- `#111` (on light/outline buttons)
 
 ### Secondary Actions
-Allowed background colors:
-- `bg-gray-200`
-- `bg-gray-300` (hover state)
-- `bg-gray-100` (lighter variant)
+Allowed:
+- `transparent` with `border: 1px solid #111` (outline style)
+- Hover: background `#111`, text `white` (color inversion)
 
-Allowed text colors:
-- `text-gray-800`
-- `text-gray-700`
+### State Colors
+- Success/Added: `#22c55e` (green - "Added to Cart" only)
+- Disabled: `#9ca3af` (gray)
+- Sale/Warning: `#dc2626` (red - navigation text only, NOT buttons)
 
 ### Forbidden Colors
-Never use:
-- Red backgrounds (`bg-red-*`) - reserved for errors/destructive actions only
-- Green backgrounds (`bg-green-*`) - avoid for general CTAs
-- Neon/bright colors (`bg-yellow-400`, `bg-pink-500`, etc.)
-- Pure black backgrounds (`bg-black`)
+Never use for general CTAs:
+- Bright colors (`bg-yellow-*`, `bg-pink-*`, `bg-purple-*`)
+- Blue on non-Hero components (breaks consistency)
+- Green except for success states
+
+---
 
 ## Typography
 
 ### Font Weights
 Allowed:
-- `font-normal` (default)
-- `font-medium`
-- `font-semibold`
+- `font-medium` / `fontWeight: 500` (standard)
+- `font-semibold` / `fontWeight: 600` (emphasis)
 
 Forbidden:
-- `font-bold` (too heavy)
-- `font-black` (too heavy)
-- `font-light` (too weak for CTAs)
+- `font-bold` / `fontWeight: 700` (too heavy)
+- `font-light` / `fontWeight: 300` (too weak)
 
 ### Font Sizes
 Allowed:
-- `text-sm` (small buttons)
-- `text-base` (default)
-- `text-lg` (large buttons)
+- `12px` / `text-xs` (small buttons, badges)
+- `13px` (standard button text)
+- `14px` / `text-sm` (larger buttons)
 
 Forbidden:
-- `text-xs` (too small for accessibility)
-- `text-xl` or larger (oversized)
+- `11px` or smaller (accessibility)
+- `16px` or larger (oversized for buttons)
 
 ### Text Transform
-Forbidden:
-- `uppercase` (ALL CAPS looks aggressive)
-- `capitalize` on entire phrases
+**REQUIRED for this site:**
+- `uppercase` (ALL buttons use uppercase)
+- `letterSpacing: 0.5px` (standard)
+
+---
 
 ## Spacing
 
-### Padding (horizontal)
-Allowed range:
-- Minimum: `px-4`
-- Maximum: `px-10`
-- Default: `px-6`
+### Padding Patterns (from components)
 
-### Padding (vertical)
-Allowed range:
-- Minimum: `py-2`
-- Maximum: `py-4`
-- Default: `py-3`
+| Context | Horizontal | Vertical |
+|---------|-----------|----------|
+| Overlay buttons | `12px` | `12px` |
+| Standard buttons | `14px-28px` | `12px-14px` |
+| Full-width buttons | full | `14px` |
 
-### Forbidden Spacing
-- Asymmetric padding that looks unbalanced
-- `px-1`, `px-2` (too cramped)
-- `py-1` (too cramped for tap targets)
-- `px-12` or larger (too wide)
-- `py-6` or larger (too tall)
+### Allowed Ranges
+- Horizontal: `12px` to `32px`
+- Vertical: `12px` to `14px`
+
+### Forbidden
+- `py-1`, `py-2` (too small for tap targets)
+- `px-4` or less (too cramped)
+- `px-12` or more (too wide for inline buttons)
+
+---
 
 ## Border Radius
 
+**IMPORTANT: This site uses sharp corners (no border-radius)**
+
 Allowed:
-- `rounded` (slight rounding)
-- `rounded-md`
-- `rounded-lg` (default)
-- `rounded-xl`
+- `rounded-none` / `border-radius: 0` (default for this site)
 
 Forbidden:
-- `rounded-none` (too sharp)
-- `rounded-full` (pill shape - use sparingly)
-- `rounded-3xl` or larger (excessive)
+- `rounded-md`, `rounded-lg`, `rounded-xl` (breaks site aesthetic)
+- `rounded-full` (pill buttons not used)
+
+---
 
 ## Text Content
 
 ### Length Constraints
-- Maximum: 30 characters
+- Maximum: 25 characters (shorter is better)
 - Minimum: 2 characters
-- Ideal: 10-20 characters
+- Ideal: 8-15 characters
+
+### Existing Button Text Patterns
+| Component | Text | Pattern |
+|-----------|------|---------|
+| ProductGrid | "Add to Cart" | Action + Object |
+| ProductGrid | "View All Products" | Action + Scope |
+| CartDrawer | "Checkout" | Single action word |
+| CartDrawer | "Continue Shopping" | Action + Context |
+| Footer | "Subscribe" | Single action word |
 
 ### Tone
+- Action-oriented verbs: "Add", "View", "Shop", "Get", "Continue"
 - Professional and clear
-- Action-oriented (verbs preferred: "Add", "Buy", "Get", "Start")
-- No excessive punctuation (!!!)
-- No all caps
+- No punctuation (no !, ?)
 
 ### Forbidden Text Patterns
-- Questions in button text
-- More than one emoji
-- Prices alone (e.g., "$9.99" without context)
-- "Click here" or "Submit" (generic)
+- Questions ("Want to buy?")
+- Generic ("Click here", "Submit")
+- Prices alone ("$9.99")
+- Emojis
+- ALL CAPS beyond the uppercase transform
+
+---
 
 ## Hover States
 
 ### Required Patterns
-- Must include hover variant
-- Hover should be darker shade of same color family
+All buttons MUST have hover states.
 
-### Examples
+### Hover Patterns by Type
+
+**Solid dark buttons (`#111`):**
+```css
+opacity: 0.9  /* or */
+background: #333
 ```
-bg-blue-600 hover:bg-blue-700  ✓
-bg-gray-200 hover:bg-gray-300  ✓
-bg-blue-600 hover:bg-red-600   ✗ (color family mismatch)
-bg-blue-600 (no hover)         ✗ (missing hover state)
+
+**Outline buttons:**
+```css
+background: #111
+color: white
 ```
 
-## Consistency Rules
+**Hero CTA:**
+```css
+opacity: 0.9
+```
 
-### Match Existing Patterns
-Suggestions should:
-1. Use the same color family as existing buttons
-2. Maintain similar padding ratios
-3. Keep border-radius consistent across button types
-4. Follow the same font-weight patterns
+### Forbidden
+- Color family changes (blue → red)
+- No hover state
+- Dramatic scale changes
 
-### Hierarchy Preservation
-- Primary CTAs: Bold colors (blue-600)
-- Secondary actions: Muted colors (gray-200)
-- Do not elevate secondary buttons to primary styling
-- Do not demote primary CTAs to secondary styling
+---
+
+## Animation & Transitions
+
+### Standard Transitions
+- `transition: all 0.2s` (buttons)
+- `transition: opacity 0.2s` (subtle)
+
+### Overlay Button Pattern (ProductGrid)
+```css
+opacity: 0 → 1 on parent hover
+transform: translateY(8px) → translateY(0)
+```
+
+---
+
+## Hierarchy Preservation
+
+### Button Hierarchy (highest to lowest)
+1. **Primary CTA**: Hero "Shop Collection" - largest, most prominent
+2. **Action buttons**: "Add to Cart", "Checkout" - dark solid
+3. **Secondary actions**: "View All", "Continue Shopping" - outline or smaller
+4. **Tertiary**: Remove, quantity controls - text links
+
+### Rules
+- Never elevate tertiary to primary styling
+- Never demote primary to tertiary styling
+- Maintain visual weight order on page
+
+---
 
 ## Accessibility Requirements
 
 ### Minimum Tap Target
-- Combined padding must result in at least 44px height
-- `py-2` with `text-base` is minimum acceptable
+- Height: 44px minimum
+- `py-3` with `text-sm` meets this
 
-### Contrast
-- Primary buttons: white text on blue (WCAG AA compliant)
-- Secondary buttons: dark text on light gray (WCAG AA compliant)
+### Contrast (WCAG AA)
+- White text on `#111`: ✓ 17.1:1 ratio
+- `#111` text on white: ✓ 17.1:1 ratio
+- White text on `#3b82f6`: ✓ 4.5:1 ratio
+
+### Focus States
+- Must be visible
+- Use outline or ring pattern
+
+---
 
 ## Validation Checklist
 
-Before approving a suggestion, verify:
-- [ ] Background color is in allowed palette
+Before approving a button suggestion, verify:
+
+### Colors
+- [ ] Background matches component context (Hero=configurable, others=`#111`)
 - [ ] Text color has sufficient contrast
-- [ ] Font weight is allowed
-- [ ] Font size is allowed
-- [ ] Padding is within range
-- [ ] Border radius is appropriate
-- [ ] Text length under 30 characters
-- [ ] Hover state included and consistent
-- [ ] Matches existing button hierarchy
+- [ ] Not using forbidden accent colors
+
+### Typography
+- [ ] Font weight is 500 or 600
+- [ ] Font size is 12-14px
+- [ ] Uses uppercase + letter-spacing
+
+### Spacing
+- [ ] Padding within allowed ranges
+- [ ] No border-radius (sharp corners)
+
+### Content
+- [ ] Text length under 25 characters
+- [ ] Action-oriented verb
+- [ ] No forbidden patterns
+
+### States
+- [ ] Hover state included
+- [ ] Hover follows correct pattern for button type
+- [ ] Disabled state if applicable
+
+### Context
+- [ ] Matches hierarchy position
+- [ ] Consistent with same component's other buttons
+- [ ] Doesn't conflict with nearby CTAs

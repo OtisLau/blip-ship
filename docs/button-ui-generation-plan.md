@@ -204,3 +204,154 @@ Returns validated UI suggestions for all tracked buttons.
    ```bash
    curl http://localhost:3000/api/suggestions
    ```
+
+---
+
+# UX Issue Detection (Non-Clickable Images)
+
+## Overview
+
+Extends the LLM system to detect UX issues from analytics patterns and auto-generate SiteConfig fixes.
+
+## Current Issue Detected: Non-Clickable Product Images
+
+**The Problem:**
+Users click product images 3-5+ times expecting navigation, but nothing happens.
+
+**Detection Pattern:**
+1. Multiple rapid clicks (< 500ms apart) on `<img>` elements
+2. No navigation occurs
+3. Same user clicks title link within 2 seconds
+
+**The Fix:**
+Set `products.imageClickable: true` in SiteConfig, which wraps product cards in links.
+
+## Architecture
+
+```
+┌─────────────────────┐
+│  Analytics Events   │
+│  (image_click,      │
+│   dead_click, etc)  │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐     ┌────────────────────┐
+│  Pattern Detection  │────▶│  UX Config         │
+│  (lib/ux-detection) │◀────│  Guardrails (.md)  │
+└──────────┬──────────┘     └────────────────────┘
+           │
+           ▼ (detected issues)
+┌─────────────────────┐     ┌────────────────────┐
+│  LLM Analyzer       │────▶│  UX Issue Detector │
+│  (Gemini)           │◀────│  Agent (.md)       │
+└──────────┬──────────┘     └────────────────────┘
+           │
+           ▼ (config changes)
+┌─────────────────────┐
+│  SiteConfig Update  │
+│  (preview → live)   │
+└─────────────────────┘
+```
+
+## API Endpoints
+
+### `GET /api/ux-issues`
+
+Analyze events and return detected UX issues with suggested config changes.
+
+**Response:**
+```json
+{
+  "issuesDetected": [
+    {
+      "type": "non_clickable_image",
+      "severity": "critical",
+      "elementSelector": "img[data-product-id='prod_001']",
+      "productId": "prod_001",
+      "analytics": {
+        "totalClicks": 47,
+        "rapidClicks": 32,
+        "followedByTitleClick": 28,
+        "uniqueSessions": 15
+      }
+    }
+  ],
+  "configChanges": [
+    {
+      "issueType": "non_clickable_image",
+      "configPath": "products.imageClickable",
+      "currentValue": false,
+      "suggestedValue": true,
+      "reasoning": "32 rapid clicks detected...",
+      "priority": "high"
+    }
+  ],
+  "summary": "Detected non-clickable image issue affecting 15 sessions."
+}
+```
+
+### `POST /api/ux-issues`
+
+Apply a suggested config change.
+
+**Request:**
+```json
+{
+  "configPath": "products.imageClickable",
+  "suggestedValue": true,
+  "applyToPreview": true
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "appliedTo": "preview",
+  "message": "Config updated. Preview the changes before going live."
+}
+```
+
+## File Structure (Additional)
+
+```
+├── .claude/
+│   ├── rules/
+│   │   ├── button-guardrails.md         # Button style constraints
+│   │   └── ux-config-guardrails.md      # Config change constraints
+│   └── agents/
+│       ├── button-suggestion-generator.md
+│       ├── button-suggestion-critic.md
+│       └── ux-issue-detector.md         # Image click issue detector
+├── lib/
+│   ├── gemini.ts                        # Button suggestions
+│   └── ux-detection.ts                  # Image click pattern detection
+├── types/
+│   └── suggestions.ts                   # Includes UX issue types
+├── app/api/
+│   ├── suggestions/route.ts             # Button suggestions
+│   └── ux-issues/route.ts               # UX issue detection & fix
+└── components/store/
+    └── ProductGrid.tsx                  # Uses imageClickable config
+```
+
+## Testing
+
+1. Generate test events with image clicks:
+   - Visit store, click product images multiple times rapidly
+   - Then click the product title
+
+2. Call the detection endpoint:
+   ```bash
+   curl http://localhost:3000/api/ux-issues
+   ```
+
+3. Apply the fix:
+   ```bash
+   curl -X POST http://localhost:3000/api/ux-issues \
+     -H "Content-Type: application/json" \
+     -d '{"configPath": "products.imageClickable", "suggestedValue": true}'
+   ```
+
+4. Verify images are now clickable in the store
