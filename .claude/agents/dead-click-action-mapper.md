@@ -115,7 +115,7 @@ Return ONLY valid JSON:
       {
         "filePath": "components/store/ProductGrid.tsx",
         "description": "Add onClick to image container to open ProductModal",
-        "oldCode": "{/* Product Image - clickable to open modal */}\n              <div\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                }}\n              >",
+        "oldCode": "{/* Product Image */}\n              <div\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                }}\n              >",
         "newCode": "{/* Product Image - clickable to open modal */}\n              <div\n                onClick={(e) => {\n                  e.stopPropagation();\n                  setSelectedProduct(product);\n                }}\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                  cursor: 'pointer',\n                }}\n              >"
       }
     ],
@@ -125,7 +125,7 @@ Return ONLY valid JSON:
         "filePath": "components/store/ProductGrid.tsx",
         "description": "Remove onClick from image container",
         "oldCode": "{/* Product Image - clickable to open modal */}\n              <div\n                onClick={(e) => {\n                  e.stopPropagation();\n                  setSelectedProduct(product);\n                }}\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                  cursor: 'pointer',\n                }}\n              >",
-        "newCode": "{/* Product Image - clickable to open modal */}\n              <div\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                }}\n              >"
+        "newCode": "{/* Product Image */}\n              <div\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                }}\n              >"
       }
     ]
   },
@@ -296,7 +296,7 @@ This is CORRECT because all braces are balanced
 
 Given this existing code:
 ```jsx
-{/* Product Image - clickable to open modal */}
+{/* Product Image */}
 <div
   style={{
     aspectRatio: '1',
@@ -312,7 +312,7 @@ Generate this patch:
 {
   "filePath": "components/store/ProductGrid.tsx",
   "description": "Add onClick to image container to open ProductModal",
-  "oldCode": "{/* Product Image - clickable to open modal */}\n              <div\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                }}\n              >",
+  "oldCode": "{/* Product Image */}\n              <div\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                }}\n              >",
   "newCode": "{/* Product Image - clickable to open modal */}\n              <div\n                onClick={(e) => {\n                  e.stopPropagation();\n                  setSelectedProduct(product);\n                }}\n                style={{\n                  aspectRatio: '1',\n                  position: 'relative',\n                  overflow: 'hidden',\n                  backgroundColor: '#f5f5f5',\n                  cursor: 'pointer',\n                }}\n              >"
 }
 ```

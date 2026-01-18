@@ -576,7 +576,7 @@ ${guardrails}
 
 ---
 
-# Actual Source Code (USE THIS, NOT THE EXAMPLES)
+# Actual Source Code
 
 The file you need to patch is \`${targetFilePath}\`. Here is the ACTUAL current content:
 
@@ -584,13 +584,7 @@ The file you need to patch is \`${targetFilePath}\`. Here is the ACTUAL current 
 ${sourceCode}
 \`\`\`
 
-## CRITICAL INSTRUCTIONS - READ CAREFULLY
-
-1. Your \`oldCode\` in patches MUST be COPIED DIRECTLY from the source code above
-2. DO NOT use the examples in this prompt - they may be outdated
-3. SEARCH the source code above for the exact text you want to replace
-4. The Product Image comment is: \`{/* Product Image - clickable to open modal */}\`
-5. Copy the EXACT whitespace and indentation from the source code
+CRITICAL: Your \`oldCode\` in patches MUST match the actual code above EXACTLY (including whitespace and indentation). Do not guess or assume the code structure.
 
 ---
 
@@ -690,33 +684,25 @@ export async function generateFallbackActionMapping(
   // Determine oldCode based on current file state
   let oldCode: string;
   // Match actual file format (div and style on separate lines)
-  if (hasUpdatedComment && !hasOnClick) {
-    // File has the updated comment but NO onClick yet - this is the state to fix
-    console.log('  [FALLBACK] File has updated comment but NO onClick - generating patch');
+  if (hasUpdatedComment) {
+    console.log('  [FALLBACK] Using updated comment pattern for oldCode');
     oldCode = `{/* Product Image - clickable to open modal */}
               <div
-                style={{
-                  aspectRatio: '1',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  backgroundColor: '#f5f5f5',
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedProduct(product);
                 }}
-              >`;
-  } else if (hasOriginalComment) {
-    console.log('  [FALLBACK] Using original comment pattern for oldCode');
-    oldCode = `{/* Product Image */}
-              <div
                 style={{
                   aspectRatio: '1',
                   position: 'relative',
                   overflow: 'hidden',
                   backgroundColor: '#f5f5f5',
+                  cursor: 'pointer',
                 }}
               >`;
   } else {
-    // Default case - try the updated comment pattern without onClick
-    console.log('  [FALLBACK] Using default pattern for oldCode');
-    oldCode = `{/* Product Image - clickable to open modal */}
+    console.log('  [FALLBACK] Using original comment pattern for oldCode');
+    oldCode = `{/* Product Image */}
               <div
                 style={{
                   aspectRatio: '1',
