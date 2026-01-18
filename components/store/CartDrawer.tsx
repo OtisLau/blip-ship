@@ -179,6 +179,7 @@ export function CartDrawer() {
                     value={shippingInfo.name}
                     onChange={(e) => setShippingInfo({ ...shippingInfo, name: e.target.value })}
                     placeholder="John Doe"
+                    autoComplete="name"
                     style={inputStyle}
                   />
                 </div>
@@ -190,6 +191,7 @@ export function CartDrawer() {
                     value={shippingInfo.email}
                     onChange={(e) => setShippingInfo({ ...shippingInfo, email: e.target.value })}
                     placeholder="john@example.com"
+                    autoComplete="email"
                     style={inputStyle}
                   />
                 </div>
@@ -201,6 +203,7 @@ export function CartDrawer() {
                     value={shippingInfo.address}
                     onChange={(e) => setShippingInfo({ ...shippingInfo, address: e.target.value })}
                     placeholder="123 Main Street"
+                    autoComplete="street-address"
                     style={inputStyle}
                   />
                 </div>
@@ -213,6 +216,7 @@ export function CartDrawer() {
                       value={shippingInfo.city}
                       onChange={(e) => setShippingInfo({ ...shippingInfo, city: e.target.value })}
                       placeholder="New York"
+                      autoComplete="address-level2"
                       style={inputStyle}
                     />
                   </div>
@@ -224,6 +228,7 @@ export function CartDrawer() {
                       value={shippingInfo.zip}
                       onChange={(e) => setShippingInfo({ ...shippingInfo, zip: e.target.value })}
                       placeholder="10001"
+                      autoComplete="postal-code"
                       style={inputStyle}
                     />
                   </div>
