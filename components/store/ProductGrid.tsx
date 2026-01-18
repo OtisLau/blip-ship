@@ -78,12 +78,18 @@ export function ProductGrid({ config }: ProductGridProps) {
             <div
               key={product.id}
               data-product-id={product.id}
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  setSelectedProduct(product);
+                }
+              }}
               style={{
                 backgroundColor: 'white',
                 overflow: 'hidden',
                 border: '1px solid #e5e7eb',
                 transition: 'border-color 0.2s',
                 borderColor: hoveredId === product.id ? '#111' : '#e5e7eb',
+                cursor: 'pointer',
               }}
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
@@ -103,6 +109,10 @@ export function ProductGrid({ config }: ProductGridProps) {
                 }}
               >
                 <Image
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedProduct(product);
+                  }}
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
                   fill
@@ -111,6 +121,7 @@ export function ProductGrid({ config }: ProductGridProps) {
                     objectFit: 'cover',
                     transition: 'transform 0.4s ease',
                     transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
+                    cursor: 'pointer',
                   }}
                 />
 
