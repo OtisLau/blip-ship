@@ -28,6 +28,7 @@ export function DemoFlow() {
     status: 'idle',
     eventCount: 0,
   });
+  const [viewMode, setViewMode] = useState<'live' | 'preview'>('live');
 
   // Poll for event count
   useEffect(() => {
@@ -145,9 +146,10 @@ export function DemoFlow() {
         {/* Store iframe */}
         <div className="relative" style={{ height: 'calc(100vh - 120px)' }}>
           <iframe
-            src="/store"
+            src={viewMode === 'preview' ? '/store?mode=preview' : '/store'}
             className="w-full h-full border-0"
             title="Store Preview"
+            key={viewMode}
           />
           {state.status === 'analyzing' && (
             <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
@@ -161,10 +163,27 @@ export function DemoFlow() {
 
         {/* Bottom Bar */}
         <div className="flex items-center justify-center gap-4 px-4 py-3 border-t border-gray-200 bg-gray-50">
-          <button className="px-4 py-1.5 text-sm font-medium text-gray-600 border-b-2 border-green-500">
+          <button
+            onClick={() => setViewMode('live')}
+            className={`px-4 py-1.5 text-sm font-medium transition ${
+              viewMode === 'live'
+                ? 'text-gray-600 border-b-2 border-green-500'
+                : 'text-gray-400 hover:text-gray-600'
+            }`}
+          >
             LIVE
           </button>
-          <button className="px-4 py-1.5 text-sm font-medium text-gray-400 hover:text-gray-600 transition">
+          <button
+            onClick={() => setViewMode('preview')}
+            disabled={state.status !== 'success'}
+            className={`px-4 py-1.5 text-sm font-medium transition ${
+              viewMode === 'preview'
+                ? 'text-gray-600 border-b-2 border-green-500'
+                : state.status === 'success'
+                ? 'text-gray-400 hover:text-gray-600'
+                : 'text-gray-300 cursor-not-allowed'
+            }`}
+          >
             PREVIEW
           </button>
         </div>
@@ -236,18 +255,19 @@ export function DemoFlow() {
                   {state.changes.slice(0, 4).map((change, i) => (
                     <div
                       key={i}
-                      className="bg-white rounded-lg border border-gray-200 p-3 hover:border-green-300 transition cursor-pointer"
+                      className="bg-white rounded-lg border border-gray-200 p-3 hover:border-green-300 transition"
                     >
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <p className="text-sm font-medium text-gray-900">
-                            {formatChangeLabel(change.field)}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-0.5">
-                            "{change.newValue}"
-                          </p>
-                        </div>
-                        <span className="text-green-500 text-lg">→</span>
+                      <p className="text-sm font-medium text-gray-900 mb-2">
+                        {formatChangeLabel(change.field)}
+                      </p>
+                      <div className="flex items-center gap-2 text-xs">
+                        <span className="px-2 py-1 bg-red-50 text-red-700 rounded line-through max-w-[100px] truncate">
+                          {change.oldValue === '*' ? 'default' : change.oldValue}
+                        </span>
+                        <span className="text-gray-400">→</span>
+                        <span className="px-2 py-1 bg-green-50 text-green-700 rounded max-w-[100px] truncate">
+                          {change.newValue}
+                        </span>
                       </div>
                     </div>
                   ))}
