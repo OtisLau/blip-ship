@@ -156,3 +156,211 @@ export interface ImageClickabilityAnalysis {
   configChanges: ConfigChangeSuggestion[];
   summary: string;
 }
+
+// ============================================
+// Dead Click Action Mapping Types
+// ============================================
+
+/**
+ * Types of actions that can be mapped to dead click elements
+ */
+export type ClickActionType =
+  | 'open-modal'       // Open product modal
+  | 'navigate-to-pdp'  // Navigate to product detail page
+  | 'add-to-cart'      // Add item to cart
+  | 'quick-view'       // Show quick preview
+  | 'enlarge-image'    // Open image lightbox
+  | 'custom';          // Custom handler
+
+/**
+ * Inferred user intent from dead click behavior
+ */
+export type UserClickIntent =
+  | 'view-product-details'
+  | 'add-to-cart'
+  | 'navigate'
+  | 'enlarge-image'
+  | 'unknown';
+
+/**
+ * Element role within a product card
+ */
+export type ProductCardElementRole =
+  | 'product-image'
+  | 'product-image-container'
+  | 'add-to-cart'
+  | 'product-info'
+  | 'product-name'
+  | 'product-price'
+  | 'product-badge'
+  | 'quantity-control'
+  | 'unknown';
+
+/**
+ * Dead click event with enriched context
+ */
+export interface EnrichedDeadClickEvent {
+  // Core click data
+  elementSelector: string;
+  elementType: string;
+  elementRole: ProductCardElementRole;
+  clickCount: number;
+  rapidClicks: number;
+  uniqueSessions: number;
+  
+  // Product context
+  productId?: string;
+  productName?: string;
+}
+
+/**
+ * Sibling element information for context
+ */
+export interface SiblingElementInfo {
+  selector: string;
+  type: string;
+  role: ProductCardElementRole;
+  hasOnClick: boolean;
+  action?: string;
+  handler?: string;
+  hasStopPropagation?: boolean;
+}
+
+/**
+ * Component context surrounding the dead click
+ */
+export interface ComponentContext {
+  containerSelector: string;
+  containerType: 'product-card' | 'product-grid' | 'gallery' | 'other';
+  productId?: string;
+  siblingElements: SiblingElementInfo[];
+}
+
+/**
+ * Existing handler that can be mirrored
+ */
+export interface ExistingHandler {
+  selector: string;
+  handler: string;
+  description?: string;
+}
+
+/**
+ * Input for dead click action mapper LLM
+ */
+export interface DeadClickMapperInput {
+  deadClickData: EnrichedDeadClickEvent;
+  componentContext: ComponentContext;
+  existingHandlers: {
+    modalOpener?: ExistingHandler;
+    navigator?: ExistingHandler;
+    cartAdder?: ExistingHandler;
+  };
+}
+
+/**
+ * Target element for action mapping
+ */
+export interface ActionTargetElement {
+  selector: string;
+  description: string;
+  currentBehavior: 'none' | 'bubbles-to-parent' | 'has-handler';
+}
+
+/**
+ * Handler mirroring specification
+ */
+export interface HandlerMirror {
+  sourceElement: string;
+  handler: string;
+}
+
+/**
+ * Code change specification for the action
+ */
+export interface ClickActionCodeChange {
+  type: 'add-onclick' | 'modify-onclick' | 'wrap-element';
+  element: string;
+  handler: string;
+  addStyles?: Record<string, string>;
+  requiresStopPropagation: boolean;
+  stopPropagationReason?: string;
+}
+
+/**
+ * Actual code patch to apply to a file
+ * Uses find-and-replace pattern similar to StrReplace
+ */
+export interface CodePatch {
+  filePath: string;
+  description: string;
+  oldCode: string;
+  newCode: string;
+}
+
+/**
+ * LLM-generated code change with patches
+ */
+export interface GeneratedCodeChange {
+  patches: CodePatch[];
+  explanation: string;
+  rollbackPatches: CodePatch[];  // To undo the change if needed
+}
+
+/**
+ * Preserved element confirmation
+ */
+export interface PreservedElement {
+  selector: string;
+  action: string;
+  preserved: boolean;
+  reason: string;
+}
+
+/**
+ * Validation checklist results
+ */
+export interface ActionValidationChecklist {
+  singleElementTargeted: boolean;
+  actionMatchesIntent: boolean;
+  siblingsPreserved: boolean;
+  stopPropagationIncluded: boolean;
+  handlerMirrorsExisting: boolean;
+}
+
+/**
+ * Full action mapping result from LLM
+ */
+export interface DeadClickActionMapping {
+  analysis: {
+    deadClickElement: string;
+    inferredUserIntent: UserClickIntent;
+    intentConfidence: number;
+    intentReasoning: string;
+  };
+  actionMapping: {
+    targetElement: ActionTargetElement;
+    suggestedAction: {
+      actionType: ClickActionType;
+      mirrorHandler?: HandlerMirror;
+    };
+    codeChange: ClickActionCodeChange;
+  };
+  preservedElements: PreservedElement[];
+  validation: {
+    passesGuardrails: boolean;
+    checklist: ActionValidationChecklist;
+  };
+  confidence: number;
+  reasoning: string;
+}
+
+/**
+ * API response for dead click action suggestions
+ */
+export interface DeadClickActionResponse {
+  success: boolean;
+  mapping?: DeadClickActionMapping;
+  error?: string;
+  appliedAt?: string;
+}
