@@ -1,0 +1,148 @@
+[
+  {
+    "id": "evt_1768719311815_jocdb1k",
+    "timestamp": 1768719311815,
+    "sessionId": "sess_1768710570574_9hgsp4yk2",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 400,
+      "height": 1016
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768719315878_zu6u5yt",
+    "timestamp": 1768719315878,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 400,
+      "height": 1054
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768719321056_3z8cxdl",
+    "timestamp": 1768719321056,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719323148_jiipdnm",
+    "timestamp": 1768719323148,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "scroll_reversal",
+    "scrollDepth": 57,
+    "elementText": "User reversed scroll direction 3 times",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719323149_l75kcdl",
+    "timestamp": 1768719323149,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "scroll_depth",
+    "scrollDepth": 100,
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719323149_glalcnh",
+    "timestamp": 1768719323149,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "footer",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719326288_s130gpv",
+    "timestamp": 1768719326289,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "scroll_reversal",
+    "scrollDepth": 0,
+    "elementText": "User reversed scroll direction 3 times",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719603001_8218kxz",
+    "timestamp": 1768719603001,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719605848_g34y5dm",
+    "timestamp": 1768719605848,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  },
+  {
+    "id": "evt_1768719605848_xmcfgo4",
+    "timestamp": 1768719605848,
+    "sessionId": "sess_1768716487462_x4xo3zyy3",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "price_sensitive",
+    "behaviorConfidence": 0.7,
+    "behaviorContext": "Checked prices 2 times"
+  }
+]
