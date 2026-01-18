@@ -313,9 +313,9 @@ const PATTERN_RULES: PatternRule[] = [
     eventTypes: ['product_compare', 'product_view'],
     groupBy: 'sectionId',
     timeWindowHours: 24,
-    minOccurrences: 15,
-    minUniqueSessions: 5,
-    severityThresholds: { low: 15, medium: 25, high: 40, critical: 60 },
+    minOccurrences: 5,      // Lowered from 15 for testing
+    minUniqueSessions: 1,   // Lowered from 5 for testing
+    severityThresholds: { low: 5, medium: 10, high: 20, critical: 40 },
     problemTemplate: 'Users viewing multiple products rapidly - comparison shopping',
     intentTemplate: 'Compare product features, prices, or specifications side-by-side',
     outcomeTemplate: 'No way to compare products without opening each individually',

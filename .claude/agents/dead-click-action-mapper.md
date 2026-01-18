@@ -264,6 +264,34 @@ When generating code patches, you must provide the EXACT code to find and replac
 3. **Include surrounding context** - don't just patch the single line, include parent context
 4. **Always provide rollback** - so changes can be undone
 
+## CRITICAL: Syntax Requirements
+
+**YOUR PATCHES MUST BE SYNTACTICALLY VALID.** This is non-negotiable.
+
+Before outputting ANY patch, verify:
+- [ ] **Balanced braces**: Count `{` and `}` - they MUST be equal in both oldCode and newCode
+- [ ] **Balanced parentheses**: Count `(` and `)` - they MUST be equal
+- [ ] **Balanced brackets**: Count `[` and `]` - they MUST be equal
+- [ ] **Complete JSX tags**: Every `<Component>` must have a corresponding `</Component>` OR be self-closing `<Component />`
+- [ ] **No truncation**: Do NOT truncate code with "..." or comments like "// rest of code"
+- [ ] **Complete blocks**: If you open a style object `style={{`, you MUST close it with `}}`
+
+**EXAMPLE OF WRONG (unbalanced braces):**
+```json
+{
+  "newCode": "<div onClick={() => { ... }}>"
+}
+```
+This is WRONG because `{` count (3) ≠ `}` count (2)
+
+**EXAMPLE OF CORRECT (balanced):**
+```json
+{
+  "newCode": "<div\n  onClick={(e) => {\n    e.stopPropagation();\n    setSelectedProduct(product);\n  }}\n  style={{\n    cursor: 'pointer',\n  }}\n>"
+}
+```
+This is CORRECT because all braces are balanced
+
 ## Example Patch for Product Image Click
 
 Given this existing code:

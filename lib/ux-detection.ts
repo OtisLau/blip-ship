@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import type { AnalyticsEvent } from './types';
+import type { AnalyticsEvent, SiteGuardrails } from './types';
 import type {
   ImageClickAnalytics,
   DetectedUXIssue,
@@ -15,8 +15,14 @@ import type {
   CodePatch,
   GeneratedCodeChange,
 } from '@/types/suggestions';
-// Use simple Gemini passthrough from Nam's module
+// Use Claude for code generation (more reliable than Gemini)
+import { callClaude } from './claude';
+// Keep Gemini for non-code tasks
 import { callGemini, callGeminiJSON } from './gemini';
+// Dynamic site guardrails
+import { loadSiteGuardrails, formatGuardrailsForLLM } from './site-guardrails';
+// Syntax validation for retry logic
+import { validateAllPatchesSyntax } from './fix-validators';
 
 /**
  * Extended mapping type that includes generated code
@@ -65,7 +71,7 @@ export async function loadAgentPrompt(fixType: string): Promise<string | null> {
 }
 
 /**
- * Load theme protection guardrails
+ * Load theme protection guardrails (static markdown)
  * These define the visual constraints that ALL generated code must follow
  */
 export async function loadThemeGuardrails(): Promise<string> {
@@ -79,6 +85,49 @@ export async function loadThemeGuardrails(): Promise<string> {
     console.error('[loadThemeGuardrails] Failed to load guardrails:', error);
     return '';
   }
+}
+
+/**
+ * Load combined guardrails (static markdown + dynamic site-specific)
+ * Returns both the markdown guardrails and the dynamic site constraints
+ */
+export async function loadCombinedGuardrails(): Promise<{
+  staticGuardrails: string;
+  dynamicGuardrails: SiteGuardrails;
+  combinedPrompt: string;
+}> {
+  const [staticGuardrails, dynamicGuardrails] = await Promise.all([
+    loadThemeGuardrails(),
+    loadSiteGuardrails(),
+  ]);
+
+  // Format dynamic guardrails for LLM inclusion
+  const dynamicPrompt = formatGuardrailsForLLM(dynamicGuardrails);
+
+  // Combine both into a single prompt section
+  const combinedPrompt = `# Theme Protection Guardrails
+
+## Static Rules (from project configuration)
+
+${staticGuardrails}
+
+---
+
+${dynamicPrompt}
+
+---
+
+**IMPORTANT**: The dynamic site-specific constraints above take precedence for color palette and component patterns. Use the exact colors listed in the dynamic constraints. If there's a conflict, follow the dynamic constraints.`;
+
+  console.log('[loadCombinedGuardrails] Loaded guardrails:');
+  console.log(`  Static: ${staticGuardrails.length} chars`);
+  console.log(`  Dynamic site: ${dynamicGuardrails.siteId} (source: ${dynamicGuardrails.source})`);
+
+  return {
+    staticGuardrails,
+    dynamicGuardrails,
+    combinedPrompt,
+  };
 }
 
 /**
@@ -551,10 +600,15 @@ Remember:
 1. Return ONLY valid JSON matching the output format specified. No markdown, no explanation, just the JSON object.
 2. Your oldCode MUST be copied EXACTLY from the source code above - do not modify whitespace or formatting.`;
 
-    console.log('  [LLM] Calling Gemini API...');
-    const mapping = await callGeminiJSON<DeadClickActionMappingWithCode>(prompt);
-    console.log('  [LLM] Response received and parsed');
-    
+    console.log('  [LLM] Calling Claude API for code generation...');
+    const response = await callClaude(prompt);
+    console.log('  [LLM] Response received, parsing JSON...');
+
+    // Parse JSON from response (may be wrapped in markdown)
+    const jsonMatch = response.match(/```json\n?([\s\S]*?)\n?```/) || [null, response];
+    const jsonStr = (jsonMatch[1] || response).trim();
+    const mapping = JSON.parse(jsonStr) as DeadClickActionMappingWithCode;
+
     console.log('  [LLM] Mapping parsed successfully!');
     console.log('  [LLM] Action type:', mapping.actionMapping?.suggestedAction?.actionType);
     console.log('  [LLM] Has generated code:', !!mapping.generatedCode);
@@ -1228,7 +1282,7 @@ export async function writeNewFiles(
  * Process a UI issue through the full LLM pipeline:
  * 1. Determine fix type from pattern ID
  * 2. Load specialized agent prompt (if available)
- * 3. Load theme guardrails
+ * 3. Load COMBINED guardrails (static + dynamic site-specific)
  * 4. Format issue into rich prompt via formatIssueForLLM
  * 5. Combine agent prompt + formatted issue + guardrails
  * 6. Request JSON output with newFiles[] AND patches[]
@@ -1249,10 +1303,11 @@ export async function processIssueWithLLM(issue: UIIssue): Promise<LLMPipelineRe
     const agentUsed = agentPrompt ? FIX_TYPE_TO_AGENT_PROMPT[fixType] : 'generic';
     console.log(`[LLM-PIPELINE] Agent prompt: ${agentUsed}`);
 
-    // Step 2: Load theme guardrails
-    console.log('[LLM-PIPELINE] Loading theme guardrails...');
-    const themeGuardrails = await loadThemeGuardrails();
-    console.log(`[LLM-PIPELINE] Theme guardrails loaded: ${themeGuardrails.length} chars`);
+    // Step 2: Load COMBINED guardrails (static markdown + dynamic site-specific)
+    console.log('[LLM-PIPELINE] Loading combined guardrails (static + dynamic)...');
+    const { combinedPrompt: guardrailsPrompt, dynamicGuardrails } = await loadCombinedGuardrails();
+    console.log(`[LLM-PIPELINE] Combined guardrails loaded: ${guardrailsPrompt.length} chars`);
+    console.log(`[LLM-PIPELINE] Site: ${dynamicGuardrails.siteId}, Source: ${dynamicGuardrails.source}`);
 
     // Step 3: Format the issue into a rich prompt
     console.log('[LLM-PIPELINE] Formatting issue for LLM...');
@@ -1268,9 +1323,7 @@ export async function processIssueWithLLM(issue: UIIssue): Promise<LLMPipelineRe
 
 ---
 
-# Theme Protection Guardrails
-
-${themeGuardrails}
+${guardrailsPrompt}
 
 ---
 
@@ -1285,9 +1338,7 @@ ${formattedIssue}
 
 ---
 
-# Theme Protection Guardrails
-
-${themeGuardrails}
+${guardrailsPrompt}
 
 ---`;
     }
@@ -1336,7 +1387,7 @@ CRITICAL RULES:
 
     // Step 6: Send to Gemini
     console.log('[LLM-PIPELINE] Calling Gemini...');
-    const response = await callGemini(fullPrompt);
+    const response = await callClaude(fullPrompt);
     console.log('[LLM-PIPELINE] Response received, length:', response.length);
 
     // Step 7: Parse response
@@ -1369,6 +1420,145 @@ CRITICAL RULES:
     console.log('  Diagnosis:', parsed.diagnosis?.substring(0, 100));
     console.log('  New files count:', parsed.newFiles?.length || 0);
     console.log('  Patches count:', parsed.patches?.length || 0);
+
+    // Step 8: Validate syntax and regenerate individual bad patches
+    const MAX_FIX_ATTEMPTS = 3;
+    let currentPatches = parsed.patches || [];
+    let currentNewFiles = parsed.newFiles || [];
+
+    for (let attempt = 0; attempt < MAX_FIX_ATTEMPTS; attempt++) {
+      if (currentPatches.length === 0) break;
+
+      console.log(`[LLM-PIPELINE] Validating patch syntax (attempt ${attempt + 1}/${MAX_FIX_ATTEMPTS})...`);
+      const syntaxValidation = await validateAllPatchesSyntax(currentPatches);
+
+      if (syntaxValidation.valid) {
+        console.log('[LLM-PIPELINE] Syntax validation passed!');
+        break;
+      }
+
+      console.log(`[LLM-PIPELINE] ${syntaxValidation.results.filter(r => !r.valid).length} patches failed validation`);
+
+      // Keep valid patches, regenerate invalid ones ONE AT A TIME
+      const validPatches = syntaxValidation.results
+        .filter(r => r.valid)
+        .map(r => currentPatches.find(p => p.filePath === r.patch.filePath && p.oldCode === r.patch.oldCode))
+        .filter((p): p is CodePatch => p !== undefined);
+      const invalidPatches = syntaxValidation.results.filter(r => !r.valid);
+
+      console.log(`[LLM-PIPELINE] Keeping ${validPatches.length} valid patches, fixing ${invalidPatches.length} invalid patches...`);
+
+      const fixedPatches: CodePatch[] = [...validPatches];
+
+      for (const invalidResult of invalidPatches) {
+        const bp = invalidResult.patch;
+        const errors = invalidResult.errors;
+
+        console.log(`[LLM-PIPELINE] Fixing patch for ${bp.filePath}: ${errors.join(', ')}`);
+
+        // Read the actual source file
+        let sourceContent = '';
+        try {
+          const fullPath = path.join(process.cwd(), bp.filePath);
+          sourceContent = await fs.readFile(fullPath, 'utf-8');
+        } catch {
+          console.log(`[LLM-PIPELINE] Could not read ${bp.filePath}, skipping patch`);
+          continue;
+        }
+
+        // Find the original patch to get description
+        const originalPatch = currentPatches.find(p => p.filePath === bp.filePath && p.oldCode === bp.oldCode);
+        const description = originalPatch?.description || 'Fix code';
+
+        // Ask LLM to fix THIS ONE PATCH only
+        const singleFixPrompt = `Fix this ONE patch. It has syntax errors.
+
+## THE BROKEN PATCH
+File: ${bp.filePath}
+Description: ${description}
+Errors: ${errors.join(', ')}
+
+Your oldCode:
+\`\`\`
+${bp.oldCode}
+\`\`\`
+
+Your newCode (BROKEN):
+\`\`\`
+${bp.newCode}
+\`\`\`
+
+## SOURCE FILE (first 3000 chars)
+\`\`\`tsx
+${sourceContent.substring(0, 3000)}
+\`\`\`
+
+## RULES
+1. oldCode MUST match text in the source file EXACTLY
+2. CRITICAL: newCode brace count must match oldCode brace count
+   - Count { in oldCode and newCode - difference must be same
+   - Example: if oldCode has 2 { and 1 }, newCode must also have delta of +1
+3. newCode must have BALANCED JSX: every <Tag> needs </Tag> or <Tag />
+4. Keep the patch SMALL - only change what's needed
+
+Return ONLY this JSON:
+\`\`\`json
+{
+  "filePath": "${bp.filePath}",
+  "description": "${description}",
+  "oldCode": "exact match from source",
+  "newCode": "fixed code with balanced braces/JSX"
+}
+\`\`\``;
+
+        try {
+          const fixResponse = await callClaude(singleFixPrompt);
+          const fixJsonMatch = fixResponse.match(/```json\n?([\s\S]*?)\n?```/) || [null, fixResponse];
+          const fixJsonStr = (fixJsonMatch[1] || fixResponse).trim();
+          const fixedPatch = JSON.parse(fixJsonStr);
+
+          if (fixedPatch.filePath && fixedPatch.oldCode && fixedPatch.newCode) {
+            // Accept all patches with valid structure - rely on full file validation
+            fixedPatches.push(fixedPatch);
+            console.log(`[LLM-PIPELINE] ✓ Fixed patch for ${bp.filePath}`);
+          }
+        } catch (e) {
+          console.log(`[LLM-PIPELINE] ✗ Failed to fix patch: ${e}`);
+        }
+      }
+
+      currentPatches = fixedPatches;
+    }
+
+    // Final validation check
+    if (currentPatches.length > 0) {
+      const finalValidation = await validateAllPatchesSyntax(currentPatches);
+      if (!finalValidation.valid) {
+        const validCount = finalValidation.results.filter(r => r.valid).length;
+        const invalidCount = finalValidation.results.filter(r => !r.valid).length;
+        console.log(`[LLM-PIPELINE] Final: ${validCount} valid, ${invalidCount} invalid patches`);
+
+        // Return only the valid patches
+        const validPatches = finalValidation.results
+          .filter(r => r.valid)
+          .map(r => currentPatches.find(p => p.filePath === r.patch.filePath && p.oldCode === r.patch.oldCode))
+          .filter((p): p is CodePatch => p !== undefined);
+        if (validPatches.length > 0) {
+          console.log(`[LLM-PIPELINE] Returning ${validPatches.length} valid patches (dropped ${invalidCount} invalid)`);
+          currentPatches = validPatches;
+        } else {
+          console.log(`[LLM-PIPELINE] No valid patches after ${MAX_FIX_ATTEMPTS} attempts`);
+          return {
+            success: false,
+            newFiles: currentNewFiles,
+            patches: [],
+            explanation: parsed.explanation || 'LLM could not generate valid patches',
+            error: `All patches failed syntax validation after ${MAX_FIX_ATTEMPTS} attempts`,
+            agentUsed,
+          };
+        }
+      }
+    }
 
     return {
       success: true,

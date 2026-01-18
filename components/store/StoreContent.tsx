@@ -7,6 +7,7 @@ import { ProductGrid } from '@/components/store/ProductGrid';
 import { Testimonials } from '@/components/store/Testimonials';
 import { Footer } from '@/components/store/Footer';
 import { CartProvider } from '@/context/CartContext';
+import { CompareProvider } from '@/context/CompareContext';
 import { SiteConfig } from '@/lib/types';
 
 // Dynamic imports for heavy components (rule: bundle-dynamic-imports)
@@ -30,6 +31,7 @@ export function StoreContent({ config }: StoreContentProps) {
   return (
     <EventTracker>
       <CartProvider>
+        <CompareProvider>
         <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
           <Header />
           <section data-section="hero">
@@ -46,6 +48,7 @@ export function StoreContent({ config }: StoreContentProps) {
           </section>
           <CartDrawer />
         </main>
+        </CompareProvider>
       </CartProvider>
     </EventTracker>
   );

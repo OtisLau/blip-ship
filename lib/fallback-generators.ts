@@ -103,35 +103,56 @@ export const autocompleteFallback: FallbackFix = {
 
 export const comparisonFallback: FallbackFix = {
   type: 'product_comparison',
-  explanation: 'Added compare checkbox to product cards',
+  explanation: 'Added compare checkbox to product cards with CompareContext integration',
   imports: ["import { useCompare } from '@/context/CompareContext';"],
   patches: [
     {
       filePath: 'components/store/ProductGrid.tsx',
-      description: 'Add compare checkbox to product card',
-      oldCodePattern: /<\/div>\s*{\/\* Product Info \*\/}/,
-      newCodeTemplate: `<label style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-          fontSize: '12px',
-          fontWeight: 500,
-          color: '#6b7280',
-          cursor: 'pointer',
-          marginTop: '8px',
-        }}>
-          <input
-            type="checkbox"
-            checked={isInCompare(product.id)}
-            onChange={(e) => {
-              e.stopPropagation();
-              toggleCompare(product);
-            }}
-          />
-          COMPARE
-        </label>
-      </div>
-      {/* Product Info */}`,
+      description: 'Add useCompare import',
+      // Match existing cart context import
+      oldCodePattern: /import \{ useCart \} from '@\/context\/CartContext';/,
+      newCodeTemplate: `import { useCart } from '@/context/CartContext';
+import { useCompare } from '@/context/CompareContext';`,
+    },
+    {
+      filePath: 'components/store/ProductGrid.tsx',
+      description: 'Add useCompare hook call',
+      // Match the useCart hook call
+      oldCodePattern: /const \{ addItem \} = useCart\(\);/,
+      newCodeTemplate: `const { addItem } = useCart();
+  const { isInCompare, toggleCompare } = useCompare();`,
+    },
+    {
+      filePath: 'components/store/ProductGrid.tsx',
+      description: 'Add compare checkbox to product card after price',
+      // Match the closing </p> and </div> after the price
+      oldCodePattern: /\$\{product\.price\.toFixed\(2\)\}\s*<\/p>\s*<\/div>/,
+      newCodeTemplate: `\${product.price.toFixed(2)}
+                </p>
+                <label
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '11px',
+                    fontWeight: 500,
+                    color: '#6b7280',
+                    cursor: 'pointer',
+                    marginTop: '8px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isInCompare(product.id)}
+                    onChange={() => toggleCompare(product)}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  Compare
+                </label>
+              </div>`,
     },
   ],
 };

@@ -304,3 +304,79 @@ export interface ComponentMapping {
   componentName: string;
   dataAttributes: string[];
 }
+
+// ============================================
+// Site Guardrails Types (Dynamic Theme Config)
+// ============================================
+
+export interface SiteGuardrailsColors {
+  backgrounds: string[];      // Allowed background colors ['#111', '#fff', ...]
+  text: string[];             // Allowed text colors
+  borders: string[];          // Allowed border colors
+  accents: string[];          // Accent colors (context-specific)
+  accentContexts: string[];   // Where accents are allowed ['hero-cta', 'links']
+}
+
+export interface SiteGuardrailsTypography {
+  allowedFontWeights: number[];      // [500, 600]
+  buttonFontSizeRange: [number, number]; // [min, max] in px
+  requireUppercaseButtons: boolean;
+  letterSpacing: string;             // '0.5px' or 'normal'
+}
+
+export interface SiteGuardrailsSpacing {
+  borderRadiusAllowed: number[];     // [0] for sharp corners, [0, 4, 8] for rounded
+  buttonPaddingH: [number, number];  // [min, max] horizontal padding
+  buttonPaddingV: [number, number];  // [min, max] vertical padding
+  minTapTarget: number;              // Minimum tap target size (44px)
+}
+
+export interface SiteGuardrailsAnimations {
+  maxTransitionDuration: string;     // '0.4s'
+  allowedEasings: string[];          // ['ease', 'ease-in-out', 'linear']
+}
+
+export interface SiteGuardrailsComponents {
+  buttonPatterns: string[];          // ['uppercase', 'letter-spacing']
+  loadingSpinnerSize: number;        // 16
+}
+
+export interface SiteGuardrails {
+  siteId: string;
+  extractedAt: string;               // ISO timestamp
+  source: 'auto-extracted' | 'manual' | 'hybrid';
+
+  colors: SiteGuardrailsColors;
+  typography: SiteGuardrailsTypography;
+  spacing: SiteGuardrailsSpacing;
+  animations: SiteGuardrailsAnimations;
+  components: SiteGuardrailsComponents;
+}
+
+// Validation result types
+export interface GuardrailViolation {
+  rule: string;
+  message: string;
+  severity: 'error' | 'warning';
+  line?: number;
+  suggestion?: string;
+}
+
+export interface GuardrailsValidationResult {
+  valid: boolean;
+  violations: GuardrailViolation[];
+  usedDynamicGuardrails: boolean;
+  guardrailsSource: 'hardcoded' | 'extracted' | 'mixed';
+}
+
+// Extraction report for transparency
+export interface GuardrailsExtractionReport {
+  extractedAt: string;
+  filesScanned: string[];
+  colorsFound: Record<string, number>;      // color → occurrence count
+  fontWeightsFound: Record<string, number>;
+  borderRadiiFound: Record<string, number>;
+  spacingPatternsFound: Record<string, number>;
+  animationsFound: Record<string, number>;
+  conflicts: string[];                       // Conflicts with existing rules
+}

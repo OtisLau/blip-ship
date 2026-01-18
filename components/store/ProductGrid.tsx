@@ -4,8 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { SiteConfig } from '@/lib/types';
 import { useCart } from '@/context/CartContext';
+import { useCompare } from '@/context/CompareContext';
 import { sanitizeText, sanitizeUrl } from '@/lib/sanitize';
 import { ProductModal } from './ProductModal';
+import { CompareDrawer } from './CompareDrawer';
 
 interface ProductGridProps {
   config: SiteConfig['products'];
@@ -13,8 +15,11 @@ interface ProductGridProps {
 
 export function ProductGrid({ config }: ProductGridProps) {
   const { addItem } = useCart();
+  const { isInCompare, toggleCompare, compareItems } = useCompare();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<typeof config.items[0] | null>(null);
+  const [addingId, setAddingId] = useState<string | null>(null);
+  const [compareDrawerOpen, setCompareDrawerOpen] = useState(false);
 
   const gridColumns = {
     'grid-2': 2,
@@ -24,13 +29,15 @@ export function ProductGrid({ config }: ProductGridProps) {
 
   const columns = gridColumns[config.layout];
 
-  const handleAddToCart = (product: typeof config.items[0]) => {
+  const handleAddToCart = async (product: typeof config.items[0]) => {
+    setAddingId(product.id);
     addItem({
       id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
     });
+    setTimeout(() => setAddingId(null), 500);
   };
 
   return (
@@ -41,6 +48,25 @@ export function ProductGrid({ config }: ProductGridProps) {
             {sanitizeText(config.sectionTitle)}
           </h2>
           <p style={{ color: '#6b7280', fontSize: '16px' }}>Curated essentials for your wardrobe</p>
+          {compareItems.length > 0 && (
+            <button
+              onClick={() => setCompareDrawerOpen(true)}
+              style={{
+                marginTop: '16px',
+                padding: '8px 16px',
+                backgroundColor: '#111',
+                color: 'white',
+                border: 'none',
+                fontSize: '12px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Compare Selected
+            </button>
+          )}
         </div>
 
         <div style={{
@@ -118,12 +144,12 @@ export function ProductGrid({ config }: ProductGridProps) {
                     left: '12px',
                     right: '12px',
                     padding: '12px',
-                    backgroundColor: '#111',
+                    backgroundColor: addingId === product.id ? '#22c55e' : '#111',
                     color: 'white',
                     border: 'none',
                     fontSize: '12px',
                     fontWeight: 600,
-                    cursor: 'pointer',
+                    cursor: addingId === product.id ? 'wait' : 'pointer',
                     opacity: hoveredId === product.id ? 1 : 0,
                     transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',
                     transition: 'all 0.2s ease',
@@ -131,7 +157,18 @@ export function ProductGrid({ config }: ProductGridProps) {
                     letterSpacing: '0.5px',
                   }}
                 >
-                  Add to Cart
+                  {addingId === product.id ? (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                      <div style={{
+                        width: '16px',
+                        height: '16px',
+                        border: '2px solid transparent',
+                        borderTop: '2px solid white',
+                        animation: 'spin 1s linear infinite',
+                      }} />
+                      Adding...
+                    </div>
+                  ) : 'Add to Cart'}
                 </button>
               </div>
 
@@ -142,6 +179,29 @@ export function ProductGrid({ config }: ProductGridProps) {
                 <p style={{ fontSize: '14px', color: '#6b7280' }}>
                   ${product.price.toFixed(2)}
                 </p>
+                <label
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '11px',
+                    fontWeight: 500,
+                    color: '#6b7280',
+                    cursor: 'pointer',
+                    marginTop: '8px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isInCompare(product.id)}
+                    onChange={() => toggleCompare(product)}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  Compare
+                </label>
               </div>
             </div>
           ))}
@@ -186,6 +246,10 @@ export function ProductGrid({ config }: ProductGridProps) {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
         onAddToCart={handleAddToCart}
+      />
+      <CompareDrawer
+        isOpen={compareDrawerOpen}
+        onClose={() => setCompareDrawerOpen(false)}
       />
     </section>
   );

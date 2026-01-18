@@ -14,7 +14,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { appendEvents, readEvents, readUIIssues, writeUIIssues } from '../../../lib/db';
 import { detectIssues } from '../../../lib/issue-detector';
 import { hasSignificantDeadClickPattern, analyzeDeadClicksForActionMapping, applyCodePatches, processIssueWithLLM, writeNewFiles } from '../../../lib/ux-detection';
-import { validateFixPatches, getValidationSummary } from '../../../lib/fix-validators';
+import { validateFixPatches, getValidationSummary, validateFixPatchesWithGuardrails, getDynamicValidationSummary, validateAllPatchesSyntax } from '../../../lib/fix-validators';
 import { getFallbackFix, hasFallback, applyFallbackPatch } from '../../../lib/fallback-generators';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -143,19 +143,52 @@ async function processIssuesForAutoFix(issues: UIIssue[]): Promise<void> {
             }
           }
 
-          // Step 3: Validate patches against theme guardrails
-          console.log(`🔍 [Auto-Fix] Validating patches against theme guardrails...`);
-          const validationResult = validateFixPatches(llmResult.patches!);
+          // Step 3: Validate patches against DYNAMIC theme guardrails
+          console.log(`🔍 [Auto-Fix] Validating patches against dynamic site guardrails...`);
+          const validationResult = await validateFixPatchesWithGuardrails(llmResult.patches!);
 
+          console.log(`   Guardrails source: ${validationResult.guardrailsSource}`);
           if (!validationResult.valid) {
             console.log(`⚠️ [Auto-Fix] Validation warnings/errors:`);
-            console.log(getValidationSummary(validationResult));
+            console.log(getDynamicValidationSummary(validationResult));
             // Continue anyway for non-blocking warnings, but log for visibility
           } else {
-            console.log(`✅ [Auto-Fix] Patches passed theme validation`);
+            console.log(`✅ [Auto-Fix] Patches passed dynamic theme validation`);
           }
 
-          // Step 4: Apply patches
+          // Step 4: Validate syntax BEFORE applying patches
+          console.log(`🔍 [Auto-Fix] Validating patch syntax...`);
+          const syntaxValidation = await validateAllPatchesSyntax(llmResult.patches!);
+
+          if (!syntaxValidation.valid) {
+            console.log(`❌ [Auto-Fix] Syntax validation FAILED - patches would break the code`);
+            console.log(syntaxValidation.summary);
+            syntaxValidation.results.filter(r => !r.valid).forEach(r => {
+              console.log(`   ✗ ${r.patch.filePath}: ${r.errors.join(', ')}`);
+            });
+            // Skip applying these broken patches
+            pendingFixes.push({
+              id: fixId,
+              generatedAt: new Date().toISOString(),
+              mapping: {
+                issue,
+                fixType,
+                llmGenerated: true,
+                agentUsed: llmResult.agentUsed,
+                error: 'Syntax validation failed - patches would create invalid code',
+                syntaxErrors: syntaxValidation.results.filter(r => !r.valid).map(r => ({
+                  file: r.patch.filePath,
+                  errors: r.errors,
+                })),
+              },
+              applied: false,
+              fixType,
+            });
+            continue; // Skip to next issue
+          }
+          console.log(`✅ [Auto-Fix] Syntax validation passed`);
+
+          // Step 5: Apply patches
           console.log(`🔧 [Auto-Fix] Applying patches...`);
           const applyResult = await applyCodePatches(llmResult.patches!);
 
@@ -355,9 +388,26 @@ export async function POST(request: NextRequest) {
 
                 // Auto-apply the fix if it has patches
                 if (mapping.generatedCode?.patches && mapping.generatedCode.patches.length > 0) {
-                  console.log(`🔧 [Auto-Apply] Applying fix ${fixId}...`);
+                  console.log(`🔧 [Auto-Apply] Validating and applying fix ${fixId}...`);
 
                   try {
+                    // Validate syntax BEFORE applying
+                    const syntaxValidation = await validateAllPatchesSyntax(mapping.generatedCode.patches);
+                    if (!syntaxValidation.valid) {
+                      console.log(`❌ [Auto-Apply] Syntax validation FAILED for fix ${fixId}`);
+                      console.log(syntaxValidation.summary);
+                      pendingFixes.push({
+                        id: fixId,
+                        generatedAt: new Date().toISOString(),
+                        mapping: {
+                          ...mapping,
+                          syntaxError: 'Patches would create invalid code',
+                        },
+                        applied: false,
+                      });
+                      continue; // Skip to next mapping
+                    }
+
                     const applyResult = await applyCodePatches(mapping.generatedCode.patches);
                     if (applyResult.allApplied) {
                       console.log(`✅ [Auto-Apply] Fix ${fixId} applied successfully!`);

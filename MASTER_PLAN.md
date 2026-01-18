@@ -52,7 +52,7 @@ User clicks/scrolls/forms → Pattern detection → LLM generates fix → Valida
 │     b) Load agent prompt (.claude/agents/button-loading-generator.md)        │
 │     c) Load DYNAMIC site guardrails (lib/site-guardrails.ts)                 │
 │     d) Format issue context (lib/llm-formatter.ts)                           │
-│     e) Call Gemini API with combined prompt + site-specific constraints      │
+│     e) Call Claude API for code generation (more reliable than Gemini)       │
 │     f) Parse JSON response: { newFiles[], patches[], explanation }           │
 │                                                                               │
 │     Agent Prompts:                                                            │

@@ -1,386 +1,189 @@
 'use client';
 
-import Image from 'next/image';
 import { useCompare } from '@/context/CompareContext';
+import { useCart } from '@/context/CartContext';
+import Image from 'next/image';
+import { sanitizeText, sanitizeUrl } from '@/lib/sanitize';
 
-/**
- * CompareDrawer Component
- *
- * Side-by-side product comparison drawer.
- * Follows theme-protection-guardrails.md:
- * - White background
- * - #e5e7eb borders
- * - #111 header background
- * - No border-radius (sharp corners)
- */
-export function CompareDrawer() {
-  const {
-    compareItems,
-    removeFromCompare,
-    clearCompare,
-    isOpen,
-    closeDrawer,
-  } = useCompare();
+interface CompareDrawerProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function CompareDrawer({ isOpen, onClose }: CompareDrawerProps) {
+  const { compareItems, removeFromCompare, clearCompare } = useCompare();
+  const { addItem } = useCart();
+
+  const handleAddToCart = (product: any) => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
+  };
 
   if (!isOpen) return null;
 
   return (
     <>
-      {/* Overlay */}
-      <div
-        onClick={closeDrawer}
+      <div 
         style={{
           position: 'fixed',
-          inset: 0,
-          backgroundColor: 'rgba(17, 17, 17, 0.5)',
-          zIndex: 90,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1000,
         }}
+        onClick={onClose}
       />
-
-      {/* Drawer */}
-      <div
+      <div 
         style={{
           position: 'fixed',
           top: 0,
           right: 0,
-          bottom: 0,
           width: '100%',
-          maxWidth: '800px',
+          maxWidth: '480px',
+          height: '100vh',
           backgroundColor: 'white',
-          zIndex: 91,
+          zIndex: 1001,
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '-4px 0 20px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #e5e7eb',
         }}
       >
         {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '16px 24px',
-            backgroundColor: '#111',
-            color: 'white',
-          }}
-        >
-          <h2
-            style={{
-              fontSize: '14px',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              margin: 0,
-            }}
-          >
+        <div style={{
+          padding: '24px',
+          borderBottom: '1px solid #e5e7eb',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#111' }}>
             Compare Products ({compareItems.length})
           </h2>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            {compareItems.length > 0 && (
-              <button
-                onClick={clearCompare}
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  color: '#6b7280',
-                  fontSize: '12px',
-                  fontWeight: 500,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  cursor: 'pointer',
-                }}
-              >
-                Clear All
-              </button>
-            )}
-            <button
-              onClick={closeDrawer}
-              style={{
-                backgroundColor: 'transparent',
-                border: 'none',
-                color: 'white',
-                cursor: 'pointer',
-                padding: 0,
-              }}
-              aria-label="Close compare drawer"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            style={{
+              padding: '8px',
+              backgroundColor: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              color: '#6b7280',
+            }}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         {/* Content */}
-        <div
-          style={{
-            flex: 1,
-            overflow: 'auto',
-            padding: '24px',
-          }}
-        >
+        <div style={{ flex: 1, overflowY: 'auto' }}>
           {compareItems.length === 0 ? (
-            <div
-              style={{
-                textAlign: 'center',
-                padding: '48px 24px',
-                color: '#6b7280',
-              }}
-            >
-              <p style={{ fontSize: '14px', fontWeight: 500 }}>
-                No products to compare
-              </p>
-              <p style={{ fontSize: '12px', marginTop: '8px' }}>
-                Add products from the grid to compare them side by side
-              </p>
+            <div style={{ padding: '48px 24px', textAlign: 'center', color: '#6b7280' }}>
+              <p>No products to compare</p>
+              <p style={{ fontSize: '14px', marginTop: '8px' }}>Select products from the grid to compare them</p>
             </div>
           ) : (
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: `repeat(${Math.min(compareItems.length, 4)}, 1fr)`,
-                gap: '16px',
-              }}
-            >
-              {compareItems.map((product) => (
-                <div
-                  key={product.id}
+            <div style={{ padding: '24px' }}>
+              {/* Clear All Button */}
+              {compareItems.length > 1 && (
+                <button
+                  onClick={clearCompare}
                   style={{
+                    marginBottom: '24px',
+                    padding: '8px 16px',
+                    backgroundColor: 'transparent',
                     border: '1px solid #e5e7eb',
-                    backgroundColor: 'white',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    color: '#6b7280',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
                   }}
                 >
-                  {/* Remove Button */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'flex-end',
-                      padding: '8px',
-                    }}
-                  >
-                    <button
-                      onClick={() => removeFromCompare(product.id)}
-                      style={{
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        color: '#6b7280',
-                        cursor: 'pointer',
-                        padding: '4px',
-                      }}
-                      aria-label={`Remove ${product.name} from comparison`}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M18 6L6 18M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </div>
+                  Clear All
+                </button>
+              )}
 
-                  {/* Product Image */}
-                  <div
-                    style={{
-                      aspectRatio: '1',
+              {/* Product List */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {compareItems.map((product) => (
+                  <div key={product.id} style={{
+                    display: 'flex',
+                    gap: '16px',
+                    padding: '16px',
+                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'white',
+                  }}>
+                    <div style={{
+                      width: '80px',
+                      height: '80px',
                       position: 'relative',
                       backgroundColor: '#f5f5f5',
-                    }}
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                    {product.badge && (
-                      <span
-                        style={{
-                          position: 'absolute',
-                          top: '8px',
-                          left: '8px',
-                          backgroundColor: '#111',
-                          color: 'white',
-                          fontSize: '10px',
-                          fontWeight: 600,
-                          padding: '4px 8px',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.5px',
-                        }}
-                      >
-                        {product.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Product Info */}
-                  <div style={{ padding: '16px' }}>
-                    <h3
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        color: '#111',
-                        marginBottom: '4px',
-                      }}
-                    >
-                      {product.name}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#111',
-                        marginBottom: '12px',
-                      }}
-                    >
-                      ${product.price.toFixed(2)}
-                    </p>
-
-                    {product.description && (
-                      <div style={{ marginBottom: '12px' }}>
-                        <p
+                      flexShrink: 0,
+                    }}>
+                      <Image
+                        src={sanitizeUrl(product.image)}
+                        alt={sanitizeText(product.name)}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontSize: '14px', fontWeight: 500, color: '#111', marginBottom: '4px' }}>
+                        {sanitizeText(product.name)}
+                      </h3>
+                      <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '12px' }}>
+                        ${product.price.toFixed(2)}
+                      </p>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          onClick={() => handleAddToCart(product)}
                           style={{
-                            fontSize: '12px',
+                            padding: '6px 12px',
+                            backgroundColor: '#111',
+                            color: 'white',
+                            border: 'none',
+                            fontSize: '11px',
                             fontWeight: 600,
-                            color: '#111',
+                            cursor: 'pointer',
                             textTransform: 'uppercase',
                             letterSpacing: '0.5px',
-                            marginBottom: '4px',
                           }}
                         >
-                          Description
-                        </p>
-                        <p
+                          Add to Cart
+                        </button>
+                        <button
+                          onClick={() => removeFromCompare(product.id)}
                           style={{
-                            fontSize: '12px',
+                            padding: '6px 12px',
+                            backgroundColor: 'transparent',
+                            border: '1px solid #e5e7eb',
+                            fontSize: '11px',
+                            fontWeight: 500,
                             color: '#6b7280',
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          {product.description}
-                        </p>
-                      </div>
-                    )}
-
-                    {product.materials && (
-                      <div>
-                        <p
-                          style={{
-                            fontSize: '12px',
-                            fontWeight: 600,
-                            color: '#111',
+                            cursor: 'pointer',
                             textTransform: 'uppercase',
                             letterSpacing: '0.5px',
-                            marginBottom: '4px',
                           }}
                         >
-                          Materials
-                        </p>
-                        <p
-                          style={{
-                            fontSize: '12px',
-                            color: '#6b7280',
-                          }}
-                        >
-                          {product.materials}
-                        </p>
+                          Remove
+                        </button>
                       </div>
-                    )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           )}
         </div>
-
-        {/* Footer with CTA */}
-        {compareItems.length > 0 && (
-          <div
-            style={{
-              padding: '16px 24px',
-              borderTop: '1px solid #e5e7eb',
-            }}
-          >
-            <button
-              onClick={closeDrawer}
-              style={{
-                width: '100%',
-                padding: '14px',
-                backgroundColor: '#111',
-                color: 'white',
-                border: 'none',
-                fontSize: '12px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                cursor: 'pointer',
-              }}
-            >
-              Continue Shopping
-            </button>
-          </div>
-        )}
       </div>
     </>
   );
 }
-
-/**
- * Floating Compare Button
- *
- * Shows when 2+ products are selected for comparison.
- */
-export function FloatingCompareButton() {
-  const { compareItems, openDrawer } = useCompare();
-
-  if (compareItems.length < 2) return null;
-
-  return (
-    <button
-      onClick={openDrawer}
-      style={{
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        backgroundColor: '#111',
-        color: 'white',
-        padding: '14px 24px',
-        fontSize: '12px',
-        fontWeight: 600,
-        textTransform: 'uppercase',
-        letterSpacing: '0.5px',
-        border: 'none',
-        cursor: 'pointer',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-        zIndex: 50,
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-      }}
-    >
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-      </svg>
-      Compare ({compareItems.length})
-    </button>
-  );
-}
-
-export default CompareDrawer;
