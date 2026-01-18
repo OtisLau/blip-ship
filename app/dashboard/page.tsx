@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { DashboardContent } from '@/components/dashboard/DashboardContent';
 import { DashboardSkeleton } from '@/components/dashboard/DashboardSkeleton';
+import { DemoFlow } from '@/components/dashboard/DemoFlow';
 
 // Server Component - streams immediately while DashboardContent loads (rule: async-suspense-boundaries)
 export default function Dashboard() {
@@ -22,7 +23,12 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Content streams in with Suspense */}
+      {/* Demo Flow Section */}
+      <div className="max-w-7xl mx-auto px-6 pt-8">
+        <DemoFlow />
+      </div>
+
+      {/* Analytics Content streams in with Suspense */}
       <Suspense fallback={<DashboardSkeleton />}>
         <DashboardContent />
       </Suspense>

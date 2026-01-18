@@ -110,18 +110,18 @@ export async function captureFixScreenshots(
     const current = await captureScreenshot(page, currentUrl, {
       width,
       height,
-      waitForSelector: '[data-testid="hero"]', // Wait for hero section
+      waitForSelector: '#hero', // Wait for hero section
       delay: 1500,
     });
     console.log(`[Screenshot] Current screenshot captured (${Math.round(current.length / 1024)}KB)`);
 
     // Capture preview with fix applied
     console.log('[Screenshot] Capturing preview store...');
-    const previewUrl = `${baseUrl}/store?preview=true&fixId=${suggestionId}`;
+    const previewUrl = `${baseUrl}/store?mode=preview`;
     const preview = await captureScreenshot(page, previewUrl, {
       width,
       height,
-      waitForSelector: '[data-testid="hero"]',
+      waitForSelector: '#hero',
       delay: 1500,
     });
     console.log(`[Screenshot] Preview screenshot captured (${Math.round(preview.length / 1024)}KB)`);
