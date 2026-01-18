@@ -383,109 +383,16 @@ function inferBehavior(): { behavior: InferredBehavior; confidence: number; cont
   };
 }
 
-// Emoji indicators for different event types
-const eventEmojis: Record<string, string> = {
-  click: '👆',
-  cta_click: '🎯',
-  add_to_cart: '🛒',
-  product_view: '👀',
-  product_compare: '⚖️',
-  price_check: '💰',
-  search_intent: '🔍',
-  navigation_browse: '🧭',
-  cart_review: '🛍️',
-  rage_click: '😤',
-  dead_click: '❌',
-  scroll_depth: '📜',
-  section_view: '📍',
-  page_view: '📄',
-  bounce: '💨',
-  rapid_scroll: '⚡',
-  exit_intent: '🚪',
-  checkout_start: '💳',
-  purchase: '✅',
-  // New event types
-  hover_intent: '🎯',
-  text_selection: '📋',
-  text_copy: '📝',
-  tab_hidden: '👁️‍🗨️',
-  tab_visible: '👁️',
-  scroll_reversal: '🔄',
-  form_focus: '✏️',
-  form_blur: '📤',
-  image_click: '🖼️',
-  link_hover: '🔗',
-  keyboard_shortcut: '⌨️',
-  right_click: '🖱️',
-  double_click: '👆👆',
-};
-
 // Batch events before sending to reduce API calls
 const eventQueue: PartialEvent[] = [];
 let flushTimeout: NodeJS.Timeout | null = null;
 
 function queueEvent(event: PartialEvent) {
-  // Get current inferred behavior
-  const { behavior, confidence, context } = inferBehavior();
-
   // Attach behavior inference to event
+  const { behavior, confidence, context } = inferBehavior();
   event.inferredBehavior = behavior;
   event.behaviorConfidence = confidence;
   event.behaviorContext = context;
-
-  // Get emoji for event type
-  const emoji = eventEmojis[event.type] || '📊';
-
-  // Build rich log output
-  const eventInfo: Record<string, unknown> = {
-    event: event.type,
-  };
-
-  if (event.productId || event.productName) {
-    eventInfo.product = event.productName || event.productId;
-  }
-  if (event.productPrice) {
-    eventInfo.price = `$${event.productPrice}`;
-  }
-  if (event.x !== undefined) {
-    eventInfo.position = `(${event.x}, ${event.y})`;
-  }
-  if (event.elementSelector) {
-    eventInfo.element = event.elementSelector;
-  }
-  if (event.elementText) {
-    eventInfo.text = event.elementText.slice(0, 40);
-  }
-  if (event.scrollDepth !== undefined) {
-    eventInfo.depth = `${event.scrollDepth}%`;
-  }
-  if (event.clickCount) {
-    eventInfo.clicks = event.clickCount;
-  }
-
-  // Log the event with inferred behavior
-  // console.log(
-  //   `${emoji} [${event.type}]`,
-  //   eventInfo
-  // );
-
-  // Log behavior inference on significant events
-  const significantEvents = ['cta_click', 'add_to_cart', 'product_view', 'rage_click', 'cart_review', 'search_intent'];
-  if (significantEvents.includes(event.type)) {
-    const behaviorEmojis: Record<InferredBehavior, string> = {
-      browsing: '🛒',
-      product_hunting: '🎯',
-      comparison_shopping: '⚖️',
-      ready_to_buy: '💳',
-      price_sensitive: '💰',
-      confused: '😕',
-      abandoning: '🚪',
-    };
-    console.log(
-      `   ${behaviorEmojis[behavior]} Inferred behavior: ${behavior} (${Math.round(confidence * 100)}% confident)`,
-      `\n   └─ ${context}`
-    );
-  }
 
   eventQueue.push(event);
 
@@ -514,8 +421,6 @@ function flushEvents() {
     },
     ...event,
   }));
-
-  // console.log(`📤 [Flush] Sending ${events.length} event(s) to server`, events.map(e => e.type));
 
   // Use sendBeacon for reliability (works even if page is closing)
   const success = navigator.sendBeacon('/api/events', JSON.stringify({ events }));
@@ -730,11 +635,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       // Dead click detection: click on non-interactive element
       if (!isInteractive(target)) {
         behaviorState.deadClicks++;
-
-        // Check if this is a product image dead click
-        const isProductImage = target.tagName === 'IMG' && target.closest('[data-product-id]');
-        const isProductCard = target.closest('[data-product-id]');
-
         const elemContext = getElementContext(target);
         sendEvent({
           type: 'dead_click',
@@ -746,22 +646,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
           pageContext: getPageContext(pageEntryTime.current),
           frustrationReason: describeFrustration('dead_click', target, elemContext),
         });
-
-        // Log product image dead clicks specifically
-        if (isProductImage) {
-          const productCard = target.closest('[data-product-id]');
-          const productId = productCard?.getAttribute('data-product-id');
-          console.log('🖼️ [DeadClick] Product image clicked:', {
-            productId,
-            selector: getSelector(target),
-            totalDeadClicks: behaviorState.deadClicks,
-          });
-        } else if (isProductCard) {
-          console.log('📦 [DeadClick] Product card element clicked:', {
-            element: getSelector(target),
-            totalDeadClicks: behaviorState.deadClicks,
-          });
-        }
       }
     };
 
@@ -882,7 +766,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
             height: window.innerHeight,
           },
         });
-        console.log('🚨 [Checkout Abandon] User left during checkout');
       }
 
       // If user clicked something and left within 2 seconds, the click didn't do what they expected
@@ -901,7 +784,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
             height: window.innerHeight,
           },
         });
-        console.log(`⚠️ [Click→Exit] User clicked "${lastClickedElement.current}" then left within ${timeSinceLastClick}ms`);
       }
 
       if (eventsToSend.length > 0) {
@@ -1020,11 +902,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
         pageContext: getPageContext(pageEntryTime.current),
         frustrationReason: isButton ? describeFrustration('double_click', buttonEl, elemContext) : undefined,
       });
-
-      // Double-click on button = user unsure if click registered (missing loading state)
-      if (isButton) {
-        console.log('⚠️ [Double-click on button] User may be unsure if click registered - consider adding loading state');
-      }
     };
 
     // Right click / context menu handler
