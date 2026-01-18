@@ -2,15 +2,15 @@
   "id": "preview_fix_1768696065613_8535er",
   "version": 2,
   "status": "live",
-  "ownerEmail": "lucianlavric2005@gmail.com",
+  "ownerEmail": "Otishlau2@gmail.com",
   "storeName": "Blip Ship Store",
   "hero": {
-    "headline": "Elevate Your Everyday",
+    "headline": "Simple. Easy. Done.",
     "subheadline": "Trusted by 10,000+ customers. See why we're rated #1.",
     "backgroundColor": "#1F2937",
     "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
     "cta": {
-      "text": "Browse Risk-Free",
+      "text": "Get Help Now",
       "color": "#F59E0B",
       "textColor": "#000000",
       "position": "inside-hero",
@@ -85,7 +85,8 @@
         "price": 275,
         "image": "/img/wool-coat-camel.jpg"
       }
-    ]
+    ],
+    "imageClickable": true
   },
   "testimonials": {
     "sectionTitle": "What People Are Saying",
