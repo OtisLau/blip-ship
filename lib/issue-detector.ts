@@ -11,108 +11,89 @@ import { readEvents } from './db';
 
 /**
  * Pattern rules for detecting UI issues
+ *
+ * CONSOLIDATED: Instead of many overlapping click patterns,
+ * we have ONE pattern per distinct user intent/problem.
+ * The LLM analyzes the evidence to determine the fix.
  */
 const PATTERN_RULES: PatternRule[] = [
-  // Dead clicks on images - users expect them to be interactive
+  // ===========================================
+  // CLICK FRUSTRATION (consolidated)
+  // ===========================================
+  // One pattern for ALL click frustration - grouped by element
+  // The evidence (dead_click, rage_click, double_click) tells the story
   {
-    id: 'dead_click_image',
-    name: 'Non-Interactive Image',
+    id: 'click_frustration',
+    name: 'Click Frustration',
     category: 'frustration',
-    eventTypes: ['dead_click', 'double_click'],
+    eventTypes: ['dead_click', 'rage_click', 'double_click'],
     groupBy: 'elementSelector',
     timeWindowHours: 24,
     minOccurrences: 2,
     minUniqueSessions: 1,
-    severityThresholds: { low: 2, medium: 5, high: 10, critical: 25 },
-    problemTemplate: 'Users are clicking on images expecting them to be interactive',
-    intentTemplate: 'View larger image or see more details',
-    outcomeTemplate: 'Nothing happens - the image is not clickable',
-    fixTemplate: 'Make images clickable - either open a lightbox/modal or navigate to product details',
+    severityThresholds: { low: 2, medium: 5, high: 10, critical: 20 },
+    problemTemplate: 'Users clicking this element are frustrated',
+    intentTemplate: 'Expected the element to respond',
+    outcomeTemplate: 'Element did not behave as expected',
+    fixTemplate: '', // Let LLM decide based on evidence
   },
 
-  // Rage clicks on any element - likely missing loading state
+  // ===========================================
+  // MULTI-PRODUCT INTERACTION (no label/bias)
+  // ===========================================
+  // Detects when users interact with multiple products - LLM decides meaning
   {
-    id: 'rage_click_hotspot',
-    name: 'Rage Click Hotspot (Missing Loading State?)',
-    category: 'frustration',
-    eventTypes: ['rage_click'],
-    groupBy: 'elementSelector',
+    id: 'multi_product_interaction',
+    name: 'Multi-Product Interaction',
+    category: 'missing_feature',
+    eventTypes: ['product_compare', 'product_view', 'add_to_cart', 'cart_remove'],
+    groupBy: 'sectionId',
     timeWindowHours: 24,
-    minOccurrences: 2,
+    minOccurrences: 3,
     minUniqueSessions: 1,
-    severityThresholds: { low: 2, medium: 4, high: 8, critical: 15 },
-    problemTemplate: 'Users are rage-clicking on this element out of frustration',
-    intentTemplate: 'Expecting the element to respond or do something',
-    outcomeTemplate: 'Element is not responding as expected - likely missing loading animation or feedback',
-    fixTemplate: 'Add a loading spinner/animation on click, disable button while processing, show visual feedback immediately',
+    severityThresholds: { low: 3, medium: 6, high: 10, critical: 20 },
+    problemTemplate: 'Users interacting with multiple products',
+    intentTemplate: '', // No assumed intent - LLM decides
+    outcomeTemplate: '', // No assumed outcome - LLM decides
+    fixTemplate: '', // LLM decides based on behavior
   },
 
-  // Rage clicks specifically on buttons - NO LOADING ANIMATION
-  {
-    id: 'button_no_loading_feedback',
-    name: 'Button Missing Loading Feedback',
-    category: 'frustration',
-    eventTypes: ['rage_click'],
-    groupBy: 'elementSelector',
-    timeWindowHours: 24,
-    minOccurrences: 1,
-    minUniqueSessions: 1,
-    severityThresholds: { low: 1, medium: 3, high: 6, critical: 12 },
-    problemTemplate: 'Users are rage-clicking buttons - no loading feedback when clicked',
-    intentTemplate: 'Clicked button and expected immediate visual response',
-    outcomeTemplate: 'Button appears unresponsive - no loading spinner or disabled state',
-    fixTemplate: 'Add loading spinner inside button, disable button while processing, change button text to "Processing..."',
-  },
-
-  // Dead clicks on non-interactive elements (general)
-  {
-    id: 'dead_click_general',
-    name: 'Dead Click Zone',
-    category: 'frustration',
-    eventTypes: ['dead_click'],
-    groupBy: 'elementSelector',
-    timeWindowHours: 24,
-    minOccurrences: 8,
-    minUniqueSessions: 4,
-    severityThresholds: { low: 8, medium: 15, high: 30, critical: 60 },
-    problemTemplate: 'Users are clicking on non-interactive elements',
-    intentTemplate: 'Expecting the element to be clickable or do something',
-    outcomeTemplate: 'Nothing happens because the element is not interactive',
-    fixTemplate: 'Consider making this element interactive or adding visual cues that it is not clickable',
-  },
-
-  // Scroll confusion - users scrolling up and down looking for something
+  // ===========================================
+  // SCROLL & NAVIGATION
+  // ===========================================
   {
     id: 'scroll_confusion',
-    name: 'Scroll Confusion',
+    name: 'User Appears Lost',
     category: 'missing_feature',
     eventTypes: ['scroll_reversal'],
     groupBy: 'sectionId',
     timeWindowHours: 24,
-    minOccurrences: 10,
-    minUniqueSessions: 5,
-    severityThresholds: { low: 10, medium: 20, high: 40, critical: 80 },
-    problemTemplate: 'Users are scrolling up and down repeatedly, appearing lost or searching for something',
-    intentTemplate: 'Looking for specific content or navigation',
-    outcomeTemplate: 'Cannot find what they are looking for easily',
-    fixTemplate: 'Consider adding better navigation, search functionality, or reorganizing content',
+    minOccurrences: 3,  // Lower threshold
+    minUniqueSessions: 1,
+    severityThresholds: { low: 3, medium: 6, high: 12, critical: 25 },
+    problemTemplate: 'Users scrolling up and down repeatedly',
+    intentTemplate: 'Looking for something they cannot find',
+    outcomeTemplate: 'Content organization may be confusing',
+    fixTemplate: '',
   },
 
-  // Price comparison behavior - viewing multiple products quickly
+  // ===========================================
+  // PRICE SENSITIVITY
+  // ===========================================
   {
-    id: 'price_comparison',
-    name: 'Price Comparison Intent',
+    id: 'price_focused',
+    name: 'Price-Focused Behavior',
     category: 'missing_feature',
-    eventTypes: ['product_compare', 'price_check'],
+    eventTypes: ['price_check'],
     groupBy: 'sectionId',
     timeWindowHours: 24,
-    minOccurrences: 15,
-    minUniqueSessions: 8,
-    severityThresholds: { low: 15, medium: 30, high: 50, critical: 100 },
-    problemTemplate: 'Users are frequently comparing products and checking prices',
-    intentTemplate: 'Want to compare products side-by-side before making a decision',
-    outcomeTemplate: 'Have to manually switch between products to compare',
-    fixTemplate: 'Add a product comparison feature or quick-view modal to help users compare easily',
+    minOccurrences: 3,
+    minUniqueSessions: 1,
+    severityThresholds: { low: 3, medium: 8, high: 15, critical: 30 },
+    problemTemplate: 'Users are clicking on prices frequently',
+    intentTemplate: 'Want more price information or deals',
+    outcomeTemplate: 'Limited price interaction available',
+    fixTemplate: '',
   },
 
   // Form abandonment - users starting forms but leaving them empty
@@ -370,19 +351,12 @@ export async function detectIssues(
       if (events.length < rule.minOccurrences) continue;
       if (uniqueSessions < rule.minUniqueSessions) continue;
 
-      // Special handling for image-specific rules
-      if (rule.id === 'dead_click_image' && !isImageSelector(key)) {
-        continue;
-      }
-
-      // Skip image selector for general dead click rule (handled by specific rule)
-      if (rule.id === 'dead_click_general' && isImageSelector(key)) {
-        continue;
-      }
-
-      // Resolve component
+      // Resolve component - try fullPath first, then selector
       const sampleEvent = events[0];
-      const component = resolveComponent(key, sampleEvent.elementText);
+      const fullPath = (sampleEvent as Record<string, unknown>).elementContext
+        ? ((sampleEvent as Record<string, unknown>).elementContext as Record<string, unknown>).fullPath as string
+        : undefined;
+      const component = resolveComponent(fullPath || key, sampleEvent.elementText);
 
       // Calculate severity
       const severity = calculateSeverity(events.length, rule.severityThresholds);
@@ -410,7 +384,7 @@ export async function detectIssues(
 
         eventCount: events.length,
         uniqueSessions,
-        sampleEvents: events.slice(0, 5), // Include up to 5 sample events
+        sampleEvents: events.slice(0, 15), // Include up to 15 sample events for rich LLM context
 
         problemStatement,
         userIntent: rule.intentTemplate,

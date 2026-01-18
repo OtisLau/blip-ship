@@ -1,11 +1,11 @@
 [
   {
-    "id": "evt_1768696060023_ou1zui3",
-    "timestamp": 1768696060023,
+    "id": "evt_1768699079056_izpjbve",
+    "timestamp": 1768699079056,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "page_view",
@@ -14,1102 +14,881 @@
     "behaviorContext": "User is casually browsing the store"
   },
   {
-    "id": "evt_1768696088464_ixxrtw3",
-    "timestamp": 1768696088464,
+    "id": "evt_1768699080569_t1iqe2j",
+    "timestamp": 1768699080569,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "page_view",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696090616_121a1ai",
-    "timestamp": 1768696090616,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "section_view",
-    "sectionId": "products",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696092369_o58n9qi",
-    "timestamp": 1768696092369,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "product_view",
-    "x": 668,
-    "y": 685,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696092369_gc1kr5z",
-    "timestamp": 1768696092369,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "dead_click",
-    "x": 668,
-    "y": 685,
-    "elementSelector": "img",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 3420,
-      "url": "/store"
-    },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696092369_bi7z7yh",
-    "timestamp": 1768696092369,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "product_view",
-    "x": 668,
-    "y": 685,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696092369_u54m0dy",
-    "timestamp": 1768696092369,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "dead_click",
-    "x": 668,
-    "y": 685,
-    "elementSelector": "img",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 3903,
-      "url": "/store"
-    },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696092369_avfwanq",
-    "timestamp": 1768696092369,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "double_click",
-    "x": 668,
-    "y": 685,
-    "elementSelector": "img",
-    "elementText": "",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 3903,
-      "url": "/store"
-    },
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
-  },
-  {
-    "id": "evt_1768696092369_mlhxpwj",
-    "timestamp": 1768696092369,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "hover_intent",
     "elementSelector": "div",
-    "elementText": "NewAdd to CartRelaxed Fit Joggers$75.00",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00",
+    "productId": "prod_001",
+    "productName": "Classic Heavyweight Hoodie",
     "inferredBehavior": "browsing",
     "behaviorConfidence": 0.5,
     "behaviorContext": "User is casually browsing the store"
   },
   {
-    "id": "evt_1768696092369_5p0jzd3",
-    "timestamp": 1768696092369,
+    "id": "evt_1768699085000_beaxg8w",
+    "timestamp": 1768699085000,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
+    "type": "add_to_cart",
+    "x": 318,
+    "y": 385,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 1 item(s) to cart"
   },
   {
-    "id": "evt_1768696092369_wd3cbll",
-    "timestamp": 1768696092369,
+    "id": "evt_1768699088833_e0pmd20",
+    "timestamp": 1768699088833,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "rage_click",
-    "x": 668,
-    "y": 685,
-    "elementSelector": "img",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 4648,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
-    "inferredBehavior": "browsing",
-    "behaviorConfidence": 0.5,
-    "behaviorContext": "User is casually browsing the store"
+    "type": "click",
+    "x": 149,
+    "y": 391,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 1 item(s) to cart"
   },
   {
-    "id": "evt_1768696092369_4koyovc",
-    "timestamp": 1768696092369,
+    "id": "evt_1768699088833_ke5k9h8",
+    "timestamp": 1768699088833,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "x": 149,
+    "y": 391,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
       "text": "",
       "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+        "class": "jsx-532d500bfc6d5d04"
       },
       "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
       },
       "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
       },
       "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
       },
       "isInteractive": false,
-      "isVisible": true,
+      "isVisible": false,
       "isInIframe": false,
       "nearestInteractive": null
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 4649,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 7131,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 1 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_1xtqdc7",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 117,
+    "y": 384,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_001",
+    "productName": "Classic Heavyweight Hoodie",
+    "productPrice": 89,
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 2 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_celsiv1",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 390,
+    "y": 378,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 2 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_2jqziwd",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 390,
+    "y": 378,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 8571,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 2 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_52mse84",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 551,
+    "y": 368,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 3 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_x1cj2np",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 424,
+    "y": 380,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "ready_to_buy",
+    "behaviorConfidence": 0.85,
+    "behaviorContext": "User added 3 item(s) to cart"
+  },
+  {
+    "id": "evt_1768699088833_tojx9qf",
+    "timestamp": 1768699088833,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 424,
+    "y": 380,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 9779,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_u2qs28k",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 374,
+    "y": 374,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_5727xbv",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 394,
+    "y": 422,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_6vwvauw",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "rage_click",
+    "x": 397,
+    "y": 392,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "clickCount": 3,
+    "elementContext": {
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
+      "text": "",
+      "attributes": {
+        "class": "jsx-532d500bfc6d5d04"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
+      },
+      "isInteractive": false,
+      "isVisible": false,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 11636,
+      "url": "/store"
+    },
+    "frustrationReason": "User rage-clicked div element multiple times rapidly. Likely no visual feedback on click. Element: div.jsx-532d500bfc6d5d04, cursor: ",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 1 rage clicks, 3 dead clicks"
   },
   {
-    "id": "evt_1768696092369_uhl8cn4",
-    "timestamp": 1768696092369,
+    "id": "evt_1768699092088_gyce985",
+    "timestamp": 1768699092088,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 1 rage clicks, 3 dead clicks"
-  },
-  {
-    "id": "evt_1768696092895_xgbb6oo",
-    "timestamp": 1768696092895,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "x": 394,
+    "y": 422,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
       "text": "",
       "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+        "class": "jsx-532d500bfc6d5d04"
       },
       "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
       },
       "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
       },
       "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
       },
       "isInteractive": false,
-      "isVisible": true,
+      "isVisible": false,
       "isInIframe": false,
       "nearestInteractive": null
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 4912,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 11637,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
   },
   {
-    "id": "evt_1768696092895_1u48hrd",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699092088_r1hlbny",
+    "timestamp": 1768699092088,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "double_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "elementText": "",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 4912,
-      "url": "/store"
-    },
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
-  },
-  {
-    "id": "evt_1768696092895_7gz7rpi",
-    "timestamp": 1768696092895,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "type": "add_to_cart",
+    "x": 514,
+    "y": 373,
+    "elementSelector": "button",
+    "elementText": "Added",
     "productId": "prod_003",
     "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
   },
   {
-    "id": "evt_1768696092895_y2avylt",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699092088_oprlja2",
+    "timestamp": 1768699092088,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 412,
+    "y": 470,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768699092088_7vj26ap",
+    "timestamp": 1768699092088,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "x": 412,
+    "y": 470,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
       "text": "",
       "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+        "class": "jsx-532d500bfc6d5d04"
       },
       "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
       },
       "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
       },
       "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
       },
       "isInteractive": false,
-      "isVisible": true,
+      "isVisible": false,
       "isInIframe": false,
       "nearestInteractive": null
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5025,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 12912,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
   },
   {
-    "id": "evt_1768696092895_u1yabmo",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699092088_7dgve6w",
+    "timestamp": 1768699092088,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
+    "type": "add_to_cart",
+    "x": 345,
+    "y": 373,
+    "elementSelector": "button",
+    "elementText": "Added",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
   },
   {
-    "id": "evt_1768696092895_nezphq1",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699092088_l846lud",
+    "timestamp": 1768699092088,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "rage_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5165,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
+    "type": "click",
+    "x": 344,
+    "y": 458,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 5 dead clicks"
+    "behaviorContext": "User shows frustration: 1 rage clicks, 5 dead clicks"
   },
   {
-    "id": "evt_1768696092895_qpbpk70",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699092088_4untsmq",
+    "timestamp": 1768699092088,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "x": 344,
+    "y": 458,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
       "text": "",
       "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+        "class": "jsx-532d500bfc6d5d04"
       },
       "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
       },
       "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
       },
       "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
       },
       "isInteractive": false,
-      "isVisible": true,
+      "isVisible": false,
       "isInIframe": false,
       "nearestInteractive": null
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5166,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 14035,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 6 dead clicks"
+    "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
   },
   {
-    "id": "evt_1768696092895_9kty9bl",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699094091_x1xrnzs",
+    "timestamp": 1768699094091,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "type": "add_to_cart",
+    "x": 501,
+    "y": 376,
+    "elementSelector": "button",
+    "elementText": "Added",
     "productId": "prod_003",
     "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 6 dead clicks"
+    "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
   },
   {
-    "id": "evt_1768696092895_7ay84k9",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699094092_oab8fqy",
+    "timestamp": 1768699094092,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 327,
+    "y": 459,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 6 dead clicks"
+  },
+  {
+    "id": "evt_1768699094092_9d6bnfm",
+    "timestamp": 1768699094092,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
+    "x": 327,
+    "y": 459,
+    "elementSelector": "div.jsx-532d500bfc6d5d04",
     "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
+      "selector": "div.jsx-532d500bfc6d5d04",
+      "fullPath": "div.jsx-532d500bfc6d5d04",
+      "tag": "div",
       "text": "",
       "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
+        "class": "jsx-532d500bfc6d5d04"
       },
       "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
+        "top": 625,
+        "left": 0,
+        "width": 0,
+        "height": 0
       },
       "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "percentVisible": 0
       },
       "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
+        "cursor": "",
+        "pointerEvents": "",
+        "opacity": "",
+        "display": ""
       },
       "isInteractive": false,
-      "isVisible": true,
+      "isVisible": false,
       "isInIframe": false,
       "nearestInteractive": null
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5301,
+      "scrollY": 625,
+      "scrollPercent": 46,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 15037,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "frustrationReason": "User clicked on non-interactive div element \"...\". Expected it to do something. Element path: div.jsx-532d500bfc6d5d04",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 7 dead clicks"
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
   },
   {
-    "id": "evt_1768696092895_9nd0nxu",
-    "timestamp": 1768696092895,
+    "id": "evt_1768699152366_b6ua5ad",
+    "timestamp": 1768699152366,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 7 dead clicks"
-  },
-  {
-    "id": "evt_1768696094544_zjcgrf7",
-    "timestamp": 1768696094544,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5437,
-      "url": "/store"
-    },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 8 dead clicks"
-  },
-  {
-    "id": "evt_1768696094544_amhngpg",
-    "timestamp": 1768696094544,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "product_view",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 2 rage clicks, 8 dead clicks"
-  },
-  {
-    "id": "evt_1768696094544_5menjtq",
-    "timestamp": 1768696094544,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "rage_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5559,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked img element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img, cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 8 dead clicks"
-  },
-  {
-    "id": "evt_1768696094544_fuqqjkk",
-    "timestamp": 1768696094544,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "dead_click",
-    "x": 668,
-    "y": 684,
-    "elementSelector": "img",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 828,
-        "left": 530,
-        "width": 245,
-        "height": 245
-      },
-      "viewportPosition": {
-        "x": 530,
-        "y": 575,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 253,
-      "scrollPercent": 19,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 5560,
-      "url": "/store"
-    },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
-  },
-  {
-    "id": "evt_1768696094544_u8mnzv0",
-    "timestamp": 1768696094544,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "scroll_depth",
     "scrollDepth": 25,
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
   },
   {
-    "id": "evt_1768696097127_3uuedcq",
-    "timestamp": 1768696097127,
+    "id": "evt_1768699152366_3bpxw3y",
+    "timestamp": 1768699152366,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
-    "type": "price_check",
-    "x": 603,
-    "y": 747,
-    "elementSelector": "p",
-    "elementText": "$75.00",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
+    "type": "section_view",
+    "sectionId": "products",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 9 dead clicks"
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
   },
   {
-    "id": "evt_1768696097127_dd3d1d8",
-    "timestamp": 1768696097127,
+    "id": "evt_1768699152366_aho54i3",
+    "timestamp": 1768699152366,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
+      "height": 1016
+    },
+    "type": "scroll_depth",
+    "scrollDepth": 50,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699154436_8c1houq",
+    "timestamp": 1768699154436,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Best SellerAdd to CartClassic Heavyweight Hoodie$89.00",
+    "productId": "prod_001",
+    "productName": "Classic Heavyweight Hoodie",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 1 rage clicks, 7 dead clicks"
+  },
+  {
+    "id": "evt_1768699167558_drrrdl9",
+    "timestamp": 1768699167558,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699167558_57cvak9",
+    "timestamp": 1768699167558,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 323,
+    "y": 690,
+    "elementSelector": "img",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "productPrice": 35,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699167558_2temayi",
+    "timestamp": 1768699167558,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 603,
-    "y": 747,
-    "elementSelector": "p",
-    "elementText": "$75.00",
+    "x": 323,
+    "y": 690,
+    "elementSelector": "img",
     "elementContext": {
-      "selector": "p",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > p",
-      "tag": "p",
-      "text": "$75.00",
-      "attributes": {},
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "src": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80"
+      },
       "boundingBox": {
-        "top": 1109,
-        "left": 552,
-        "width": 202,
-        "height": 21
+        "top": 830,
+        "left": 239,
+        "width": 204,
+        "height": 204
       },
       "viewportPosition": {
-        "x": 552,
-        "y": 734,
+        "x": 239,
+        "y": 574,
         "visible": true,
         "percentVisible": 100
       },
@@ -1126,548 +905,246 @@
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 375,
-      "scrollPercent": 28,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 7923,
+      "scrollY": 256,
+      "scrollPercent": 19,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 425,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on non-interactive p element \"$75.00...\". Expected it to do something. Element path: #products > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > p",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
   },
   {
-    "id": "evt_1768696097127_cos82si",
-    "timestamp": 1768696097127,
+    "id": "evt_1768699168839_2rir4j3",
+    "timestamp": 1768699168839,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "add_to_cart",
-    "x": 648,
-    "y": 659,
-    "elementSelector": "button",
-    "elementText": "Added",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696100637_zrnyv6i",
-    "timestamp": 1768696100637,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "click",
-    "x": 844,
-    "y": 206,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "+",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696100637_qcqtafz",
-    "timestamp": 1768696100637,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "hover_intent",
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "+",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+    "elementSelector": "div",
+    "elementText": "Add to CartEssential Cotton Tee$35.00",
+    "productId": "prod_002",
+    "productName": "Essential Cotton Tee",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
   },
   {
-    "id": "evt_1768696100637_zp9b0tl",
-    "timestamp": 1768696100637,
+    "id": "evt_1768699171398_v0pup2k",
+    "timestamp": 1768699171398,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "click",
-    "x": 844,
-    "y": 206,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "+",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
+    "x": 67,
+    "y": 974,
+    "elementSelector": "nextjs-portal",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
   },
   {
-    "id": "evt_1768696100637_skh8dsa",
-    "timestamp": 1768696100637,
+    "id": "evt_1768699171398_0xcdvvg",
+    "timestamp": 1768699171398,
     "sessionId": "sess_1768695712877_onqggupzd",
     "pageUrl": "/store",
     "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "click",
-    "x": 844,
-    "y": 206,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "+",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 3 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696100637_xzjrr8g",
-    "timestamp": 1768696100637,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "rage_click",
-    "x": 844,
-    "y": 206,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "button.jsx-532d500bfc6d5d04",
-      "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04:nth-child(2)",
-      "tag": "button",
-      "text": "+",
-      "attributes": {
-        "class": "jsx-532d500bfc6d5d04"
-      },
-      "boundingBox": {
-        "top": 563,
-        "left": 828,
-        "width": 32,
-        "height": 32
-      },
-      "viewportPosition": {
-        "x": 828,
-        "y": 188,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 375,
-      "scrollPercent": 28,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 12172,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04:nth-child(2), cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696100637_9gymugc",
-    "timestamp": 1768696100637,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "double_click",
-    "x": 844,
-    "y": 206,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "+",
-    "elementContext": {
-      "selector": "button.jsx-532d500bfc6d5d04",
-      "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2) > div.jsx-532d500bfc6d5d04 > button.jsx-532d500bfc6d5d04:nth-child(2)",
-      "tag": "button",
-      "text": "+",
-      "attributes": {
-        "class": "jsx-532d500bfc6d5d04"
-      },
-      "boundingBox": {
-        "top": 563,
-        "left": 828,
-        "width": 32,
-        "height": 32
-      },
-      "viewportPosition": {
-        "x": 828,
-        "y": 188,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 375,
-      "scrollPercent": 28,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 12172,
-      "url": "/store"
-    },
-    "frustrationReason": "User double-clicked button \"+\". Suggests no loading state or feedback - user unsure if click registered.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696104027_qybyz4d",
-    "timestamp": 1768696104027,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "click",
-    "x": 824,
-    "y": 949,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "Checkout",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_q7j5up9",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "checkout_start",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_1e8wi9x",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_focus",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "John Doe",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_cclwmcl",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "click",
-    "x": 986,
-    "y": 151,
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_ajwsvgd",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "click",
-    "x": 990,
-    "y": 149,
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_m6hm57d",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_blur",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "[filled: 8 chars, 2s]",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_e4x187y",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_focus",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "john@example.com",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_ucmq6dv",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_blur",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "[filled: 18 chars, 0s]",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_ysyd5qm",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_focus",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "123 Main Street",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_64nhqld",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_blur",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "[filled: 18 chars, 0s]",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696106233_8tg7o0a",
-    "timestamp": 1768696106233,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_focus",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "New York",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_2fxqozm",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_blur",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "[filled: 7 chars, 0s]",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_hqd4tpo",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_focus",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "10001",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_cfsngoq",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_blur",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "[filled: 7 chars, 0s]",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_cdkwux9",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_focus",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "John Doe",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_h27vrlp",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "text_selection",
-    "elementText": "Otis Lau",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_rwzodpg",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "form_blur",
-    "elementSelector": "input.jsx-532d500bfc6d5d04",
-    "elementText": "[filled: 8 chars, 1s]",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_kghai2n",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "cart_review",
-    "x": 859,
-    "y": 895,
-    "elementSelector": "div.jsx-532d500bfc6d5d04",
-    "elementText": "Continue to PaymentBack to Cart",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 10 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_q0ryb7h",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
+      "width": 900,
       "height": 1016
     },
     "type": "dead_click",
-    "x": 859,
-    "y": 895,
-    "elementSelector": "div.jsx-532d500bfc6d5d04",
-    "elementText": "Continue to PaymentBack to Cart",
+    "x": 67,
+    "y": 974,
+    "elementSelector": "nextjs-portal",
     "elementContext": {
-      "selector": "div.jsx-532d500bfc6d5d04",
-      "fullPath": "main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2)",
-      "tag": "div",
-      "text": "Continue to PaymentBack to Cart",
-      "attributes": {
-        "class": "jsx-532d500bfc6d5d04"
-      },
+      "selector": "nextjs-portal",
+      "fullPath": "script:nth-child(14) > nextjs-portal",
+      "tag": "nextjs-portal",
+      "text": "",
+      "attributes": {},
       "boundingBox": {
-        "top": 1252,
-        "left": 630,
-        "width": 420,
-        "height": 139
+        "top": 2385,
+        "left": 0,
+        "width": 0,
+        "height": 0
       },
       "viewportPosition": {
-        "x": 630,
-        "y": 877,
+        "x": 0,
+        "y": 2129,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "auto",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 256,
+      "scrollPercent": 19,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 4266,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive nextjs-portal element \"...\". Expected it to do something. Element path: script:nth-child(14) > nextjs-portal",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699173850_asnm7i2",
+    "timestamp": 1768699173850,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 128,
+    "y": 880,
+    "elementSelector": "nextjs-portal",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768699173850_g24xqi8",
+    "timestamp": 1768699173850,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 128,
+    "y": 880,
+    "elementSelector": "nextjs-portal",
+    "elementContext": {
+      "selector": "nextjs-portal",
+      "fullPath": "script:nth-child(14) > nextjs-portal",
+      "tag": "nextjs-portal",
+      "text": "",
+      "attributes": {},
+      "boundingBox": {
+        "top": 2385,
+        "left": 0,
+        "width": 0,
+        "height": 0
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 2129,
+        "visible": false,
+        "percentVisible": 0
+      },
+      "computedStyle": {
+        "cursor": "auto",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 256,
+      "scrollPercent": 19,
+      "documentHeight": 2385,
+      "documentWidth": 900,
+      "timeOnPage": 5902,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on non-interactive nextjs-portal element \"...\". Expected it to do something. Element path: script:nth-child(14) > nextjs-portal",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699173850_99gc7qm",
+    "timestamp": 1768699173850,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "products",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699175456_zz0axh1",
+    "timestamp": 1768699175456,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "add_to_cart",
+    "x": 190,
+    "y": 971,
+    "elementSelector": "#products",
+    "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768699175456_mjirjkm",
+    "timestamp": 1768699175456,
+    "sessionId": "sess_1768695712877_onqggupzd",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 900,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 190,
+    "y": 971,
+    "elementSelector": "#products",
+    "elementText": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodi",
+    "elementContext": {
+      "selector": "#products",
+      "fullPath": "#products",
+      "tag": "section",
+      "text": "Featured ProductsCurated essentials for your wardrobeBest SellerAdd to CartClassic Heavyweight Hoodie$89.00Add to CartEssential Cotton Tee$35.00NewAdd",
+      "attributes": {
+        "id": "products"
+      },
+      "boundingBox": {
+        "top": 625,
+        "left": 0,
+        "width": 900,
+        "height": 681
+      },
+      "viewportPosition": {
+        "x": 0,
+        "y": 326,
         "visible": true,
         "percentVisible": 100
       },
@@ -1684,1278 +1161,16 @@
     },
     "pageContext": {
       "scrollX": 0,
-      "scrollY": 375,
-      "scrollPercent": 28,
-      "documentHeight": 2378,
-      "documentWidth": 1050,
-      "timeOnPage": 19618,
-      "url": "/store"
-    },
-    "frustrationReason": "User clicked on non-interactive div element \"Continue to PaymentBack to Car...\". Expected it to do something. Element path: main > div.jsx-532d500bfc6d5d04:nth-child(2) > form.jsx-532d500bfc6d5d04 > div.jsx-532d500bfc6d5d04:nth-child(2)",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696108465_t6vikmg",
-    "timestamp": 1768696108465,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "cta_click",
-    "x": 854,
-    "y": 904,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "Continue to Payment",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696113912_7d2aub8",
-    "timestamp": 1768696113912,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "click",
-    "x": 1009,
-    "y": 51,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696115215_qnpdsbx",
-    "timestamp": 1768696115215,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "hover_intent",
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696129866_hlytuxt",
-    "timestamp": 1768696129866,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 1050,
-      "height": 1016
-    },
-    "type": "tab_hidden",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696386611_7eaga8s",
-    "timestamp": 1768696386611,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 320,
-      "height": 1016
-    },
-    "type": "tab_visible",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696402105_xx1ne8w",
-    "timestamp": 1768696402105,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "product_view",
-    "x": 112,
-    "y": 681,
-    "elementSelector": "h3",
-    "elementText": "Classic Heavyweight Hoodie",
-    "productId": "prod_001",
-    "productName": "Classic Heavyweight Hoodie",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 11 dead clicks"
-  },
-  {
-    "id": "evt_1768696402105_28eoapv",
-    "timestamp": 1768696402105,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "dead_click",
-    "x": 112,
-    "y": 681,
-    "elementSelector": "h3",
-    "elementText": "Classic Heavyweight Hoodie",
-    "elementContext": {
-      "selector": "h3",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > h3",
-      "tag": "h3",
-      "text": "Classic Heavyweight Hoodie",
-      "attributes": {},
-      "boundingBox": {
-        "top": 1046,
-        "left": 41,
-        "width": 164,
-        "height": 42
-      },
-      "viewportPosition": {
-        "x": 41,
-        "y": 671,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 375,
-      "scrollPercent": 28,
+      "scrollY": 299,
+      "scrollPercent": 22,
       "documentHeight": 2385,
       "documentWidth": 900,
-      "timeOnPage": 313640,
+      "timeOnPage": 8323,
       "url": "/store"
     },
-    "frustrationReason": "User clicked on non-interactive h3 element \"Classic Heavyweight Hoodie...\". Expected it to do something. Element path: #products > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > h3",
+    "frustrationReason": "User clicked on non-interactive section element \"Featured ProductsCurated essen...\". Expected it to do something. Element path: #products",
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 12 dead clicks"
-  },
-  {
-    "id": "evt_1768696404050_cyjhuxx",
-    "timestamp": 1768696404050,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "product_view",
-    "x": 120,
-    "y": 533,
-    "elementSelector": "img",
-    "productId": "prod_001",
-    "productName": "Classic Heavyweight Hoodie",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 12 dead clicks"
-  },
-  {
-    "id": "evt_1768696404050_2f0p6ju",
-    "timestamp": 1768696404050,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "dead_click",
-    "x": 120,
-    "y": 533,
-    "elementSelector": "img",
-    "elementContext": {
-      "selector": "img",
-      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > img",
-      "tag": "img",
-      "text": "",
-      "attributes": {
-        "src": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80"
-      },
-      "boundingBox": {
-        "top": 829,
-        "left": 20,
-        "width": 206,
-        "height": 206
-      },
-      "viewportPosition": {
-        "x": 20,
-        "y": 454,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": false,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 375,
-      "scrollPercent": 28,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 314874,
-      "url": "/store"
-    },
-    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > img has cursor:pointer, not clickable.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696404050_6utmgwd",
-    "timestamp": 1768696404050,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "section_view",
-    "sectionId": "hero",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696406530_53ivthn",
-    "timestamp": 1768696406530,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "add_to_cart",
-    "x": 126,
-    "y": 398,
-    "elementSelector": "button",
-    "elementText": "Added",
-    "productId": "prod_001",
-    "productName": "Classic Heavyweight Hoodie",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696494360_fd5ohty",
-    "timestamp": 1768696494360,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "click",
-    "x": 827,
-    "y": 348,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "Remove",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696496550_6sp12wk",
-    "timestamp": 1768696496550,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "click",
-    "x": 830,
-    "y": 203,
-    "elementSelector": "button.jsx-532d500bfc6d5d04",
-    "elementText": "Remove",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696497843_rf0kvi0",
-    "timestamp": 1768696497843,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "click",
-    "x": 865,
-    "y": 45,
-    "elementSelector": "svg",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696501347_osdis14",
-    "timestamp": 1768696501347,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "click",
-    "x": 466,
-    "y": 618,
-    "elementSelector": "button",
-    "elementText": "View All Products",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696501347_fa6hwrq",
-    "timestamp": 1768696501347,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "click",
-    "x": 468,
-    "y": 614,
-    "elementSelector": "button",
-    "elementText": "View All Products",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696501347_31g27ht",
-    "timestamp": 1768696501347,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "click",
-    "x": 468,
-    "y": 614,
-    "elementSelector": "button",
-    "elementText": "View All Products",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 4 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696501347_8jrw1xo",
-    "timestamp": 1768696501347,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "rage_click",
-    "x": 467,
-    "y": 615,
-    "elementSelector": "button",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "#products > div > div:nth-child(3) > button",
-      "tag": "button",
-      "text": "View All Products",
-      "attributes": {},
-      "boundingBox": {
-        "top": 1178,
-        "left": 341,
-        "width": 217,
-        "height": 48
-      },
-      "viewportPosition": {
-        "x": 341,
-        "y": 584,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "inline-flex"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 594,
-      "scrollPercent": 45,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 412882,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: #products > div > div:nth-child(3) > button, cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696501347_9l2biwa",
-    "timestamp": 1768696501347,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "double_click",
-    "x": 468,
-    "y": 614,
-    "elementSelector": "button",
-    "elementText": "View All Products",
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "#products > div > div:nth-child(3) > button",
-      "tag": "button",
-      "text": "View All Products",
-      "attributes": {},
-      "boundingBox": {
-        "top": 1178,
-        "left": 341,
-        "width": 217,
-        "height": 48
-      },
-      "viewportPosition": {
-        "x": 341,
-        "y": 584,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "inline-flex"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 594,
-      "scrollPercent": 45,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 412883,
-      "url": "/store"
-    },
-    "frustrationReason": "User double-clicked button \"View All Products\". Suggests no loading state or feedback - user unsure if click registered.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_6ms8oyl",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_4f7tsuc",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_wcopcm4",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "double_click",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(2)",
-      "tag": "button",
-      "text": "Men",
-      "attributes": {},
-      "boundingBox": {
-        "top": 645,
-        "left": 462,
-        "width": 31,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 462,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "0.6",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 622,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 414411,
-      "url": "/store"
-    },
-    "frustrationReason": "User double-clicked button \"Men\". Suggests no loading state or feedback - user unsure if click registered.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_bsdztf3",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 5 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_9st12ap",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "rage_click",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(2)",
-      "tag": "button",
-      "text": "Men",
-      "attributes": {},
-      "boundingBox": {
-        "top": 648,
-        "left": 462,
-        "width": 31,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 462,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "0.6",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 625,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 414760,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > header > div > div > nav > button:nth-child(2), cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 6 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_krp3vn7",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 6 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_8lvljm6",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 6 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_sbfydn8",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 6 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_he4d1wi",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "rage_click",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(2)",
-      "tag": "button",
-      "text": "Men",
-      "attributes": {},
-      "boundingBox": {
-        "top": 648,
-        "left": 462,
-        "width": 31,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 462,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "0.6",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 625,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 415208,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > header > div > div > nav > button:nth-child(2), cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 7 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696502815_k58gskd",
-    "timestamp": 1768696502815,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 7 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696504097_6ybmcth",
-    "timestamp": 1768696504097,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "hover_intent",
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 7 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696504097_781b7fq",
-    "timestamp": 1768696504097,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 7 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696504097_cpubewl",
-    "timestamp": 1768696504097,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "elementText": "Men",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 7 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696504097_zexqqqp",
-    "timestamp": 1768696504097,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "rage_click",
-    "x": 480,
-    "y": 25,
-    "elementSelector": "button",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(2)",
-      "tag": "button",
-      "text": "Men",
-      "attributes": {},
-      "boundingBox": {
-        "top": 648,
-        "left": 462,
-        "width": 31,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 462,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "0.6",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 625,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 415633,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > header > div > div > nav > button:nth-child(2), cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 8 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696506462_tckjep9",
-    "timestamp": 1768696506462,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "scroll_reversal",
-    "scrollDepth": -2,
-    "elementText": "User reversed scroll direction 3 times",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 8 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_jxsi9dy",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 390,
-    "y": 30,
-    "elementSelector": "button",
-    "elementText": "New Arrivals",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 8 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_s1m0b3k",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 390,
-    "y": 30,
-    "elementSelector": "button",
-    "elementText": "New Arrivals",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 8 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_fxnk1yn",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 390,
-    "y": 30,
-    "elementSelector": "button",
-    "elementText": "New Arrivals",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 8 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_vuqj0as",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "rage_click",
-    "x": 390,
-    "y": 30,
-    "elementSelector": "button",
-    "clickCount": 3,
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(1)",
-      "tag": "button",
-      "text": "New Arrivals",
-      "attributes": {},
-      "boundingBox": {
-        "top": 648,
-        "left": 326,
-        "width": 103,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 326,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "0.6",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 625,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 419925,
-      "url": "/store"
-    },
-    "frustrationReason": "User rage-clicked button element multiple times rapidly. Likely no visual feedback on click. Element: main > header > div > div > nav > button:nth-child(1), cursor: pointer",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_tb9jdy9",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "double_click",
-    "x": 390,
-    "y": 30,
-    "elementSelector": "button",
-    "elementText": "New Arrivals",
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(1)",
-      "tag": "button",
-      "text": "New Arrivals",
-      "attributes": {},
-      "boundingBox": {
-        "top": 648,
-        "left": 326,
-        "width": 103,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 326,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "0.6",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 625,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 419925,
-      "url": "/store"
-    },
-    "frustrationReason": "User double-clicked button \"New Arrivals\". Suggests no loading state or feedback - user unsure if click registered.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_vybmti8",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 390,
-    "y": 30,
-    "elementSelector": "button",
-    "elementText": "New Arrivals",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_blno44a",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 614,
-    "y": 28,
-    "elementSelector": "button",
-    "elementText": "Sale",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_40ch0xw",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 616,
-    "y": 28,
-    "elementSelector": "button",
-    "elementText": "Sale",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_m1gezhq",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 616,
-    "y": 28,
-    "elementSelector": "button",
-    "elementText": "Sale",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696509016_zebk5cj",
-    "timestamp": 1768696509016,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "double_click",
-    "x": 616,
-    "y": 28,
-    "elementSelector": "button",
-    "elementText": "Sale",
-    "elementContext": {
-      "selector": "button",
-      "fullPath": "main > header > div > div > nav > button:nth-child(4)",
-      "tag": "button",
-      "text": "Sale",
-      "attributes": {},
-      "boundingBox": {
-        "top": 648,
-        "left": 612,
-        "width": 35,
-        "height": 19
-      },
-      "viewportPosition": {
-        "x": 612,
-        "y": 23,
-        "visible": true,
-        "percentVisible": 100
-      },
-      "computedStyle": {
-        "cursor": "pointer",
-        "pointerEvents": "auto",
-        "opacity": "1",
-        "display": "block"
-      },
-      "isInteractive": true,
-      "isVisible": true,
-      "isInIframe": false,
-      "nearestInteractive": null
-    },
-    "pageContext": {
-      "scrollX": 0,
-      "scrollY": 625,
-      "scrollPercent": 47,
-      "documentHeight": 2385,
-      "documentWidth": 900,
-      "timeOnPage": 421552,
-      "url": "/store"
-    },
-    "frustrationReason": "User double-clicked button \"Sale\". Suggests no loading state or feedback - user unsure if click registered.",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696510366_j8oflah",
-    "timestamp": 1768696510366,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 616,
-    "y": 28,
-    "elementSelector": "button",
-    "elementText": "Sale",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696510366_czq73zh",
-    "timestamp": 1768696510366,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "navigation_browse",
-    "x": 616,
-    "y": 28,
-    "elementSelector": "button",
-    "elementText": "Sale",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
-  },
-  {
-    "id": "evt_1768696512164_99z7ohj",
-    "timestamp": 1768696512164,
-    "sessionId": "sess_1768695712877_onqggupzd",
-    "pageUrl": "/store",
-    "viewport": {
-      "width": 900,
-      "height": 1054
-    },
-    "type": "hover_intent",
-    "elementSelector": "div",
-    "elementText": "NewAdd to CartRelaxed Fit Joggers$75.00",
-    "productId": "prod_003",
-    "productName": "Relaxed Fit Joggers",
-    "inferredBehavior": "confused",
-    "behaviorConfidence": 0.8,
-    "behaviorContext": "User shows frustration: 9 rage clicks, 13 dead clicks"
+    "behaviorContext": "User shows frustration: 0 rage clicks, 4 dead clicks"
   }
 ]

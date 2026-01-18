@@ -9,7 +9,8 @@
       "Bash(npm install:*)",
       "Bash(npm ls:*)",
       "Bash(npm uninstall:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(jq:*)"
     ]
   }
 }

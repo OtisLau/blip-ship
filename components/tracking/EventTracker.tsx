@@ -589,8 +589,24 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       const productCard = target.closest('[data-product-id]');
       const productId = productCard?.getAttribute('data-product-id') || undefined;
       const productName = productCard?.querySelector('[data-product-name], .product-name, h3, h4')?.textContent?.trim();
-      const priceEl = productCard?.querySelector('[data-price], .price');
-      const productPrice = priceEl ? parseFloat(priceEl.textContent?.replace(/[^0-9.]/g, '') || '0') : undefined;
+
+      // Find price - try data-price, .price, or any element containing $XX.XX pattern
+      let priceEl = productCard?.querySelector('[data-price], .price');
+      let productPrice: number | undefined;
+      if (priceEl) {
+        productPrice = parseFloat(priceEl.textContent?.replace(/[^0-9.]/g, '') || '0');
+      } else if (productCard) {
+        // Look for any element with price-like text ($XX.XX)
+        const allElements = productCard.querySelectorAll('*');
+        for (const el of allElements) {
+          const text = el.textContent || '';
+          const priceMatch = text.match(/\$(\d+(?:\.\d{2})?)/);
+          if (priceMatch && el.children.length === 0) { // Only leaf nodes
+            productPrice = parseFloat(priceMatch[1]);
+            break;
+          }
+        }
+      }
 
       // Basic click event
       const clickEvent: PartialEvent = {
