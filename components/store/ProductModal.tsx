@@ -100,7 +100,8 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
           {/* Product Image */}
           <div
             style={{
-              aspectRatio: '4/3',
+              aspectRatio: '1/1',
+              maxHeight: '280px',
               backgroundColor: '#f5f5f5',
               position: 'relative',
               flexShrink: 0,
@@ -113,7 +114,7 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
+                objectFit: 'contain',
               }}
             />
             {product.badge && (
