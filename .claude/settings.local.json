@@ -22,7 +22,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(pnpm lint:*)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(pnpm exec next lint:*)"
     ]
   }
 }

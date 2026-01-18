@@ -3,7 +3,7 @@
  * Aggregates raw events into meaningful metrics
  */
 
-import type { AnalyticsEvent, AggregatedAnalytics } from '../types/events';
+import type { AnalyticsEvent, AggregatedAnalytics, EventType } from '../types/events';
 
 /**
  * Aggregate events into summary metrics
@@ -35,7 +35,7 @@ export function aggregateEvents(events: AnalyticsEvent[]): AggregatedAnalytics {
   sessions.forEach((sessionEvents) => {
     const interactionTypes = new Set(sessionEvents.map((e) => e.type));
     const hasInteraction = ['click', 'cta_click', 'scroll_depth', 'add_to_cart'].some((t) =>
-      interactionTypes.has(t as any)
+      interactionTypes.has(t as EventType)
     );
     if (!hasInteraction) {
       bouncedSessions++;

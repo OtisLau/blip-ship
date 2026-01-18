@@ -728,7 +728,7 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       const productName = productCard?.querySelector('[data-product-name], .product-name, h3, h4')?.textContent?.trim();
 
       // Find price - try data-price, .price, or any element containing $XX.XX pattern
-      let priceEl = productCard?.querySelector('[data-price], .price');
+      const priceEl = productCard?.querySelector('[data-price], .price');
       let productPrice: number | undefined;
       if (priceEl) {
         productPrice = parseFloat(priceEl.textContent?.replace(/[^0-9.]/g, '') || '0');
