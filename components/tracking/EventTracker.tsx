@@ -431,15 +431,14 @@ const eventEmojis: Record<string, string> = {
   comparison_view: '⚖️',
 };
 
+
 // Batch events before sending to reduce API calls
 const eventQueue: PartialEvent[] = [];
 let flushTimeout: NodeJS.Timeout | null = null;
 
 function queueEvent(event: PartialEvent) {
-  // Get current inferred behavior
-  const { behavior, confidence, context } = inferBehavior();
-
   // Attach behavior inference to event
+  const { behavior, confidence, context } = inferBehavior();
   event.inferredBehavior = behavior;
   event.behaviorConfidence = confidence;
   event.behaviorContext = context;
@@ -498,6 +497,7 @@ function queueEvent(event: PartialEvent) {
     );
   }
 
+
   eventQueue.push(event);
 
   // Debounce: flush after 1 second of no new events, or immediately if we hit 10 events
@@ -525,8 +525,6 @@ function flushEvents() {
     },
     ...event,
   }));
-
-  // console.log(`📤 [Flush] Sending ${events.length} event(s) to server`, events.map(e => e.type));
 
   // Use sendBeacon for reliability (works even if page is closing)
   const success = navigator.sendBeacon('/api/events', JSON.stringify({ events }));
@@ -741,11 +739,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       // Dead click detection: click on non-interactive element
       if (!isInteractive(target)) {
         behaviorState.deadClicks++;
-
-        // Check if this is a product image dead click
-        const isProductImage = target.tagName === 'IMG' && target.closest('[data-product-id]');
-        const isProductCard = target.closest('[data-product-id]');
-
         const elemContext = getElementContext(target);
         sendEvent({
           type: 'dead_click',
@@ -757,22 +750,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
           pageContext: getPageContext(pageEntryTime.current),
           frustrationReason: describeFrustration('dead_click', target, elemContext),
         });
-
-        // Log product image dead clicks specifically
-        if (isProductImage) {
-          const productCard = target.closest('[data-product-id]');
-          const productId = productCard?.getAttribute('data-product-id');
-          console.log('🖼️ [DeadClick] Product image clicked:', {
-            productId,
-            selector: getSelector(target),
-            totalDeadClicks: behaviorState.deadClicks,
-          });
-        } else if (isProductCard) {
-          console.log('📦 [DeadClick] Product card element clicked:', {
-            element: getSelector(target),
-            totalDeadClicks: behaviorState.deadClicks,
-          });
-        }
       }
     };
 
@@ -893,7 +870,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
             height: window.innerHeight,
           },
         });
-        console.log('🚨 [Checkout Abandon] User left during checkout');
       }
 
       // If user clicked something and left within 2 seconds, the click didn't do what they expected
@@ -912,7 +888,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
             height: window.innerHeight,
           },
         });
-        console.log(`⚠️ [Click→Exit] User clicked "${lastClickedElement.current}" then left within ${timeSinceLastClick}ms`);
       }
 
       if (eventsToSend.length > 0) {
@@ -1031,11 +1006,6 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
         pageContext: getPageContext(pageEntryTime.current),
         frustrationReason: isButton ? describeFrustration('double_click', buttonEl, elemContext) : undefined,
       });
-
-      // Double-click on button = user unsure if click registered (missing loading state)
-      if (isButton) {
-        console.log('⚠️ [Double-click on button] User may be unsure if click registered - consider adding loading state');
-      }
     };
 
     // Right click / context menu handler
