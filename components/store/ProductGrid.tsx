@@ -240,15 +240,13 @@ export function ProductGrid({ config }: ProductGridProps) {
                 onMouseEnter={() => setHoveredId(product.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                {/* Product Image - CLICKABLE (opens modal) */}
+                {/* Product Image - NOT CLICKABLE (creates dead click frustration) */}
                 <div
-                  onClick={() => setSelectedProduct(product)}
                   style={{
                     aspectRatio: '4/5',
                     position: 'relative',
                     overflow: 'hidden',
                     backgroundColor: '#f5f5f5',
-                    cursor: 'pointer',
                   }}
                 >
                   <Image

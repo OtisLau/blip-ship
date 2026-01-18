@@ -1,19 +1,58 @@
 /**
  * POST /api/pulse - Receive and persist tracking events
  * Renamed from /api/events to avoid ad blocker detection
+ *
+ * AUTO-TRIGGERS demo-fix flow when threshold is reached!
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { appendEvents, readEvents, readUIIssues, writeUIIssues } from '../../../lib/db';
-import { detectIssues } from '../../../lib/issue-detector';
+import { appendEvents, readEvents } from '../../../lib/db';
 import type { AnalyticsEvent } from '../../../types/events';
 
 // Config for auto-detection trigger
-const AUTO_DETECT_THRESHOLD = 10; // Lowered from 50 for faster demo feedback
-const AUTO_DETECT_COOLDOWN = 5 * 60 * 1000; // Don't re-run within 5 minutes
+const AUTO_FIX_THRESHOLD = 50; // Trigger demo-fix after this many events
+const AUTO_FIX_COOLDOWN = 2 * 60 * 1000; // 2 minute cooldown between auto-fixes
 
-// Track last detection time (in-memory for simplicity)
-let lastDetectionTime = 0;
+// Track last fix time (in-memory for simplicity)
+let lastFixTime = 0;
+let fixInProgress = false;
+
+// Trigger the hardcoded demo-fix flow
+async function triggerDemoFix(): Promise<{
+  success: boolean;
+  message?: string;
+  prUrl?: string;
+  emailSent?: boolean;
+}> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
+  try {
+    const response = await fetch(`${baseUrl}/api/demo-fix`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      return {
+        success: true,
+        prUrl: data.result?.prUrl,
+        emailSent: data.result?.emailSent,
+      };
+    } else {
+      return {
+        success: false,
+        message: data.message || 'Demo fix failed',
+      };
+    }
+  } catch (error) {
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -40,49 +79,45 @@ export async function POST(request: NextRequest) {
     // Persist events
     await appendEvents(validatedEvents);
 
-    // Check if we should trigger auto-detection
-    let detectionTriggered = false;
-    let issuesDetected = 0;
+    // Check if we should trigger auto-fix
+    let fixTriggered = false;
+    let fixResult: { prUrl?: string; emailSent?: boolean } = {};
 
     const allEvents = await readEvents();
     const now = Date.now();
-    const cooldownPassed = (now - lastDetectionTime) > AUTO_DETECT_COOLDOWN;
+    const cooldownPassed = (now - lastFixTime) > AUTO_FIX_COOLDOWN;
 
-    if (allEvents.length >= AUTO_DETECT_THRESHOLD && cooldownPassed) {
-      console.log(`📊 [Auto-Detect] Threshold reached (${allEvents.length} events). Running issue detection...`);
+    if (allEvents.length >= AUTO_FIX_THRESHOLD && cooldownPassed && !fixInProgress) {
+      console.log(`\n🧠 [Auto-Fix] Threshold reached (${allEvents.length} events). Triggering demo-fix flow...`);
 
-      lastDetectionTime = now;
-      detectionTriggered = true;
+      lastFixTime = now;
+      fixInProgress = true;
+      fixTriggered = true;
 
-      // Run detection
-      const issues = await detectIssues(24);
-      issuesDetected = issues.length;
-
-      if (issues.length > 0) {
-        // Store detected issues
-        const existingIssues = await readUIIssues();
-        const newIssueIds = new Set(issues.map(i => i.patternId + i.elementSelector));
-
-        // Only add issues that don't already exist (by pattern+selector combo)
-        const existingKeys = new Set(existingIssues.map(i => i.patternId + i.elementSelector));
-        const trulyNewIssues = issues.filter(i => !existingKeys.has(i.patternId + i.elementSelector));
-
-        if (trulyNewIssues.length > 0) {
-          await writeUIIssues([...existingIssues, ...trulyNewIssues]);
-          console.log(`🚨 [Auto-Detect] Found ${trulyNewIssues.length} new UI issues!`);
-          trulyNewIssues.forEach(issue => {
-            console.log(`   - ${issue.severity.toUpperCase()}: ${issue.problemStatement}`);
-          });
+      // Trigger demo-fix flow in background (don't block the response)
+      triggerDemoFix().then(result => {
+        fixInProgress = false;
+        if (result.success) {
+          console.log(`✅ [Auto-Fix] Complete! PR: ${result.prUrl}`);
+        } else {
+          console.log(`⚠️ [Auto-Fix] ${result.message}`);
         }
-      }
+      }).catch(err => {
+        fixInProgress = false;
+        console.error(`❌ [Auto-Fix] Error:`, err);
+      });
+
+      fixResult = { prUrl: 'creating...', emailSent: false };
     }
 
     return NextResponse.json({
       success: true,
       received: validatedEvents.length,
       totalEvents: allEvents.length,
-      detectionTriggered,
-      issuesDetected: detectionTriggered ? issuesDetected : undefined,
+      threshold: AUTO_FIX_THRESHOLD,
+      fixTriggered,
+      fixInProgress,
+      ...(fixTriggered ? { fixResult } : {}),
     });
   } catch (error) {
     console.error('Error processing events:', error);
