@@ -269,10 +269,10 @@ function queueEvent(event: PartialEvent) {
   }
 
   // Log the event with inferred behavior
-  console.log(
-    `${emoji} [${event.type}]`,
-    eventInfo
-  );
+  // console.log(
+  //   `${emoji} [${event.type}]`,
+  //   eventInfo
+  // );
 
   // Log behavior inference on significant events
   const significantEvents = ['cta_click', 'add_to_cart', 'product_view', 'rage_click', 'cart_review', 'search_intent'];
@@ -320,7 +320,7 @@ function flushEvents() {
     ...event,
   }));
 
-  console.log(`📤 [Flush] Sending ${events.length} event(s) to server`, events.map(e => e.type));
+  // console.log(`📤 [Flush] Sending ${events.length} event(s) to server`, events.map(e => e.type));
 
   // Use sendBeacon for reliability (works even if page is closing)
   const success = navigator.sendBeacon('/api/events', JSON.stringify({ events }));
@@ -502,6 +502,11 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
       // Dead click detection: click on non-interactive element
       if (!isInteractive(target)) {
         behaviorState.deadClicks++;
+        
+        // Check if this is a product image dead click
+        const isProductImage = target.tagName === 'IMG' && target.closest('[data-product-id]');
+        const isProductCard = target.closest('[data-product-id]');
+        
         sendEvent({
           type: 'dead_click',
           x: e.clientX,
@@ -509,6 +514,22 @@ export function EventTracker({ children }: { children: React.ReactNode }) {
           elementSelector: getSelector(target),
           elementText: target.textContent?.slice(0, 100)?.trim() || undefined,
         });
+
+        // Log product image dead clicks specifically
+        if (isProductImage) {
+          const productCard = target.closest('[data-product-id]');
+          const productId = productCard?.getAttribute('data-product-id');
+          console.log('🖼️ [DeadClick] Product image clicked:', {
+            productId,
+            selector: getSelector(target),
+            totalDeadClicks: behaviorState.deadClicks,
+          });
+        } else if (isProductCard) {
+          console.log('📦 [DeadClick] Product card element clicked:', {
+            element: getSelector(target),
+            totalDeadClicks: behaviorState.deadClicks,
+          });
+        }
       }
     };
 
