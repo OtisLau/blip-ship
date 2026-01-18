@@ -18,121 +18,131 @@ export function Header() {
   return (
     <>
       <header style={{
-        backgroundColor: 'white',
-        borderBottom: '1px solid #e5e7eb',
+        backgroundColor: '#FFFFFF',
         position: 'sticky',
         top: 0,
         zIndex: 50,
+        height: '120px',
       }}>
         <div style={{
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: '0 20px',
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: '64px'
+            height: '120px',
           }}>
-            {/* Logo */}
+            {/* Logo (Figma: text-5xl Volkhov) */}
             <div
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               style={{ cursor: 'pointer' }}
             >
-              <span style={{ fontSize: '20px', fontWeight: 600, color: '#111', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                Urban Threads
+              <span style={{
+                fontFamily: "'Volkhov', serif",
+                fontSize: '48px',
+                fontWeight: 400,
+                color: '#3F3F46',
+                lineHeight: '52px',
+              }}>
+                FASCO
               </span>
             </div>
 
-            {/* Nav */}
-            <nav style={{ display: 'flex', gap: '32px' }}>
-              {['New Arrivals', 'Men', 'Women'].map((item) => (
+            {/* Nav (Figma: text-base Poppins text-zinc-700) */}
+            <nav style={{ display: 'flex', gap: '48px', alignItems: 'center' }}>
+              {[
+                { label: 'Home', section: 'hero' },
+                { label: 'Deals', section: 'deals' },
+                { label: 'New Arrivals', section: 'products' },
+                { label: 'Packages', section: 'featured-collection' },
+              ].map((item) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection('products')}
+                  key={item.label}
+                  onClick={() => scrollToSection(item.section)}
                   style={{
-                    color: '#111',
-                    fontSize: '13px',
-                    fontWeight: 500,
+                    fontFamily: "'Poppins', sans-serif",
+                    color: '#3F3F46',
+                    fontSize: '16px',
+                    fontWeight: 400,
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    transition: 'opacity 0.2s',
+                    transition: 'color 0.2s ease',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#000000'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#3F3F46'}
                 >
-                  {item}
+                  {item.label}
                 </button>
               ))}
-              <button
-                onClick={() => scrollToSection('products')}
-                style={{
-                  color: '#dc2626',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                }}
-              >
-                Sale
-              </button>
             </nav>
 
             {/* Right side */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+              {/* Sign in (Figma: text-base Poppins text-zinc-700) */}
               <button
-                onClick={() => setSearchOpen(true)}
+                onClick={() => alert('Sign In coming soon!')}
                 style={{
-                  color: '#111',
+                  fontFamily: "'Poppins', sans-serif",
+                  color: '#3F3F46',
+                  fontSize: '16px',
+                  fontWeight: 400,
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  padding: '8px',
-                  transition: 'opacity 0.2s',
+                  transition: 'color 0.2s ease',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#000000'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#3F3F46'}
               >
-                <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+                Sign in
               </button>
+
+              {/* Sign Up Button (Figma: w-36 h-14 bg-black rounded-[10px]) */}
               <button
+                onClick={() => alert('Sign Up coming soon!')}
                 style={{
-                  color: '#111',
-                  background: 'none',
+                  width: '144px',
+                  height: '56px',
+                  backgroundColor: '#000000',
+                  color: '#FFFFFF',
                   border: 'none',
+                  borderRadius: '10px',
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '16px',
+                  fontWeight: 400,
                   cursor: 'pointer',
-                  padding: '8px',
-                  transition: 'opacity 0.2s',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.15)',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '0.9';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
               >
-                <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+                Sign Up
               </button>
+
+              {/* Cart Button - Hidden but functional */}
               <button
                 onClick={openCart}
                 style={{
-                  color: '#111',
+                  color: '#3F3F46',
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
                   position: 'relative',
                   padding: '8px',
-                  transition: 'opacity 0.2s',
+                  transition: 'opacity 0.2s ease',
+                  display: 'none', // Hidden to match Figma but kept for functionality
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
               >
                 <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -140,10 +150,11 @@ export function Header() {
                 {totalItems > 0 && (
                   <span style={{
                     position: 'absolute',
-                    top: '4px',
-                    right: '4px',
-                    background: '#111',
-                    color: 'white',
+                    top: '0',
+                    right: '0',
+                    background: '#000000',
+                    color: '#FFFFFF',
+                    fontFamily: "'Poppins', sans-serif",
                     fontSize: '10px',
                     width: '16px',
                     height: '16px',
@@ -151,6 +162,7 @@ export function Header() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontWeight: 600,
+                    borderRadius: '50%',
                   }}>
                     {totalItems}
                   </span>
@@ -180,21 +192,22 @@ export function Header() {
             transform: 'translateX(-50%)',
             width: '600px',
             maxWidth: '90vw',
-            backgroundColor: 'white',
+            backgroundColor: '#FFFFFF',
             padding: '24px',
             zIndex: 101,
-            border: '1px solid #e5e7eb',
+            borderRadius: '10px',
+            boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.15)',
           }}>
             <div style={{ position: 'relative' }}>
               <svg
                 style={{
                   position: 'absolute',
-                  left: '12px',
+                  left: '16px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   width: '20px',
                   height: '20px',
-                  color: '#9ca3af',
+                  color: '#71717A',
                 }}
                 fill="none"
                 stroke="currentColor"
@@ -211,8 +224,10 @@ export function Header() {
                 style={{
                   width: '100%',
                   padding: '14px 14px 14px 44px',
+                  fontFamily: "'Poppins', sans-serif",
                   fontSize: '16px',
-                  border: '1px solid #e5e7eb',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: '10px',
                   outline: 'none',
                 }}
               />
@@ -220,7 +235,12 @@ export function Header() {
             <div style={{ marginTop: '16px' }}>
               {searchQuery && (
                 <div>
-                  <p style={{ color: '#6b7280', fontSize: '13px', marginBottom: '12px' }}>
+                  <p style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    color: '#71717A',
+                    fontSize: '14px',
+                    marginBottom: '16px'
+                  }}>
                     Results for &quot;{searchQuery}&quot;
                   </p>
                   <button
@@ -230,19 +250,21 @@ export function Header() {
                       document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     style={{
-                      padding: '12px 16px',
-                      backgroundColor: '#fafafa',
-                      border: '1px solid #e5e7eb',
+                      padding: '16px',
+                      backgroundColor: '#FAFAFA',
+                      border: '1px solid #E5E7EB',
+                      borderRadius: '10px',
                       cursor: 'pointer',
                       width: '100%',
                       textAlign: 'left',
+                      fontFamily: "'Poppins', sans-serif",
                       fontSize: '14px',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '12px',
+                      gap: '16px',
                     }}
                   >
-                    <svg style={{ width: '18px', height: '18px', color: '#9ca3af' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg style={{ width: '18px', height: '18px', color: '#71717A' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                     View all products matching &quot;{searchQuery}&quot;
@@ -251,19 +273,29 @@ export function Header() {
               )}
               {!searchQuery && (
                 <div>
-                  <p style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Popular</p>
+                  <p style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    color: '#71717A',
+                    fontSize: '12px',
+                    marginBottom: '16px',
+                    fontWeight: 600,
+                  }}>
+                    Popular
+                  </p>
                   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    {['Hoodie', 'T-Shirt', 'Joggers', 'Crewneck'].map((term) => (
+                    {['Blazer', 'Dress', 'Jacket', 'Accessories'].map((term) => (
                       <button
                         key={term}
                         onClick={() => setSearchQuery(term)}
                         style={{
                           padding: '8px 14px',
-                          backgroundColor: '#fafafa',
-                          border: '1px solid #e5e7eb',
+                          backgroundColor: '#FAFAFA',
+                          border: '1px solid #E5E7EB',
+                          borderRadius: '10px',
                           cursor: 'pointer',
-                          fontSize: '13px',
-                          color: '#374151',
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: '14px',
+                          color: '#3F3F46',
                         }}
                       >
                         {term}

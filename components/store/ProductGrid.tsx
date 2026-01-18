@@ -11,18 +11,35 @@ interface ProductGridProps {
   config: SiteConfig['products'];
 }
 
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <div style={{ display: 'flex', gap: '0px' }}>
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          style={{
+            width: '20px',
+            height: '20px',
+            backgroundColor: i < rating ? '#F59E0B' : '#E5E7EB',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function ProductGrid({ config }: ProductGridProps) {
   const { addItem } = useCart();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<typeof config.items[0] | null>(null);
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  const gridColumns = {
-    'grid-2': 2,
-    'grid-3': 3,
-    'grid-4': 4,
-  };
+  const categories = config.categories || ['All'];
 
-  const columns = gridColumns[config.layout];
+  const filteredProducts = activeCategory === 'All'
+    ? config.items
+    : config.items.filter(item => item.category === activeCategory);
+
 
   const handleAddToCart = (product: typeof config.items[0]) => {
     addItem({
@@ -34,45 +51,125 @@ export function ProductGrid({ config }: ProductGridProps) {
   };
 
   return (
-    <section id="products" style={{ padding: '80px 0', backgroundColor: '#fafafa' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <h2 style={{ fontSize: '32px', fontWeight: 600, color: '#111', marginBottom: '8px', letterSpacing: '-0.5px' }}>
+    <section id="products" style={{
+      padding: '96px 0',
+      backgroundColor: '#FFFFFF'
+    }}>
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: '0 20px'
+      }}>
+        {/* Section Header (Figma: text-5xl Volkhov) */}
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <h2 style={{
+            fontFamily: "'Volkhov', serif",
+            fontSize: '48px',
+            fontWeight: 400,
+            color: '#3F3F46',
+            marginBottom: '16px',
+          }}>
             {sanitizeText(config.sectionTitle)}
           </h2>
-          <p style={{ color: '#6b7280', fontSize: '16px' }}>Curated essentials for your wardrobe</p>
+          {config.subtitle && (
+            <p style={{
+              fontFamily: "'Poppins', sans-serif",
+              color: '#71717A',
+              fontSize: '16px',
+              lineHeight: '24px',
+              maxWidth: '614px',
+              margin: '0 auto',
+            }}>
+              {sanitizeText(config.subtitle)}
+            </p>
+          )}
+
+          {/* Category Tabs (Figma: w-52 h-14 rounded-[10px]) */}
+          {categories.length > 1 && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '12px',
+              marginTop: '32px',
+            }}>
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  style={{
+                    width: '208px',
+                    height: '56px',
+                    backgroundColor: activeCategory === category
+                      ? '#000000'
+                      : '#FAFAFA',
+                    color: activeCategory === category
+                      ? '#FFFFFF'
+                      : '#71717A',
+                    border: 'none',
+                    borderRadius: '10px',
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.15)',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (activeCategory !== category) {
+                      e.currentTarget.style.backgroundColor = '#F5F5F5';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (activeCategory !== category) {
+                      e.currentTarget.style.backgroundColor = '#FAFAFA';
+                    }
+                  }}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
+        {/* Product Grid (Figma: 3 columns, w-96 h-96 cards) */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: '20px',
+          gridTemplateColumns: 'repeat(3, 384px)',
+          gap: '24px',
+          justifyContent: 'center',
+          marginTop: '32px',
         }}>
-          {config.items.map((product) => (
+          {filteredProducts.slice(0, 6).map((product) => (
             <div
               key={product.id}
               data-product-id={product.id}
               style={{
-                backgroundColor: 'white',
+                width: '384px',
+                height: '384px',
+                backgroundColor: '#FFFFFF',
+                borderRadius: '10px',
+                boxShadow: '0px 40px 90px rgba(0, 0, 0, 0.06)',
                 overflow: 'hidden',
-                border: '1px solid #e5e7eb',
-                transition: 'border-color 0.2s',
-                borderColor: hoveredId === product.id ? '#111' : '#e5e7eb',
+                transition: 'transform 0.2s ease',
+                transform: hoveredId === product.id ? 'translateY(-4px)' : 'translateY(0)',
               }}
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Product Image - clickable to open modal */}
+              {/* Product Image (Figma: w-80 h-60 rounded-[10px]) */}
               <div
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedProduct(product);
                 }}
                 style={{
-                  aspectRatio: '1',
+                  width: '336px',
+                  height: '244px',
+                  margin: '24px auto 0',
                   position: 'relative',
                   overflow: 'hidden',
-                  backgroundColor: '#f5f5f5',
+                  borderRadius: '10px',
                   cursor: 'pointer',
                 }}
               >
@@ -80,10 +177,10 @@ export function ProductGrid({ config }: ProductGridProps) {
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
                   fill
-                  sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  sizes="336px"
                   style={{
                     objectFit: 'cover',
-                    transition: 'transform 0.4s ease',
+                    transition: 'transform 0.3s ease',
                     transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
                   }}
                 />
@@ -92,14 +189,14 @@ export function ProductGrid({ config }: ProductGridProps) {
                   <span style={{
                     position: 'absolute',
                     top: '12px',
-                    left: '12px',
-                    backgroundColor: '#111',
-                    color: 'white',
-                    fontSize: '10px',
-                    fontWeight: 600,
-                    padding: '6px 10px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
+                    right: '12px',
+                    backgroundColor: product.badge.toLowerCase() === 'sale' ? '#EF4444' : '#000000',
+                    color: '#FFFFFF',
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '12px',
+                    fontWeight: 400,
+                    padding: '4px 12px',
+                    borderRadius: '10px',
                   }}>
                     {sanitizeText(product.badge)}
                   </span>
@@ -118,66 +215,130 @@ export function ProductGrid({ config }: ProductGridProps) {
                     left: '12px',
                     right: '12px',
                     padding: '12px',
-                    backgroundColor: '#111',
-                    color: 'white',
+                    backgroundColor: '#000000',
+                    color: '#FFFFFF',
                     border: 'none',
-                    fontSize: '12px',
-                    fontWeight: 600,
+                    borderRadius: '10px',
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '14px',
+                    fontWeight: 500,
                     cursor: 'pointer',
                     opacity: hoveredId === product.id ? 1 : 0,
                     transform: hoveredId === product.id ? 'translateY(0)' : 'translateY(8px)',
                     transition: 'all 0.2s ease',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
+                    boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.15)',
                   }}
                 >
                   Add to Cart
                 </button>
               </div>
 
-              <div style={{ padding: '16px' }}>
-                <h3 style={{ fontSize: '14px', fontWeight: 500, color: '#111', marginBottom: '4px' }}>
-                  {sanitizeText(product.name)}
-                </h3>
-                <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                  ${product.price.toFixed(2)}
+              <div style={{ padding: '12px 24px' }}>
+                {/* Product Name & Stars Row */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '4px',
+                }}>
+                  <h3 style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '20px',
+                    fontWeight: 500,
+                    color: '#3F3F46',
+                    margin: 0,
+                  }}>
+                    {sanitizeText(product.name)}
+                  </h3>
+                  {/* Star Rating (Figma: 5 amber-500 squares) */}
+                  {product.rating && <StarRating rating={product.rating} />}
+                </div>
+
+                {/* Brand */}
+                <p style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: '#71717A',
+                  lineHeight: '12px',
+                  margin: '0 0 4px 0',
+                }}>
+                  Al Karam
                 </p>
+
+                {/* Reviews */}
+                <p style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: '#3F3F46',
+                  margin: '0 0 8px 0',
+                }}>
+                  (4.1k) Customer Reviews
+                </p>
+
+                {/* Price & Stock Row */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                  <p style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '24px',
+                    fontWeight: 500,
+                    color: '#3F3F46',
+                    lineHeight: '20px',
+                    margin: 0,
+                  }}>
+                    ${product.price.toFixed(2)} CAD
+                  </p>
+                  {product.badge?.toLowerCase().includes('sale') && (
+                    <p style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      color: '#EF4444',
+                      lineHeight: '20px',
+                      margin: 0,
+                    }}>
+                      Almost Sold Out
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '48px' }}>
+        {/* View More Button (Figma: w-52 h-14 bg-black rounded-[10px]) */}
+        <div style={{ textAlign: 'center', marginTop: '64px' }}>
           <button
             onClick={() => alert('More products coming soon!')}
             style={{
-              padding: '14px 28px',
-              backgroundColor: 'transparent',
-              border: '1px solid #111',
-              fontSize: '12px',
-              fontWeight: 600,
-              color: '#111',
+              width: '208px',
+              height: '56px',
+              backgroundColor: '#000000',
+              color: '#FFFFFF',
+              border: 'none',
+              borderRadius: '10px',
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: '16px',
+              fontWeight: 400,
               cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              transition: 'all 0.2s',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
+              transition: 'all 0.2s ease',
+              boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.15)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#111';
-              e.currentTarget.style.color = 'white';
+              e.currentTarget.style.opacity = '0.9';
+              e.currentTarget.style.transform = 'translateY(-2px)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#111';
+              e.currentTarget.style.opacity = '1';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            View All Products
-            <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            View More
           </button>
         </div>
       </div>

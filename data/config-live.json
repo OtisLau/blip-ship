@@ -1,81 +1,202 @@
 {
-  "id": "preview_fix_1768696065613_8535er",
-  "version": 2,
+  "id": "fasco_redesign_v1",
+  "version": 3,
   "status": "live",
   "hero": {
-    "headline": "Elevate Your Everyday",
-    "subheadline": "Premium basics designed for comfort and style. Sustainably made, built to last.",
-    "backgroundColor": "#1F2937",
-    "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
+    "headline": "ULTIMATE",
+    "subheadline": "SALE",
+    "backgroundColor": "#FFFFFF",
+    "images": [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80"
+    ],
     "cta": {
-      "text": "Explore Collection",
-      "color": "#F59E0B",
-      "textColor": "#000000",
+      "text": "Shop Now",
+      "color": "#000000",
+      "textColor": "#FFFFFF",
       "position": "inside-hero",
       "size": "large"
     }
   },
-  "products": {
-    "sectionTitle": "Featured Products",
-    "layout": "grid-4",
-    "items": [
+  "deals": {
+    "title": "Deals Of The Month",
+    "subtitle": "Get ready for a shopping experience like never before with our Deals of the Month!",
+    "endDate": "2026-02-28T23:59:59Z",
+    "products": [
       {
-        "id": "prod_001",
-        "name": "Classic Heavyweight Hoodie",
+        "id": "deal_001",
+        "name": "Premium Leather Jacket",
+        "price": 199,
+        "originalPrice": 299,
+        "discount": 30,
+        "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80",
+        "badge": "30% OFF"
+      },
+      {
+        "id": "deal_002",
+        "name": "Designer Handbag",
+        "price": 149,
+        "originalPrice": 229,
+        "discount": 35,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80",
+        "badge": "35% OFF"
+      },
+      {
+        "id": "deal_003",
+        "name": "Vintage Sunglasses",
         "price": 89,
-        "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
-        "badge": "Best Seller",
-        "description": "Our signature heavyweight hoodie features a relaxed fit with dropped shoulders and a cozy kangaroo pocket. Double-stitched seams ensure durability while the brushed fleece interior provides maximum comfort.",
-        "materials": "100% organic cotton, 400 GSM heavyweight fleece. Pre-shrunk and garment-dyed for a lived-in feel."
+        "originalPrice": 129,
+        "discount": 30,
+        "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80",
+        "badge": "30% OFF"
       },
       {
-        "id": "prod_002",
-        "name": "Essential Cotton Tee",
-        "price": 35,
-        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
-        "description": "The perfect everyday tee with a slightly oversized fit. Features a ribbed crew neck and reinforced shoulder seams for lasting comfort and shape retention.",
-        "materials": "100% premium cotton, 180 GSM. Enzyme-washed for softness."
-      },
-      {
-        "id": "prod_003",
-        "name": "Relaxed Fit Joggers",
-        "price": 75,
-        "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
-        "badge": "New",
-        "description": "Designed for all-day comfort, these joggers feature a tapered leg, elastic waistband with drawcord, and deep side pockets. Perfect for lounging or light activity.",
-        "materials": "80% cotton, 20% polyester French terry. Soft-brushed interior."
-      },
-      {
-        "id": "prod_004",
-        "name": "Oversized Crewneck",
-        "price": 79,
-        "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80",
-        "description": "A wardrobe staple with a modern oversized silhouette. Features a ribbed collar, cuffs, and hem with a relaxed drop-shoulder design for effortless style.",
-        "materials": "100% organic cotton, 350 GSM midweight fleece. Garment-washed."
+        "id": "deal_004",
+        "name": "Classic Watch",
+        "price": 249,
+        "originalPrice": 349,
+        "discount": 28,
+        "image": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80",
+        "badge": "28% OFF"
       }
     ]
   },
+  "products": {
+    "sectionTitle": "New Arrivals",
+    "subtitle": "Discover our latest collection of fashion essentials",
+    "layout": "grid-4",
+    "categories": ["All", "Casual", "Formal", "Party"],
+    "items": [
+      {
+        "id": "prod_001",
+        "name": "Elegant Blazer",
+        "price": 129,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80",
+        "rating": 5,
+        "category": "Formal"
+      },
+      {
+        "id": "prod_002",
+        "name": "Summer Dress",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80",
+        "rating": 4,
+        "category": "Casual"
+      },
+      {
+        "id": "prod_003",
+        "name": "Denim Jacket",
+        "price": 115,
+        "image": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&q=80",
+        "badge": "New",
+        "rating": 5,
+        "category": "Casual"
+      },
+      {
+        "id": "prod_004",
+        "name": "Evening Gown",
+        "price": 199,
+        "image": "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80",
+        "rating": 5,
+        "category": "Party"
+      },
+      {
+        "id": "prod_005",
+        "name": "Silk Blouse",
+        "price": 79,
+        "image": "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&q=80",
+        "rating": 4,
+        "category": "Formal"
+      },
+      {
+        "id": "prod_006",
+        "name": "Casual Pants",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80",
+        "rating": 4,
+        "category": "Casual"
+      }
+    ]
+  },
+  "featuredCollection": {
+    "title": "Peaky Blinders",
+    "subtitle": "FASCO",
+    "description": "Step into the world of timeless elegance with our Peaky Blinders collection. Inspired by the iconic style of the 1920s, each piece combines classic tailoring with modern sophistication.",
+    "price": 299,
+    "categories": ["Overcoat", "Suit", "Accessories"],
+    "images": [
+      "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=600&q=80"
+    ],
+    "cta": {
+      "text": "View Collection"
+    }
+  },
+  "trustBadges": [
+    {
+      "icon": "quality",
+      "title": "High Quality",
+      "description": "Crafted from top materials"
+    },
+    {
+      "icon": "warranty",
+      "title": "Warranty Protection",
+      "description": "Over 2 years"
+    },
+    {
+      "icon": "shipping",
+      "title": "Free Shipping",
+      "description": "Order over $150"
+    },
+    {
+      "icon": "support",
+      "title": "24/7 Support",
+      "description": "Dedicated support"
+    }
+  ],
+  "instagram": {
+    "title": "Follow Us On Instagram",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80",
+      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80",
+      "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80",
+      "https://images.unsplash.com/photo-1485968579169-51d4b4f0a329?w=400&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=80",
+      "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80"
+    ]
+  },
   "testimonials": {
-    "sectionTitle": "What People Are Saying",
+    "sectionTitle": "This Is What Our Customers Say",
+    "subtitle": "Join thousands of satisfied customers",
     "show": true,
     "items": [
       {
-        "quote": "The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel of these pieces.",
-        "author": "Alex T."
+        "quote": "You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!",
+        "author": "James K.",
+        "role": "Traveler",
+        "rating": 5
       },
       {
-        "quote": "Finally found my go-to brand. The fit is perfect and they actually last through hundreds of washes.",
-        "author": "Jordan M."
+        "quote": "The quality exceeded my expectations. The attention to detail is remarkable and the fit is perfect.",
+        "author": "Sarah M.",
+        "role": "Designer",
+        "rating": 5
       },
       {
-        "quote": "Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
-        "author": "Sam K."
+        "quote": "Best purchase I've made this year. The customer service was exceptional and delivery was fast.",
+        "author": "Michael R.",
+        "role": "Business Owner",
+        "rating": 5
       }
     ]
   },
   "footer": {
-    "backgroundColor": "#09090b",
+    "backgroundColor": "#000000",
     "showNewsletter": true,
-    "newsletterHeadline": "Get 15% Off Your First Order"
+    "newsletterHeadline": "Subscribe To Our Newsletter",
+    "newsletterImage": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80"
   }
 }

@@ -90,6 +90,41 @@ export interface AnalyticsEvent {
   behaviorContext?: string;    // Human-readable context
 }
 
+// Product interface for reuse
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  badge?: string;
+  description?: string;
+  materials?: string;
+  rating?: number;
+  category?: string;
+}
+
+// Deals section product
+export interface DealsProduct extends Product {
+  discount?: number;
+}
+
+// Trust badge
+export interface TrustBadge {
+  icon: 'quality' | 'warranty' | 'shipping' | 'support';
+  title: string;
+  description: string;
+}
+
+// Testimonial with optional image
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+  image?: string;
+  rating?: number;
+}
+
 // Site Config Types
 export interface SiteConfig {
   id: string;
@@ -101,6 +136,7 @@ export interface SiteConfig {
     subheadline: string;
     backgroundColor: string;
     backgroundImage?: string;
+    images?: string[]; // Multiple images for FASCO 3-image layout
     cta: {
       text: string;
       color: string;
@@ -110,33 +146,56 @@ export interface SiteConfig {
     };
   };
 
+  // Deals of the Month section
+  deals?: {
+    title: string;
+    subtitle: string;
+    endDate: string; // ISO date for countdown
+    products: DealsProduct[];
+  };
+
   products: {
     sectionTitle: string;
+    subtitle?: string;
     layout: 'grid-2' | 'grid-3' | 'grid-4';
-    items: Array<{
-      id: string;
-      name: string;
-      price: number;
-      image: string;
-      badge?: string;
-      description?: string; // Longer product description
-      materials?: string; // Materials/fabric information
-    }>;
+    categories?: string[]; // Category tabs
+    items: Product[];
+  };
+
+  // Featured collection (Peaky Blinders style)
+  featuredCollection?: {
+    title: string;
+    subtitle: string;
+    description: string;
+    price: number;
+    categories: string[];
+    images: string[];
+    cta: {
+      text: string;
+    };
+  };
+
+  // Trust badges
+  trustBadges?: TrustBadge[];
+
+  // Instagram feed
+  instagram?: {
+    title: string;
+    images: string[];
   };
 
   testimonials: {
     sectionTitle: string;
+    subtitle?: string;
     show: boolean;
-    items: Array<{
-      quote: string;
-      author: string;
-    }>;
+    items: Testimonial[];
   };
 
   footer: {
     backgroundColor: string;
     showNewsletter: boolean;
     newsletterHeadline?: string;
+    newsletterImage?: string;
   };
 }
 

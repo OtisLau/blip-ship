@@ -59,13 +59,13 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '24px',
+          padding: 'var(--container-padding)',
         }}
       >
         {/* Modal */}
         <div
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'var(--color-bg-primary)',
             maxWidth: '500px',
             width: '100%',
             maxHeight: '90vh',
@@ -73,6 +73,8 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
             display: 'flex',
             flexDirection: 'column',
             position: 'relative',
+            borderRadius: 'var(--radius-base)',
+            boxShadow: 'var(--shadow-lg)',
           }}
         >
           {/* Close Button */}
@@ -80,19 +82,20 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
             onClick={onClose}
             style={{
               position: 'absolute',
-              top: '16px',
-              right: '16px',
-              background: 'white',
+              top: 'var(--spacing-base)',
+              right: 'var(--spacing-base)',
+              background: 'var(--color-bg-primary)',
               border: 'none',
               cursor: 'pointer',
-              padding: '8px',
+              padding: 'var(--spacing-sm)',
+              borderRadius: 'var(--radius-full)',
               zIndex: 1,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
-            <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: '20px', height: '20px', color: 'var(--color-text-primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -102,7 +105,7 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
             style={{
               aspectRatio: '1/1',
               maxHeight: '280px',
-              backgroundColor: '#f5f5f5',
+              backgroundColor: 'var(--color-bg-secondary)',
               position: 'relative',
               flexShrink: 0,
             }}
@@ -121,15 +124,17 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
               <span
                 style={{
                   position: 'absolute',
-                  top: '16px',
-                  left: '16px',
-                  backgroundColor: '#111',
-                  color: 'white',
-                  fontSize: '10px',
-                  fontWeight: 600,
-                  padding: '6px 10px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
+                  top: 'var(--spacing-base)',
+                  left: 'var(--spacing-base)',
+                  backgroundColor: product.badge.toLowerCase() === 'sale'
+                    ? 'var(--color-accent-sale)'
+                    : 'var(--color-accent-primary)',
+                  color: 'var(--color-text-inverted)',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 'var(--font-weight-semibold)',
+                  padding: '6px 12px',
+                  borderRadius: 'var(--radius-sm)',
                 }}
               >
                 {sanitizeText(product.badge)}
@@ -138,13 +143,14 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
           </div>
 
           {/* Product Info */}
-          <div style={{ padding: '24px', overflowY: 'auto' }}>
+          <div style={{ padding: 'var(--spacing-xl)', overflowY: 'auto' }}>
             <h2
               style={{
-                fontSize: '20px',
-                fontWeight: 600,
-                color: '#111',
-                marginBottom: '8px',
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'var(--text-xl)',
+                fontWeight: 'var(--font-weight-bold)',
+                color: 'var(--color-text-black)',
+                marginBottom: 'var(--spacing-sm)',
               }}
             >
               {sanitizeText(product.name)}
@@ -152,33 +158,34 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
 
             <p
               style={{
-                fontSize: '18px',
-                fontWeight: 600,
-                color: '#111',
-                marginBottom: '16px',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-lg)',
+                fontWeight: 'var(--font-weight-semibold)',
+                color: 'var(--color-text-black)',
+                marginBottom: 'var(--spacing-base)',
               }}
             >
               ${product.price.toFixed(2)}
             </p>
 
             {product.description && (
-              <div style={{ marginBottom: '16px' }}>
+              <div style={{ marginBottom: 'var(--spacing-base)' }}>
                 <h3
                   style={{
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    color: '#6b7280',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    marginBottom: '8px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'var(--text-xs)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--color-text-secondary)',
+                    marginBottom: 'var(--spacing-sm)',
                   }}
                 >
                   Description
                 </h3>
                 <p
                   style={{
-                    fontSize: '14px',
-                    color: '#374151',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'var(--text-sm)',
+                    color: 'var(--color-text-primary)',
                     lineHeight: 1.6,
                   }}
                 >
@@ -188,23 +195,23 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
             )}
 
             {product.materials && (
-              <div style={{ marginBottom: '24px' }}>
+              <div style={{ marginBottom: 'var(--spacing-xl)' }}>
                 <h3
                   style={{
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    color: '#6b7280',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    marginBottom: '8px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'var(--text-xs)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--color-text-secondary)',
+                    marginBottom: 'var(--spacing-sm)',
                   }}
                 >
                   Materials
                 </h3>
                 <p
                   style={{
-                    fontSize: '14px',
-                    color: '#374151',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'var(--text-sm)',
+                    color: 'var(--color-text-primary)',
                     lineHeight: 1.6,
                   }}
                 >
@@ -222,14 +229,15 @@ export function ProductModal({ product, onClose, onAddToCart }: ProductModalProp
               style={{
                 width: '100%',
                 padding: '14px',
-                backgroundColor: '#111',
-                color: 'white',
+                backgroundColor: 'var(--color-accent-primary)',
+                color: 'var(--color-text-inverted)',
                 border: 'none',
-                fontSize: '13px',
-                fontWeight: 600,
+                borderRadius: 'var(--radius-base)',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-sm)',
+                fontWeight: 'var(--font-weight-semibold)',
                 cursor: 'pointer',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
+                transition: 'opacity var(--transition-base)',
               }}
             >
               Add to Cart
