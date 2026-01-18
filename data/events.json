@@ -1,0 +1,30 @@
+[
+  {
+    "id": "evt_1768713329092_lqfc5gq",
+    "timestamp": 1768713329092,
+    "sessionId": "sess_1768702002095_ouu848nty",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768713330099_z4m743f",
+    "timestamp": 1768713330099,
+    "sessionId": "sess_1768702002095_ouu848nty",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1050,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  }
+]

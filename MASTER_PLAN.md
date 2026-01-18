@@ -2,11 +2,13 @@
 
 ## What It Does
 
-Automatically detects UX problems from user behavior and generates code fixes.
+Automatically detects UX problems from user behavior and generates code fixes **for any site**.
 
 ```
-User clicks/scrolls/forms → Pattern detection → LLM generates fix → Validation → Apply patch
+User clicks/scrolls/forms → Pattern detection → LLM generates fix → Validate against site theme → Apply patch
 ```
+
+**Key Design Principle**: Guardrails are **dynamic and site-specific**, not hardcoded. The engine extracts theme patterns from each site's codebase and validates generated fixes against that site's unique design system.
 
 ---
 
@@ -48,9 +50,9 @@ User clicks/scrolls/forms → Pattern detection → LLM generates fix → Valida
 │     Steps:                                                                    │
 │     a) Map pattern → fix type (button_no_feedback → loading_state)           │
 │     b) Load agent prompt (.claude/agents/button-loading-generator.md)        │
-│     c) Load theme guardrails (.claude/rules/theme-protection-guardrails.md)  │
+│     c) Load DYNAMIC site guardrails (lib/site-guardrails.ts)                 │
 │     d) Format issue context (lib/llm-formatter.ts)                           │
-│     e) Call Gemini API with combined prompt                                  │
+│     e) Call Gemini API with combined prompt + site-specific constraints      │
 │     f) Parse JSON response: { newFiles[], patches[], explanation }           │
 │                                                                               │
 │     Agent Prompts:                                                            │
@@ -63,16 +65,17 @@ User clicks/scrolls/forms → Pattern detection → LLM generates fix → Valida
 └──────────────────────────────────────────────────────────────────────────────┘
                                     ↓
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│  4. VALIDATE                                                                  │
-│     lib/fix-validators.ts → validateFixPatches(patches)                      │
+│  4. VALIDATE (Dynamic)                                                        │
+│     lib/fix-validators.ts → validateFixPatches(patches, siteGuardrails)      │
 │                                                                               │
-│     Checks:                                                                   │
-│     • No forbidden colors (only #111, white, grays allowed)                  │
-│     • No border-radius (sharp corners only)                                  │
-│     • Font weight 500 or 600 only                                            │
-│     • Font size 12-14px for buttons                                          │
-│     • Buttons must be uppercase with letter-spacing                          │
-│     • Transitions max 0.2-0.4s                                               │
+│     Loads guardrails from: data/site-guardrails.json (per-site config)       │
+│                                                                               │
+│     Dynamic checks based on site config:                                      │
+│     • Colors match site's extracted palette                                  │
+│     • Border radius matches site's design system                             │
+│     • Font weights match site's typography                                   │
+│     • Button styles match site's existing patterns                           │
+│     • Transitions match site's animation conventions                         │
 │                                                                               │
 │     If validation fails → use fallback from lib/fallback-generators.ts       │
 └──────────────────────────────────────────────────────────────────────────────┘
@@ -136,30 +139,73 @@ User clicks/scrolls/forms → Pattern detection → LLM generates fix → Valida
 
 ---
 
-## Theme Guardrails (Strict)
+## Dynamic Site Guardrails
 
-### Colors
-```
-Allowed BG:    #111, #fafafa, #f5f5f5, white, transparent
-Allowed Text:  #111, #374151, #6b7280, white
-Allowed Border: #e5e7eb, #111, transparent
+Guardrails are **NOT hardcoded**. Each site has its own guardrails config that the engine uses for validation.
 
-FORBIDDEN: Any accent colors (blue, red, yellow, pink, purple, orange, teal)
-           Exception: Hero CTA can use #3b82f6
+### Guardrails Config Schema (`data/site-guardrails.json`)
+
+```json
+{
+  "siteId": "my-store",
+  "extractedAt": "2026-01-18T00:00:00Z",
+  "source": "auto-extracted",
+
+  "colors": {
+    "backgrounds": ["#111", "#fafafa", "#f5f5f5", "#fff", "transparent"],
+    "text": ["#111", "#374151", "#6b7280", "#fff"],
+    "borders": ["#e5e7eb", "#111", "transparent"],
+    "accents": ["#3b82f6"],
+    "accentContexts": ["hero-cta"]
+  },
+
+  "typography": {
+    "allowedFontWeights": [500, 600],
+    "buttonFontSizeRange": [12, 14],
+    "requireUppercaseButtons": true,
+    "letterSpacing": "0.5px"
+  },
+
+  "spacing": {
+    "borderRadiusAllowed": [0],
+    "buttonPaddingH": [12, 32],
+    "buttonPaddingV": [12, 14],
+    "minTapTarget": 44
+  },
+
+  "animations": {
+    "maxTransitionDuration": "0.4s",
+    "allowedEasings": ["ease", "ease-in-out", "linear"]
+  },
+
+  "components": {
+    "buttonPatterns": ["uppercase", "letter-spacing"],
+    "loadingSpinnerSize": 16
+  }
+}
 ```
 
-### Typography
-```
-Font Weight: 500 or 600 ONLY (no bold, no light)
-Font Size:   12-14px for buttons
-Transform:   uppercase + letter-spacing: 0.5px REQUIRED for buttons
-```
+### How Guardrails Are Populated
 
-### Spacing
-```
-Border Radius: 0 ONLY (sharp corners everywhere)
-Button Padding: 12-32px horizontal, 12-14px vertical
-Tap Target: 44px minimum height
+1. **Auto-extraction** (preferred): `lib/theme-extractor.ts` scans the codebase
+   - Parses CSS/Tailwind classes from components
+   - Extracts color palette from inline styles
+   - Detects typography patterns
+   - Outputs to `data/site-guardrails.json`
+
+2. **Manual config**: Site owner provides guardrails JSON
+
+3. **Hybrid**: Auto-extract + manual overrides
+
+### Validator Uses Dynamic Config
+
+```typescript
+// lib/fix-validators.ts
+export function validateFix(code: string, guardrails: SiteGuardrails) {
+  // Check colors against guardrails.colors (not hardcoded!)
+  // Check typography against guardrails.typography
+  // etc.
+}
 ```
 
 ---
@@ -172,36 +218,38 @@ lib/
 ├── ux-detection.ts        # LLM pipeline, patch application
 ├── llm-formatter.ts       # Format issues for LLM context
 ├── gemini.ts              # Gemini API calls
-├── fix-validators.ts      # Theme guardrail validation
+├── fix-validators.ts      # DYNAMIC guardrail validation (uses site config)
+├── site-guardrails.ts     # Load/save/merge site guardrails
+├── theme-extractor.ts     # Auto-extract theme from codebase
 ├── fallback-generators.ts # Hardcoded fallbacks
 ├── component-registry.ts  # Map selectors → components
 ├── db.ts                  # JSON file persistence
-└── types.ts               # UIIssue, PatternRule types
+└── types.ts               # UIIssue, PatternRule, SiteGuardrails types
 
 .claude/
-├── agents/                # LLM prompts per fix type
+├── agents/                # LLM prompts per fix type (generic, not site-specific)
 │   ├── button-loading-generator.md
 │   ├── gallery-generator.md
 │   ├── autocomplete-generator.md
 │   ├── comparison-generator.md
 │   ├── color-preview-generator.md
 │   └── dead-click-action-mapper.md
-└── rules/                 # Guardrails
-    ├── theme-protection-guardrails.md
-    ├── button-guardrails.md
+└── rules/                 # Static rules (behavior, not theme)
     ├── ux-config-guardrails.md
     └── click-action-guardrails.md
 
 app/api/
 ├── events/route.ts        # POST: receive events, trigger detection
-└── ux-issues/route.ts     # GET: list detected issues
+├── ux-issues/route.ts     # GET: list detected issues
+└── guardrails/route.ts    # GET/POST: manage site guardrails
 
 components/tracking/
 └── EventTracker.tsx       # Client-side event capture
 
 data/
 ├── events.json            # Stored events
-└── ui-issues.json         # Detected issues
+├── ui-issues.json         # Detected issues
+└── site-guardrails.json   # DYNAMIC site-specific theme config
 ```
 
 ---
@@ -224,6 +272,20 @@ DELETE /api/events
 GET /api/ux-issues
   Runs detection and returns issues
   Returns: { issues: UIIssue[] }
+
+GET /api/guardrails
+  Returns current site guardrails config
+  Returns: { guardrails: SiteGuardrails }
+
+POST /api/guardrails
+  Update or regenerate site guardrails
+  Body: { action: 'extract' | 'update', overrides?: Partial<SiteGuardrails> }
+  Returns: { guardrails: SiteGuardrails, extractedFrom?: string[] }
+
+POST /api/guardrails/extract
+  Auto-extract guardrails from codebase
+  Body: { paths?: string[], merge?: boolean }
+  Returns: { guardrails: SiteGuardrails, sources: string[] }
 ```
 
 ---
@@ -262,14 +324,22 @@ The LLM must return JSON in this format:
 - [x] Event capture (20+ event types)
 - [x] Issue detection (24 pattern rules)
 - [x] LLM fix generation (Gemini integration)
-- [x] Theme validation (regex-based)
 - [x] Patch application (string replacement)
 - [x] Fallback generators (5 fix types)
 - [x] File backups and revert
 
+### In Progress
+- [ ] **Dynamic guardrails system** - make validation site-agnostic
+  - [ ] Create `SiteGuardrails` type schema
+  - [ ] Implement `lib/site-guardrails.ts` (load/save)
+  - [ ] Implement `lib/theme-extractor.ts` (auto-extract from codebase)
+  - [ ] Update `lib/fix-validators.ts` to use dynamic config
+  - [ ] Create `/api/guardrails` endpoints
+  - [ ] Update LLM prompts to include site-specific constraints
+
 ### Needs Work
 - [ ] Component registry incomplete (hardcoded to ProductGrid)
-- [ ] Some agent prompts need refinement
+- [ ] Agent prompts need to be generic (not site-specific)
 - [ ] LLM sometimes generates invalid patches (oldCode doesn't match)
 - [ ] No persistent backup storage (in-memory only)
 
@@ -335,7 +405,86 @@ And create an agent prompt at `.claude/agents/your-fix-generator.md`.
 1. Create agent prompt: `.claude/agents/your-fix-generator.md`
 2. Add mapping in `ux-detection.ts`: `FIX_TYPE_TO_AGENT_PROMPT`
 3. Add fallback in `lib/fallback-generators.ts`
-4. Update guardrails if needed
+
+---
+
+## Setting Up for a New Site
+
+### Option 1: Auto-Extract (Recommended)
+
+```bash
+# Run theme extraction on the codebase
+curl -X POST http://localhost:3000/api/guardrails/extract \
+  -H "Content-Type: application/json" \
+  -d '{"paths": ["components/", "app/"], "merge": false}'
+```
+
+The extractor scans for:
+- Inline styles (`backgroundColor: '#111'`)
+- Tailwind classes (`bg-gray-900`, `rounded-none`)
+- CSS variables (`--primary-color`)
+- Font declarations
+- Animation/transition patterns
+
+### Option 2: Manual Config
+
+Create `data/site-guardrails.json` with your site's theme:
+
+```json
+{
+  "siteId": "my-ecommerce-site",
+  "colors": {
+    "backgrounds": ["#fff", "#f8f9fa", "#212529"],
+    "text": ["#212529", "#6c757d", "#fff"],
+    "borders": ["#dee2e6", "#212529"],
+    "accents": ["#0d6efd"],
+    "accentContexts": ["primary-cta", "links"]
+  },
+  "typography": {
+    "allowedFontWeights": [400, 500, 700],
+    "buttonFontSizeRange": [14, 16],
+    "requireUppercaseButtons": false,
+    "letterSpacing": "normal"
+  },
+  "spacing": {
+    "borderRadiusAllowed": [0, 4, 8],
+    "buttonPaddingH": [16, 24],
+    "buttonPaddingV": [8, 12],
+    "minTapTarget": 44
+  }
+}
+```
+
+### Option 3: Hybrid
+
+Auto-extract, then override specific values:
+
+```bash
+curl -X POST http://localhost:3000/api/guardrails \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "update",
+    "overrides": {
+      "typography": { "requireUppercaseButtons": true }
+    }
+  }'
+```
+
+---
+
+## Theme Extractor Details
+
+`lib/theme-extractor.ts` uses these strategies:
+
+| Pattern Type | Detection Method |
+|-------------|------------------|
+| Colors | Regex for hex, rgb(), hsl(), Tailwind color classes |
+| Font Weights | CSS `font-weight`, Tailwind `font-*` classes |
+| Border Radius | CSS `border-radius`, Tailwind `rounded-*` classes |
+| Spacing | CSS padding/margin values, Tailwind spacing classes |
+| Animations | CSS `transition`, `animation`, Tailwind `duration-*` |
+
+The extractor outputs confidence scores for each extracted value based on frequency of occurrence.
 
 ---
 
