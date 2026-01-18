@@ -434,8 +434,8 @@ ${mapping.expectedImpact}
         suggestion: suggestionAdapter,
         fix: fixAdapter,
         screenshots,
-        approvalUrl: `${baseUrl}/fix/${fixId}?action=approve`,
-        rejectionUrl: `${baseUrl}/fix/${fixId}?action=reject`,
+        approvalUrl: `${baseUrl}/fix/${fixId}`,  // No auto-action, let user click Ship
+        rejectionUrl: `${baseUrl}/fix/${fixId}`,
         expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
       };
 
