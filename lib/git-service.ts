@@ -336,6 +336,88 @@ export function getAllOpenPRs(): PRInfo[] {
 }
 
 /**
+ * List all remote fix branches
+ */
+export async function listFixBranches(): Promise<
+  { name: string; shortName: string; lastCommitDate: string; lastCommitMessage: string }[]
+> {
+  try {
+    // Fetch latest from remote
+    await gitCommand('fetch origin');
+
+    // List remote fix branches
+    const output = await gitCommand('branch -r --list "origin/fix/*" --format="%(refname:short)|%(committerdate:iso)|%(subject)"');
+
+    if (!output.trim()) {
+      return [];
+    }
+
+    return output
+      .split('\n')
+      .filter((line) => line.trim())
+      .map((line) => {
+        const [fullName, date, ...messageParts] = line.split('|');
+        const name = fullName.replace('origin/', '');
+        return {
+          name,
+          shortName: name.replace('fix/', ''),
+          lastCommitDate: date || '',
+          lastCommitMessage: messageParts.join('|') || '',
+        };
+      })
+      .sort((a, b) => new Date(b.lastCommitDate).getTime() - new Date(a.lastCommitDate).getTime());
+  } catch (error) {
+    console.error('[Git] Error listing fix branches:', error);
+    return [];
+  }
+}
+
+/**
+ * Get config-live.json content from a specific branch without checking out
+ */
+export async function getConfigFromBranch(branchName: string): Promise<string> {
+  // Sanitize branch name to prevent command injection
+  if (!/^[a-zA-Z0-9\-_/]+$/.test(branchName)) {
+    throw new Error('Invalid branch name');
+  }
+
+  try {
+    // Use git show to read file from branch without checkout
+    const configContent = await gitCommand(`show origin/${branchName}:data/config-live.json`);
+    return configContent;
+  } catch (error) {
+    console.error(`[Git] Error reading config from branch ${branchName}:`, error);
+    throw new Error(`Could not read config from branch: ${branchName}`);
+  }
+}
+
+/**
+ * Get commit info for a branch
+ */
+export async function getBranchCommitInfo(branchName: string): Promise<{
+  hash: string;
+  author: string;
+  date: string;
+  message: string;
+}> {
+  // Sanitize branch name
+  if (!/^[a-zA-Z0-9\-_/]+$/.test(branchName)) {
+    throw new Error('Invalid branch name');
+  }
+
+  try {
+    const output = await gitCommand(
+      `log origin/${branchName} -1 --format="%H|%an|%ai|%s"`
+    );
+    const [hash, author, date, message] = output.split('|');
+    return { hash, author, date, message };
+  } catch (error) {
+    console.error(`[Git] Error getting commit info for ${branchName}:`, error);
+    throw new Error(`Could not get commit info for branch: ${branchName}`);
+  }
+}
+
+/**
  * Switch back to main branch
  */
 export async function switchToMain(): Promise<void> {

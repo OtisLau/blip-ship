@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { SiteConfig } from '@/lib/types';
 import { useCart } from '@/context/CartContext';
 import { useCompare } from '@/context/CompareContext';
+import { useFeatureToggle } from '@/context/FeatureToggleContext';
 import { sanitizeText, sanitizeUrl } from '@/lib/sanitize';
 import { ProductModal } from './ProductModal';
 import { CompareDrawer } from './CompareDrawer';
@@ -16,6 +17,7 @@ interface ProductGridProps {
 export function ProductGrid({ config }: ProductGridProps) {
   const { addItem } = useCart();
   const { isInCompare, toggleCompare, compareItems } = useCompare();
+  const { features } = useFeatureToggle();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<typeof config.items[0] | null>(null);
   const [addingId, setAddingId] = useState<string | null>(null);
@@ -48,7 +50,7 @@ export function ProductGrid({ config }: ProductGridProps) {
             {sanitizeText(config.sectionTitle)}
           </h2>
           <p style={{ color: '#6b7280', fontSize: '16px' }}>Curated essentials for your wardrobe</p>
-          {compareItems.length > 0 && (
+          {features.compareFeature && compareItems.length > 0 && (
             <button
               onClick={() => setCompareDrawerOpen(true)}
               style={{
@@ -94,24 +96,28 @@ export function ProductGrid({ config }: ProductGridProps) {
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Product Image - clickable to open modal */}
+              {/* Product Image - clickable to open modal when imageClickable is enabled */}
               <div
                 onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedProduct(product);
+                  if (features.imageClickable) {
+                    e.stopPropagation();
+                    setSelectedProduct(product);
+                  }
                 }}
                 style={{
                   aspectRatio: '1',
                   position: 'relative',
                   overflow: 'hidden',
                   backgroundColor: '#f5f5f5',
-                  cursor: 'pointer',
+                  cursor: features.imageClickable ? 'pointer' : 'default',
                 }}
               >
                 <Image
                   onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedProduct(product);
+                    if (features.imageClickable) {
+                      e.stopPropagation();
+                      setSelectedProduct(product);
+                    }
                   }}
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
@@ -121,7 +127,7 @@ export function ProductGrid({ config }: ProductGridProps) {
                     objectFit: 'cover',
                     transition: 'transform 0.4s ease',
                     transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
-                    cursor: 'pointer',
+                    cursor: features.imageClickable ? 'pointer' : 'default',
                   }}
                 />
 
@@ -196,29 +202,31 @@ export function ProductGrid({ config }: ProductGridProps) {
                 >
                   ${product.price.toFixed(2)}
                 </p>
-                <label
-                  onClick={(e) => e.stopPropagation()}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontSize: '11px',
-                    fontWeight: 500,
-                    color: '#6b7280',
-                    cursor: 'pointer',
-                    marginTop: '8px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }}
-                >
-                  <input
-                    type="checkbox"
-                    checked={isInCompare(product.id)}
-                    onChange={() => toggleCompare(product)}
+                {features.compareFeature && (
+                  <label
                     onClick={(e) => e.stopPropagation()}
-                  />
-                  Compare
-                </label>
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '11px',
+                      fontWeight: 500,
+                      color: '#6b7280',
+                      cursor: 'pointer',
+                      marginTop: '8px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isInCompare(product.id)}
+                      onChange={() => toggleCompare(product)}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    Compare
+                  </label>
+                )}
               </div>
             </div>
           ))}

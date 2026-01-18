@@ -51,6 +51,9 @@ export function FeatureToggleButton() {
         }}
       >
         <div style={{ marginBottom: '4px', fontWeight: 600 }}>Features:</div>
+        <div style={{ color: features.imageClickable ? '#22c55e' : '#6b7280' }}>
+          {features.imageClickable ? '●' : '○'} Image Clickable
+        </div>
         <div style={{ color: features.loadingSpinner ? '#22c55e' : '#6b7280' }}>
           {features.loadingSpinner ? '●' : '○'} Loading Spinners
         </div>

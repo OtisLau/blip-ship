@@ -1,21 +1,21 @@
 {
-  "id": "preview_fix_1768696065613_8535er",
-  "version": 2,
+  "id": "baseline_config",
+  "version": 1,
   "status": "live",
   "ownerEmail": "lucianlavric2005@gmail.com",
   "storeName": "Blip Ship Store",
 
   "hero": {
-    "headline": "Elevate Your Everyday",
-    "subheadline": "Premium basics designed for comfort and style. Sustainably made, built to last.",
-    "backgroundColor": "#1F2937",
+    "headline": "Welcome to Our Store",
+    "subheadline": "Browse our products.",
+    "backgroundColor": "#374151",
     "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
     "cta": {
-      "text": "Explore Collection",
-      "color": "#F59E0B",
-      "textColor": "#000000",
+      "text": "Shop Now",
+      "color": "#6B7280",
+      "textColor": "#FFFFFF",
       "position": "inside-hero",
-      "size": "large"
+      "size": "small"
     }
   },
   "products": {

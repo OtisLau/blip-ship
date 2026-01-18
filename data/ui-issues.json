@@ -1,0 +1,240 @@
+[
+  {
+    "id": "issue_1768722685386_jwx4mw",
+    "status": "detected",
+    "detectedAt": 1768722685386,
+    "lastOccurrence": 1768722618462,
+    "category": "missing_feature",
+    "severity": "low",
+    "patternId": "multi_product_interaction",
+    "elementSelector": "/store",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 5,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768722609975_qqa3v5a",
+        "timestamp": 1768722609975,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 813,
+        "y": 382,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722613165_588lml8",
+        "timestamp": 1768722613165,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_compare",
+        "productId": "prod_004",
+        "productName": "Oversized Crewneck",
+        "productPrice": 79,
+        "elementText": "Comparing: prod_003 vs prod_004",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722613165_6wckkhj",
+        "timestamp": 1768722613165,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 1052,
+        "y": 367,
+        "elementSelector": "img",
+        "productId": "prod_004",
+        "productName": "Oversized Crewneck",
+        "productPrice": 79,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722615757_s5eejia",
+        "timestamp": 1768722615757,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 829,
+        "y": 303,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722618462_2tlbbyx",
+        "timestamp": 1768722618462,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 1055,
+        "y": 358,
+        "elementSelector": "img",
+        "productId": "prod_004",
+        "productName": "Oversized Crewneck",
+        "productPrice": 79,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+      }
+    ],
+    "problemStatement": "Users interacting with multiple products",
+    "userIntent": "",
+    "currentOutcome": "",
+    "suggestedFix": ""
+  },
+  {
+    "id": "issue_1768722685387_o7h5vf",
+    "status": "detected",
+    "detectedAt": 1768722685387,
+    "lastOccurrence": 1768722618462,
+    "category": "missing_feature",
+    "severity": "low",
+    "patternId": "comparison_feature_needed",
+    "elementSelector": "/store",
+    "sectionId": "/store",
+    "componentPath": "unknown",
+    "componentName": "Unknown",
+    "eventCount": 5,
+    "uniqueSessions": 1,
+    "sampleEvents": [
+      {
+        "id": "evt_1768722609975_qqa3v5a",
+        "timestamp": 1768722609975,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 813,
+        "y": 382,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722613165_588lml8",
+        "timestamp": 1768722613165,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_compare",
+        "productId": "prod_004",
+        "productName": "Oversized Crewneck",
+        "productPrice": 79,
+        "elementText": "Comparing: prod_003 vs prod_004",
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722613165_6wckkhj",
+        "timestamp": 1768722613165,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 1052,
+        "y": 367,
+        "elementSelector": "img",
+        "productId": "prod_004",
+        "productName": "Oversized Crewneck",
+        "productPrice": 79,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722615757_s5eejia",
+        "timestamp": 1768722615757,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 829,
+        "y": 303,
+        "elementSelector": "img",
+        "productId": "prod_003",
+        "productName": "Relaxed Fit Joggers",
+        "productPrice": 75,
+        "inferredBehavior": "browsing",
+        "behaviorConfidence": 0.5,
+        "behaviorContext": "User is casually browsing the store"
+      },
+      {
+        "id": "evt_1768722618462_2tlbbyx",
+        "timestamp": 1768722618462,
+        "sessionId": "sess_1768722539526_odpsdtc9o",
+        "pageUrl": "/store",
+        "viewport": {
+          "width": 1300,
+          "height": 1016
+        },
+        "type": "product_view",
+        "x": 1055,
+        "y": 358,
+        "elementSelector": "img",
+        "productId": "prod_004",
+        "productName": "Oversized Crewneck",
+        "productPrice": 79,
+        "inferredBehavior": "confused",
+        "behaviorConfidence": 0.8,
+        "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+      }
+    ],
+    "problemStatement": "Users viewing multiple products rapidly - comparison shopping",
+    "userIntent": "Compare product features, prices, or specifications side-by-side",
+    "currentOutcome": "No way to compare products without opening each individually",
+    "suggestedFix": "Add compare checkbox on product cards with side-by-side comparison drawer"
+  }
+]

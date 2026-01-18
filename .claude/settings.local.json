@@ -27,7 +27,10 @@
       "mcp__ide__getDiagnostics",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(npx eslint:*)",
+      "Bash(pnpm add:*)",
+      "Bash(npx playwright:*)"
     ]
   }
 }
