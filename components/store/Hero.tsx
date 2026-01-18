@@ -24,6 +24,7 @@ export function Hero({ config }: HeroProps) {
   return (
     <section
       id="hero"
+      onClick={scrollToProducts}
       style={{
         backgroundColor: config.backgroundColor,
         minHeight: '560px',
@@ -31,6 +32,7 @@ export function Hero({ config }: HeroProps) {
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
+        cursor: 'pointer',
       }}
     >
       {/* Background Image */}
