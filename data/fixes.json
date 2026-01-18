@@ -1959,5 +1959,581 @@
     "status": "pending",
     "createdAt": 1768723294284,
     "updatedAt": 1768723294284
+  },
+  {
+    "id": "fix_1768723336954_b9ws2o",
+    "suggestion": {
+      "id": "fix_1768723336954_b9ws2o",
+      "createdAt": 1768723336954,
+      "status": "pending",
+      "analysis": {
+        "summary": "Detected issue: Low CTA visibility",
+        "insights": [
+          "Analyzed user behavior patterns from event data",
+          "Identified conversion bottleneck in hero section",
+          "Compared against CRO best practices"
+        ],
+        "dataPoints": [
+          {
+            "metric": "CTA Click Rate",
+            "value": 2.3,
+            "interpretation": "Below industry average of 4.5%"
+          },
+          {
+            "metric": "Bounce Rate",
+            "value": 45,
+            "interpretation": "High - indicates weak initial engagement"
+          },
+          {
+            "metric": "Avg Scroll Depth",
+            "value": 35,
+            "interpretation": "Users not seeing full content"
+          }
+        ]
+      },
+      "recommendation": {
+        "summary": "Analytics show low CTA engagement. A larger, more prominent button with urgency copy can increase clicks.",
+        "rationale": "Based on analysis of user behavior, we recommend this minimal, targeted fix to address the low cta visibility issue.",
+        "expectedImpact": "+15-25% CTA click rate"
+      },
+      "changes": [
+        {
+          "field": "hero.cta",
+          "oldValue": {
+            "text": "Shop Now",
+            "color": "#6B7280",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "small"
+          },
+          "newValue": {
+            "text": "Shop Now - Free Shipping",
+            "color": "#10B981",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "large"
+          },
+          "reason": "Analytics show low CTA engagement. A larger, more prominent button with urgency copy can increase clicks."
+        }
+      ],
+      "previewConfig": {
+        "id": "preview_fix_1768723336954_b9ws2o",
+        "version": 2,
+        "status": "preview",
+        "ownerEmail": "lucianlavric2005@gmail.com",
+        "storeName": "Blip Ship Store",
+        "hero": {
+          "headline": "Welcome to Our Store",
+          "subheadline": "Browse our products.",
+          "backgroundColor": "#374151",
+          "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
+          "cta": {
+            "text": "Shop Now - Free Shipping",
+            "color": "#10B981",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        },
+        "products": {
+          "sectionTitle": "Featured Products",
+          "layout": "grid-4",
+          "items": [
+            {
+              "id": "prod_001",
+              "name": "Classic Heavyweight Hoodie",
+              "price": 89,
+              "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
+              "badge": "Best Seller",
+              "description": "Our signature heavyweight hoodie features a relaxed fit with dropped shoulders and a cozy kangaroo pocket. Double-stitched seams ensure durability while the brushed fleece interior provides maximum comfort.",
+              "materials": "100% organic cotton, 400 GSM heavyweight fleece. Pre-shrunk and garment-dyed for a lived-in feel."
+            },
+            {
+              "id": "prod_002",
+              "name": "Essential Cotton Tee",
+              "price": 35,
+              "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+              "description": "The perfect everyday tee with a slightly oversized fit. Features a ribbed crew neck and reinforced shoulder seams for lasting comfort and shape retention.",
+              "materials": "100% premium cotton, 180 GSM. Enzyme-washed for softness."
+            },
+            {
+              "id": "prod_003",
+              "name": "Relaxed Fit Joggers",
+              "price": 75,
+              "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
+              "badge": "New",
+              "description": "Designed for all-day comfort, these joggers feature a tapered leg, elastic waistband with drawcord, and deep side pockets. Perfect for lounging or light activity.",
+              "materials": "80% cotton, 20% polyester French terry. Soft-brushed interior."
+            },
+            {
+              "id": "prod_004",
+              "name": "Oversized Crewneck",
+              "price": 79,
+              "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80",
+              "description": "A wardrobe staple with a modern oversized silhouette. Features a ribbed collar, cuffs, and hem with a relaxed drop-shoulder design for effortless style.",
+              "materials": "100% organic cotton, 350 GSM midweight fleece. Garment-washed."
+            }
+          ]
+        },
+        "testimonials": {
+          "sectionTitle": "What People Are Saying",
+          "show": true,
+          "items": [
+            {
+              "quote": "The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel of these pieces.",
+              "author": "Alex T."
+            },
+            {
+              "quote": "Finally found my go-to brand. The fit is perfect and they actually last through hundreds of washes.",
+              "author": "Jordan M."
+            },
+            {
+              "quote": "Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+              "author": "Sam K."
+            }
+          ]
+        },
+        "footer": {
+          "backgroundColor": "#09090b",
+          "showNewsletter": true,
+          "newsletterHeadline": "Get 15% Off Your First Order"
+        }
+      }
+    },
+    "fix": {
+      "id": "minfix_1768723337060_pp0e",
+      "suggestionId": "fix_1768723336954_b9ws2o",
+      "createdAt": 1768723337060,
+      "status": "pending",
+      "configChanges": [
+        {
+          "path": "hero.cta",
+          "oldValue": {
+            "text": "Shop Now",
+            "color": "#6B7280",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "small"
+          },
+          "newValue": {
+            "text": "Shop Now - Free Shipping",
+            "color": "#10B981",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        }
+      ],
+      "affectedFiles": [
+        {
+          "path": "data/config-live.json",
+          "changeType": "modify",
+          "diff": "--- a/data/config-live.json\n+++ b/data/config-live.json\n@@ -1,20 +1,20 @@\n-  \"hero.cta\": {\"text\":\"Shop Now\",\"color\":\"#6B7280\",\"textColor\":\"#FFFFFF\",\"position\":\"inside-hero\",\"size\":\"small\"},\n+  \"hero.cta\": {\"text\":\"Shop Now - Free Shipping\",\"color\":\"#10B981\",\"textColor\":\"#FFFFFF\",\"position\":\"inside-hero\",\"size\":\"large\"},"
+        }
+      ],
+      "metadata": {
+        "estimatedImpact": "+15-25% CTA click rate",
+        "rollbackPlan": "Revert config-live.json to previous version via git",
+        "testingNotes": "Verify hero section renders correctly with new config"
+      }
+    },
+    "prInfo": {
+      "id": "pr_1768723338626_0ap9",
+      "branchName": "fix/cro-20260118-fix_1768",
+      "title": "🔧 CRO Fix: Detected issue: Low CTA visibility",
+      "description": "## Summary\nDetected issue: Low CTA visibility\n\n## Expected Impact\n+15-25% CTA click rate\n\n## Changes\n- **hero.cta**: `{\"text\":\"Shop Now\",\"color\":\"#6B7280\",\"textColor\":\"#FFFFFF\",\"position\":\"inside-hero\",\"size\":\"small\"}` → `{\"text\":\"Shop Now - Free Shipping\",\"color\":\"#10B981\",\"textColor\":\"#FFFFFF\",\"position\":\"inside-hero\",\"size\":\"large\"}`\n\n## Rationale\nBased on analysis of user behavior, we recommend this minimal, targeted fix to address the low cta visibility issue.\n\n---\n_This PR was automatically generated by the CRO Agent._\n_Fix ID: minfix_1768723337060_pp0e_",
+      "status": "open",
+      "createdAt": 1768723338626,
+      "fixId": "minfix_1768723337060_pp0e",
+      "suggestionId": "fix_1768723336954_b9ws2o",
+      "url": "https://github.com/example/blip-ship/compare/main...fix/cro-20260118-fix_1768"
+    },
+    "status": "pending",
+    "createdAt": 1768723338679,
+    "updatedAt": 1768723338679
+  },
+  {
+    "id": "fix_1768723596735_bwwm3e",
+    "suggestion": {
+      "id": "fix_1768723596735_bwwm3e",
+      "createdAt": 1768723596736,
+      "status": "pending",
+      "analysis": {
+        "summary": "Detected issue: Hero contrast issues",
+        "insights": [
+          "Analyzed user behavior patterns from event data",
+          "Identified conversion bottleneck in hero section",
+          "Compared against CRO best practices"
+        ],
+        "dataPoints": [
+          {
+            "metric": "CTA Click Rate",
+            "value": 2.3,
+            "interpretation": "Below industry average of 4.5%"
+          },
+          {
+            "metric": "Bounce Rate",
+            "value": 45,
+            "interpretation": "High - indicates weak initial engagement"
+          },
+          {
+            "metric": "Avg Scroll Depth",
+            "value": 35,
+            "interpretation": "Users not seeing full content"
+          }
+        ]
+      },
+      "recommendation": {
+        "summary": "Heatmap shows dead clicks around CTA area. Better contrast can improve visibility.",
+        "rationale": "Based on analysis of user behavior, we recommend this minimal, targeted fix to address the hero contrast issues issue.",
+        "expectedImpact": "+30% CTA visibility, -15% dead clicks"
+      },
+      "changes": [
+        {
+          "field": "hero.backgroundColor",
+          "oldValue": "#374151",
+          "newValue": "#1F2937",
+          "reason": "Heatmap shows dead clicks around CTA area. Better contrast can improve visibility."
+        },
+        {
+          "field": "hero.cta",
+          "oldValue": {
+            "text": "Shop Now",
+            "color": "#6B7280",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "small"
+          },
+          "newValue": {
+            "text": "Explore Collection",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          },
+          "reason": "Heatmap shows dead clicks around CTA area. Better contrast can improve visibility."
+        }
+      ],
+      "previewConfig": {
+        "id": "preview_fix_1768723596735_bwwm3e",
+        "version": 2,
+        "status": "preview",
+        "ownerEmail": "lucianlavric2005@gmail.com",
+        "storeName": "Blip Ship Store",
+        "hero": {
+          "headline": "Welcome to Our Store",
+          "subheadline": "Browse our products.",
+          "backgroundColor": "#1F2937",
+          "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
+          "cta": {
+            "text": "Explore Collection",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        },
+        "products": {
+          "sectionTitle": "Featured Products",
+          "layout": "grid-4",
+          "items": [
+            {
+              "id": "prod_001",
+              "name": "Classic Heavyweight Hoodie",
+              "price": 89,
+              "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
+              "badge": "Best Seller",
+              "description": "Our signature heavyweight hoodie features a relaxed fit with dropped shoulders and a cozy kangaroo pocket. Double-stitched seams ensure durability while the brushed fleece interior provides maximum comfort.",
+              "materials": "100% organic cotton, 400 GSM heavyweight fleece. Pre-shrunk and garment-dyed for a lived-in feel."
+            },
+            {
+              "id": "prod_002",
+              "name": "Essential Cotton Tee",
+              "price": 35,
+              "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+              "description": "The perfect everyday tee with a slightly oversized fit. Features a ribbed crew neck and reinforced shoulder seams for lasting comfort and shape retention.",
+              "materials": "100% premium cotton, 180 GSM. Enzyme-washed for softness."
+            },
+            {
+              "id": "prod_003",
+              "name": "Relaxed Fit Joggers",
+              "price": 75,
+              "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
+              "badge": "New",
+              "description": "Designed for all-day comfort, these joggers feature a tapered leg, elastic waistband with drawcord, and deep side pockets. Perfect for lounging or light activity.",
+              "materials": "80% cotton, 20% polyester French terry. Soft-brushed interior."
+            },
+            {
+              "id": "prod_004",
+              "name": "Oversized Crewneck",
+              "price": 79,
+              "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80",
+              "description": "A wardrobe staple with a modern oversized silhouette. Features a ribbed collar, cuffs, and hem with a relaxed drop-shoulder design for effortless style.",
+              "materials": "100% organic cotton, 350 GSM midweight fleece. Garment-washed."
+            }
+          ]
+        },
+        "testimonials": {
+          "sectionTitle": "What People Are Saying",
+          "show": true,
+          "items": [
+            {
+              "quote": "The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel of these pieces.",
+              "author": "Alex T."
+            },
+            {
+              "quote": "Finally found my go-to brand. The fit is perfect and they actually last through hundreds of washes.",
+              "author": "Jordan M."
+            },
+            {
+              "quote": "Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+              "author": "Sam K."
+            }
+          ]
+        },
+        "footer": {
+          "backgroundColor": "#09090b",
+          "showNewsletter": true,
+          "newsletterHeadline": "Get 15% Off Your First Order"
+        }
+      }
+    },
+    "fix": {
+      "id": "minfix_1768723596845_howi",
+      "suggestionId": "fix_1768723596735_bwwm3e",
+      "createdAt": 1768723596845,
+      "status": "pending",
+      "configChanges": [
+        {
+          "path": "hero.backgroundColor",
+          "oldValue": "#374151",
+          "newValue": "#1F2937"
+        },
+        {
+          "path": "hero.cta",
+          "oldValue": {
+            "text": "Shop Now",
+            "color": "#6B7280",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "small"
+          },
+          "newValue": {
+            "text": "Explore Collection",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        }
+      ],
+      "affectedFiles": [
+        {
+          "path": "data/config-live.json",
+          "changeType": "modify",
+          "diff": "--- a/data/config-live.json\n+++ b/data/config-live.json\n@@ -1,20 +1,20 @@\n-  \"hero.backgroundColor\": \"#374151\",\n+  \"hero.backgroundColor\": \"#1F2937\",\n-  \"hero.cta\": {\"text\":\"Shop Now\",\"color\":\"#6B7280\",\"textColor\":\"#FFFFFF\",\"position\":\"inside-hero\",\"size\":\"small\"},\n+  \"hero.cta\": {\"text\":\"Explore Collection\",\"color\":\"#F59E0B\",\"textColor\":\"#000000\",\"position\":\"inside-hero\",\"size\":\"large\"},"
+        }
+      ],
+      "metadata": {
+        "estimatedImpact": "+30% CTA visibility, -15% dead clicks",
+        "rollbackPlan": "Revert config-live.json to previous version via git",
+        "testingNotes": "Verify hero section renders correctly with new config"
+      }
+    },
+    "status": "pending",
+    "createdAt": 1768723597578,
+    "updatedAt": 1768723597578
+  },
+  {
+    "id": "fix_1768724033008_kvmezr",
+    "suggestion": {
+      "id": "fix_1768724033008_kvmezr",
+      "createdAt": 1768724033008,
+      "status": "pending",
+      "analysis": {
+        "summary": "Detected issue: Hero contrast issues",
+        "insights": [
+          "Analyzed user behavior patterns from event data",
+          "Identified conversion bottleneck in hero section",
+          "Compared against CRO best practices"
+        ],
+        "dataPoints": [
+          {
+            "metric": "CTA Click Rate",
+            "value": 2.3,
+            "interpretation": "Below industry average of 4.5%"
+          },
+          {
+            "metric": "Bounce Rate",
+            "value": 45,
+            "interpretation": "High - indicates weak initial engagement"
+          },
+          {
+            "metric": "Avg Scroll Depth",
+            "value": 35,
+            "interpretation": "Users not seeing full content"
+          }
+        ]
+      },
+      "recommendation": {
+        "summary": "Heatmap shows dead clicks around CTA area. Better contrast can improve visibility.",
+        "rationale": "Based on analysis of user behavior, we recommend this minimal, targeted fix to address the hero contrast issues issue.",
+        "expectedImpact": "+30% CTA visibility, -15% dead clicks"
+      },
+      "changes": [
+        {
+          "field": "hero.backgroundColor",
+          "oldValue": "#374151",
+          "newValue": "#1F2937",
+          "reason": "Heatmap shows dead clicks around CTA area. Better contrast can improve visibility."
+        },
+        {
+          "field": "hero.cta",
+          "oldValue": {
+            "text": "Shop Now",
+            "color": "#6B7280",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "small"
+          },
+          "newValue": {
+            "text": "Explore Collection",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          },
+          "reason": "Heatmap shows dead clicks around CTA area. Better contrast can improve visibility."
+        }
+      ],
+      "previewConfig": {
+        "id": "preview_fix_1768724033008_kvmezr",
+        "version": 2,
+        "status": "preview",
+        "ownerEmail": "lucianlavric2005@gmail.com",
+        "storeName": "Blip Ship Store",
+        "hero": {
+          "headline": "Welcome to Our Store",
+          "subheadline": "Browse our products.",
+          "backgroundColor": "#1F2937",
+          "backgroundImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80",
+          "cta": {
+            "text": "Explore Collection",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        },
+        "products": {
+          "sectionTitle": "Featured Products",
+          "layout": "grid-4",
+          "items": [
+            {
+              "id": "prod_001",
+              "name": "Classic Heavyweight Hoodie",
+              "price": 89,
+              "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
+              "badge": "Best Seller",
+              "description": "Our signature heavyweight hoodie features a relaxed fit with dropped shoulders and a cozy kangaroo pocket. Double-stitched seams ensure durability while the brushed fleece interior provides maximum comfort.",
+              "materials": "100% organic cotton, 400 GSM heavyweight fleece. Pre-shrunk and garment-dyed for a lived-in feel."
+            },
+            {
+              "id": "prod_002",
+              "name": "Essential Cotton Tee",
+              "price": 35,
+              "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+              "description": "The perfect everyday tee with a slightly oversized fit. Features a ribbed crew neck and reinforced shoulder seams for lasting comfort and shape retention.",
+              "materials": "100% premium cotton, 180 GSM. Enzyme-washed for softness."
+            },
+            {
+              "id": "prod_003",
+              "name": "Relaxed Fit Joggers",
+              "price": 75,
+              "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
+              "badge": "New",
+              "description": "Designed for all-day comfort, these joggers feature a tapered leg, elastic waistband with drawcord, and deep side pockets. Perfect for lounging or light activity.",
+              "materials": "80% cotton, 20% polyester French terry. Soft-brushed interior."
+            },
+            {
+              "id": "prod_004",
+              "name": "Oversized Crewneck",
+              "price": 79,
+              "image": "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80",
+              "description": "A wardrobe staple with a modern oversized silhouette. Features a ribbed collar, cuffs, and hem with a relaxed drop-shoulder design for effortless style.",
+              "materials": "100% organic cotton, 350 GSM midweight fleece. Garment-washed."
+            }
+          ]
+        },
+        "testimonials": {
+          "sectionTitle": "What People Are Saying",
+          "show": true,
+          "items": [
+            {
+              "quote": "The quality is unmatched. I've bought from dozens of brands and nothing compares to the weight and feel of these pieces.",
+              "author": "Alex T."
+            },
+            {
+              "quote": "Finally found my go-to brand. The fit is perfect and they actually last through hundreds of washes.",
+              "author": "Jordan M."
+            },
+            {
+              "quote": "Worth every penny. The attention to detail is incredible - from the stitching to the fabric choice.",
+              "author": "Sam K."
+            }
+          ]
+        },
+        "footer": {
+          "backgroundColor": "#09090b",
+          "showNewsletter": true,
+          "newsletterHeadline": "Get 15% Off Your First Order"
+        }
+      }
+    },
+    "fix": {
+      "id": "minfix_1768724033112_edzu",
+      "suggestionId": "fix_1768724033008_kvmezr",
+      "createdAt": 1768724033112,
+      "status": "pending",
+      "configChanges": [
+        {
+          "path": "hero.backgroundColor",
+          "oldValue": "#374151",
+          "newValue": "#1F2937"
+        },
+        {
+          "path": "hero.cta",
+          "oldValue": {
+            "text": "Shop Now",
+            "color": "#6B7280",
+            "textColor": "#FFFFFF",
+            "position": "inside-hero",
+            "size": "small"
+          },
+          "newValue": {
+            "text": "Explore Collection",
+            "color": "#F59E0B",
+            "textColor": "#000000",
+            "position": "inside-hero",
+            "size": "large"
+          }
+        }
+      ],
+      "affectedFiles": [
+        {
+          "path": "data/config-live.json",
+          "changeType": "modify",
+          "diff": "--- a/data/config-live.json\n+++ b/data/config-live.json\n@@ -1,20 +1,20 @@\n-  \"hero.backgroundColor\": \"#374151\",\n+  \"hero.backgroundColor\": \"#1F2937\",\n-  \"hero.cta\": {\"text\":\"Shop Now\",\"color\":\"#6B7280\",\"textColor\":\"#FFFFFF\",\"position\":\"inside-hero\",\"size\":\"small\"},\n+  \"hero.cta\": {\"text\":\"Explore Collection\",\"color\":\"#F59E0B\",\"textColor\":\"#000000\",\"position\":\"inside-hero\",\"size\":\"large\"},"
+        }
+      ],
+      "metadata": {
+        "estimatedImpact": "+30% CTA visibility, -15% dead clicks",
+        "rollbackPlan": "Revert config-live.json to previous version via git",
+        "testingNotes": "Verify hero section renders correctly with new config"
+      }
+    },
+    "status": "pending",
+    "createdAt": 1768724033909,
+    "updatedAt": 1768724033909
   }
 ]

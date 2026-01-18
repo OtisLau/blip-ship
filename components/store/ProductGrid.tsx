@@ -99,25 +99,22 @@ export function ProductGrid({ config }: ProductGridProps) {
               {/* Product Image - clickable to open modal when imageClickable is enabled */}
               <div
                 onClick={(e) => {
-                  if (features.imageClickable) {
-                    e.stopPropagation();
-                    setSelectedProduct(product);
-                  }
+                  e.stopPropagation();
+                  setSelectedProduct(product);
                 }}
                 style={{
                   aspectRatio: '1',
                   position: 'relative',
                   overflow: 'hidden',
                   backgroundColor: '#f5f5f5',
-                  cursor: features.imageClickable ? 'pointer' : 'default',
+                  cursor: 'pointer',
                 }}
               >
                 <Image
                   onClick={(e) => {
-                    if (features.imageClickable) {
-                      e.stopPropagation();
-                      setSelectedProduct(product);
-                    }
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setSelectedProduct(product);
                   }}
                   src={sanitizeUrl(product.image)}
                   alt={sanitizeText(product.name)}
@@ -127,7 +124,7 @@ export function ProductGrid({ config }: ProductGridProps) {
                     objectFit: 'cover',
                     transition: 'transform 0.4s ease',
                     transform: hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
-                    cursor: features.imageClickable ? 'pointer' : 'default',
+                    cursor: 'pointer',
                   }}
                 />
 

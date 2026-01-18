@@ -188,21 +188,12 @@ async function processIssuesForAutoFix(issues: UIIssue[]): Promise<void> {
           }
           console.log(`✅ [Auto-Fix] Syntax validation passed`);
 
-          // Step 5: Apply patches
-          console.log(`🔧 [Auto-Fix] Applying patches...`);
-          const applyResult = await applyCodePatches(llmResult.patches!);
-
-          if (!applyResult.allApplied) {
-            allApplied = false;
-            console.log(`⚠️ [Auto-Fix] Some patches failed to apply`);
-            applyResult.results.forEach((r, i) => {
-              if (!r.success) {
-                console.log(`   Patch ${i + 1} failed: ${r.error}`);
-              }
-            });
-          } else {
-            console.log(`✅ [Auto-Fix] All patches applied successfully!`);
-          }
+          // Step 5: Queue patches for PR approval (NO auto-apply)
+          console.log(`📋 [Auto-Fix] Patches queued for PR approval (no auto-apply)`);
+          llmResult.patches!.forEach((p, idx) => {
+            console.log(`   [${idx + 1}] ${p.filePath}: ${p.description || 'No description'}`);
+          });
+          allApplied = false; // Not applied, waiting for approval
         }
 
         // Record the fix
@@ -251,27 +242,9 @@ async function processIssuesForAutoFix(issues: UIIssue[]): Promise<void> {
         const fallback = getFallbackFix(fixType as 'loading_state' | 'image_gallery' | 'address_autocomplete' | 'product_comparison' | 'color_preview' | 'unknown');
         if (fallback) {
           console.log(`   ✓ Fallback available: ${fallback.explanation}`);
+          console.log(`   📋 Queued for PR approval (no auto-apply)`);
 
-          // Apply fallback patches using regex-based applyFallbackPatch
-          let allApplied = true;
-          for (const patch of fallback.patches) {
-            try {
-              const filePath = path.join(process.cwd(), patch.filePath);
-              const content = await fs.readFile(filePath, 'utf-8');
-              const result = applyFallbackPatch(content, patch);
-              if (result.success) {
-                await fs.writeFile(filePath, result.result, 'utf-8');
-                console.log(`   ✓ Applied fallback patch to ${patch.filePath}`);
-              } else {
-                allApplied = false;
-                console.log(`   ✗ Fallback patch failed: ${result.error}`);
-              }
-            } catch (err) {
-              allApplied = false;
-              console.log(`   ✗ Error applying fallback: ${err}`);
-            }
-          }
-
+          // Queue fallback for PR approval (NO auto-apply)
           pendingFixes.push({
             id: `fix_${Date.now()}_${issue.patternId}`,
             generatedAt: new Date().toISOString(),
@@ -280,8 +253,9 @@ async function processIssuesForAutoFix(issues: UIIssue[]): Promise<void> {
               fixType,
               fallback: true,
               explanation: fallback.explanation,
+              patches: fallback.patches,
             },
-            applied: allApplied,
+            applied: false,
             fixType,
           });
         }
@@ -386,63 +360,23 @@ export async function POST(request: NextRequest) {
 
                 console.log(`   - Fix ${fixId}: ${mapping.actionMapping?.suggestedAction?.actionType || 'unknown action'}`);
 
-                // Auto-apply the fix if it has patches
+                // Store fix for PR approval (NO auto-apply - requires approval)
+                console.log(`📋 [Fix Queued] Fix ${fixId} queued for PR approval (no auto-apply)`);
+                pendingFixes.push({
+                  id: fixId,
+                  generatedAt: new Date().toISOString(),
+                  mapping,
+                  applied: false,
+                });
+
+                // Log the fix details for visibility
                 if (mapping.generatedCode?.patches && mapping.generatedCode.patches.length > 0) {
-                  console.log(`🔧 [Auto-Apply] Validating and applying fix ${fixId}...`);
-
-                  try {
-                    // Validate syntax BEFORE applying
-                    const syntaxValidation = await validateAllPatchesSyntax(mapping.generatedCode.patches);
-                    if (!syntaxValidation.valid) {
-                      console.log(`❌ [Auto-Apply] Syntax validation FAILED for fix ${fixId}`);
-                      console.log(syntaxValidation.summary);
-                      pendingFixes.push({
-                        id: fixId,
-                        generatedAt: new Date().toISOString(),
-                        mapping: {
-                          ...mapping,
-                          syntaxError: 'Patches would create invalid code',
-                        },
-                        applied: false,
-                      });
-                      continue; // Skip to next mapping
-                    }
-
-                    const applyResult = await applyCodePatches(mapping.generatedCode.patches);
-                    if (applyResult.allApplied) {
-                      console.log(`✅ [Auto-Apply] Fix ${fixId} applied successfully!`);
-                      pendingFixes.push({
-                        id: fixId,
-                        generatedAt: new Date().toISOString(),
-                        mapping,
-                        applied: true,
-                      });
-                    } else {
-                      console.log(`⚠️ [Auto-Apply] Fix ${fixId} partially applied`);
-                      pendingFixes.push({
-                        id: fixId,
-                        generatedAt: new Date().toISOString(),
-                        mapping,
-                        applied: false,
-                      });
-                    }
-                  } catch (applyErr) {
-                    console.error(`❌ [Auto-Apply] Failed to apply fix ${fixId}:`, applyErr);
-                    pendingFixes.push({
-                      id: fixId,
-                      generatedAt: new Date().toISOString(),
-                      mapping,
-                      applied: false,
-                    });
-                  }
-                } else {
-                  pendingFixes.push({
-                    id: fixId,
-                    generatedAt: new Date().toISOString(),
-                    mapping,
-                    applied: false,
+                  console.log(`   Patches ready: ${mapping.generatedCode.patches.length}`);
+                  mapping.generatedCode.patches.forEach((p, idx) => {
+                    console.log(`   [${idx + 1}] ${p.filePath}: ${p.description || 'No description'}`);
                   });
                 }
+                console.log(`   → Approve at: /api/pending-fixes/${fixId}/approve`)
               }
             }
           })

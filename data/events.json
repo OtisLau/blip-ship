@@ -6912,5 +6912,1286 @@
     "inferredBehavior": "confused",
     "behaviorConfidence": 0.8,
     "behaviorContext": "User shows frustration: 6 rage clicks, 43 dead clicks"
+  },
+  {
+    "id": "evt_1768723339353_w7rx4t3",
+    "timestamp": 1768723339353,
+    "sessionId": "sess_1768723339353_wq97jp8nj",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723340356_rgsvbkr",
+    "timestamp": 1768723340356,
+    "sessionId": "sess_1768723339353_wq97jp8nj",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723341444_chbfnnb",
+    "timestamp": 1768723341444,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723344311_wbzzkm4",
+    "timestamp": 1768723344311,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723344311_2d6z3at",
+    "timestamp": 1768723344311,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "hero",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723344312_dff14lm",
+    "timestamp": 1768723344312,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "products",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723344312_rop4gnf",
+    "timestamp": 1768723344312,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1037,
+    "y": 707,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723344312_2vq4lg5",
+    "timestamp": 1768723344312,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1037,
+    "y": 707,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 305,
+        "height": 305
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 635,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "default",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 192,
+      "scrollPercent": 14,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 1860,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:default, not clickable.",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723346517_mi5h4kv",
+    "type": "bounce",
+    "timestamp": 1768723346517,
+    "sessionId": "sess_1768723339353_wq97jp8nj",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    }
+  },
+  {
+    "id": "evt_1768723346820_33kcwhz",
+    "timestamp": 1768723346820,
+    "sessionId": "sess_1768723339353_wq97jp8nj",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723346988_8m5zadk",
+    "timestamp": 1768723346988,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1025,
+    "y": 632,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723346988_6tw2vb5",
+    "timestamp": 1768723346988,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1025,
+    "y": 632,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 493,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "default",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 334,
+      "scrollPercent": 24,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 4126,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:default, not clickable.",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723346988_hynu7hw",
+    "timestamp": 1768723346988,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1025,
+    "y": 632,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723346988_c0e9z57",
+    "timestamp": 1768723346988,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1025,
+    "y": 632,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 493,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "default",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 334,
+      "scrollPercent": 24,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 4264,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:default, not clickable.",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768723346988_l8sx8rp",
+    "timestamp": 1768723346988,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "double_click",
+    "x": 1025,
+    "y": 632,
+    "elementSelector": "img",
+    "elementText": "",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 493,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "default",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 334,
+      "scrollPercent": 24,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 4265,
+      "url": "/store"
+    },
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768723346988_x5g7byc",
+    "timestamp": 1768723346988,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Add to CartOversized Crewneck$79.00",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768723347823_pkynhn9",
+    "timestamp": 1768723347823,
+    "sessionId": "sess_1768723339353_wq97jp8nj",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723349188_nd9wxjl",
+    "timestamp": 1768723349188,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1035,
+    "y": 605,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768723349188_2alypxz",
+    "timestamp": 1768723349188,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1035,
+    "y": 605,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 493,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "default",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 334,
+      "scrollPercent": 24,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 6739,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:default, not clickable.",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768723350769_vauj1pc",
+    "timestamp": 1768723350769,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1066,
+    "y": 660,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 4 dead clicks"
+  },
+  {
+    "id": "evt_1768723350769_jggoqxl",
+    "timestamp": 1768723350769,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1066,
+    "y": 660,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 493,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "default",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 334,
+      "scrollPercent": 24,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 8318,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:default, not clickable.",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723353197_6h5i88b",
+    "timestamp": 1768723353197,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723356784_s9fxh8f",
+    "timestamp": 1768723356784,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723377464_mepog4a",
+    "timestamp": 1768723377464,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723598283_f6cmek7",
+    "timestamp": 1768723598283,
+    "sessionId": "sess_1768723598283_tow1ldsw8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723599286_xf2zuij",
+    "timestamp": 1768723599286,
+    "sessionId": "sess_1768723598283_tow1ldsw8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723605403_ync35j9",
+    "type": "bounce",
+    "timestamp": 1768723605403,
+    "sessionId": "sess_1768723598283_tow1ldsw8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    }
+  },
+  {
+    "id": "evt_1768723605713_21l9ngk",
+    "timestamp": 1768723605713,
+    "sessionId": "sess_1768723598283_tow1ldsw8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723606715_1pcgl3o",
+    "timestamp": 1768723606715,
+    "sessionId": "sess_1768723598283_tow1ldsw8",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723833226_ars2ihq",
+    "timestamp": 1768723833226,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_visible",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723836019_9mzuvz0",
+    "timestamp": 1768723836019,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Add to CartOversized Crewneck$79.00",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723836019_ijblvze",
+    "timestamp": 1768723836019,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1148,
+    "y": 615,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 5 dead clicks"
+  },
+  {
+    "id": "evt_1768723836019_und344d",
+    "timestamp": 1768723836019,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1148,
+    "y": 615,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 493,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "pointer",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 334,
+      "scrollPercent": 24,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 493569,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 6 dead clicks"
+  },
+  {
+    "id": "evt_1768723838456_w8iykcx",
+    "timestamp": 1768723838456,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 867,
+    "y": 220,
+    "elementSelector": "svg",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 6 dead clicks"
+  },
+  {
+    "id": "evt_1768723840496_m5fgh2f",
+    "timestamp": 1768723840496,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723842338_qa7mjbi",
+    "timestamp": 1768723842338,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723842338_v9lmaqu",
+    "timestamp": 1768723842338,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 1100,
+    "y": 905,
+    "elementSelector": "img",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "productPrice": 79,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723842338_bdv63uy",
+    "timestamp": 1768723842338,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 1100,
+    "y": 905,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1578587018452-892bacefd3f2%3Fw%3D600%26q%"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 967,
+        "width": 305,
+        "height": 305
+      },
+      "viewportPosition": {
+        "x": 967,
+        "y": 827,
+        "visible": true,
+        "percentVisible": 62
+      },
+      "computedStyle": {
+        "cursor": "pointer",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 0,
+      "scrollPercent": 0,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 834,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723844023_kpd7wcv",
+    "timestamp": 1768723844023,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "click",
+    "x": 882,
+    "y": 231,
+    "elementSelector": "button",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723844023_twci3gk",
+    "timestamp": 1768723844023,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "hero",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723844023_ue4qren",
+    "timestamp": 1768723844023,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "section_view",
+    "sectionId": "products",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723845944_o7xjchy",
+    "timestamp": 1768723845944,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Add to CartOversized Crewneck$79.00",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723848073_jx2ws31",
+    "timestamp": 1768723848073,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_compare",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "elementText": "Comparing: prod_004 vs prod_003",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723848073_01vwfha",
+    "timestamp": 1768723848073,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 867,
+    "y": 665,
+    "elementSelector": "img",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723848073_gdethw0",
+    "timestamp": 1768723848073,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 867,
+    "y": 665,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+      },
+      "boundingBox": {
+        "top": 827,
+        "left": 654,
+        "width": 306,
+        "height": 306
+      },
+      "viewportPosition": {
+        "x": 654,
+        "y": 531,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "pointer",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 296,
+      "scrollPercent": 21,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 6569,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723849263_yzge0v5",
+    "timestamp": 1768723849263,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "product_view",
+    "x": 866,
+    "y": 663,
+    "elementSelector": "img",
+    "productId": "prod_003",
+    "productName": "Relaxed Fit Joggers",
+    "productPrice": 75,
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768723849263_tng8o03",
+    "timestamp": 1768723849263,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "dead_click",
+    "x": 866,
+    "y": 663,
+    "elementSelector": "img",
+    "elementContext": {
+      "selector": "img",
+      "fullPath": "#products > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img",
+      "tag": "img",
+      "text": "",
+      "attributes": {
+        "data-nimg": "fill",
+        "src": "/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1552902865-b72c031ac5ea%3Fw%3D600%26q%3D8"
+      },
+      "boundingBox": {
+        "top": 832,
+        "left": 659,
+        "width": 296,
+        "height": 296
+      },
+      "viewportPosition": {
+        "x": 659,
+        "y": 536,
+        "visible": true,
+        "percentVisible": 100
+      },
+      "computedStyle": {
+        "cursor": "pointer",
+        "pointerEvents": "auto",
+        "opacity": "1",
+        "display": "block"
+      },
+      "isInteractive": false,
+      "isVisible": true,
+      "isInIframe": false,
+      "nearestInteractive": null
+    },
+    "pageContext": {
+      "scrollX": 0,
+      "scrollY": 296,
+      "scrollPercent": 21,
+      "documentHeight": 2411,
+      "documentWidth": 1300,
+      "timeOnPage": 7760,
+      "url": "/store"
+    },
+    "frustrationReason": "User clicked on image expecting it to be interactive (enlarge/open). Image at #products > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > img has cursor:pointer, not clickable.",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768723853949_x3n5mbs",
+    "timestamp": 1768723853949,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "hover_intent",
+    "elementSelector": "div",
+    "elementText": "Add to CartOversized Crewneck$79.00",
+    "productId": "prod_004",
+    "productName": "Oversized Crewneck",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768723911125_thwrjr7",
+    "timestamp": 1768723911125,
+    "sessionId": "sess_1768722539526_odpsdtc9o",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 1300,
+      "height": 1016
+    },
+    "type": "tab_hidden",
+    "inferredBehavior": "confused",
+    "behaviorConfidence": 0.8,
+    "behaviorContext": "User shows frustration: 0 rage clicks, 3 dead clicks"
+  },
+  {
+    "id": "evt_1768724034305_1rayigb",
+    "timestamp": 1768724034305,
+    "sessionId": "sess_1768724034305_30niaxliw",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768724035308_k9s3nco",
+    "timestamp": 1768724035308,
+    "sessionId": "sess_1768724034305_30niaxliw",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768724041521_nuzh1lz",
+    "type": "bounce",
+    "timestamp": 1768724041521,
+    "sessionId": "sess_1768724034305_30niaxliw",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    }
+  },
+  {
+    "id": "evt_1768724041832_sff236w",
+    "timestamp": 1768724041832,
+    "sessionId": "sess_1768724034305_30niaxliw",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
+  },
+  {
+    "id": "evt_1768724042834_s4yni1r",
+    "timestamp": 1768724042834,
+    "sessionId": "sess_1768724034305_30niaxliw",
+    "pageUrl": "/store",
+    "viewport": {
+      "width": 600,
+      "height": 400
+    },
+    "type": "page_view",
+    "inferredBehavior": "browsing",
+    "behaviorConfidence": 0.5,
+    "behaviorContext": "User is casually browsing the store"
   }
 ]
